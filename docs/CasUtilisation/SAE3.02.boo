@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{18D58A61-5665-4582-807E-009029F22AA8}" Label="" LastModificationDate="1665392942" Name="SAE3.02" Objects="26" Symbols="22" Target="Java" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.0.0.2613"?>
+<?PowerDesigner AppLocale="UTF16" ID="{18D58A61-5665-4582-807E-009029F22AA8}" Label="" LastModificationDate="1665738678" Name="SAE3.02" Objects="23" Symbols="18" Target="Java" TargetLink="Reference" Type="{18112060-1A4B-11D1-83D9-444553540000}" signature="CLD_OBJECT_MODEL" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,8 +12,8 @@
 <a:Code>SAE3_02</a:Code>
 <a:CreationDate>1664809359</a:CreationDate>
 <a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1665390409</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
+<a:ModificationDate>1665738670</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
 [FolderOptions\Class Diagram Objects]
@@ -63,6 +63,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,firstLowerWord)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDPCKG\Code]
 Template=
@@ -75,6 +76,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDDOMN]
 
@@ -89,6 +91,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDDOMN\Code]
 Template=
@@ -101,6 +104,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDCLASS]
 
@@ -115,6 +119,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,FirstUpperChar)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDCLASS\Code]
 Template=
@@ -127,6 +132,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDINTF]
 
@@ -141,6 +147,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,FirstUpperChar)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDINTF\Code]
 Template=
@@ -153,6 +160,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDACTR]
 
@@ -167,6 +175,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDACTR\Code]
 Template=
@@ -179,6 +188,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDUCAS]
 
@@ -193,6 +203,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDUCAS\Code]
 Template=
@@ -205,6 +216,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\SQDOBJT]
 
@@ -219,6 +231,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\SQDOBJT\Code]
 Template=
@@ -231,6 +244,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\SQDMSSG]
 
@@ -245,6 +259,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\SQDMSSG\Code]
 Template=
@@ -257,6 +272,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CPDCOMP]
 
@@ -271,6 +287,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,FirstUpperChar)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CPDCOMP\Code]
 Template=
@@ -283,6 +300,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDATTR]
 
@@ -297,6 +315,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,firstLowerWord)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDATTR\Code]
 Template=
@@ -309,6 +328,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDMETHOD]
 
@@ -323,6 +343,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,firstLowerWord)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDMETHOD\Code]
 Template=
@@ -335,6 +356,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDPARM]
 
@@ -349,6 +371,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,firstLowerWord)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDPARM\Code]
 Template=
@@ -361,6 +384,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMPORT]
 
@@ -375,6 +399,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMPORT\Code]
 Template=
@@ -387,6 +412,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMPART]
 
@@ -401,6 +427,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMPART\Code]
 Template=
@@ -413,6 +440,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDASSC]
 
@@ -427,6 +455,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,,,firstLowerWord)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\CLDASSC\Code]
 Template=
@@ -439,6 +468,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDASSC]
 
@@ -453,6 +483,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\UCDASSC\Code]
 Template=
@@ -465,6 +496,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\GNRLLINK]
 
@@ -479,6 +511,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\GNRLLINK\Code]
 Template=
@@ -491,6 +524,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\RQLINK]
 
@@ -505,6 +539,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\RQLINK\Code]
 Template=
@@ -517,6 +552,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\RLZSLINK]
 
@@ -531,6 +567,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\RLZSLINK\Code]
 Template=
@@ -543,6 +580,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DEPDLINK]
 
@@ -557,6 +595,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DEPDLINK\Code]
 Template=
@@ -569,6 +608,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMACTV]
 
@@ -583,6 +623,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMACTV\Code]
 Template=
@@ -595,6 +636,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\ACDOBST]
 
@@ -609,6 +651,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\ACDOBST\Code]
 Template=
@@ -621,6 +664,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\STAT]
 
@@ -635,6 +679,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\STAT\Code]
 Template=
@@ -647,6 +692,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDNODE]
 
@@ -661,6 +707,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDNODE\Code]
 Template=
@@ -673,6 +720,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDCMPI]
 
@@ -687,6 +735,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDCMPI\Code]
 Template=
@@ -699,6 +748,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDASSC]
 
@@ -713,6 +763,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DPDASSC\Code]
 Template=
@@ -725,6 +776,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMVAR]
 
@@ -739,6 +791,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\OOMVAR\Code]
 Template=
@@ -751,6 +804,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FILO]
 
@@ -765,6 +819,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FILO\Code]
 Template=
@@ -777,6 +832,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FRMEOBJ]
 
@@ -791,6 +847,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FRMEOBJ\Code]
 Template=
@@ -803,6 +860,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FRMELNK]
 
@@ -817,6 +875,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\FRMELNK\Code]
 Template=
@@ -829,6 +888,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DefaultClass]
 
@@ -843,6 +903,7 @@ NoAccent=No
 DefaultChar=_
 Script=.convert_name(%Name%,&quot;_&quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Cld\ClssNamingOptions\DefaultClass\Code]
 Template=
@@ -855,6 +916,7 @@ NoAccent=Yes
 DefaultChar=_
 Script=.convert_code(%Code%,&quot; &quot;)
 ConvTable=
+ConvTablePath=%_HOME%\Fichiers de ressources\Tables de conversion\
 
 [ModelOptions\Generate]
 
@@ -923,8 +985,8 @@ NameToCode=No</a:ModelOptionsText>
 <a:Code>DiagrammeCasUtilisation_1</a:Code>
 <a:CreationDate>1664809359</a:CreationDate>
 <a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1665392230</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
+<a:ModificationDate>1665738670</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
 <a:DisplayPreferences>[DisplayPreferences]
 
 [DisplayPreferences\UCD]
@@ -967,11 +1029,16 @@ Shortcut ExtIncludeModl=Yes
 EObjShowStrn=Yes
 ExtendedObject.Comment=No
 ExtendedObject.IconPicture=No
-ExtendedObject_SymbolLayout=
+ExtendedObject_SymbolLayout=&lt;Form&gt;[CRLF] &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Nom de l&amp;#39;objet&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF] &lt;Separator Name=&quot;Séparateur&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Commentaire&quot; Attribute=&quot;Comment&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;LEFT&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Icône&quot; Attribute=&quot;IconPicture&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF]&lt;/Form&gt;
 ELnkShowStrn=Yes
 ELnkShowName=Yes
-ExtendedLink_SymbolLayout=
-File Location=No
+ExtendedLink_SymbolLayout=&lt;Form&gt;[CRLF] &lt;Form Name=&quot;Centre&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Source&quot; &gt;[CRLF] &lt;/Form&gt;[CRLF] &lt;Form Name=&quot;Destination&quot; &gt;[CRLF] &lt;/Form&gt;[CRLF]&lt;/Form&gt;
+FileObject.Stereotype=No
+FileObject.DisplayName=Yes
+FileObject.LocationOrName=No
+FileObject.IconPicture=No
+FileObject.IconMode=Yes
+FileObject_SymbolLayout=&lt;Form&gt;[CRLF] &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;ExclusiveChoice Name=&quot;Choix exclusif&quot; Mandatory=&quot;Yes&quot; Display=&quot;HorizontalRadios&quot; &gt;[CRLF]  &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF]  &lt;StandardAttribute Name=&quot;Emplacement&quot; Attribute=&quot;LocationOrName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;/ExclusiveChoice&gt;[CRLF] &lt;StandardAttribute Name=&quot;Icône&quot; Attribute=&quot;IconPicture&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF]&lt;/Form&gt;
 PckgShowStrn=Yes
 Package.Comment=No
 Package.IconPicture=No
@@ -979,13 +1046,11 @@ Package_SymbolLayout=
 Display Model Version=Yes
 Actor.IconPicture=No
 Actor_SymbolLayout=
-UseCase.IconPicture=No
-UseCase_SymbolLayout=
-FileObject.IconPicture=No
-FileObject_SymbolLayout=
-ActrShowStrn=Yes
-UcasShowStrn=Yes
+UseCase.Stereotype=Yes
 UseCase.Comment=No
+UseCase.IconPicture=No
+UseCase_SymbolLayout=&lt;Form&gt;[CRLF] &lt;StandardAttribute Name=&quot;Stéréotype&quot; Attribute=&quot;Stereotype&quot; Prefix=&quot;&amp;lt;&amp;lt;&quot; Suffix=&quot;&amp;gt;&amp;gt;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Nom&quot; Attribute=&quot;DisplayName&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF] &lt;Separator Name=&quot;Séparateur&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Commentaire&quot; Attribute=&quot;Comment&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;LEFT&quot; Caption=&quot;&quot; Mandatory=&quot;No&quot; /&gt;[CRLF] &lt;StandardAttribute Name=&quot;Icône&quot; Attribute=&quot;IconPicture&quot; Prefix=&quot;&quot; Suffix=&quot;&quot; Alignment=&quot;CNTR&quot; Caption=&quot;&quot; Mandatory=&quot;Yes&quot; /&gt;[CRLF]&lt;/Form&gt;
+ActrShowStrn=Yes
 AsscShowName=No
 AsscShowDirt=No
 AsscShowStrn=No
@@ -995,6 +1060,7 @@ GnrlShowCntr=No
 DepdShowName=No
 DepdShowStrn=Yes
 DepdShowCntr=No
+File Location=No
 
 [DisplayPreferences\Symbol]
 
@@ -1042,6 +1108,32 @@ Brush background image=
 Custom shape=
 Custom text mode=0
 Pen=1 0 128 128 255
+Shadow color=192 192 192
+Shadow=0
+
+[DisplayPreferences\Symbol\FILO]
+OBJSTRNFont=Arial,8,N
+OBJSTRNFont color=0, 0, 0
+DISPNAMEFont=Arial,8,N
+DISPNAMEFont color=0, 0, 0
+LCNMFont=Arial,8,N
+LCNMFont color=0, 0, 0
+AutoAdjustToText=Yes
+Keep aspect=Yes
+Keep center=Yes
+Keep size=No
+Width=2400
+Height=2400
+Brush color=255 255 255
+Fill Color=No
+Brush style=1
+Brush bitmap mode=12
+Brush gradient mode=0
+Brush gradient color=118 118 118
+Brush background image=
+Custom shape=
+Custom text mode=0
+Pen=1 0 0 0 255
 Shadow color=192 192 192
 Shadow=0
 
@@ -1095,32 +1187,6 @@ Pen=1 150 0 128 255
 Shadow color=192 192 192
 Shadow=0
 
-[DisplayPreferences\Symbol\UCDUCAS]
-STRNFont=Arial,8,N
-STRNFont color=0, 0, 0
-DISPNAMEFont=Arial,8,N
-DISPNAMEFont color=0, 0, 0
-LABLFont=Arial,8,N
-LABLFont color=0, 0, 0
-AutoAdjustToText=Yes
-Keep aspect=No
-Keep center=No
-Keep size=No
-Width=7200
-Height=5400
-Brush color=192 255 255
-Fill Color=Yes
-Brush style=6
-Brush bitmap mode=12
-Brush gradient mode=65
-Brush gradient color=255 255 255
-Brush background image=
-Custom shape=
-Custom text mode=0
-Pen=1 150 0 128 255
-Shadow color=192 192 192
-Shadow=0
-
 [DisplayPreferences\Symbol\UCDASSC]
 DISPNAMEFont=Arial,8,N
 DISPNAMEFont color=0, 0, 0
@@ -1145,25 +1211,29 @@ Pen=2 0 128 128 255
 Shadow color=192 192 192
 Shadow=0
 
-[DisplayPreferences\Symbol\FILO]
-NAMEFont=Arial,8,N
-NAMEFont color=0, 0, 0
+[DisplayPreferences\Symbol\UCDUCAS]
+STRNFont=Arial,8,N
+STRNFont color=0, 0, 0
+DISPNAMEFont=Arial,8,N
+DISPNAMEFont color=0, 0, 0
+LABLFont=Arial,8,N
+LABLFont color=0, 0, 0
 AutoAdjustToText=Yes
-Keep aspect=Yes
-Keep center=Yes
+Keep aspect=No
+Keep center=No
 Keep size=No
-Width=2400
-Height=2400
-Brush color=255 255 255
-Fill Color=No
-Brush style=1
+Width=7200
+Height=5400
+Brush color=192 255 255
+Fill Color=Yes
+Brush style=6
 Brush bitmap mode=12
-Brush gradient mode=0
-Brush gradient color=118 118 118
+Brush gradient mode=65
+Brush gradient color=255 255 255
 Brush background image=
 Custom shape=
 Custom text mode=0
-Pen=1 0 0 0 255
+Pen=1 150 0 128 255
 Shadow color=192 192 192
 Shadow=0
 
@@ -1213,149 +1283,158 @@ Shadow=0</a:DisplayPreferences>
 <a:PageOrientation>1</a:PageOrientation>
 <a:PaperSource>15</a:PaperSource>
 <c:Symbols>
-<o:PolylineSymbol Id="o6">
-<a:CreationDate>1665392230</a:CreationDate>
-<a:ModificationDate>1665392230</a:ModificationDate>
-<a:Rect>((-6288,8802), (8102,8902))</a:Rect>
-<a:ListOfPoints>((-6288,8802),(8102,8802))</a:ListOfPoints>
-<a:TextStyle>4130</a:TextStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
-<a:LineColor>16711680</a:LineColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontName>Arial,8,N</a:FontName>
-</o:PolylineSymbol>
-<o:UseCaseAssociationSymbol Id="o7">
+<o:UseCaseAssociationSymbol Id="o6">
 <a:CreationDate>1665390409</a:CreationDate>
-<a:ModificationDate>1665390490</a:ModificationDate>
-<a:Rect>((-38003,5818), (-14650,15271))</a:Rect>
-<a:ListOfPoints>((-38003,5818),(-38003,15271),(-14650,15271))</a:ListOfPoints>
+<a:ModificationDate>1665736395</a:ModificationDate>
+<a:Rect>((-38003,5818), (-14050,15571))</a:Rect>
+<a:ListOfPoints>((-38003,5818),(-38003,15571),(-14050,15571))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:ActorSymbol Ref="o8"/>
+<o:ActorSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o9"/>
+<o:UseCaseSymbol Ref="o8"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o10"/>
+<o:UseCaseAssociation Ref="o9"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:TitleSymbol Id="o11">
+<o:UseCaseAssociationSymbol Id="o10">
+<a:CreationDate>1665736078</a:CreationDate>
+<a:ModificationDate>1665738160</a:ModificationDate>
+<a:Rect>((-37837,-13648), (-15671,5325))</a:Rect>
+<a:ListOfPoints>((-37837,5325),(-37837,-13648),(-15671,-13648))</a:ListOfPoints>
+<a:CornerStyle>1</a:CornerStyle>
+<a:ArrowStyle>0</a:ArrowStyle>
+<a:LineColor>16744448</a:LineColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
+<c:SourceSymbol>
+<o:ActorSymbol Ref="o7"/>
+</c:SourceSymbol>
+<c:DestinationSymbol>
+<o:UseCaseSymbol Ref="o11"/>
+</c:DestinationSymbol>
+<c:Object>
+<o:UseCaseAssociation Ref="o12"/>
+</c:Object>
+</o:UseCaseAssociationSymbol>
+<o:UseCaseAssociationSymbol Id="o13">
+<a:CreationDate>1665738670</a:CreationDate>
+<a:ModificationDate>1665738678</a:ModificationDate>
+<a:Rect>((-37012,3600), (2438,4050))</a:Rect>
+<a:ListOfPoints>((-37012,4050),(-37012,3600),(2438,3600))</a:ListOfPoints>
+<a:CornerStyle>1</a:CornerStyle>
+<a:ArrowStyle>0</a:ArrowStyle>
+<a:LineColor>16744448</a:LineColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
+<c:SourceSymbol>
+<o:ActorSymbol Ref="o7"/>
+</c:SourceSymbol>
+<c:DestinationSymbol>
+<o:UseCaseSymbol Ref="o14"/>
+</c:DestinationSymbol>
+<c:Object>
+<o:UseCaseAssociation Ref="o15"/>
+</c:Object>
+</o:UseCaseAssociationSymbol>
+<o:TitleSymbol Id="o16">
 <a:Text>Version: </a:Text>
 <a:CreationDate>1665147358</a:CreationDate>
-<a:ModificationDate>1665392044</a:ModificationDate>
-<a:Rect>((-3968,14024), (11256,20767))</a:Rect>
+<a:ModificationDate>1665738135</a:ModificationDate>
+<a:Rect>((-3143,10949), (12081,17692))</a:Rect>
 <a:TextStyle>4130</a:TextStyle>
 <a:LineColor>16711680</a:LineColor>
 <a:FillColor>16777215</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontName>Arial,8,N</a:FontName>
 </o:TitleSymbol>
-<o:UseCaseAssociationSymbol Id="o12">
+<o:UseCaseAssociationSymbol Id="o17">
 <a:CreationDate>1664809415</a:CreationDate>
-<a:ModificationDate>1665392408</a:ModificationDate>
-<a:Rect>((-37800,-15573), (-12895,5925))</a:Rect>
-<a:ListOfPoints>((-37800,5925),(-28775,5925),(-28775,-15573),(-12895,-15573))</a:ListOfPoints>
+<a:ModificationDate>1665738159</a:ModificationDate>
+<a:Rect>((-37800,-20576), (-12417,5925))</a:Rect>
+<a:ListOfPoints>((-37800,5925),(-37800,-20576),(-12417,-20576))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:ActorSymbol Ref="o8"/>
+<o:ActorSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o13"/>
+<o:UseCaseSymbol Ref="o18"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o14"/>
+<o:UseCaseAssociation Ref="o19"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:UseCaseAssociationSymbol Id="o15">
-<a:CreationDate>1664809443</a:CreationDate>
-<a:ModificationDate>1665390508</a:ModificationDate>
-<a:Rect>((11565,2100), (35100,8698))</a:Rect>
-<a:ListOfPoints>((35100,2100),(35100,8698),(11565,8698))</a:ListOfPoints>
-<a:CornerStyle>1</a:CornerStyle>
-<a:ArrowStyle>0</a:ArrowStyle>
-<a:LineColor>16744448</a:LineColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
-<c:SourceSymbol>
-<o:ActorSymbol Ref="o16"/>
-</c:SourceSymbol>
-<c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o17"/>
-</c:DestinationSymbol>
-<c:Object>
-<o:UseCaseAssociation Ref="o18"/>
-</c:Object>
-</o:UseCaseAssociationSymbol>
-<o:UseCaseAssociationSymbol Id="o19">
+<o:UseCaseAssociationSymbol Id="o20">
 <a:CreationDate>1664809519</a:CreationDate>
-<a:ModificationDate>1665392413</a:ModificationDate>
-<a:Rect>((-37800,-4112), (-10013,5294))</a:Rect>
-<a:ListOfPoints>((-37800,5294),(-37800,-4112),(-10013,-4112))</a:ListOfPoints>
+<a:ModificationDate>1665738162</a:ModificationDate>
+<a:Rect>((-37800,-7097), (-12384,5294))</a:Rect>
+<a:ListOfPoints>((-37800,5294),(-37800,-7097),(-12384,-7097))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:ActorSymbol Ref="o8"/>
+<o:ActorSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o20"/>
+<o:UseCaseSymbol Ref="o21"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o21"/>
+<o:UseCaseAssociation Ref="o22"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:UseCaseAssociationSymbol Id="o22">
+<o:UseCaseAssociationSymbol Id="o23">
 <a:CreationDate>1664809573</a:CreationDate>
-<a:ModificationDate>1665392399</a:ModificationDate>
-<a:Rect>((-38175,1003), (-10163,5625))</a:Rect>
-<a:ListOfPoints>((-38175,5625),(-38175,1003),(-10163,1003))</a:ListOfPoints>
+<a:ModificationDate>1665738172</a:ModificationDate>
+<a:Rect>((-38175,-2072), (-10719,5625))</a:Rect>
+<a:ListOfPoints>((-38175,5625),(-38175,-2072),(-10719,-2071))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:ActorSymbol Ref="o8"/>
+<o:ActorSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o23"/>
+<o:UseCaseSymbol Ref="o24"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o24"/>
+<o:UseCaseAssociation Ref="o25"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:UseCaseAssociationSymbol Id="o25">
+<o:UseCaseAssociationSymbol Id="o26">
 <a:CreationDate>1664809614</a:CreationDate>
-<a:ModificationDate>1665390509</a:ModificationDate>
-<a:Rect>((11858,838), (35775,2025))</a:Rect>
-<a:ListOfPoints>((11858,838),(26979,838),(26979,2025),(35775,2025))</a:ListOfPoints>
+<a:ModificationDate>1665738184</a:ModificationDate>
+<a:Rect>((4438,2025), (35775,3286))</a:Rect>
+<a:ListOfPoints>((4438,3286),(26979,3286),(26979,2025),(35775,2025))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744448</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:UseCaseSymbol Ref="o26"/>
+<o:UseCaseSymbol Ref="o14"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:ActorSymbol Ref="o16"/>
+<o:ActorSymbol Ref="o27"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o27"/>
+<o:UseCaseAssociation Ref="o28"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:UseCaseAssociationSymbol Id="o28">
+<o:UseCaseAssociationSymbol Id="o29">
 <a:CreationDate>1665143466</a:CreationDate>
 <a:ModificationDate>1665391990</a:ModificationDate>
 <a:Rect>((-38095,7618), (-13431,8876))</a:Rect>
@@ -1366,38 +1445,20 @@ Shadow=0</a:DisplayPreferences>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>DISPNAME 0 Arial,8,N</a:FontList>
 <c:SourceSymbol>
-<o:ActorSymbol Ref="o8"/>
+<o:ActorSymbol Ref="o7"/>
 </c:SourceSymbol>
 <c:DestinationSymbol>
-<o:UseCaseSymbol Ref="o29"/>
+<o:UseCaseSymbol Ref="o30"/>
 </c:DestinationSymbol>
 <c:Object>
-<o:UseCaseAssociation Ref="o30"/>
+<o:UseCaseAssociation Ref="o31"/>
 </c:Object>
 </o:UseCaseAssociationSymbol>
-<o:ActorSymbol Id="o8">
+<o:ActorSymbol Id="o7">
 <a:CreationDate>1664809364</a:CreationDate>
 <a:ModificationDate>1664809487</a:ModificationDate>
+<a:IconMode>-1</a:IconMode>
 <a:Rect>((-40275,4050), (-35476,7649))</a:Rect>
-<a:LineColor>16744448</a:LineColor>
-<a:LineWidth>1</a:LineWidth>
-<a:FillColor>12648447</a:FillColor>
-<a:ShadowColor>12632256</a:ShadowColor>
-<a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N</a:FontList>
-<a:BrushStyle>6</a:BrushStyle>
-<a:GradientFillMode>65</a:GradientFillMode>
-<a:GradientEndColor>16777215</a:GradientEndColor>
-<a:KeepAspect>1</a:KeepAspect>
-<a:KeepCenter>1</a:KeepCenter>
-<c:Object>
-<o:Actor Ref="o31"/>
-</c:Object>
-</o:ActorSymbol>
-<o:ActorSymbol Id="o16">
-<a:CreationDate>1664809365</a:CreationDate>
-<a:ModificationDate>1664809488</a:ModificationDate>
-<a:Rect>((33075,375), (37874,3974))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>12648447</a:FillColor>
@@ -1413,28 +1474,30 @@ DISPNAME 0 Arial,8,N</a:FontList>
 <o:Actor Ref="o32"/>
 </c:Object>
 </o:ActorSymbol>
-<o:UseCaseSymbol Id="o13">
-<a:CreationDate>1664809382</a:CreationDate>
-<a:ModificationDate>1665392408</a:ModificationDate>
-<a:Rect>((-23083,-17973), (-2985,-12573))</a:Rect>
+<o:ActorSymbol Id="o27">
+<a:CreationDate>1664809365</a:CreationDate>
+<a:ModificationDate>1664809488</a:ModificationDate>
+<a:IconMode>-1</a:IconMode>
+<a:Rect>((33075,375), (37874,3974))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
-<a:FillColor>16777152</a:FillColor>
+<a:FillColor>12648447</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
 <a:FontList>STRN 0 Arial,8,N
-DISPNAME 0 Arial,8,N
-LABL 0 Arial,8,N</a:FontList>
+DISPNAME 0 Arial,8,N</a:FontList>
 <a:BrushStyle>6</a:BrushStyle>
 <a:GradientFillMode>65</a:GradientFillMode>
 <a:GradientEndColor>16777215</a:GradientEndColor>
+<a:KeepAspect>1</a:KeepAspect>
+<a:KeepCenter>1</a:KeepCenter>
 <c:Object>
-<o:UseCase Ref="o33"/>
+<o:Actor Ref="o33"/>
 </c:Object>
-</o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o17">
-<a:CreationDate>1664809419</a:CreationDate>
-<a:ModificationDate>1665390508</a:ModificationDate>
-<a:Rect>((8090,6598), (16989,11997))</a:Rect>
+</o:ActorSymbol>
+<o:UseCaseSymbol Id="o18">
+<a:CreationDate>1664809382</a:CreationDate>
+<a:ModificationDate>1665738159</a:ModificationDate>
+<a:Rect>((-23083,-23045), (-2985,-17645))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1449,10 +1512,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o34"/>
 </c:Object>
 </o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o20">
+<o:UseCaseSymbol Id="o21">
 <a:CreationDate>1664809495</a:CreationDate>
-<a:ModificationDate>1665392413</a:ModificationDate>
-<a:Rect>((-19621,-7067), (-1122,-1668))</a:Rect>
+<a:ModificationDate>1665738162</a:ModificationDate>
+<a:Rect>((-21316,-10052), (-4119,-4653))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1467,10 +1530,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o35"/>
 </c:Object>
 </o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o23">
+<o:UseCaseSymbol Id="o24">
 <a:CreationDate>1664809529</a:CreationDate>
-<a:ModificationDate>1665392399</a:ModificationDate>
-<a:Rect>((-16613,-721), (-6714,4678))</a:Rect>
+<a:ModificationDate>1665738172</a:ModificationDate>
+<a:Rect>((-19708,-3795), (-5911,1604))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1485,10 +1548,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o36"/>
 </c:Object>
 </o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o26">
+<o:UseCaseSymbol Id="o14">
 <a:CreationDate>1664809595</a:CreationDate>
-<a:ModificationDate>1665392942</a:ModificationDate>
-<a:Rect>((3735,-1561), (22034,3838))</a:Rect>
+<a:ModificationDate>1665738184</a:ModificationDate>
+<a:Rect>((-399,887), (10498,6286))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1503,7 +1566,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o37"/>
 </c:Object>
 </o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o29">
+<o:UseCaseSymbol Id="o30">
 <a:CreationDate>1665143450</a:CreationDate>
 <a:ModificationDate>1665390494</a:ModificationDate>
 <a:Rect>((-19771,6165), (-6372,11564))</a:Rect>
@@ -1521,10 +1584,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o38"/>
 </c:Object>
 </o:UseCaseSymbol>
-<o:UseCaseSymbol Id="o9">
+<o:UseCaseSymbol Id="o8">
 <a:CreationDate>1665390371</a:CreationDate>
-<a:ModificationDate>1665390812</a:ModificationDate>
-<a:Rect>((-19381,12571), (-8482,17970))</a:Rect>
+<a:ModificationDate>1665736395</a:ModificationDate>
+<a:Rect>((-18781,12871), (-7882,18270))</a:Rect>
 <a:LineColor>16744448</a:LineColor>
 <a:LineWidth>1</a:LineWidth>
 <a:FillColor>16777152</a:FillColor>
@@ -1539,11 +1602,29 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o39"/>
 </c:Object>
 </o:UseCaseSymbol>
+<o:UseCaseSymbol Id="o11">
+<a:CreationDate>1665497386</a:CreationDate>
+<a:ModificationDate>1665738160</a:ModificationDate>
+<a:Rect>((-21314,-16299), (-4316,-10900))</a:Rect>
+<a:LineColor>16744448</a:LineColor>
+<a:LineWidth>1</a:LineWidth>
+<a:FillColor>16777152</a:FillColor>
+<a:ShadowColor>12632256</a:ShadowColor>
+<a:FontList>STRN 0 Arial,8,N
+DISPNAME 0 Arial,8,N
+LABL 0 Arial,8,N</a:FontList>
+<a:BrushStyle>6</a:BrushStyle>
+<a:GradientFillMode>65</a:GradientFillMode>
+<a:GradientEndColor>16777215</a:GradientEndColor>
+<c:Object>
+<o:UseCase Ref="o40"/>
+</c:Object>
+</o:UseCaseSymbol>
 </c:Symbols>
 </o:UseCaseDiagram>
 </c:UseCaseDiagrams>
 <c:Actors>
-<o:Actor Id="o31">
+<o:Actor Id="o32">
 <a:ObjectID>282400E0-EBAE-4C27-98CD-F5F213F47A35</a:ObjectID>
 <a:Name>Utilisateur</a:Name>
 <a:Code>Utilisateur</a:Code>
@@ -1552,7 +1633,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1664809374</a:ModificationDate>
 <a:Modifier>iutinfo</a:Modifier>
 </o:Actor>
-<o:Actor Id="o32">
+<o:Actor Id="o33">
 <a:ObjectID>2ABA2B72-5340-4C9F-9D26-91063E43E3C6</a:ObjectID>
 <a:Name>Système</a:Name>
 <a:Code>Systeme</a:Code>
@@ -1563,7 +1644,7 @@ LABL 0 Arial,8,N</a:FontList>
 </o:Actor>
 </c:Actors>
 <c:UseCases>
-<o:UseCase Id="o33">
+<o:UseCase Id="o34">
 <a:ObjectID>ECE73685-B3AD-49D0-B8F5-7C470809AA36</a:ObjectID>
 <a:Name>Consulter les données en nuage de point</a:Name>
 <a:Code>Consulter_les_donnees_en_nuage_de_point</a:Code>
@@ -1572,41 +1653,32 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1665391845</a:ModificationDate>
 <a:Modifier>iutinfo</a:Modifier>
 </o:UseCase>
-<o:UseCase Id="o34">
-<a:ObjectID>640DE9A5-56F7-418B-8C33-4526F2090C67</a:ObjectID>
-<a:Name>Trier les données</a:Name>
-<a:Code>Trier_les_donnees</a:Code>
-<a:CreationDate>1664809419</a:CreationDate>
-<a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1664809429</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
-</o:UseCase>
 <o:UseCase Id="o35">
 <a:ObjectID>06F51588-C40C-40E8-838A-D47596DE152A</a:ObjectID>
-<a:Name>Afficher les caractéristiques d&#39;un point</a:Name>
-<a:Code>Afficher_les_caracteristiques_d_un_point</a:Code>
+<a:Name>Consulter  les caractéristiques d&#39;un point</a:Name>
+<a:Code>Consulter__les_caracteristiques_d_un_point</a:Code>
 <a:CreationDate>1664809495</a:CreationDate>
 <a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1665391879</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
+<a:ModificationDate>1665486920</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
 </o:UseCase>
 <o:UseCase Id="o36">
 <a:ObjectID>66936485-A313-45C5-B229-8042208B6760</a:ObjectID>
-<a:Name>Ajouter un élément</a:Name>
-<a:Code>Ajouter_un_element</a:Code>
+<a:Name>Saisir une nouvelle donnée</a:Name>
+<a:Code>Saisir_une_nouvelle_donnee</a:Code>
 <a:CreationDate>1664809529</a:CreationDate>
 <a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1664809559</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
+<a:ModificationDate>1665738419</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
 </o:UseCase>
 <o:UseCase Id="o37">
 <a:ObjectID>83E9F3E6-260C-40BE-9393-8C29161C72D3</a:ObjectID>
-<a:Name>Trouver les éléments les plus proches</a:Name>
-<a:Code>Trouver_les_elements_les_plus_proches</a:Code>
+<a:Name>Classifier les données</a:Name>
+<a:Code>Classifier_les_donnees</a:Code>
 <a:CreationDate>1664809595</a:CreationDate>
 <a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1665392942</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
+<a:ModificationDate>1665736986</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
 </o:UseCase>
 <o:UseCase Id="o38">
 <a:ObjectID>DEC0760E-D4CA-458D-AFFD-276A462F7CEB</a:ObjectID>
@@ -1626,9 +1698,18 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1665390812</a:ModificationDate>
 <a:Modifier>iutinfo</a:Modifier>
 </o:UseCase>
+<o:UseCase Id="o40">
+<a:ObjectID>8A3EC8DC-7A76-4F02-8245-D8625F74376F</a:ObjectID>
+<a:Name>Acceder au calcul de la robustesse</a:Name>
+<a:Code>Acceder_au_calcul_de_la_robustesse</a:Code>
+<a:CreationDate>1665497386</a:CreationDate>
+<a:Creator>natha</a:Creator>
+<a:ModificationDate>1665736147</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
+</o:UseCase>
 </c:UseCases>
 <c:UseCaseAssociations>
-<o:UseCaseAssociation Id="o14">
+<o:UseCaseAssociation Id="o19">
 <a:ObjectID>5FA1D4F9-3EAC-486A-B391-613FE2F29A05</a:ObjectID>
 <a:Name>Association_2</a:Name>
 <a:Code>Association_2</a:Code>
@@ -1637,28 +1718,13 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1664809415</a:ModificationDate>
 <a:Modifier>iutinfo</a:Modifier>
 <c:Object1>
-<o:UseCase Ref="o33"/>
-</c:Object1>
-<c:Object2>
-<o:Actor Ref="o31"/>
-</c:Object2>
-</o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o18">
-<a:ObjectID>903008A7-B46C-47FB-98F2-C45424D6C370</a:ObjectID>
-<a:Name>Association_3</a:Name>
-<a:Code>Association_3</a:Code>
-<a:CreationDate>1664809443</a:CreationDate>
-<a:Creator>iutinfo</a:Creator>
-<a:ModificationDate>1664809443</a:ModificationDate>
-<a:Modifier>iutinfo</a:Modifier>
-<c:Object1>
 <o:UseCase Ref="o34"/>
 </c:Object1>
 <c:Object2>
 <o:Actor Ref="o32"/>
 </c:Object2>
 </o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o21">
+<o:UseCaseAssociation Id="o22">
 <a:ObjectID>2ECABA8D-8481-4D8E-951D-DFB5398BCD8D</a:ObjectID>
 <a:Name>Association_6</a:Name>
 <a:Code>Association_6</a:Code>
@@ -1670,10 +1736,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o35"/>
 </c:Object1>
 <c:Object2>
-<o:Actor Ref="o31"/>
+<o:Actor Ref="o32"/>
 </c:Object2>
 </o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o24">
+<o:UseCaseAssociation Id="o25">
 <a:ObjectID>5DC631DE-7206-4215-B8B1-CB47B4451DD1</a:ObjectID>
 <a:Name>Association_7</a:Name>
 <a:Code>Association_7</a:Code>
@@ -1685,10 +1751,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o36"/>
 </c:Object1>
 <c:Object2>
-<o:Actor Ref="o31"/>
+<o:Actor Ref="o32"/>
 </c:Object2>
 </o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o27">
+<o:UseCaseAssociation Id="o28">
 <a:ObjectID>7C7EEABE-03DA-4185-8D43-EBF7547CF131</a:ObjectID>
 <a:Name>Association_9</a:Name>
 <a:Code>Association_9</a:Code>
@@ -1697,13 +1763,13 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ModificationDate>1664809614</a:ModificationDate>
 <a:Modifier>iutinfo</a:Modifier>
 <c:Object1>
-<o:Actor Ref="o32"/>
+<o:Actor Ref="o33"/>
 </c:Object1>
 <c:Object2>
 <o:UseCase Ref="o37"/>
 </c:Object2>
 </o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o30">
+<o:UseCaseAssociation Id="o31">
 <a:ObjectID>DB1F3BD3-48E3-4DA3-91C1-BA44031ABFA4</a:ObjectID>
 <a:Name>Association_10</a:Name>
 <a:Code>Association_10</a:Code>
@@ -1715,10 +1781,10 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o38"/>
 </c:Object1>
 <c:Object2>
-<o:Actor Ref="o31"/>
+<o:Actor Ref="o32"/>
 </c:Object2>
 </o:UseCaseAssociation>
-<o:UseCaseAssociation Id="o10">
+<o:UseCaseAssociation Id="o9">
 <a:ObjectID>B6FD31F3-D08B-46CA-A74A-62BB1EC0D925</a:ObjectID>
 <a:Name>Association_8</a:Name>
 <a:Code>Association_8</a:Code>
@@ -1730,12 +1796,42 @@ LABL 0 Arial,8,N</a:FontList>
 <o:UseCase Ref="o39"/>
 </c:Object1>
 <c:Object2>
-<o:Actor Ref="o31"/>
+<o:Actor Ref="o32"/>
+</c:Object2>
+</o:UseCaseAssociation>
+<o:UseCaseAssociation Id="o12">
+<a:ObjectID>13B9A343-9F80-4A5F-A36C-2AB64B2A39E6</a:ObjectID>
+<a:Name>Association_11</a:Name>
+<a:Code>Association_11</a:Code>
+<a:CreationDate>1665736078</a:CreationDate>
+<a:Creator>natha</a:Creator>
+<a:ModificationDate>1665736078</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
+<c:Object1>
+<o:UseCase Ref="o40"/>
+</c:Object1>
+<c:Object2>
+<o:Actor Ref="o32"/>
+</c:Object2>
+</o:UseCaseAssociation>
+<o:UseCaseAssociation Id="o15">
+<a:ObjectID>A4F7CD7E-43F2-46FA-85FE-41F41D07FC92</a:ObjectID>
+<a:Name>Association_12</a:Name>
+<a:Code>Association_12</a:Code>
+<a:CreationDate>1665738670</a:CreationDate>
+<a:Creator>natha</a:Creator>
+<a:ModificationDate>1665738670</a:ModificationDate>
+<a:Modifier>natha</a:Modifier>
+<c:Object1>
+<o:UseCase Ref="o37"/>
+</c:Object1>
+<c:Object2>
+<o:Actor Ref="o32"/>
 </c:Object2>
 </o:UseCaseAssociation>
 </c:UseCaseAssociations>
 <c:TargetModels>
-<o:TargetModel Id="o40">
+<o:TargetModel Id="o41">
 <a:ObjectID>72133530-871E-48B3-B2D0-00321EE693CE</a:ObjectID>
 <a:Name>Java</a:Name>
 <a:Code>Java</a:Code>
@@ -1750,7 +1846,7 @@ LABL 0 Arial,8,N</a:FontList>
 <o:Shortcut Ref="o3"/>
 </c:SessionShortcuts>
 </o:TargetModel>
-<o:TargetModel Id="o41">
+<o:TargetModel Id="o42">
 <a:ObjectID>9D6D222B-9755-49CC-8811-23C58B54A781</a:ObjectID>
 <a:Name>WSDL for Java</a:Name>
 <a:Code>WSDLJava</a:Code>
