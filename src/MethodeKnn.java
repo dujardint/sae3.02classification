@@ -9,10 +9,10 @@ import java.util.Map;
 public class MethodeKnn {
 
 	static List<Iris> datas;
-	static int baseEggSteps;
-	static double captureRate;
-	static int experienceGrowth;
-	static double speed;
+	static double sepal_length;
+	static double sepal_width;
+	static double petal_length;
+	static double petal_width;
 
 	public MethodeKnn(String fileName) {
 		try {
@@ -26,27 +26,27 @@ public class MethodeKnn {
 		if(datas == null || datas.isEmpty()) return;
 		Iterator<Iris> it = datas.iterator();
 		Iris tmp = it.next();
-		int minEgg = tmp.getBaseEggSteps(), maxEgg = tmp.getBaseEggSteps();
-		double minCapture = tmp.getCaptureRate(), maxCapture = tmp.getCaptureRate();
-		int minXpGrowth = tmp.getExperienceGrowth(), maxXpGrowth = tmp.getExperienceGrowth();
-		double minSpeed = tmp.getSpeed(), maxSpeed = tmp.getSpeed();
+		double minEgg = tmp.getPetal_length(), maxEgg = tmp.getPetal_length();
+		double minCapture = tmp.getPetal_width(), maxCapture = tmp.getPetal_width();
+		double minXpGrowth = tmp.getSepal_length(), maxXpGrowth = tmp.getSepal_length();
+		double minSpeed = tmp.getSepal_width(), maxSpeed = tmp.getSepal_width();
 		
 		while(it.hasNext()) {
 			tmp = it.next();
-			if(tmp.getBaseEggSteps() < minEgg) minEgg = tmp.getBaseEggSteps();
-			else if(tmp.getBaseEggSteps() > maxEgg) maxEgg = tmp.getBaseEggSteps();
-			if(tmp.getCaptureRate() < minCapture) minCapture = tmp.getCaptureRate();
-			else if(tmp.getCaptureRate() > maxCapture) maxCapture = tmp.getCaptureRate();
-			if(tmp.getExperienceGrowth() < minXpGrowth) minXpGrowth = tmp.getExperienceGrowth();
-			else if(tmp.getExperienceGrowth() > maxXpGrowth) maxXpGrowth = tmp.getExperienceGrowth();
-			if(tmp.getSpeed() < minSpeed) minSpeed = tmp.getSpeed();
-			else if(tmp.getSpeed() > maxSpeed) maxSpeed = tmp.getSpeed();
+			if(tmp.getPetal_length() < minEgg) minEgg = tmp.getPetal_length();
+			else if(tmp.getPetal_length() > maxEgg) maxEgg = tmp.getPetal_length();
+			if(tmp.getPetal_width() < minCapture) minCapture = tmp.getPetal_width();
+			else if(tmp.getPetal_width() > maxCapture) maxCapture = tmp.getPetal_width();
+			if(tmp.getSepal_length() < minXpGrowth) minXpGrowth = tmp.getSepal_length();
+			else if(tmp.getSepal_length() > maxXpGrowth) maxXpGrowth = tmp.getSepal_length();
+			if(tmp.getSepal_width() < minSpeed) minSpeed = tmp.getSepal_width();
+			else if(tmp.getSepal_width() > maxSpeed) maxSpeed = tmp.getSepal_width();
 		}
 		
-		baseEggSteps = maxEgg - minEgg;
-		captureRate = maxCapture - minCapture;
-		experienceGrowth = maxXpGrowth - minXpGrowth;
-		speed = maxSpeed - minSpeed;
+		sepal_length = maxEgg - minEgg;
+		sepal_width = maxCapture - minCapture;
+		petal_length = maxXpGrowth - minXpGrowth;
+		petal_width = maxSpeed - minSpeed;
 	}
 	
 	public List<Iris> getVoisins(int k, Iris pokemon, Distance distance) {
@@ -65,19 +65,13 @@ public class MethodeKnn {
 
 	
 	public static void main(String[] args) throws IOException {
-		MethodeKnn knn = new MethodeKnn(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "pokemon_train.csv");
-		List<Iris> legendaries = ChargementDonneesUtil.loadRaw(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "pokemon_test.csv");
+		MethodeKnn knn = new MethodeKnn(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
+		List<Iris> legendaries = ChargementDonneesUtil.loadRaw(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
 		
 		int k = 5;
 		
 		int nbLegBienPlacer = 0;
 		int nbLeg = 0;
-		for(Iris leg : legendaries) {
-			boolean isLeg = knn.isLegendary(k, leg, new DistanceEuclidienne());
-			System.out.println("estLegendaire : " + leg.isLegendary() + " | Résultat : " + isLeg);
-			if(leg.isLegendary()) nbLeg +=1;
-			if(leg.isLegendary() && isLeg) nbLegBienPlacer += 1;
-		}
 		System.out.println("k = " + k);
 		System.out.println("Nombre légendaires : " + nbLeg);
 		System.out.println("Bien insérer : " + nbLegBienPlacer);

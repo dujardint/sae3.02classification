@@ -3,10 +3,12 @@ public class DistanceEuclidienne implements Distance {
 
 	@Override
 	public double distance(Iris p1, Iris p2) {
-		return Math.sqrt(Math.pow(p1.getBaseEggSteps()-p2.getBaseEggSteps(), 2)/MethodeKnn.baseEggSteps +
-				Math.pow(p1.getCaptureRate()-p2.getCaptureRate(), 2)/MethodeKnn.captureRate +
-				Math.pow(p1.getExperienceGrowth()-p2.getExperienceGrowth(), 2)/MethodeKnn.experienceGrowth +
-				Math.pow(p1.getSpeed()-p2.getSpeed(), 2)/MethodeKnn.speed);
+	    double distance = 0.0;
+        distance += Math.pow(p1.getPetal_length() - p2.getPetal_length(), 2);
+        distance += Math.pow(p1.getPetal_width() - p2.getPetal_width(), 2);
+        distance += Math.pow(p1.getSepal_length() - p2.getSepal_length(), 2);
+        distance += Math.pow(p1.getSepal_width() - p2.getSepal_width(), 2);
+        return Math.sqrt(distance);
 	}
 
 }
