@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class MethodeKnn {
 
-	static List<Pokemon> datas;
+	static List<Iris> datas;
 	static int baseEggSteps;
 	static double captureRate;
 	static int experienceGrowth;
@@ -24,8 +24,8 @@ public class MethodeKnn {
 	
 	public void calculeAmplitudes() {
 		if(datas == null || datas.isEmpty()) return;
-		Iterator<Pokemon> it = datas.iterator();
-		Pokemon tmp = it.next();
+		Iterator<Iris> it = datas.iterator();
+		Iris tmp = it.next();
 		int minEgg = tmp.getBaseEggSteps(), maxEgg = tmp.getBaseEggSteps();
 		double minCapture = tmp.getCaptureRate(), maxCapture = tmp.getCaptureRate();
 		int minXpGrowth = tmp.getExperienceGrowth(), maxXpGrowth = tmp.getExperienceGrowth();
@@ -49,39 +49,30 @@ public class MethodeKnn {
 		speed = maxSpeed - minSpeed;
 	}
 	
-	public List<Pokemon> getVoisins(int k, Pokemon pokemon, Distance distance) {
-		Map<Pokemon, Double> distances = new HashMap<>();
-		for(Pokemon pok : MethodeKnn.datas) distances.put(pok, distance.distance(pokemon, pok));
-		LinkedHashMap<Pokemon, Double> sortedMap = new LinkedHashMap<Pokemon, Double>();
+	public List<Iris> getVoisins(int k, Iris pokemon, Distance distance) {
+		Map<Iris, Double> distances = new HashMap<>();
+		for(Iris pok : MethodeKnn.datas) distances.put(pok, distance.distance(pokemon, pok));
+		LinkedHashMap<Iris, Double> sortedMap = new LinkedHashMap<Iris, Double>();
 		distances.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
-		List<Pokemon> res = new ArrayList<Pokemon>();
+		List<Iris> res = new ArrayList<Iris>();
 		int i = 0;
-		for(Pokemon pok : sortedMap.keySet()) {
+		for(Iris pok : sortedMap.keySet()) {
 			if(i >= k) break;
 			res.add(pok);
 		}
 		return res;
 	}
-	
-	public boolean isLegendary(int k, Pokemon pokemon, Distance distance) {
-		List<Pokemon> voisins = getVoisins(k, pokemon, distance);
-		int nbLegendary = 0;
-		for(Pokemon pok : voisins) {
-			if(pok.isLegendary()) nbLegendary++;
-		}
-		return 1.0*nbLegendary > voisins.size()/2;
-	}
 
 	
 	public static void main(String[] args) throws IOException {
 		MethodeKnn knn = new MethodeKnn(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "pokemon_train.csv");
-		List<Pokemon> legendaries = ChargementDonneesUtil.loadRaw(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "pokemon_test.csv");
+		List<Iris> legendaries = ChargementDonneesUtil.loadRaw(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "pokemon_test.csv");
 		
 		int k = 5;
 		
 		int nbLegBienPlacer = 0;
 		int nbLeg = 0;
-		for(Pokemon leg : legendaries) {
+		for(Iris leg : legendaries) {
 			boolean isLeg = knn.isLegendary(k, leg, new DistanceEuclidienne());
 			System.out.println("estLegendaire : " + leg.isLegendary() + " | Résultat : " + isLeg);
 			if(leg.isLegendary()) nbLeg +=1;
