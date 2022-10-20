@@ -1,7 +1,10 @@
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class Pokemon {
+import Interfaces.IColumn;
+import Interfaces.IPoint;
+
+public class Pokemon implements IPoint {
 	private String name;
 	private int attack;
 	private int baseEggSteps;
@@ -46,5 +49,17 @@ public class Pokemon {
 				+ captureRate + ", defense=" + defense + ", experienceGrowth=" + experienceGrowth + ", hp=" + hp
 				+ ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
 				+ ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
+	}
+
+	@Override
+	public Object getValue(IColumn col) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getNormalizedValue(IColumn xcol) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

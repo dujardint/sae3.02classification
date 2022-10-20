@@ -1,5 +1,4 @@
 package Interfaces;
-
 // Decrit un Point (ou donnee, ou ligne) dans un DataSet.
 public interface IPoint {
 	

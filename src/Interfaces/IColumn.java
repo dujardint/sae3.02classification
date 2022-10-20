@@ -1,6 +1,5 @@
 package Interfaces;
 
-
 //Decrit une <i>colonne</i> d'un DataSet.
 
 // Une colonne a un nom, son DataSet parent et un normaliseur optionnel.

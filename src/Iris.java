@@ -3,7 +3,10 @@ import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class Iris {
+import Interfaces.IColumn;
+import Interfaces.IPoint;
+
+public class Iris implements IPoint{
 
 	@CsvBindByName(column = "sepal.length") 
 	public double sepal_length;
@@ -57,6 +60,19 @@ public class Iris {
 	public String toString() {
 		return "Iris [sepal_length=" + sepal_length + ", sepal_width=" + sepal_width + ", petal_length=" + petal_length
 				+ ", petal_width=" + petal_width + ", variety=" + variety + "]";
+	}
+
+	@Override
+	public Object getValue(IColumn col) {
+		return col.getDataset();
+	}
+
+	@Override
+	public double getNormalizedValue(IColumn xcol) {
+		if(xcol.isNormalizable()) {
+			return xcol.getNormalizedValue(null);
+		}
+		return 0.0;
 	}
 
 	
