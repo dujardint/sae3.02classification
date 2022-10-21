@@ -33,7 +33,7 @@ public class ChargementDonneesUtil implements IMVCModel{
 
 			System.out.println(persons);
 		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("erreur de fichier");
 			e.printStackTrace();
 		}
 	}

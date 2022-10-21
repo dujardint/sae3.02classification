@@ -50,6 +50,27 @@ public class Iris implements IPoint{
 	public String getVariety() {
 		return variety;
 	}
+	
+	
+	public void setSepal_length(double sepal_length) {
+		this.sepal_length = sepal_length;
+	}
+
+	public void setSepal_width(double sepal_width) {
+		this.sepal_width = sepal_width;
+	}
+
+	public void setPetal_length(double petal_length) {
+		this.petal_length = petal_length;
+	}
+
+	public void setPetal_width(double petal_width) {
+		this.petal_width = petal_width;
+	}
+
+	public void setVariety(String variety) {
+		this.variety = variety;
+	}
 
 	public List<Iris> getClosest(List<Iris> elements, int number) {
 	    // TODO Auto-generated method stub
