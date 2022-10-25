@@ -1,3 +1,10 @@
+package fr.grph3.univlille;
+
+import fr.grph3.univlille.Category;
+import fr.grph3.univlille.DataSet;
+import fr.grph3.univlille.entities.Column;
+import fr.grph3.univlille.entities.Point;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,13 +61,13 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
 
     /**
      * Nombre de colonnes dans le modele (egale au nombre de colonnes du
-     * DataSet associe a ce modele)
+     * fr.grph3.univlille.models.DataSet associe a ce modele)
      */
 
     abstract public int nbColumns();
 
     /**
-     * Retourne la collection de toutes les colonnes du DataSet dont les
+     * Retourne la collection de toutes les colonnes du fr.grph3.univlille.models.DataSet dont les
      * valeurs peuvent etre normalisees.
      * Seules les colonnes normalisables peuvent servir d'axes dans le
      * nuage de points.

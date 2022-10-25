@@ -1,3 +1,5 @@
+package fr.grph3.univlille.entities;
+
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;

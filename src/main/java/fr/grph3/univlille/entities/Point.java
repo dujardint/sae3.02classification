@@ -1,5 +1,7 @@
+package fr.grph3.univlille.entities;
+
 /**
- * Decrit un Point (ou donnee, ou ligne) dans un DataSet.
+ * Decrit un fr.grph3.univlille.models.Point (ou donnee, ou ligne) dans un fr.grph3.univlille.models.DataSet.
  */
 
 public interface Point {
