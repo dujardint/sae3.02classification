@@ -1,3 +1,5 @@
+package fr.grph3.univlille.entities;
+
 import com.opencsv.bean.CsvBindByName;
 
 import java.util.List;
@@ -14,9 +16,6 @@ public class Iris implements Point {
     public double petalWidth;
     @CsvBindByName(column = "variety")
     public String variety;
-
-    protected Iris() {
-    }
 
     public double getSepalLength() {
         return sepalLength;
@@ -74,7 +73,7 @@ public class Iris implements Point {
 
     @Override
     public String toString() {
-        return "Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
+        return "fr.grph3.univlille.models.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
                 + ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
     }
 }

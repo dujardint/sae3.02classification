@@ -1,10 +1,14 @@
+package fr.grph3.univlille.entities;
+
+import fr.grph3.univlille.DataSet;
+
 /**
- * Decrit une <i>colonne</i> d'un DataSet.
+ * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.
  *
- * Une colonne a un nom, son DataSet parent et un normaliseur optionnel.
+ * Une colonne a un nom, son fr.grph3.univlille.models.DataSet parent et un normaliseur optionnel.
  *
  * Un normaliseur traduit toutes les valeurs possibles de la colonne
- * (dans son DataSet) en une valeur entre 0 et 1.
+ * (dans son fr.grph3.univlille.models.DataSet) en une valeur entre 0 et 1.
  * Seule les colonnes <i>normalisables</i> (qui ont un normaliseur) peuvent
  * etre utilisees comme axe dans le nuage de points.
  */
@@ -33,7 +37,7 @@ public interface Column<T extends Point> {
      */
     public String getName();
     /**
-     * Retourne le DataSet auquel cette colonne appartient.
+     * Retourne le fr.grph3.univlille.models.DataSet auquel cette colonne appartient.
      */
 
     DataSet<T> getDataset();

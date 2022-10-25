@@ -1,10 +1,14 @@
+package fr.grph3.univlille.entities.builders;
+
+import fr.grph3.univlille.entities.Iris;
+
 public class IrisBuilder {
 
-    public double sepalLength;
-    public double sepalWidth;
-    public double petalLength;
-    public double petalWidth;
-    public String variety;
+    private double sepalLength;
+    private double sepalWidth;
+    private double petalLength;
+    private double petalWidth;
+    private String variety;
 
     public IrisBuilder withSepalLength(double sepalLength, double sepalWidth, double petalLength, double pet) {
         this.sepalLength = sepalLength;

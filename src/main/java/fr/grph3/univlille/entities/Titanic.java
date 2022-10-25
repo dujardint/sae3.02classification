@@ -1,3 +1,5 @@
+package fr.grph3.univlille.entities;
+
 public class Titanic implements Point {
 
     @Override
