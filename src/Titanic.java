@@ -2,7 +2,10 @@ import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class Titanic implements Point{
+import Interfaces.IColumn;
+import Interfaces.IPoint;
+
+public class Titanic implements IPoint{
 	
 	static List<Titanic> datas;
 
@@ -145,19 +148,6 @@ public class Titanic implements Point{
 	public void setEmbarked(String embarked) {
 		this.embarked = embarked;
 	}
-	
-	@Override
-	public Object getValue(Column<? extends Point> column) {
-		return column.getDataset();
-	}
-
-	@Override
-	public double getNormalizedValue(Column<? extends Point> xColumn) {
-		if(xColumn.isNormalizable()) {
-			return xColumn.getNormalizedValue(null);
-		}
-		return 0.0;
-	}
 
 	@Override
 	public String toString() {
@@ -166,6 +156,18 @@ public class Titanic implements Point{
 				+ ticket + ", fare=" + fare + ", cabin=" + cabin + ", embarked=" + embarked + "]";
 	}
 	
+	@Override
+	public Object getValue(IColumn col) {
+		return col.getDataset();
+	}
+
+	@Override
+	public double getNormalizedValue(IColumn xcol) {
+		if(xcol.isNormalizable()) {
+			return xcol.getNormalizedValue(null);
+		}
+		return 0.0;
+	}
 	
 	public List<Titanic> getClosest(List<Titanic> elements, int number) {
 	    // TODO Auto-generated method stub
