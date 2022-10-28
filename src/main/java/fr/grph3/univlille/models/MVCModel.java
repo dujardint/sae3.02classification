@@ -12,7 +12,7 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * Charge les donnees du modele d'un fichier CSV.
      */
 
-    public void loadFromFile(String datafile) {
+    public void loadFromFile(String dataFile) {
 
     }
 
@@ -44,7 +44,7 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * Ajoute une Categorie (ou classe) de donnees au model.
      */
 
-    public void addCategory(Category category) {
+    public void addCategory(Category<T> category) {
 
     }
 
@@ -52,7 +52,7 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * Retourne toutes les categories du modele.
      */
 
-    abstract Collection<Category> allCategories();
+    abstract Collection<Category<T>> allCategories();
 
     /**
      * Nombre de colonnes dans le modele (egale au nombre de colonnes du
