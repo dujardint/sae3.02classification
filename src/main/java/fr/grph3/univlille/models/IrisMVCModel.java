@@ -37,6 +37,11 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
+    void loadFromFile(String dataFile) {
+
+    }
+
+    @Override
     Column<Iris> defaultXCol() {
         return null;
     }
@@ -47,7 +52,7 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
-    Collection<Category> allCategories() {
+    Collection<Category<Iris>> allCategories() {
         return null;
     }
 

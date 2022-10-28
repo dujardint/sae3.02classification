@@ -37,6 +37,11 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
+    void loadFromFile(String dataFile) {
+
+    }
+
+    @Override
     Column<Titanic> defaultXCol() {
         return null;
     }
@@ -47,7 +52,7 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
-    Collection<Category> allCategories() {
+    Collection<Category<Titanic>> allCategories() {
         return null;
     }
 

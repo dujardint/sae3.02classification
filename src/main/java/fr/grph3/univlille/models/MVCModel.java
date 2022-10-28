@@ -12,9 +12,7 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * Charge les donnees du modele d'un fichier CSV.
      */
 
-    public void loadFromFile(String dataFile) {
-
-    }
+    abstract void loadFromFile(String dataFile);
 
     /**
      * Charge les donnees du modele d'une String "CSV".
