@@ -1,8 +1,7 @@
 package fr.grph3.univlille;
 
-import fr.grph3.univlille.Category;
-import fr.grph3.univlille.DataSet;
 import fr.grph3.univlille.entities.Column;
+import fr.grph3.univlille.entities.DataSet;
 import fr.grph3.univlille.entities.Point;
 
 import java.util.Collection;
