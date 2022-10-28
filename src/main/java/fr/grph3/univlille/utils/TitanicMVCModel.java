@@ -1,4 +1,9 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.utils;
+
+import fr.grph3.univlille.models.Category;
+import fr.grph3.univlille.models.Column;
+import fr.grph3.univlille.models.Point;
+import fr.grph3.univlille.models.Titanic;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -17,7 +22,7 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
-    public void setLines(List<? extends Point> lines) {
+    public void setLines(List<Titanic> lines) {
 
     }
 
@@ -32,27 +37,22 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
-    void loadFromString(String data) {
+    public void loadFromFile(String dataFile) {
 
     }
 
     @Override
-    void loadFromFile(String dataFile) {
+    public void loadFromString(String data) {
 
     }
 
     @Override
-    Column<Titanic> defaultXCol() {
+    public Column<Titanic> defaultXCol() {
         return null;
     }
 
     @Override
-    Column<Titanic> defaultYCol() {
-        return null;
-    }
-
-    @Override
-    Collection<Category<Titanic>> allCategories() {
+    public Column<Titanic> defaultYCol() {
         return null;
     }
 

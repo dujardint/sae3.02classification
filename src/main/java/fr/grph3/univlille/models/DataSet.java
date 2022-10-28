@@ -29,7 +29,7 @@ public interface DataSet<T extends Point> extends Iterable<T> {
      * stocke dans le fr.grph3.univlille.models.DataSet la collection de donnees passee en parametre
      */
 
-    void setLines(List<? extends Point> lines);
+    void setLines(List<T> lines);
 
     /**
      * Ajoute une donnee dans le fr.grph3.univlille.models.DataSet

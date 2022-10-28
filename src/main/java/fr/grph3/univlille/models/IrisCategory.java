@@ -16,7 +16,7 @@ public class IrisCategory implements Category<Iris> {
     }
 
     @Override
-    public void setLines(List<? extends Point> lines) {
+    public void setLines(List<Iris> lines) {
 
     }
 

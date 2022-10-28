@@ -16,7 +16,7 @@ public class TitanicCategory implements Category<Titanic> {
     }
 
     @Override
-    public void setLines(List<? extends Point> lines) {
+    public void setLines(List<Titanic> lines) {
 
     }
 

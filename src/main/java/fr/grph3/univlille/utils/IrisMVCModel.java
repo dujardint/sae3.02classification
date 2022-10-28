@@ -1,6 +1,8 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.utils;
 
-import java.util.Collection;
+import fr.grph3.univlille.models.Column;
+import fr.grph3.univlille.models.Iris;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
-    public void setLines(List<? extends Point> lines) {
+    public void setLines(List<Iris> lines) {
 
     }
 
@@ -32,27 +34,22 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
-    void loadFromString(String data) {
+    public void loadFromFile(String dataFile) {
 
     }
 
     @Override
-    void loadFromFile(String dataFile) {
+    public void loadFromString(String data) {
 
     }
 
     @Override
-    Column<Iris> defaultXCol() {
+    public Column<Iris> defaultXCol() {
         return null;
     }
 
     @Override
-    Column<Iris> defaultYCol() {
-        return null;
-    }
-
-    @Override
-    Collection<Category<Iris>> allCategories() {
+    public Column<Iris> defaultYCol() {
         return null;
     }
 
