@@ -1,4 +1,4 @@
-package fr.grph3.univlille.entities;
+package fr.grph3.univlille.models;
 
 import java.util.List;
 
@@ -89,7 +89,7 @@ public class Titanic implements Point {
         this.survived = survived;
     }
 
-    public void setPclass(double pClass) {
+    public void setPClass(double pClass) {
         this.pclass = pClass;
     }
 

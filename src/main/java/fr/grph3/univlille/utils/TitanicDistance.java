@@ -1,6 +1,6 @@
-package fr.grph3.univlille;
+package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.entities.Titanic;
+import fr.grph3.univlille.models.Titanic;
 
 public class TitanicDistance implements Distance<Titanic> {
 

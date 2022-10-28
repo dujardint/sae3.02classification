@@ -1,6 +1,6 @@
-package fr.grph3.univlille;
+package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.entities.Iris;
+import fr.grph3.univlille.models.Iris;
 
 public class IrisDistance implements Distance<Iris> {
 

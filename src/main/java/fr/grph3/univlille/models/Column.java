@@ -1,6 +1,4 @@
-package fr.grph3.univlille.entities;
-
-import fr.grph3.univlille.DataSet;
+package fr.grph3.univlille.models;
 
 /**
  * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.

@@ -1,6 +1,4 @@
-package fr.grph3.univlille.entities.builders;
-
-import fr.grph3.univlille.entities.Iris;
+package fr.grph3.univlille.models;
 
 public class IrisBuilder {
 

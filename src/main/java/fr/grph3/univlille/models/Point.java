@@ -1,4 +1,4 @@
-package fr.grph3.univlille.entities;
+package fr.grph3.univlille.models;
 
 /**
  * Decrit un fr.grph3.univlille.models.Point (ou donnee, ou ligne) dans un fr.grph3.univlille.models.DataSet.

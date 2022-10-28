@@ -1,12 +1,11 @@
-package fr.grph3.univlille.entities.builders;
-
-import fr.grph3.univlille.entities.Titanic;
+package fr.grph3.univlille.models;
 
 public class TitanicBuilder {
 
     private double passengerId;
     private double survived;
-    private double pclass;
+
+    private double pClass;
     private double sibSp;
     private double age;
     private double parch;
@@ -28,7 +27,7 @@ public class TitanicBuilder {
     }
 
     public TitanicBuilder withPClass(double pClass) {
-        this.pclass = pclass;
+        this.pClass = pClass;
         return this;
     }
 
@@ -81,7 +80,7 @@ public class TitanicBuilder {
         Titanic titanic = new Titanic();
         titanic.setPassengerId(passengerId);
         titanic.setSurvived(survived);
-        titanic.setPclass(pclass);
+        titanic.setPClass(pClass);
         titanic.setSibSp(sibSp);
         titanic.setAge(age);
         titanic.setParch(parch);

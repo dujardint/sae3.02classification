@@ -1,8 +1,4 @@
-package fr.grph3.univlille;
-
-import fr.grph3.univlille.entities.Column;
-import fr.grph3.univlille.entities.Point;
-import fr.grph3.univlille.entities.Titanic;
+package fr.grph3.univlille.models;
 
 import java.util.Collection;
 import java.util.Iterator;

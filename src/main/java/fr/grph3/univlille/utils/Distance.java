@@ -1,6 +1,6 @@
-package fr.grph3.univlille;
+package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.entities.Point;
+import fr.grph3.univlille.models.Point;
 
 public interface Distance<T extends Point> {
 

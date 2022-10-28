@@ -1,4 +1,4 @@
-package fr.grph3.univlille.entities;
+package fr.grph3.univlille.models;
 
 import com.opencsv.bean.CsvBindByName;
 
