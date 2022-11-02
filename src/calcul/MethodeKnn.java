@@ -1,3 +1,4 @@
+package calcul;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +7,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import chargement.ChargementDonneesUtil;
+import chargement.IrisDonneeBrut;
+
 public class MethodeKnn {
 
-	static List<Iris> datas;
+	static List<IrisDonneeBrut> datas;
 	static double sepal_length;
 	static double sepal_width;
 	static double petal_length;
@@ -16,7 +20,7 @@ public class MethodeKnn {
 
 	public MethodeKnn(String fileName) {
 		try {
-			datas = ChargementDonneesUtil.loadRaw(fileName);
+			datas = ChargementDonneesUtil.loadIris(fileName);
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
@@ -24,8 +28,8 @@ public class MethodeKnn {
 	
 	public void calculeAmplitudes() {
 		if(datas == null || datas.isEmpty()) return;
-		Iterator<Iris> it = datas.iterator();
-		Iris tmp = it.next();
+		Iterator<IrisDonneeBrut> it = datas.iterator();
+		IrisDonneeBrut tmp = it.next();
 		double minEgg = tmp.getPetal_length(), maxEgg = tmp.getPetal_length();
 		double minCapture = tmp.getPetal_width(), maxCapture = tmp.getPetal_width();
 		double minXpGrowth = tmp.getSepal_length(), maxXpGrowth = tmp.getSepal_length();
@@ -49,16 +53,18 @@ public class MethodeKnn {
 		petal_width = maxSpeed - minSpeed;
 	}
 	
-	public List<Iris> getVoisins(int k, Iris pokemon, Distance distance) {
-		Map<Iris, Double> distances = new HashMap<>();
-		for(Iris pok : MethodeKnn.datas) distances.put(pok, distance.distance(pokemon, pok));
-		LinkedHashMap<Iris, Double> sortedMap = new LinkedHashMap<Iris, Double>();
+	public List<IrisDonneeBrut> getVoisins(int k, IrisDonneeBrut iris, Distance distance) {
+		Map<IrisDonneeBrut, Double> distances = new HashMap<>();
+		for(IrisDonneeBrut chaqueIris : MethodeKnn.datas) {
+			distances.put(chaqueIris, distance.distance(iris, chaqueIris));
+		}
+		LinkedHashMap<IrisDonneeBrut, Double> sortedMap = new LinkedHashMap<IrisDonneeBrut, Double>();
 		distances.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
-		List<Iris> res = new ArrayList<Iris>();
+		List<IrisDonneeBrut> res = new ArrayList<IrisDonneeBrut>();
 		int i = 0;
-		for(Iris pok : sortedMap.keySet()) {
+		for(IrisDonneeBrut chaqueIris : sortedMap.keySet()) {
 			if(i >= k) break;
-			res.add(pok);
+			res.add(chaqueIris);
 		}
 		return res;
 	}
@@ -66,8 +72,8 @@ public class MethodeKnn {
 	
 	public static void main(String[] args) throws IOException {
 		MethodeKnn knn = new MethodeKnn(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
-		List<Iris> legendaries = ChargementDonneesUtil.loadRaw(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
-		
+		List<IrisDonneeBrut> legendaries = ChargementDonneesUtil.loadIris(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
+		System.out.println(legendaries);
 		int k = 5;
 		
 		int nbLegBienPlacer = 0;

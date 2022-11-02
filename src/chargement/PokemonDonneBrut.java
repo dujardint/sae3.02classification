@@ -1,7 +1,12 @@
+package chargement;
 import java.lang.reflect.Type;
 
 import com.opencsv.bean.CsvBindByName;
-public class PokemonDonneBrut {
+
+import Interfaces.IColumn;
+import Interfaces.IPoint;
+public class PokemonDonneBrut implements IPoint{
+	
 
 	@CsvBindByName(column = "name") 
 	public String name;
@@ -21,10 +26,10 @@ public class PokemonDonneBrut {
 	public int spAttack;
 	@CsvBindByName(column = "sp_defense")
 	public int spDefense;
-	@CsvBindByName(column = "type")
-	public Type type;
+	@CsvBindByName(column = "type1")
+	public TypePokemon type;
 	@CsvBindByName(column = "type2")
-	public Type type2;
+	public TypePokemon type2;
 	@CsvBindByName(column = "speed")
 	public double speed;
 	@CsvBindByName(column = "is_legendary")
@@ -37,5 +42,17 @@ public class PokemonDonneBrut {
 				+ ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
 				+ ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
 
+	}
+
+	@Override
+	public Object getValue(IColumn col) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getNormalizedValue(IColumn xcol) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

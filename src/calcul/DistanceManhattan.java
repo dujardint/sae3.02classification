@@ -1,8 +1,11 @@
+package calcul;
+
+import chargement.IrisDonneeBrut;
 
 public class DistanceManhattan implements Distance{
 
 	@Override
-	public double distance(Iris p1, Iris p2) {
+	public double distance(IrisDonneeBrut p1, IrisDonneeBrut p2) {
 		 double distance = 0.0;
 	        distance += Math.abs(p1.getPetal_length() - p2.getPetal_length());
 	        distance += Math.abs(p1.getPetal_width() - p2.getPetal_width());

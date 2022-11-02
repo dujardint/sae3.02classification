@@ -1,3 +1,4 @@
+package chargement;
 
 import java.util.List;
 
@@ -6,7 +7,7 @@ import com.opencsv.bean.CsvBindByName;
 import Interfaces.IColumn;
 import Interfaces.IPoint;
 
-public class Iris implements IPoint{
+public class IrisDonneeBrut implements IPoint{
 
 	@CsvBindByName(column = "sepal.length") 
 	public double sepal_length;
@@ -17,12 +18,12 @@ public class Iris implements IPoint{
 	@CsvBindByName(column = "petal.width")
 	public double petal_width;
 	@CsvBindByName(column = "variety")
-	public String variety;
+	public VarietyIris variety;
 	
-	public Iris() {
+	public IrisDonneeBrut() {
 	}
 	
-	public Iris (int sepal_length,int sepal_width, int petal_length,int petal_width,String variety) {
+	public IrisDonneeBrut (int sepal_length,int sepal_width, int petal_length,int petal_width,VarietyIris variety) {
 		this.petal_length = petal_length;
 		this.petal_width =petal_width;
 		this.sepal_length =sepal_length;
@@ -47,7 +48,7 @@ public class Iris implements IPoint{
 		return petal_width;
 	}
 
-	public String getVariety() {
+	public VarietyIris getVariety() {
 		return variety;
 	}
 	
@@ -68,11 +69,11 @@ public class Iris implements IPoint{
 		this.petal_width = petal_width;
 	}
 
-	public void setVariety(String variety) {
+	public void setVariety(VarietyIris variety) {
 		this.variety = variety;
 	}
 
-	public List<Iris> getClosest(List<Iris> elements, int number) {
+	public List<IrisDonneeBrut> getClosest(List<IrisDonneeBrut> elements, int number) {
 	    // TODO Auto-generated method stub
 	    return null;
 	}

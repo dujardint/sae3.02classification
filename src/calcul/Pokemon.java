@@ -1,3 +1,4 @@
+package calcul;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -14,14 +15,14 @@ public class Pokemon implements IPoint {
 	private int hp;
 	private int spAttack;
 	private int spDefense;
-	private Type type;
+	private Type type1;
 	private Type type2;
 	private double speed;
 	private boolean isLegendary;
 
 	
 	public Pokemon (String name,int attack, int baseEggSteps,double captureRate,int defense,int experienceGrowth,
-			int hp,int spAttack, int spDefense, Type type, Type type2, double speed, boolean isLegendary) {
+			int hp,int spAttack, int spDefense, Type type1, Type type2, double speed, boolean isLegendary) {
 		this.attack = attack;
 		this.baseEggSteps = baseEggSteps;
 		this.captureRate = captureRate;
@@ -33,7 +34,7 @@ public class Pokemon implements IPoint {
 		this.spAttack = spAttack;
 		this.spDefense = spDefense;
 		this.speed = speed;
-		this.type = type;
+		this.type1 = type1;
 		this.type2 = type2;
 	}
 	
@@ -47,7 +48,7 @@ public class Pokemon implements IPoint {
 	public String toString() {
 		return "Pokemon [nom=" + name + ", attack=" + attack + ", baseEggSteps=" + baseEggSteps + ", captureRate="
 				+ captureRate + ", defense=" + defense + ", experienceGrowth=" + experienceGrowth + ", hp=" + hp
-				+ ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type + ", type2=" + type2
+				+ ", spAttack=" + spAttack + ", spDefense=" + spDefense + ", type=" + type1 + ", type2=" + type2
 				+ ", speed=" + speed + ", isLegendary=" + isLegendary + "]";
 	}
 
