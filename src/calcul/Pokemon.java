@@ -20,7 +20,7 @@ public class Pokemon implements IPoint {
 	private double speed;
 	private boolean isLegendary;
 
-	
+
 	public Pokemon (String name,int attack, int baseEggSteps,double captureRate,int defense,int experienceGrowth,
 			int hp,int spAttack, int spDefense, Type type1, Type type2, double speed, boolean isLegendary) {
 		this.attack = attack;
@@ -37,13 +37,13 @@ public class Pokemon implements IPoint {
 		this.type1 = type1;
 		this.type2 = type2;
 	}
-	
+
 	public List<Pokemon> getClosest(List<Pokemon> elements, int number) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-	
-	
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Pokemon [nom=" + name + ", attack=" + attack + ", baseEggSteps=" + baseEggSteps + ", captureRate="
@@ -54,13 +54,29 @@ public class Pokemon implements IPoint {
 
 	@Override
 	public Object getValue(IColumn col) {
-		// TODO Auto-generated method stub
-		return null;
+		switch(col.getName()) {
+		case "attack" : return attack
+		case "baseEggSteps" : return baseEggSteps;
+		case "captureRate" : return captureRate;
+		case "defense" : return defense;
+		case "experienceGrowth" : return experienceGrowth;
+		case "hp" : return hp;
+		case "isLegendary" : return isLegendary;
+		case "name" : return name;
+		case "spAttack" : return spAttack;
+		case "spDefense" : return spDefense;
+		case "speed" : return speed;
+		case "type1" : return type1;
+		case "type2" : return type2;
+		default : return null;
+		}
 	}
 
 	@Override
 	public double getNormalizedValue(IColumn xcol) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(xcol.isNormalizable()) {
+			return xcol.getNormalizedValue(null);
+		}
+		return 0.0;
 	}
 }

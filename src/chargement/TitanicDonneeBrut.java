@@ -36,6 +36,23 @@ public class TitanicDonneeBrut implements IPoint{
 	private String cabin;
 	@CsvBindByName(column = "Embarked")
 	private String embarked;
+	
+	
+	public TitanicDonneeBrut(double passengeriD, double survived, double pcclass, String name, SexTitanic sex,double age,  
+			double sibSp , double parch, String ticket, double fare, String cabin, String embarked) {
+		this.age = age;
+		this.cabin = cabin;
+		this.embarked = embarked;
+		this.fare = fare;
+		this.name = name;
+		this.parch = parch;
+		this.passengerId = passengerId;
+		this.pclass = pcclass;
+		this.sex = sex;
+		this.sibSp = sibSp;
+		this.survived = survived;
+		this.ticket = ticket;
+	}
 
 	public double getPassengerId() {
 		return passengerId;
@@ -144,14 +161,30 @@ public class TitanicDonneeBrut implements IPoint{
 
 	@Override
 	public Object getValue(IColumn col) {
-		// TODO Auto-generated method stub
-		return null;
+		switch(col.getName()) {
+		case "name" : return name
+		case "passengerId" : return passengerId;
+		case "survived" : return survived;
+		case "pclass" : return pclass;
+		case "sex" : return sex;
+		case "age" : return age;
+		case "sibSp" : return sibSp;
+		case "parch" : return parch;
+		case "ticket" : return ticket;
+		case "fare" : return fare;
+		case "cabin" : return cabin;
+		case "embarked" : return embarked;
+		default : return null;
+		}
 	}
 
 	@Override
 	public double getNormalizedValue(IColumn xcol) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(xcol.isNormalizable()) {
+			return xcol.getNormalizedValue(null);
+		}
+		return 0.0;
 	}
+
 
 }

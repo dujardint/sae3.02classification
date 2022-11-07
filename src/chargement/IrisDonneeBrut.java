@@ -86,7 +86,14 @@ public class IrisDonneeBrut implements IPoint{
 
 	@Override
 	public Object getValue(IColumn col) {
-		return col.getDataset();
+		switch(col.getName()) {
+		case "sepal.length" : return sepalLength;
+		case "sepal.width" : return sepalWidth;
+		case "petal.length" : return petalLength;
+		case "petal.width" : return petalWidth;
+		case "variety" : return variety;
+		default : return null;
+		}
 	}
 
 	@Override
