@@ -154,4 +154,6 @@ public class Titanic implements Point {
         // TODO Auto-generated method stub
         return null;
     }
+    
+    
 }
