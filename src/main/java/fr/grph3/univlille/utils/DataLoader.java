@@ -2,7 +2,6 @@ package fr.grph3.univlille.utils;
 
 import fr.grph3.univlille.models.Column;
 import fr.grph3.univlille.models.Point;
-import fr.grph3.univlille.utils.MVCModel;
 
 import java.util.Iterator;
 import java.util.List;
