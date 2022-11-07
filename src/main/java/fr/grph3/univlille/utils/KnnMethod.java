@@ -28,11 +28,11 @@ public class KnnMethod<T extends Point> {
 	public void displayData() {
 	}
 
-	public List<Double> getMin(boolean min) {
+	public List<Double> getMin() {
 		return null;
 	}
 
-	public List<Double> getMax(boolean max) {
+	public List<Double> getMax() {
 		return null;
 	}
 
