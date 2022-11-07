@@ -10,7 +10,8 @@ public interface ValueNormalizer {
 	enum NormalizerTypes {
 		NUMBER_NORMALIZER,  //Normalise une valeur numerique (entiere ou reelle)
 		BOOLEAN_NORMALIZER, //Normalise une valeur booleenne (typiquement false = 0 et true = 1)
-		IRIS_TYPE_NORMALIZER,TITANIC_TYPE_NORMALIZER;//Normalise une valeur parmis les types d'IRIS/TITANIC possible. 
+		IRIS_TYPE_NORMALIZER,
+		TITANIC_TYPE_NORMALIZER;//Normalise une valeur parmis les types d'IRIS/TITANIC possible.
 		//Chaque type recoit une valeur unique entre 0 et 1.
 	}
 

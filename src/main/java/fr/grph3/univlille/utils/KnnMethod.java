@@ -28,12 +28,12 @@ public class KnnMethod<T extends Point> {
 	public void displayData() {
 	}
 
-	public List<Double> getMin() {
-		return null;
+	public double getMin() {
+		return 0;
 	}
 
-	public List<Double> getMax() {
-		return null;
+	public double getMax() {
+		return 0;
 	}
 
 	public List<Double> compareAndSet(List<Double> l, T point, boolean greaterThan) {
