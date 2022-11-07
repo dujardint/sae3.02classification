@@ -3,17 +3,23 @@ package fr.grph3.univlille.utils;
 import fr.grph3.univlille.models.Titanic;
 
 public class TitanicDistance implements Distance<Titanic> {
+	
+	private TitanicNormalizer nomalizer;
+	
+    public TitanicDistance(TitanicNormalizer nomalizer) {
+		this.nomalizer = nomalizer;
+	}
 
-    @Override
+	@Override
     public double distanceManhattan(Titanic p1, Titanic p2) {
     	double distance = 0.0;
-    	distance += Math.abs(p1.getPassengerId() - p2.getPassengerId());
-    	distance += Math.abs(p1.getSurvived() - p2.getSurvived());
-    	distance += Math.abs(p1.getPClass() - p2.getPClass());
-    	distance += Math.abs(p1.getSibSp() - p2.getSibSp());
-    	distance += Math.abs(p1.getAge() - p2.getAge());
-    	distance += Math.abs(p1.getParch() - p2.getParch());
-    	distance += Math.abs(p1.getFare() - p2.getFare());
+    	distance += Math.abs(nomalizer.normalize((p1.getPassengerId()) - nomalizer.normalize(p2.getPassengerId())));
+    	distance += Math.abs(nomalizer.normalize(p1.getSurvived()) - nomalizer.normalize(p2.getSurvived()));
+    	distance += Math.abs(nomalizer.normalize(p1.getPClass()) - nomalizer.normalize(p2.getPClass()));
+    	distance += Math.abs(nomalizer.normalize(p1.getSibSp()) - nomalizer.normalize(p2.getSibSp()));
+    	distance += Math.abs(nomalizer.normalize(p1.getAge()) - nomalizer.normalize(p2.getAge()));
+    	distance += Math.abs(nomalizer.normalize(p1.getParch()) - nomalizer.normalize(p2.getParch()));
+    	distance += Math.abs(nomalizer.normalize(p1.getFare()) - nomalizer.normalize(p2.getFare()));
     	
     	//Si c'est le meme nom on ajoute pas de distance, sinon on ajoute 1:
     	if(p1.getName().equals(p2.getName())) {
