@@ -68,13 +68,15 @@ public class MethodeKnn {
 		}
 		return res;
 	}
+	
+	
 
 	
 	public static void main(String[] args) throws IOException {
 		MethodeKnn knn = new MethodeKnn(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
 		List<IrisDonneeBrut> legendaries = ChargementDonneesUtil.loadIris(System.getProperty("user.dir") + System.getProperty("file.separator") + "data" + System.getProperty("file.separator") + "iris.csv");
 		System.out.println(legendaries);
-		int k = 5;
+		int k = 10;
 		
 		int nbLegBienPlacer = 0;
 		int nbLeg = 0;
