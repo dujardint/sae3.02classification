@@ -114,4 +114,8 @@ public class IrisDonneeBrut implements IPoint{
 	}
 
 	
+	public static void main(String[] args) {
+		System.out.println("");
+	}
+	
 }

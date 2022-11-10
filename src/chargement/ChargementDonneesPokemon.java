@@ -12,7 +12,6 @@ import Interfaces.ICategory;
 import Interfaces.IColumn;
 import Interfaces.IMVCModel;
 import Interfaces.IPoint;
-import calcul.Pokemon;
 
 public class ChargementDonneesPokemon implements IMVCModel{
 
@@ -130,5 +129,23 @@ public class ChargementDonneesPokemon implements IMVCModel{
 	public List<IColumn> getNormalizableColumns() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+
+	@Override
+	public double getMaximum() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+	@Override
+	public double getMinimum() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

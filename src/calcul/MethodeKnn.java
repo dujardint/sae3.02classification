@@ -17,6 +17,13 @@ public class MethodeKnn {
 	static double sepal_width;
 	static double petal_length;
 	static double petal_width;
+	
+	//1 categorie
+	/*
+	 * on li donn e une liste de colonne
+	 */
+	//saovir ensemble donnes
+	//tt clonne ne paramatres
 
 	public MethodeKnn(String fileName) {
 		try {
