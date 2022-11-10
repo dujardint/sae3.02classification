@@ -1,5 +1,12 @@
 package fr.grph3.univlille.models.points.builders;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+import com.opencsv.bean.CsvToBeanBuilder;
+
 import fr.grph3.univlille.models.points.Titanic;
 
 public class TitanicBuilder {
@@ -94,4 +101,6 @@ public class TitanicBuilder {
         titanic.setEmbarked(embarked);
         return titanic;
     }
+    
+    
 }

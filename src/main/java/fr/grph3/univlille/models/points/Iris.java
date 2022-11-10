@@ -1,8 +1,13 @@
 package fr.grph3.univlille.models.points;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBeanBuilder;
+
 import fr.grph3.univlille.models.columns.IColumn;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class Iris implements IPoint {
@@ -77,4 +82,10 @@ public class Iris implements IPoint {
         return "fr.grph3.univlille.models.points.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
                 + ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
     }
+    
+    public static  List<Iris> loadIris(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<Iris>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(Iris.class).build().parse();
+	}
+    
 }

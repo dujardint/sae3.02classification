@@ -1,9 +1,15 @@
 package fr.grph3.univlille.models.points;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBeanBuilder;
+
 import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.points.builders.TitanicBuilder;
 
 public class Titanic implements IPoint {
 
@@ -155,6 +161,11 @@ public class Titanic implements IPoint {
         // TODO Auto-generated method stub
         return null;
     }
+    
+    public static List<Titanic> loadTitanic(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<Titanic>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(Titanic.class).build().parse();
+	}
     
     
 }
