@@ -1,4 +1,4 @@
-package main.java.fr.grph3.univlille.models;
+package fr.grph3.univlille.models;
 
 /**
  * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.
