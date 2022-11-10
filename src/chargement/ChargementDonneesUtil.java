@@ -67,7 +67,7 @@ public class ChargementDonneesUtil implements IMVCModel{
 			
 
 			List<TitanicDonneeBrut> listTitanic = ChargementDonneesUtil.loadTitanic("data/titanic.csv");
-			System.out.println(listTitanic);
+		//	System.out.println(listTitanic);
 			
 			
 			

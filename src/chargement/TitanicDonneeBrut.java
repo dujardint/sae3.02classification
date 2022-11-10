@@ -38,6 +38,14 @@ public class TitanicDonneeBrut implements IPoint{
 	private String embarked;
 	
 	
+	
+	public TitanicDonneeBrut() {
+		
+	}
+	
+	
+	
+	
 	public TitanicDonneeBrut(double passengeriD, double survived, double pcclass, String name, SexTitanic sex,double age,  
 			double sibSp , double parch, String ticket, double fare, String cabin, String embarked) {
 		this.age = age;
