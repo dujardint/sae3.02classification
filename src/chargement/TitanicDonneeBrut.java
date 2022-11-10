@@ -162,7 +162,7 @@ public class TitanicDonneeBrut implements IPoint{
 	@Override
 	public Object getValue(IColumn col) {
 		switch(col.getName()) {
-		case "name" : return name
+		case "name" : return name;
 		case "passengerId" : return passengerId;
 		case "survived" : return survived;
 		case "pclass" : return pclass;

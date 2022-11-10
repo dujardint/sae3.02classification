@@ -55,7 +55,7 @@ public class Pokemon implements IPoint {
 	@Override
 	public Object getValue(IColumn col) {
 		switch(col.getName()) {
-		case "attack" : return attack
+		case "attack" : return attack;
 		case "baseEggSteps" : return baseEggSteps;
 		case "captureRate" : return captureRate;
 		case "defense" : return defense;
