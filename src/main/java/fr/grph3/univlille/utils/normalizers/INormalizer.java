@@ -1,8 +1,8 @@
-package fr.grph3.univlille.utils;
+package fr.grph3.univlille.utils.normalizers;
 //Decrit un object (normalizer) qui peut transformer la valeur d'une colone en une valeur entre 0 et 1
 
 //Chaque normaliseur est une classe qui implemente l'interface ValueNormalizer
-public interface ValueNormalizer {
+public interface INormalizer {
 	
 	// Liste tous les normaliseurs connus par le programme. 
 	//A chaque valeur dans cette liste doit correspondre une classe qui implemente <i>INormalizer</i>.
@@ -10,8 +10,7 @@ public interface ValueNormalizer {
 	enum NormalizerTypes {
 		NUMBER_NORMALIZER,  //Normalise une valeur numerique (entiere ou reelle)
 		BOOLEAN_NORMALIZER, //Normalise une valeur booleenne (typiquement false = 0 et true = 1)
-		IRIS_TYPE_NORMALIZER,
-		TITANIC_TYPE_NORMALIZER;//Normalise une valeur parmis les types d'IRIS/TITANIC possible.
+		STRING_NORMALIZER
 		//Chaque type recoit une valeur unique entre 0 et 1.
 	}
 

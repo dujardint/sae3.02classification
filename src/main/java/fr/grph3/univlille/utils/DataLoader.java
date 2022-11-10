@@ -1,12 +1,23 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.Column;
-import fr.grph3.univlille.models.Point;
+import com.opencsv.bean.CsvToBeanBuilder;
+import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.points.IPoint;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DataLoader<T extends Point> extends MVCModel<T> {
+public class DataLoader<T extends IPoint> extends MVCModel<T> {
+
+    private List<T> points;
+
+    public DataLoader() {
+        this.points = new ArrayList<>();
+    }
 
     @Override
     public String getTitle() {
@@ -15,27 +26,34 @@ public class DataLoader<T extends Point> extends MVCModel<T> {
 
     @Override
     public int getNbLines() {
-        return 0;
+        return points.size();
     }
 
     @Override
     public void setLines(List<T> lines) {
-
+        this.points = lines;
     }
 
     @Override
     public void addLine(T element) {
-
+        points.add(element);
     }
 
     @Override
-    public void addAllLine(List<T> element) {
-
+    public void addAllLine(List<T> elements) {
+        points.addAll(elements);
     }
 
     @Override
-    public void loadFromFile(String dataFile) {
-
+    public void loadFromFile(String path, Class<T> dataType) {
+        try {
+            this.points = new CsvToBeanBuilder<T>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+                    .withType(dataType)
+                    .build()
+                    .parse();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -44,12 +62,12 @@ public class DataLoader<T extends Point> extends MVCModel<T> {
     }
 
     @Override
-    public Column<T> defaultXCol() {
+    public IColumn defaultXCol() {
         return null;
     }
 
     @Override
-    public Column<T> defaultYCol() {
+    public IColumn defaultYCol() {
         return null;
     }
 
@@ -60,6 +78,6 @@ public class DataLoader<T extends Point> extends MVCModel<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return points.iterator();
     }
 }

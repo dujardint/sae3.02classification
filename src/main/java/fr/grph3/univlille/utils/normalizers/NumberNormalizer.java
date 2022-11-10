@@ -1,6 +1,6 @@
-package fr.grph3.univlille.utils;
+package fr.grph3.univlille.utils.normalizers;
 
-public class IrisNormalizer implements ValueNormalizer {
+public class NumberNormalizer implements INormalizer {
 
     @Override
     public double normalize(Object value) {

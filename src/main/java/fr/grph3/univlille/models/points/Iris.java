@@ -1,10 +1,11 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.points;
 
 import com.opencsv.bean.CsvBindByName;
+import fr.grph3.univlille.models.columns.IColumn;
 
 import java.util.List;
 
-public class Iris implements Point {
+public class Iris implements IPoint {
 
     @CsvBindByName(column = "sepal.length")
     public double sepalLength;
@@ -62,18 +63,18 @@ public class Iris implements Point {
     }
 
     @Override
-    public Object getValue(Column<? extends Point> column) {
+    public Object getValue(IColumn column) {
         return null;
     }
 
     @Override
-    public double getNormalizedValue(Column<? extends Point> xColumn) {
+    public double getNormalizedValue(IColumn xColumn) {
         return 0;
     }
 
     @Override
     public String toString() {
-        return "fr.grph3.univlille.models.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
+        return "fr.grph3.univlille.models.points.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
                 + ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
     }
 }

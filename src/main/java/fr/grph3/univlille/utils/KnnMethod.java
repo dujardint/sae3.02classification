@@ -1,23 +1,24 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.Point;
+import fr.grph3.univlille.models.points.IPoint;
+import fr.grph3.univlille.utils.distances.IDistance;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 
-public class KnnMethod<T extends Point> {
+public class KnnMethod<T extends IPoint> {
 
-	private Distance<T> distance;
+	private IDistance<T> distance;
 
 	private List<T> datas;
 
-	public KnnMethod(String data, boolean isFile, Distance<T> distance) throws IOException {
+	public KnnMethod(String data, boolean isFile, IDistance<T> distance) throws IOException {
 		this.distance = distance;
 	}
 
-	public KnnMethod(String url, Distance<T> distance) throws IOException {
+	public KnnMethod(String url, IDistance<T> distance) throws IOException {
 		this(url, true, distance);
 	}
 

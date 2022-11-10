@@ -1,4 +1,6 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.columns;
+
+import fr.grph3.univlille.models.IDataSet;
 
 /**
  * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.
@@ -10,7 +12,7 @@ package fr.grph3.univlille.models;
  * Seule les colonnes <i>normalisables</i> (qui ont un normaliseur) peuvent
  * etre utilisees comme axe dans le nuage de points.
  */
-public interface Column<T extends Point> {
+public interface IColumn {
 
     /**
      * Recupere la valeur de cette colonne dans la donnee en parametre,
@@ -19,7 +21,7 @@ public interface Column<T extends Point> {
      * definit.
      */
 
-    double getNormalizedValue(T point);
+    double getNormalizedValue(Object value);
 
     /**
      * "Denormalise" une valeur entre 0 et 1 en une "vraie" valeur pour
@@ -33,17 +35,13 @@ public interface Column<T extends Point> {
     /**
      * Retourne le nom de la colonne.
      */
-    public String getName();
+    String getName();
 
     /**
      * Retourne le fr.grph3.univlille.models.DataSet auquel cette colonne appartient.
      */
 
-    DataSet<T> getDataset();
-
-    double getMin();
-
-    double getMax();
+    IDataSet<?> getDataset();
 
     /**
      * Indique si cette colonne est normalisable (a un <i>normaliseur</i>).

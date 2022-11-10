@@ -1,25 +1,25 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.Category;
-import fr.grph3.univlille.models.Column;
-import fr.grph3.univlille.models.DataSet;
-import fr.grph3.univlille.models.Point;
+import fr.grph3.univlille.models.categories.ICategory;
+import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class MVCModel<T extends Point> implements DataSet<T> {
+public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
-    private List<Column<T>> columns;
+    private List<IColumn> columns;
 
-    private List<Category<T>> categories;
+    private List<ICategory<T>> categories;
 
     /**
      * Charge les donnees du modele d'un fichier CSV.
      */
 
-    public abstract void loadFromFile(String dataFile);
+    public abstract void loadFromFile(String path, Class<T> dataType);
 
     /**
      * Charge les donnees du modele d'une String "CSV".
@@ -36,20 +36,20 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * l'affichage du nuage de points.
      */
 
-    public abstract Column<T> defaultXCol();
+    public abstract IColumn defaultXCol();
 
     /**
      * Retourne la colonne a utiliser par defaut pour l'axe des Y lors de
      * l'affichage du nuage de points.
      */
 
-    public abstract Column<T> defaultYCol();
+    public abstract IColumn defaultYCol();
 
     /**
      * Ajoute une Categorie (ou classe) de donnees au model.
      */
 
-    public void addCategory(Category<T> category) {
+    public void addCategory(ICategory<T> category) {
         categories.add(category);
     }
 
@@ -57,7 +57,7 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * Retourne toutes les categories du modele.
      */
 
-    public Collection<Category<T>> allCategories() {
+    public Collection<ICategory<T>> allCategories() {
         return categories;
     }
 
@@ -76,9 +76,9 @@ public abstract class MVCModel<T extends Point> implements DataSet<T> {
      * La normalisation doit retourner une valeur dans l’intervalle [0;1]
      */
 
-    public List<Column<T>> getNormalizableColumns() {
+    public List<IColumn> getNormalizableColumns() {
         return columns.stream()
-                .filter(Column::isNormalizable)
+                .filter(IColumn::isNormalizable)
                 .collect(Collectors.toList());
     }
 }

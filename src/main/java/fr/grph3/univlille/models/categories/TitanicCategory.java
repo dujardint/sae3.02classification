@@ -1,9 +1,11 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.categories;
+
+import fr.grph3.univlille.models.points.Titanic;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class TitanicCategory implements Category<Titanic> {
+public class TitanicCategory implements ICategory<Titanic> {
 
     @Override
     public String getTitle() {

@@ -1,9 +1,11 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.categories;
+
+import fr.grph3.univlille.models.points.Iris;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class IrisCategory implements Category<Iris> {
+public class IrisCategory implements ICategory<Iris> {
 
     @Override
     public String getTitle() {

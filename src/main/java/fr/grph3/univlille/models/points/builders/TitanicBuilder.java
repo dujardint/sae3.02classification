@@ -1,4 +1,6 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.points.builders;
+
+import fr.grph3.univlille.models.points.Titanic;
 
 public class TitanicBuilder {
 

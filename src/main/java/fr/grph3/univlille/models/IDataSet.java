@@ -1,5 +1,7 @@
 package fr.grph3.univlille.models;
 
+import fr.grph3.univlille.models.points.IPoint;
+
 import java.util.List;
 
 /**
@@ -11,10 +13,10 @@ import java.util.List;
  * Pour cette raison, il n'y a pas de getter pour l'ensemble des points
  * d'un fr.grph3.univlille.models.DataSet.
  */
-public interface DataSet<T extends Point> extends Iterable<T> {
+public interface IDataSet<T extends IPoint> extends Iterable<T> {
 
     /**
-     * Le nom du fr.grph3.univlille.models.DataSet ex: fr.grph3.univlille.models.Titanic, fr.grph3.univlille.models.Iris, Pokemon, ...
+     * Le nom du fr.grph3.univlille.models.DataSet ex: fr.grph3.univlille.models.points.Titanic, fr.grph3.univlille.models.points.Iris, Pokemon, ...
      */
 
     String getTitle();

@@ -1,10 +1,12 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.points;
+
+import fr.grph3.univlille.models.columns.IColumn;
 
 /**
  * Decrit un fr.grph3.univlille.models.Point (ou donnee, ou ligne) dans un fr.grph3.univlille.models.DataSet.
  */
 
-public interface Point {
+public interface IPoint {
 
     /**
      * Retourne la valeur de ce point pour la colonne en parametre.
@@ -14,7 +16,7 @@ public interface Point {
      * du code.
      */
 
-    Object getValue(Column<? extends Point> column);
+    Object getValue(IColumn column);
 
     /**
      * Retourne la valeur de ce point normalisee pour la colonne en parametre.
@@ -23,5 +25,5 @@ public interface Point {
      * Si la colonne n'est pas normalisable, le comportement n'est pas defini.
      */
 
-    double getNormalizedValue(Column<? extends Point> xColumn);
+    double getNormalizedValue(IColumn xColumn);
 }

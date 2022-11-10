@@ -1,10 +1,11 @@
-package fr.grph3.univlille.models;
+package fr.grph3.univlille.models.points;
 
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
+import fr.grph3.univlille.models.columns.IColumn;
 
-public class Titanic implements Point {
+public class Titanic implements IPoint {
 
     private List<Titanic> datas;
 
@@ -130,12 +131,12 @@ public class Titanic implements Point {
     }
 
     @Override
-    public Object getValue(Column<? extends Point> column) {
+    public Object getValue(IColumn column) {
         return column.getDataset();
     }
 
     @Override
-    public double getNormalizedValue(Column<? extends Point> xColumn) {
+    public double getNormalizedValue(IColumn xColumn) {
         if (xColumn.isNormalizable()) {
             return xColumn.getNormalizedValue(null);
         }
