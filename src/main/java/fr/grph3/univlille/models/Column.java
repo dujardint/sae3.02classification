@@ -34,11 +34,17 @@ public interface Column<T extends Point> {
      * Retourne le nom de la colonne.
      */
     public String getName();
+
     /**
      * Retourne le fr.grph3.univlille.models.DataSet auquel cette colonne appartient.
      */
 
     DataSet<T> getDataset();
+
+    double getMin();
+
+    double getMax();
+
     /**
      * Indique si cette colonne est normalisable (a un <i>normaliseur</i>).
      */
