@@ -1,9 +1,14 @@
 package chargement;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interfaces.IColumn;
 import Interfaces.IPoint;
@@ -45,6 +50,10 @@ public class PersonneDonneeBrut implements IPoint {
 
 
 
+	public static List<PersonneDonneeBrut> loadPersonne(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<PersonneDonneeBrut>(Files.newBufferedReader(Paths.get(path))).withSeparator(';')
+				.withType(PersonneDonneeBrut.class).build().parse();
+	}
 
 
 

@@ -1,7 +1,12 @@
 package chargement;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interfaces.IColumn;
 import Interfaces.IPoint;
@@ -44,6 +49,12 @@ public class PokemonDonneBrut implements IPoint{
 
 	}
 
+	
+	public static List<PokemonDonneBrut> loadPokemon(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<PokemonDonneBrut>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(PokemonDonneBrut.class).build().parse();
+	}
+	
 	@Override
 	public Object getValue(IColumn col) {
 		// TODO Auto-generated method stub

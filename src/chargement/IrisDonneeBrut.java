@@ -1,8 +1,12 @@
 package chargement;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interfaces.IColumn;
 import Interfaces.IPoint;
@@ -29,6 +33,11 @@ public class IrisDonneeBrut implements IPoint{
 		this.sepal_length =sepal_length;
 		this.sepal_width =sepal_width;
 		this.variety = variety;
+	}
+	
+	public static List<IrisDonneeBrut> loadIris(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<IrisDonneeBrut>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(IrisDonneeBrut.class).build().parse();
 	}
 
 

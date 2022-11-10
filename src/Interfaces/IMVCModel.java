@@ -47,6 +47,10 @@ public interface IMVCModel extends IDataset {
 	// DataSet associe a ce modele)
 	abstract public int nbColumns();
 	
+	public double getMaximum();
+	
+	public double getMinimum();
+	
 	
 	/** Retourne la collection de toutes les colonnes du DataSet dont les
 	* valeurs peuvent etre normalisees.

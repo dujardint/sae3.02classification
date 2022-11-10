@@ -1,8 +1,12 @@
 package chargement;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import Interfaces.IColumn;
 import Interfaces.IPoint;
@@ -43,7 +47,11 @@ public class TitanicDonneeBrut implements IPoint{
 		
 	}
 	
-	
+	public static List<TitanicDonneeBrut> loadTitanic(String path) throws IllegalStateException, IOException {
+		return new CsvToBeanBuilder<TitanicDonneeBrut>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+				.withType(TitanicDonneeBrut.class).build().parse();
+	}
+
 	
 	
 	public TitanicDonneeBrut(double passengeriD, double survived, double pcclass, String name, SexTitanic sex,double age,  
