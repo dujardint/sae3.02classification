@@ -10,8 +10,7 @@ public interface INormalizer {
 	enum NormalizerTypes {
 		NUMBER_NORMALIZER,  //Normalise une valeur numerique (entiere ou reelle)
 		BOOLEAN_NORMALIZER, //Normalise une valeur booleenne (typiquement false = 0 et true = 1)
-		STRING_NORMALIZER
-		//Chaque type recoit une valeur unique entre 0 et 1.
+		STRING_NORMALIZER//Chaque type recoit une valeur unique entre 0 et 1.
 	}
 
 	// Retourne la valeur en parametre normalisee (entre 0 et 1). ex age: 32 --> 0.4

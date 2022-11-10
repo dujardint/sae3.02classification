@@ -4,11 +4,22 @@ public class BooleanNormalizer implements INormalizer {
 
     @Override
     public double normalize(Object value) {
-        return 0;
+        //on ne peut pas normaliser un boolean
+
+        if((boolean) value){
+            return 0;
+        }
+        return 1;
     }
 
     @Override
     public Object denormalize(double value) {
-        return null;
+        //on ne peut pas dénormaliser un boolean car on ne peux pas le normaliser
+        if(value == 0){
+            return 0;
+        }
+        return 1;
+
+        // Ou juste : return value;
     }
 }
