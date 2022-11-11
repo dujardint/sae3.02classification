@@ -5,23 +5,30 @@ import fr.grph3.univlille.models.IDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoubleColumn implements IColumn {
+public abstract class DoubleColumn implements IColumn {
 
 	List<Double> colonne = new ArrayList<>();
+	String nom;
+	
+	public double min = getMin(colonne);
+	public double max = getMax(colonne);
 
-	@Override
-	public double getNormalizedValue(Object value) {
-		return 0;
+
+	//static pour que les tests fonctionnent !
+	public static double getNormalizedValue(Object value, double min, double max) {
+		//X-MIN / MAX-MIN
+		return (((double) value) - min) / (max-min);
 	}
 
-	@Override
-	public Object getDenormalizedValue(double value) {
-		return null;
+
+	public static Object getDenormalizedValue(double value, double min, double max) {
+		// X * (MAX - MIN) + MIN 
+		return value * (max-min) + min;
 	}
 
 	@Override
 	public String getName() {
-		return null;
+		return this.nom;
 	}
 
 	@Override

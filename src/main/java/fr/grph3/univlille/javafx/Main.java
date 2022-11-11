@@ -1,8 +1,9 @@
-package main.java.fr.grph3.univlille.javafx;
+package fr.grph3.univlille.javafx;
 
 
 import fr.grph3.univlille.models.points.Iris;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
