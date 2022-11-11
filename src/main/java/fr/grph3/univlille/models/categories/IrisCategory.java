@@ -1,4 +1,4 @@
-package fr.grph3.univlille.models.categories;
+package main.java.fr.grph3.univlille.models.categories;
 
 import fr.grph3.univlille.models.points.Iris;
 
