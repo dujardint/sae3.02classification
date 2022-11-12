@@ -5,23 +5,41 @@ import fr.grph3.univlille.models.IDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class DoubleColumn implements IColumn {
+public class DoubleColumn implements IColumn {
 
-	List<Double> colonne = new ArrayList<>();
+	List<Double> colonne;
 	String nom;
+	private double min;
+	private double max;
+
+	public DoubleColumn() {
+		this.colonne = new ArrayList<>();		
+	}
 	
-	public double min = getMin(colonne);
-	public double max = getMax(colonne);
 
+	public DoubleColumn(List<Double> colonne, String nom, double min, double max) {
+		this.colonne = colonne;
+		this.nom = nom;
+		this.min = min;
+		this.max = max;
+	}
+	
 
-	//static pour que les tests fonctionnent !
-	public static double getNormalizedValue(Object value, double min, double max) {
+	public DoubleColumn(List<Double> colonne, String nom) {
+		this.colonne = colonne;
+		this.nom = nom;
+		this.min=getMin(colonne);
+		this.max = getMax(colonne);
+	}
+	
+	
+	public double getNormalizedValue(Object value, double min, double max) {
 		//X-MIN / MAX-MIN
 		return (((double) value) - min) / (max-min);
 	}
 
 
-	public static Object getDenormalizedValue(double value, double min, double max) {
+	public Object getDenormalizedValue(double value, double min, double max) {
 		// X * (MAX - MIN) + MIN 
 		return value * (max-min) + min;
 	}
@@ -41,7 +59,7 @@ public abstract class DoubleColumn implements IColumn {
 		return true;
 	}
 
-	public static double getMin(List<Double> col) {
+	public double getMin(List<Double> col) {
 		double min=col.get(0);
 		for(int i=0; i<col.size(); i++) {
 			if(min>col.get(i)) {
@@ -52,7 +70,7 @@ public abstract class DoubleColumn implements IColumn {
 
 	}
 
-	public static double getMax(List<Double> col) {
+	public double getMax(List<Double> col) {
 		double max=col.get(0);
 		for(int i=0; i<col.size(); i++) {
 			if(max<col.get(i)) {
@@ -60,5 +78,12 @@ public abstract class DoubleColumn implements IColumn {
 			}
 		}
 		return max;
+	}
+
+
+	@Override
+	public Object getDenormalizedValue(double value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

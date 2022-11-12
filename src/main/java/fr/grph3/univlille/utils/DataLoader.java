@@ -1,6 +1,8 @@
 package fr.grph3.univlille.utils;
 
 import com.opencsv.bean.CsvToBeanBuilder;
+
+import fr.grph3.univlille.models.columns.DoubleColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;
@@ -60,12 +62,20 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     }
     
     public static void main(String[] args) throws IllegalStateException, IOException {
-    	List<Iris> a = Iris.loadIris("src/main/resources/iris.csv");
-    	System.out.println(a.get(0).variety);
+    	List<Iris> listIris = Iris.loadIris("src/main/resources/iris.csv");
+    	System.out.println(listIris.get(0).variety);
     	
     	
-    	List<Titanic> b = Titanic.loadTitanic("src/main/resources/titanic.csv");
-    	System.out.println(b.get(0).getAge());
+    	List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
+    	System.out.println(listTitanic.get(0).getAge());
+    	
+    	Iris iris = new Iris();
+    	System.out.println(iris.normaliseUnIris(listIris, "sepal.length", listIris.get(1).getSepalLength()));
+    	
+    	System.out.println(iris.normalisationColonneIris(listIris, "sepal.length"));
+    	
+    //	DoubleColumn colonne1 = new DoubleColumn();
+    	//System.out.println(colonne1.getMin(listIris.get(0).getPetalLength()));
 	}
 
     @Override
@@ -92,4 +102,10 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     public Iterator<T> iterator() {
         return points.iterator();
     }
+    
+    
+    
+	
+    
+    
 }

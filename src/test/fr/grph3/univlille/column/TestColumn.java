@@ -13,6 +13,7 @@ import fr.grph3.univlille.models.columns.DoubleColumn;
 class TestColumn {
 
 	List<Double> nombre;
+	DoubleColumn a;
 	
 	@BeforeEach
 	void setUp() {
@@ -21,6 +22,7 @@ class TestColumn {
 		nombre.add(3.8);
 		nombre.add(8.9);
 		nombre.add(2.8);
+		a = new DoubleColumn();
 	}
 	
 	@Test
@@ -30,23 +32,23 @@ class TestColumn {
 	
 	@Test
 	void testMin() {
-		assertEquals(1.3, DoubleColumn.getMin(nombre));
+		assertEquals(1.3, a.getMin(nombre));
 	}
 	
 	@Test
 	void testMax() {
-		assertEquals(8.9, DoubleColumn.getMax(nombre));
+		assertEquals(8.9, a.getMax(nombre));
 	}
 	
 	
 	@Test
 	void testNormalise() {
-		assertEquals(0.375, DoubleColumn.getNormalizedValue(15.0,12.0,20.0));
+		assertEquals(0.375, a.getNormalizedValue(15.0,12.0,20.0));
 	}
 	
 	@Test
 	void testDenormalise() {
-		assertEquals(15.0, DoubleColumn.getDenormalizedValue(0.375,12.0,20.0));
+		assertEquals(15.0, a.getDenormalizedValue(0.375,12.0,20.0));
 	}
 
 }
