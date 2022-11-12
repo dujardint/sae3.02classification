@@ -72,7 +72,11 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     	Iris iris = new Iris();
     	System.out.println(iris.normaliseUnIris(listIris, "sepal.length", listIris.get(1).getSepalLength()));
     	
+    	
     	System.out.println(iris.normalisationColonneIris(listIris, "sepal.length"));
+    	
+    	System.out.println(iris.normalisationColonneIris(listIris, "variety"));
+
     	
     //	DoubleColumn colonne1 = new DoubleColumn();
     	//System.out.println(colonne1.getMin(listIris.get(0).getPetalLength()));

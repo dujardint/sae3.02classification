@@ -25,6 +25,9 @@ public class Iris implements IPoint {
 	@CsvBindByName(column = "variety")
 	public String variety;
 
+	String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
+
+	
 	public double getSepalLength() {
 		return sepalLength;
 	}
@@ -137,7 +140,7 @@ public class Iris implements IPoint {
 
 	public List<Double> normalisationColonneIris(List<Iris> listIris, String colonne){
 		//Pour normaliser tout une colonne, on extrait d'abord la colonne puis on la normalise car on a besoin de son max et min
-		List<Double> extraction = extractionColonneIris(listIris,colonne);
+		List<Double> extraction = extractionColonneIris(listIris, colonne);
 		List<Double> normalisation = normaliseColonneIris(extraction);
 		return normalisation;
 	}
@@ -162,14 +165,29 @@ public class Iris implements IPoint {
 		List<Double> colonneNonNormalise = new ArrayList<>();
 		double value = 0;
 		for(int i=0; i<listIris.size();i++) {
-
-			switch (colonne) {
-			case "sepal.length" -> value = listIris.get(i).getSepalLength();
-			case "sepal.width" -> value = listIris.get(i).getSepalWidth();
-			case "petal.length" -> value = listIris.get(i).getPetalLength();
-			case "petal.width" -> value = listIris.get(i).getPetalWidth();
+			if(colonne.equals(nomDesColonnesIris[0])) {
+				value = listIris.get(i).getSepalLength();
 			}
-
+			if(colonne.equals(nomDesColonnesIris[1])) {
+				value = listIris.get(i).getSepalWidth();
+			}
+			if(colonne.equals(nomDesColonnesIris[2])) {
+				value = listIris.get(i).getPetalLength();
+			}
+			if(colonne.equals(nomDesColonnesIris[3])) {
+				value = listIris.get(i).getPetalWidth();
+			}
+			if(colonne.equals(nomDesColonnesIris[4])) {
+				if(listIris.get(i).getVariety().equals("Setosa")) {
+					value = 0;
+				}
+				if(listIris.get(i).getVariety().equals("Versicolor")) {
+					value = 0.5;
+				}
+				if(listIris.get(i).getVariety().equals("Virginica")) {
+					value = 1;
+				}
+			}
 			colonneNonNormalise.add(value);
 		}
 		return colonneNonNormalise;
