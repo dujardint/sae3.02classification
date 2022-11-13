@@ -8,6 +8,7 @@ import java.util.List;
 public class DoubleColumn implements IColumn {
 
 	List<Double> colonne;
+	List<Double> colonneNormalise;
 	String nom;
 	private double min;
 	private double max;
@@ -15,21 +16,21 @@ public class DoubleColumn implements IColumn {
 	public DoubleColumn() {
 		this.colonne = new ArrayList<>();		
 	}
-	
-
-	public DoubleColumn(List<Double> colonne, String nom, double min, double max) {
-		this.colonne = colonne;
-		this.nom = nom;
-		this.min = min;
-		this.max = max;
-	}
-	
 
 	public DoubleColumn(List<Double> colonne, String nom) {
 		this.colonne = colonne;
 		this.nom = nom;
 		this.min=getMin(colonne);
 		this.max = getMax(colonne);
+		normaliseColonne();
+	}
+	
+	
+	public void normaliseColonne(){
+		colonneNormalise = new ArrayList<>();
+		for(int i=0; i<this.colonne.size(); i++) {
+			colonneNormalise.add(getNormalizedValue(this.colonne.get(i), this.min, this.max));
+		}
 	}
 	
 	
@@ -86,4 +87,12 @@ public class DoubleColumn implements IColumn {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	@Override
+	public String toString() {
+		return ""+colonneNormalise;
+	}
+	
+	
 }

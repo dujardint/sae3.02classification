@@ -65,15 +65,14 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
     	Iris iris = new Iris();    	
     	System.out.println("normalisation du fichier iris : ");
+    	iris.loadIris("src/main/resources/iris.csv");
+    	System.out.println(iris.listIris);
     	iris.normalisationIris("src/main/resources/iris.csv");
 
     	
-    	List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
-    	System.out.println(listTitanic.get(0).getAge());
     	
-    	
-    //	DoubleColumn colonne1 = new DoubleColumn();
-    	//System.out.println(colonne1.getMin(listIris.get(0).getPetalLength()));
+    	//List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
+    	//System.out.println(listTitanic.get(0).getAge());
 	}
 
     @Override
@@ -101,9 +100,6 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
         return points.iterator();
     }
     
-    
-    
-	
     
     
 }

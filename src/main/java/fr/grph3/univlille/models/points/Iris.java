@@ -27,6 +27,7 @@ public class Iris implements IPoint {
 
 	String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
 
+	public List<Iris> listIris;
 
 	public double getSepalLength() {
 		return sepalLength;
@@ -88,8 +89,8 @@ public class Iris implements IPoint {
 				+ ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
 	}
 
-	public static  List<Iris> loadIris(String path) throws IllegalStateException, IOException {
-		return new CsvToBeanBuilder<Iris>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+	public void loadIris(String path) throws IllegalStateException, IOException {
+		listIris = new CsvToBeanBuilder<Iris>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 				.withType(Iris.class).build().parse();
 	}
 
@@ -140,44 +141,22 @@ public class Iris implements IPoint {
 
 	public void normalisationIris(String chemin) throws IllegalStateException, IOException {
 		//fonction qui permet de normaliser un fichier de donnée d'iris
-		// une liste de double est cree pour chaque colonne 
-		List<Iris> listIris = Iris.loadIris(chemin);
+		// un objet DoubleColonne est cree pour chaque colonne 
 
-		List<Double> listSepalLenth = normalisationColonneIris(listIris, nomDesColonnesIris[0]);
-		List<Double> listSepalWidth = normalisationColonneIris(listIris, nomDesColonnesIris[1]);
-		List<Double> listPetalLenth = normalisationColonneIris(listIris, nomDesColonnesIris[2]);
-		List<Double> listPetalWidth = normalisationColonneIris(listIris, nomDesColonnesIris[3]);
-		List<Double> listVariety = normalisationColonneIris(listIris, nomDesColonnesIris[4]);
+		loadIris(chemin);
+		DoubleColumn colonneSepalLenth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[0]), nomDesColonnesIris[0].toString());
+		DoubleColumn colonneSepalWidth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[1]), nomDesColonnesIris[1].toString());
+		DoubleColumn colonnePetalLenth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[2]), nomDesColonnesIris[2].toString());
+		DoubleColumn colonnePetalWidth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[3]), nomDesColonnesIris[3].toString());
+		DoubleColumn colonneVariety = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[4]), nomDesColonnesIris[4].toString());
 
-		System.out.println(listSepalLenth);
-		System.out.println(listSepalWidth);
-		System.out.println(listPetalLenth);
-		System.out.println(listPetalWidth);
-		System.out.println(listVariety);
+		System.out.println(colonneSepalLenth);
+		System.out.println(colonneSepalWidth);
+		System.out.println(colonnePetalLenth);
+		System.out.println(colonnePetalWidth);
+		System.out.println(colonneVariety);
 	}
-
-
-	public List<Double> normalisationColonneIris(List<Iris> listIris, String colonne){
-		//Pour normaliser tout une colonne, on extrait d'abord la colonne puis on la normalise car on a besoin de son max et min
-		List<Double> extraction = extractionColonneIris(listIris, colonne);
-		List<Double> normalisation = normaliseColonneIris(extraction);
-		return normalisation;
-	}
-
-	public List<Double> normaliseColonneIris(List<Double> extractionColonneIris){
-		//2e etape sur 2 pour normaliser : apres avoir obtenu toutes les valeurs de la colonne on peut normaliser
-		DoubleColumn a = new DoubleColumn(); //on cree un objet pour utiliser ses methodes
-		Double maxi = a.getMax(extractionColonneIris);
-		Double mini = a.getMin(extractionColonneIris);
-
-		List<Double> colonneNormalise = new ArrayList<>();
-
-		for(int i=0; i<extractionColonneIris.size(); i++) {
-			Double valueNormalise = (extractionColonneIris.get(i) - mini) / (maxi - mini);
-			colonneNormalise.add(valueNormalise);
-		}
-		return colonneNormalise;
-	}
+	
 
 	public List<Double> extractionColonneIris(List<Iris> listIris, String colonne) {
 		//1er étape sur 2 pour normaliser : ici on extrait la colonne
@@ -197,7 +176,6 @@ public class Iris implements IPoint {
 				value = listIris.get(i).getPetalWidth();
 			}
 			if(colonne.equals(nomDesColonnesIris[4])) {
-
 				int nbEnum = VarietyIris.values().length;
 				for(int k=0; k<nbEnum; k++) {
 					if(listIris.get(i).getVariety().equals(VarietyIris.values()[k].name())) {
