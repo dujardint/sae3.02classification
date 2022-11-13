@@ -62,21 +62,15 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     }
     
     public static void main(String[] args) throws IllegalStateException, IOException {
-    	List<Iris> listIris = Iris.loadIris("src/main/resources/iris.csv");
-    	System.out.println(listIris.get(0).variety);
-    	
+
+    	Iris iris = new Iris();    	
+    	System.out.println("normalisation du fichier iris : ");
+    	iris.normalisationIris("src/main/resources/iris.csv");
+
     	
     	List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
     	System.out.println(listTitanic.get(0).getAge());
     	
-    	Iris iris = new Iris();
-    	System.out.println(iris.normaliseUnIris(listIris, "sepal.length", listIris.get(1).getSepalLength()));
-    	
-    	
-    	System.out.println(iris.normalisationColonneIris(listIris, "sepal.length"));
-    	
-    	System.out.println(iris.normalisationColonneIris(listIris, "variety"));
-
     	
     //	DoubleColumn colonne1 = new DoubleColumn();
     	//System.out.println(colonne1.getMin(listIris.get(0).getPetalLength()));

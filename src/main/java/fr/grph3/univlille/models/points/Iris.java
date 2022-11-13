@@ -138,6 +138,25 @@ public class Iris implements IPoint {
 	}
 
 
+	public void normalisationIris(String chemin) throws IllegalStateException, IOException {
+		//fonction qui permet de normaliser un fichier de donnée d'iris
+		// une liste de double est cree pour chaque colonne 
+		List<Iris> listIris = Iris.loadIris(chemin);
+
+		List<Double> listSepalLenth = normalisationColonneIris(listIris, nomDesColonnesIris[0]);
+		List<Double> listSepalWidth = normalisationColonneIris(listIris, nomDesColonnesIris[1]);
+		List<Double> listPetalLenth = normalisationColonneIris(listIris, nomDesColonnesIris[2]);
+		List<Double> listPetalWidth = normalisationColonneIris(listIris, nomDesColonnesIris[3]);
+		List<Double> listVariety = normalisationColonneIris(listIris, nomDesColonnesIris[4]);
+
+		System.out.println(listSepalLenth);
+		System.out.println(listSepalWidth);
+		System.out.println(listPetalLenth);
+		System.out.println(listPetalWidth);
+		System.out.println(listVariety);
+	}
+
+
 	public List<Double> normalisationColonneIris(List<Iris> listIris, String colonne){
 		//Pour normaliser tout une colonne, on extrait d'abord la colonne puis on la normalise car on a besoin de son max et min
 		List<Double> extraction = extractionColonneIris(listIris, colonne);
