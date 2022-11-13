@@ -27,7 +27,7 @@ public class Iris implements IPoint {
 
 	String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
 
-	
+
 	public double getSepalLength() {
 		return sepalLength;
 	}
@@ -178,14 +178,12 @@ public class Iris implements IPoint {
 				value = listIris.get(i).getPetalWidth();
 			}
 			if(colonne.equals(nomDesColonnesIris[4])) {
-				if(listIris.get(i).getVariety().equals("Setosa")) {
-					value = 0;
-				}
-				if(listIris.get(i).getVariety().equals("Versicolor")) {
-					value = 0.5;
-				}
-				if(listIris.get(i).getVariety().equals("Virginica")) {
-					value = 1;
+
+				int nbEnum = VarietyIris.values().length;
+				for(int k=0; k<nbEnum; k++) {
+					if(listIris.get(i).getVariety().equals(VarietyIris.values()[k].name())) {
+						value = (double) ( (k+1)-1 / (nbEnum-1) );
+					}
 				}
 			}
 			colonneNonNormalise.add(value);
