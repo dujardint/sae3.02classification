@@ -150,7 +150,7 @@ public class Iris implements IPoint {
 		NumberColumn colonnePetalWidth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[3]), nomDesColonnesIris[3].toString());
 		NumberColumn colonneVariety = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[4]), nomDesColonnesIris[4].toString());
 
-		System.out.println(colonneSepalLenth);
+		System.out.println(colonneSepalLenth.toStringNormalised());
 		System.out.println(colonneSepalWidth);
 		System.out.println(colonnePetalLenth);
 		System.out.println(colonnePetalWidth);

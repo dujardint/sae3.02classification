@@ -10,7 +10,8 @@ public class NumberColumn implements IColumn {
 
 	private NumberNormalizer normalizer;
 	private List<Double> column;
-	private List<Double> columnNormalize;
+	private List<Double> columnNormalized;
+
 	private String name;
 
 	public NumberColumn() {
@@ -26,13 +27,13 @@ public class NumberColumn implements IColumn {
 
 
 	public void normaliseColonne(){
-		columnNormalize = new ArrayList<>();
+		columnNormalized = new ArrayList<>();
 		for(int i=0; i<this.column.size(); i++) {
-			columnNormalize.add(normalizer.normalize(this.column.get(i)));
+			columnNormalized.add(getNormalizedValue((this.column.get(i))));
 		}
 	}
 
-
+	@Override
 	public double getNormalizedValue(Object value) {
 		//X-MIN / MAX-MIN
 		return normalizer.normalize(value);
@@ -90,8 +91,12 @@ public class NumberColumn implements IColumn {
 
 	@Override
 	public String toString() {
-		return ""+columnNormalize;
+		return ""+column;
 	}
 
+
+	public String toStringNormalised() {
+		return ""+columnNormalized;
+	}
 
 }
