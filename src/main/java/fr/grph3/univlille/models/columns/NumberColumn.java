@@ -1,42 +1,41 @@
 package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoubleColumn implements IColumn {
+public class NumberColumn implements IColumn {
 
-	List<Double> colonne;
-	List<Double> colonneNormalise;
-	String nom;
-	private double min;
-	private double max;
+	private NumberNormalizer normalizer;
+	private List<Double> column;
+	private List<Double> columnNormalize;
+	private String name;
 
-	public DoubleColumn() {
-		this.colonne = new ArrayList<>();		
+	public NumberColumn() {
+		this.column = new ArrayList<>();		
 	}
 
-	public DoubleColumn(List<Double> colonne, String nom) {
-		this.colonne = colonne;
-		this.nom = nom;
-		this.min=getMin(colonne);
-		this.max = getMax(colonne);
+	public NumberColumn(List<Double> colonne, String nom) {
+		this.column = colonne;
+		this.name = nom;
+		this.normalizer = new NumberNormalizer(this);
 		normaliseColonne();
 	}
-	
-	
+
+
 	public void normaliseColonne(){
-		colonneNormalise = new ArrayList<>();
-		for(int i=0; i<this.colonne.size(); i++) {
-			colonneNormalise.add(getNormalizedValue(this.colonne.get(i), this.min, this.max));
+		columnNormalize = new ArrayList<>();
+		for(int i=0; i<this.column.size(); i++) {
+			columnNormalize.add(normalizer.normalize(this.column.get(i)));
 		}
 	}
-	
-	
-	public double getNormalizedValue(Object value, double min, double max) {
+
+
+	public double getNormalizedValue(Object value) {
 		//X-MIN / MAX-MIN
-		return (((double) value) - min) / (max-min);
+		return normalizer.normalize(value);
 	}
 
 
@@ -47,7 +46,7 @@ public class DoubleColumn implements IColumn {
 
 	@Override
 	public String getName() {
-		return this.nom;
+		return this.name;
 	}
 
 	@Override
@@ -60,22 +59,22 @@ public class DoubleColumn implements IColumn {
 		return true;
 	}
 
-	public double getMin(List<Double> col) {
-		double min=col.get(0);
-		for(int i=0; i<col.size(); i++) {
-			if(min>col.get(i)) {
-				min=col.get(i);
+	public double getMin() {
+		double min = this.column.get(0);
+		for(int i=0; i<this.column.size(); i++) {
+			if(min > this.column.get(i)) {
+				min = this.column.get(i);
 			}
 		}
 		return min;
 
 	}
 
-	public double getMax(List<Double> col) {
-		double max=col.get(0);
-		for(int i=0; i<col.size(); i++) {
-			if(max<col.get(i)) {
-				max=col.get(i);
+	public double getMax() {
+		double max = this.column.get(0);
+		for(int i=0; i<this.column.size(); i++) {
+			if(max < this.column.get(i)) {
+				max = this.column.get(i);
 			}
 		}
 		return max;
@@ -88,11 +87,11 @@ public class DoubleColumn implements IColumn {
 		return null;
 	}
 
-	
+
 	@Override
 	public String toString() {
-		return ""+colonneNormalise;
+		return ""+columnNormalize;
 	}
-	
-	
+
+
 }

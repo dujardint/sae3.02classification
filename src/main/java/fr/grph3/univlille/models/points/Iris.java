@@ -3,7 +3,7 @@ package fr.grph3.univlille.models.points;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.DoubleColumn;
+import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 
 import java.io.IOException;
@@ -144,11 +144,11 @@ public class Iris implements IPoint {
 		// un objet DoubleColonne est cree pour chaque colonne 
 
 		loadIris(chemin);
-		DoubleColumn colonneSepalLenth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[0]), nomDesColonnesIris[0].toString());
-		DoubleColumn colonneSepalWidth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[1]), nomDesColonnesIris[1].toString());
-		DoubleColumn colonnePetalLenth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[2]), nomDesColonnesIris[2].toString());
-		DoubleColumn colonnePetalWidth = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[3]), nomDesColonnesIris[3].toString());
-		DoubleColumn colonneVariety = new DoubleColumn(extractionColonneIris(listIris, nomDesColonnesIris[4]), nomDesColonnesIris[4].toString());
+		NumberColumn colonneSepalLenth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[0]), nomDesColonnesIris[0].toString());
+		NumberColumn colonneSepalWidth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[1]), nomDesColonnesIris[1].toString());
+		NumberColumn colonnePetalLenth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[2]), nomDesColonnesIris[2].toString());
+		NumberColumn colonnePetalWidth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[3]), nomDesColonnesIris[3].toString());
+		NumberColumn colonneVariety = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[4]), nomDesColonnesIris[4].toString());
 
 		System.out.println(colonneSepalLenth);
 		System.out.println(colonneSepalWidth);

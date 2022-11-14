@@ -2,7 +2,7 @@ package fr.grph3.univlille.utils;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.DoubleColumn;
+import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;

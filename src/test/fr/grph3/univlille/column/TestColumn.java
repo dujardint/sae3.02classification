@@ -8,12 +8,12 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.grph3.univlille.models.columns.DoubleColumn;
+import fr.grph3.univlille.models.columns.NumberColumn;
 
 class TestColumn {
 
 	List<Double> nombre;
-	DoubleColumn a;
+	NumberColumn a;
 	
 	@BeforeEach
 	void setUp() {
@@ -22,7 +22,7 @@ class TestColumn {
 		nombre.add(3.8);
 		nombre.add(8.9);
 		nombre.add(2.8);
-		a = new DoubleColumn();
+		a = new NumberColumn();
 	}
 	
 	@Test
