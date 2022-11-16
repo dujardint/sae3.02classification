@@ -1,9 +1,8 @@
-package fr.grph3.univlille.utils.distances;
+package main.java.fr.grph3.univlille.utils.distances;
 
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.points.IPoint;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
-import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.points.IPoint;
+
 
 import java.util.List;
 
@@ -15,21 +14,22 @@ public class EuclidDistance<T extends IPoint> implements IDistance<T> {
         this.columns = columns;
     }
 
-    @Override
-    public double distance(IPoint p1, IPoint p2) {
-        double distance = 0.0;
-        for(IColumn col : columns ) {
-           if((Object)col.getClass().getSimpleName() == "Double"){
-               distance += Math.abs((double) p1.getValue(col) - (double) p2.getValue(col));
-           }
-           if ((Object)col.getClass().getSimpleName() == "String" || (Object)col.getClass().getSimpleName() == "Boolean") {
-               if (p1.getValue(col).equals(p2.getValue(col))) {
-                   distance += 0;
-               } else {
-                   distance += 1;
-               }
-           }
-        }
-        return distance;
-    }
+ 
+	@Override
+	public double distance(T p1, T p2, List<IColumn> columns) {
+		double somme = 0.0;
+		for(IColumn col : columns ) {
+	           if((Object)col.getClass().getSimpleName() == "Double"){
+	        	   somme += Math.abs((double) p1.getValue(col) - (double) p2.getValue(col));
+	           }
+	           if ((Object)col.getClass().getSimpleName() == "String" || (Object)col.getClass().getSimpleName() == "Boolean") {
+	               if (p1.getValue(col).equals(p2.getValue(col))) {
+	            	   somme += 0;
+	               } else {
+	            	   somme += 1;
+	               }
+	           }
+	        }
+	        return somme;
+	}
 }

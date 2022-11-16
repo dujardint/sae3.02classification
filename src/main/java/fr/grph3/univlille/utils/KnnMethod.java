@@ -1,18 +1,32 @@
-package fr.grph3.univlille.utils;
+package main.java.fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.points.IPoint;
-import fr.grph3.univlille.utils.distances.IDistance;
+
+import main.java.fr.grph3.univlille.utils.distances.IDistance;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 
+import main.java.fr.groupeh6.sae.distance.Distance;
+
 public class KnnMethod<T extends IPoint> {
 
 	private IDistance<T> distance;
 
 	private List<T> datas;
+	
+	private int k;
+	private Distance distance;
+	
+	public KnnClassifier(int k, Distance distance) {
+		this.k = k;
+		this.distance = distance;
+	}
+	
+	public KnnClassifier(int k) {
+		this(k, null);
+	}
 
 	public KnnMethod(String data, boolean isFile, IDistance<T> distance) throws IOException {
 		this.distance = distance;

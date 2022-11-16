@@ -1,26 +1,34 @@
-package fr.grph3.univlille.models.columns;
+package main.java.fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.models.IDataSet;
 
 public class StringColumn implements IColumn {
-    @Override
-    public double getNormalizedValue(Object value) {
-        return 0;
+	public String name;
+	
+
+    public StringColumn(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Override
+    public double getNormalizedValue(Object value) throws MistakeNormalizableValueException {
+		throw new MistakeNormalizableValueException();
     }
 
     @Override
-    public Object getDenormalizedValue(double value) {
-        return null;
+    public Object getDenormalizedValue(double value) throws MistakeNormalizableValueException {
+    	throw new MistakeNormalizableValueException();
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public IDataSet<?> getDataset() {
-        return null;
+        return this.getDataset();
     }
 
     @Override

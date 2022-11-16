@@ -1,6 +1,6 @@
-package fr.grph3.univlille.models.points;
+package main.java.fr.grph3.univlille.models.points;
 
-import fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
 
 /**
  * Decrit un fr.grph3.univlille.models.Point (ou donnee, ou ligne) dans un fr.grph3.univlille.models.DataSet.

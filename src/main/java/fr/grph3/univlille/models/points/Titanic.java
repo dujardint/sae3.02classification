@@ -1,5 +1,6 @@
 package main.java.fr.grph3.univlille.models.points;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,164 +9,174 @@ import java.util.List;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.points.builders.TitanicBuilder;
+import main.java.fr.grph3.univlille.models.columns.MistakeNormalizableValueException;
 
 public class Titanic implements IPoint {
 
-    private List<Titanic> datas;
 
-    @CsvBindByName(column = "PassengerId")
-    private double passengerId;
-    @CsvBindByName(column = "Survived")
-    private double survived;
-    @CsvBindByName(column = "Pclass")
-    private double pclass;
-    @CsvBindByName(column = "Name")
-    private String name;
-    @CsvBindByName(column = "Sex")
-    private String sex;
-    @CsvBindByName(column = "Age")
-    private double age;
-    @CsvBindByName(column = "SibSp")
-    private double sibSp;
-    @CsvBindByName(column = "Parch")
-    private double parch;
-    @CsvBindByName(column = "Ticket")
-    private String ticket;
-    @CsvBindByName(column = "Fare")
-    private double fare;
-    @CsvBindByName(column = "Cabin")
-    private String cabin;
-    @CsvBindByName(column = "Embarked")
-    private String embarked;
+	@CsvBindByName(column = "PassengerId")
+	private double passengerId;
+	@CsvBindByName(column = "Survived")
+	private double survived;
+	@CsvBindByName(column = "Pclass")
+	private double pclass;
+	@CsvBindByName(column = "Name")
+	private String name;
+	@CsvBindByName(column = "Sex")
+	private String sex;
+	@CsvBindByName(column = "Age")
+	private double age;
+	@CsvBindByName(column = "SibSp")
+	private double sibSp;
+	@CsvBindByName(column = "Parch")
+	private double parch;
+	@CsvBindByName(column = "Ticket")
+	private String ticket;
+	@CsvBindByName(column = "Fare")
+	private double fare;
+	@CsvBindByName(column = "Cabin")
+	private String cabin;
+	@CsvBindByName(column = "Embarked")
+	private String embarked;
 
-    public double getPassengerId() {
-        return passengerId;
-    }
+	public double getPassengerId() {
+		return passengerId;
+	}
 
-    public double getSurvived() {
-        return survived;
-    }
+	public double getSurvived() {
+		return survived;
+	}
 
-    public double getPClass() {
-        return pclass;
-    }
+	public double getPClass() {
+		return pclass;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getSex() {
-        return sex;
-    }
+	public String getSex() {
+		return sex;
+	}
 
-    public double getAge() {
-        return age;
-    }
+	public double getAge() {
+		return age;
+	}
 
-    public double getSibSp() {
-        return sibSp;
-    }
+	public double getSibSp() {
+		return sibSp;
+	}
 
-    public double getParch() {
-        return parch;
-    }
+	public double getParch() {
+		return parch;
+	}
 
-    public String getTicket() {
-        return ticket;
-    }
+	public String getTicket() {
+		return ticket;
+	}
 
-    public double getFare() {
-        return fare;
-    }
+	public double getFare() {
+		return fare;
+	}
 
-    public String getCabin() {
-        return cabin;
-    }
+	public String getCabin() {
+		return cabin;
+	}
 
-    public String getEmbarked() {
-        return embarked;
-    }
+	public String getEmbarked() {
+		return embarked;
+	}
 
-    public void setPassengerId(double passengerId) {
-        this.passengerId = passengerId;
-    }
+	public void setPassengerId(double passengerId) {
+		this.passengerId = passengerId;
+	}
 
-    public void setSurvived(double survived) {
-        this.survived = survived;
-    }
+	public void setSurvived(double survived) {
+		this.survived = survived;
+	}
 
-    public void setPClass(double pClass) {
-        this.pclass = pClass;
-    }
+	public void setPClass(double pClass) {
+		this.pclass = pClass;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
-    public void setAge(double age) {
-        this.age = age;
-    }
+	public void setAge(double age) {
+		this.age = age;
+	}
 
-    public void setSibSp(double sibSp) {
-        this.sibSp = sibSp;
-    }
+	public void setSibSp(double sibSp) {
+		this.sibSp = sibSp;
+	}
 
-    public void setParch(double parch) {
-        this.parch = parch;
-    }
+	public void setParch(double parch) {
+		this.parch = parch;
+	}
 
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
+	public void setTicket(String ticket) {
+		this.ticket = ticket;
+	}
 
-    public void setFare(double fare) {
-        this.fare = fare;
-    }
+	public void setFare(double fare) {
+		this.fare = fare;
+	}
 
-    public void setCabin(String cabin) {
-        this.cabin = cabin;
-    }
+	public void setCabin(String cabin) {
+		this.cabin = cabin;
+	}
 
-    public void setEmbarked(String embarked) {
-        this.embarked = embarked;
-    }
-
-    @Override
-    public Object getValue(IColumn column) {
-        return column.getDataset();
-    }
-
-    @Override
-    public double getNormalizedValue(IColumn xColumn) {
-        if (xColumn.isNormalizable()) {
-            return xColumn.getNormalizedValue(null);
-        }
-        return 0.0;
-    }
-
-    @Override
-    public String toString() {
-        return "titanic [passengerId= " + passengerId + ", survived=" + survived + ", pclass=" + pclass + ", name="
-                + name + ", sex=" + sex + ", age=" + age + ", sibSp=" + sibSp + ", parch=" + parch + ", ticket="
-                + ticket + ", fare=" + fare + ", cabin=" + cabin + ", embarked=" + embarked + "]";
-    }
+	public void setEmbarked(String embarked) {
+		this.embarked = embarked;
+	}
 
 
-    public List<Titanic> getClosest(List<Titanic> elements, int number) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
-    public static List<Titanic> loadTitanic(String path) throws IllegalStateException, IOException {
+	@Override
+	public String toString() {
+		return "titanic [passengerId= " + passengerId + ", survived=" + survived + ", pclass=" + pclass + ", name="
+				+ name + ", sex=" + sex + ", age=" + age + ", sibSp=" + sibSp + ", parch=" + parch + ", ticket="
+				+ ticket + ", fare=" + fare + ", cabin=" + cabin + ", embarked=" + embarked + "]";
+	}
+
+	public static List<Titanic> loadTitanic(String path) throws IllegalStateException, IOException {
 		return new CsvToBeanBuilder<Titanic>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 				.withType(Titanic.class).build().parse();
 	}
-    
-    
+
+	@Override
+	public Object getValue(main.java.fr.grph3.univlille.models.columns.IColumn column) {
+		switch(column.getName()) {
+		case "PassengerId" : return passengerId;
+		case "Survived" : return survived;
+		case "Pclass" : return pclass;
+		case "Name" : return name;
+		case "Sex" : return sex;
+		case "Age" : return age;
+		case "SibSp" : return sibSp;
+		case "Parch" : return parch;
+		case "Ticket" : return ticket;
+		case "Fare" : return fare;
+		case "Cabin" : return cabin;
+		case "Embarked" : return embarked;
+		default : return null;
+		}
+	}
+
+	@Override
+	public double getNormalizedValue(main.java.fr.grph3.univlille.models.columns.IColumn xColumn) {
+		try {
+			return xColumn.getNormalizedValue(this);
+		} catch (MistakeNormalizableValueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+
 }

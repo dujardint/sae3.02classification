@@ -1,15 +1,16 @@
 package main.java.fr.grph3.univlille.models.points;
 
+
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.NumberColumn;
-import fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.MistakeNormalizableValueException;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Iris implements IPoint {
@@ -74,16 +75,6 @@ public class Iris implements IPoint {
 	}
 
 	@Override
-	public Object getValue(IColumn column) {
-		return null;
-	}
-
-	@Override
-	public double getNormalizedValue(IColumn xColumn) {
-		return 0;
-	}
-
-	@Override
 	public String toString() {
 		return "fr.grph3.univlille.models.points.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
 				+ ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
@@ -139,52 +130,25 @@ public class Iris implements IPoint {
 	}
 
 
-	public void normalisationIris(String chemin) throws IllegalStateException, IOException {
-		//fonction qui permet de normaliser un fichier de donnée d'iris
-		// un objet DoubleColonne est cree pour chaque colonne 
-
-		loadIris(chemin);
-		NumberColumn colonneSepalLenth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[0]), nomDesColonnesIris[0].toString());
-		NumberColumn colonneSepalWidth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[1]), nomDesColonnesIris[1].toString());
-		NumberColumn colonnePetalLenth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[2]), nomDesColonnesIris[2].toString());
-		NumberColumn colonnePetalWidth = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[3]), nomDesColonnesIris[3].toString());
-		NumberColumn colonneVariety = new NumberColumn(extractionColonneIris(listIris, nomDesColonnesIris[4]), nomDesColonnesIris[4].toString());
-
-		System.out.println(colonneSepalLenth.toStringNormalised());
-		System.out.println(colonneSepalWidth);
-		System.out.println(colonnePetalLenth);
-		System.out.println(colonnePetalWidth);
-		System.out.println(colonneVariety);
-	}
-	
-
-	public List<Double> extractionColonneIris(List<Iris> listIris, String colonne) {
-		//1er étape sur 2 pour normaliser : ici on extrait la colonne
-		List<Double> colonneNonNormalise = new ArrayList<>();
-		double value = 0;
-		for(int i=0; i<listIris.size();i++) {
-			if(colonne.equals(nomDesColonnesIris[0])) {
-				value = listIris.get(i).getSepalLength();
-			}
-			if(colonne.equals(nomDesColonnesIris[1])) {
-				value = listIris.get(i).getSepalWidth();
-			}
-			if(colonne.equals(nomDesColonnesIris[2])) {
-				value = listIris.get(i).getPetalLength();
-			}
-			if(colonne.equals(nomDesColonnesIris[3])) {
-				value = listIris.get(i).getPetalWidth();
-			}
-			if(colonne.equals(nomDesColonnesIris[4])) {
-				int nbEnum = VarietyIris.values().length;
-				for(int k=0; k<nbEnum; k++) {
-					if(listIris.get(i).getVariety().equals(VarietyIris.values()[k].name())) {
-						value = (double) ( (k+1)-1 / (nbEnum-1) );
-					}
-				}
-			}
-			colonneNonNormalise.add(value);
+	@Override
+	public Object getValue(main.java.fr.grph3.univlille.models.columns.IColumn column) {
+		switch(column.getName()) {
+		case "sepal.length" : return sepalLength;
+		case "sepal.width" : return sepalWidth;
+		case "petal.length" : return petalLength;
+		case "petal.width" : return petalWidth;
+		case "variety" : return variety;
+		default : return null;
 		}
-		return colonneNonNormalise;
+	}
+
+	@Override
+	public double getNormalizedValue(main.java.fr.grph3.univlille.models.columns.IColumn xColumn) {
+		try {
+			return xColumn.getNormalizedValue(this);
+		} catch (MistakeNormalizableValueException e) {
+			e.printStackTrace();
+		}
+		return petalLength;
 	}
 }

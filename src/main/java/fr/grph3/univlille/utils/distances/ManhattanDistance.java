@@ -1,7 +1,7 @@
-package fr.grph3.univlille.utils.distances;
+package main.java.fr.grph3.univlille.utils.distances;
 
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ public class ManhattanDistance<T extends IPoint> implements IDistance<T> {
     public ManhattanDistance(List<IColumn> columns) {
         this.columns = columns;
     }
-
-    @Override
-    public double distance(T p1, T p2) {
-        double distance = 0.0;
+    
+	@Override
+	public double distance(T p1, T p2, List<IColumn> columns) {
+		double distance = 0.0;
         for(IColumn col : columns ) {
             if((Object)col.getClass().getSimpleName() == "Double"){
                 distance += Math.pow((double) p1.getValue(col) - (double) p2.getValue(col),2);
@@ -29,5 +29,5 @@ public class ManhattanDistance<T extends IPoint> implements IDistance<T> {
             }
         }
         return Math.sqrt(distance);
-    }
+	}
 }

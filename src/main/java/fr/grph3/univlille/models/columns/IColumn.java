@@ -19,19 +19,21 @@ public interface IColumn {
      * puis normalise cette valeur )entre 0 et 1) et la retourne normalisee.
      * Si la colonne n'est pas normalisable, le comportement n'est pas
      * definit.
+     * @throws MistakeNormalizableValueException 
      */
 
 
-	double getNormalizedValue(Object value);
+	double getNormalizedValue(Object value) throws MistakeNormalizableValueException;
 
     /**
      * "Denormalise" une valeur entre 0 et 1 en une "vraie" valeur pour
      * cette colonne.
      * Si la colonne n'est pas normalisable, le comportement n'est pas
      * definit.
+     * @throws MistakeNormalizableValueException 
      */
 
-    Object getDenormalizedValue(double value);
+    Object getDenormalizedValue(double value) throws MistakeNormalizableValueException;
 
     /**
      * Retourne le nom de la colonne.
