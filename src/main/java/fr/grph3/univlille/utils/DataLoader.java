@@ -2,12 +2,9 @@ package fr.grph3.univlille.utils;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;
-import fr.grph3.univlille.models.points.Titanic;
-import fr.grph3.univlille.models.points.builders.TitanicBuilder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,10 +15,10 @@ import java.util.List;
 
 public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
-    private List<T> points;
+    private List<T> lines;
 
     public DataLoader() {
-        this.points = new ArrayList<>();
+        this.lines = new ArrayList<>();
     }
 
     @Override
@@ -31,28 +28,28 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
     @Override
     public int getNbLines() {
-        return points.size();
+        return lines.size();
     }
 
     @Override
     public void setLines(List<T> lines) {
-        this.points = lines;
+        this.lines = lines;
     }
 
     @Override
     public void addLine(T element) {
-        points.add(element);
+        lines.add(element);
     }
 
     @Override
     public void addAllLine(List<T> elements) {
-        points.addAll(elements);
+        lines.addAll(elements);
     }
 
     @Override
     public void loadFromFile(String path, Class<T> dataType) {
         try {
-            this.points = new CsvToBeanBuilder<T>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+            this.lines = new CsvToBeanBuilder<T>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
                     .withType(dataType)
                     .build()
                     .parse();
@@ -60,20 +57,6 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
             throw new RuntimeException(e);
         }
     }
-    
-    public static void main(String[] args) throws IllegalStateException, IOException {
-
-    	Iris iris = new Iris();    	
-    	System.out.println("normalisation du fichier iris : ");
-    	iris.loadIris("src/main/resources/iris.csv");
-    	System.out.println(iris.listIris);
-    	iris.normalisationIris("src/main/resources/iris.csv");
-
-    	
-    	
-    	//List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
-    	//System.out.println(listTitanic.get(0).getAge());
-	}
 
     @Override
     public void loadFromString(String data) {
@@ -97,9 +80,6 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return points.iterator();
+        return lines.iterator();
     }
-    
-    
-    
 }

@@ -4,26 +4,25 @@ import fr.grph3.univlille.models.columns.NumberColumn;
 
 public class NumberNormalizer implements INormalizer {
 	
-	private NumberColumn colonne;
-	
+	private NumberColumn column;
 
-    public NumberNormalizer(NumberColumn colonne) {
-		this.colonne = colonne;
+    public NumberNormalizer(NumberColumn column) {
+		this.column = column;
 	}
 
 	@Override
     public double normalize(Object value) {
         if(value instanceof Double) {
-            return (((double) value) - colonne.getMin()) / (colonne.getMax() - colonne.getMin());
+            return (((double) value) - column.getMin()) / (column.getMax() - column.getMin());
         }
         if(value instanceof Integer) {
-            return (((int) value) - colonne.getMin()) / (colonne.getMax() - colonne.getMin());
+            return (((int) value) - column.getMin()) / (column.getMax() - column.getMin());
         }
         return 0;
     }
 
     @Override
     public Object denormalize(double value) {
-        return ((double)value)*(colonne.getMax() - colonne.getMin()) + colonne.getMin();
+        return value * (column.getMax() - column.getMin()) + column.getMin();
     }
 }

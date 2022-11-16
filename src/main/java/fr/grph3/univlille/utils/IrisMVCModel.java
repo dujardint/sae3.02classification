@@ -3,34 +3,41 @@ package fr.grph3.univlille.utils;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.Iris;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class IrisMVCModel extends MVCModel<Iris> {
 
+    private List<Iris> lines;
+
+    public IrisMVCModel() {
+        this.lines = new ArrayList<>();
+    }
+
     @Override
     public String getTitle() {
-        return null;
+        return "Iris Data";
     }
 
     @Override
     public int getNbLines() {
-        return 0;
+        return lines.size();
     }
 
     @Override
     public void setLines(List<Iris> lines) {
-
+        this.lines = lines;
     }
 
     @Override
-    public void addLine(Iris element) {
-
+    public void addLine(Iris line) {
+        this.lines.add(line);
     }
 
     @Override
-    public void addAllLine(List<Iris> element) {
-
+    public void addAllLine(List<Iris> lines) {
+        this.lines.addAll(lines);
     }
 
     @Override
@@ -55,11 +62,11 @@ public class IrisMVCModel extends MVCModel<Iris> {
 
     @Override
     public int nbColumns() {
-        return 0;
+        return 5;
     }
 
     @Override
     public Iterator<Iris> iterator() {
-        return null;
+        return lines.iterator();
     }
 }

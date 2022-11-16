@@ -2,7 +2,19 @@ package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringColumn implements IColumn {
+
+    private String name;
+
+    private List<String> values = new ArrayList<String>();
+
+    public StringColumn(String name) {
+        this.values = new ArrayList<>();
+    }
+
     @Override
     public double getNormalizedValue(Object value) {
         return 0;

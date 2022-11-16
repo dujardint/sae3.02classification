@@ -9,27 +9,26 @@ import java.util.List;
 public class NumberColumn implements IColumn {
 
 	private NumberNormalizer normalizer;
-	private List<Double> column;
+	private List<Double> values;
 	private List<Double> columnNormalized;
 
 	private String name;
 
-	public NumberColumn() {
-		this.column = new ArrayList<>();		
-	}
-
-	public NumberColumn(List<Double> colonne, String nom) {
-		this.column = colonne;
-		this.name = nom;
+	public NumberColumn(String name, List<Double> colonne) {
+		this.values = colonne;
+		this.name = name;
 		this.normalizer = new NumberNormalizer(this);
 		normaliseColonne();
 	}
 
+	public NumberColumn(String name) {
+		this.values = new ArrayList<>();
+	}
 
 	public void normaliseColonne(){
 		columnNormalized = new ArrayList<>();
-		for(int i=0; i<this.column.size(); i++) {
-			columnNormalized.add(getNormalizedValue((this.column.get(i))));
+		for(int i = 0; i<this.values.size(); i++) {
+			columnNormalized.add(getNormalizedValue((this.values.get(i))));
 		}
 	}
 
@@ -39,10 +38,10 @@ public class NumberColumn implements IColumn {
 		return normalizer.normalize(value);
 	}
 
-
-	public Object getDenormalizedValue(double value, double min, double max) {
-		// X * (MAX - MIN) + MIN 
-		return value * (max-min) + min;
+	@Override
+	public Object getDenormalizedValue(double value) {
+		// X * (MAX - MIN) + MIN
+		return normalizer.denormalize(value);
 	}
 
 	@Override
@@ -61,10 +60,10 @@ public class NumberColumn implements IColumn {
 	}
 
 	public double getMin() {
-		double min = this.column.get(0);
-		for(int i=0; i<this.column.size(); i++) {
-			if(min > this.column.get(i)) {
-				min = this.column.get(i);
+		double min = this.values.get(0);
+		for (Double value : this.values) {
+			if (min > value) {
+				min = value;
 			}
 		}
 		return min;
@@ -72,31 +71,23 @@ public class NumberColumn implements IColumn {
 	}
 
 	public double getMax() {
-		double max = this.column.get(0);
-		for(int i=0; i<this.column.size(); i++) {
-			if(max < this.column.get(i)) {
-				max = this.column.get(i);
+		double max = this.values.get(0);
+		for (Double value : this.values) {
+			if (max < value) {
+				max = value;
 			}
 		}
 		return max;
 	}
 
-
-	@Override
-	public Object getDenormalizedValue(double value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	@Override
 	public String toString() {
-		return ""+column;
+		return ""+ values;
 	}
 
 
 	public String toStringNormalised() {
-		return ""+columnNormalized;
+		return " " + columnNormalized;
 	}
 
 }
