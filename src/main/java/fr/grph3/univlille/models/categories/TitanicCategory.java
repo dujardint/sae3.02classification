@@ -1,6 +1,6 @@
 package main.java.fr.grph3.univlille.models.categories;
 
-import fr.grph3.univlille.models.points.Titanic;
+import main.java.fr.grph3.univlille.models.points.Titanic;
 
 import java.util.Iterator;
 import java.util.List;

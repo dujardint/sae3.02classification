@@ -1,4 +1,4 @@
-package fr.grph3.univlille.models.points;
+package main.java.fr.grph3.univlille.models.points;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBeanBuilder;

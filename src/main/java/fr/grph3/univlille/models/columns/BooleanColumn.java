@@ -1,27 +1,33 @@
-package fr.grph3.univlille.models.columns;
+package main.java.fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.models.IDataSet;
 
 public class BooleanColumn implements IColumn {
-
+	
+	private String name;
+	
+	public BooleanColumn(String name) {
+		this.name = name;
+	}
+	
     @Override
     public double getNormalizedValue(Object value) {
-        return 0;
+    	return value.equals(true) ? 1.0 : 0.0;
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return null;
+        return value == 1.0 ? true : false;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public IDataSet<?> getDataset() {
-        return null;
+        return this.getDataset();
     }
 
     @Override

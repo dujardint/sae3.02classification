@@ -1,6 +1,6 @@
-package fr.grph3.univlille.models;
+package main.java.fr.grph3.univlille.models;
 
-import fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 import java.util.List;
 
