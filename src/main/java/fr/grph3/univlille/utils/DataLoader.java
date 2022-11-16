@@ -1,6 +1,8 @@
 package fr.grph3.univlille.utils;
 
 import com.opencsv.bean.CsvToBeanBuilder;
+
+import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;
@@ -60,12 +62,17 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     }
     
     public static void main(String[] args) throws IllegalStateException, IOException {
-    	List<Iris> a = Iris.loadIris("src/main/resources/iris.csv");
-    	System.out.println(a.get(0).variety);
+
+    	Iris iris = new Iris();    	
+    	System.out.println("normalisation du fichier iris : ");
+    	iris.loadIris("src/main/resources/iris.csv");
+    	System.out.println(iris.listIris);
+    	iris.normalisationIris("src/main/resources/iris.csv");
+
     	
     	
-    	List<Titanic> b = Titanic.loadTitanic("src/main/resources/titanic.csv");
-    	System.out.println(b.get(0).getAge());
+    	//List<Titanic> listTitanic = Titanic.loadTitanic("src/main/resources/titanic.csv");
+    	//System.out.println(listTitanic.get(0).getAge());
 	}
 
     @Override
@@ -92,4 +99,7 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
     public Iterator<T> iterator() {
         return points.iterator();
     }
+    
+    
+    
 }

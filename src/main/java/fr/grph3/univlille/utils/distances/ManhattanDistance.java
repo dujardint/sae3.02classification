@@ -15,6 +15,19 @@ public class ManhattanDistance<T extends IPoint> implements IDistance<T> {
 
     @Override
     public double distance(T p1, T p2) {
-        return 0;
+        double distance = 0.0;
+        for(IColumn col : columns ) {
+            if((Object)col.getClass().getSimpleName() == "Double"){
+                distance += Math.pow((double) p1.getValue(col) - (double) p2.getValue(col),2);
+            }
+            if ((Object)col.getClass().getSimpleName() == "String" || (Object)col.getClass().getSimpleName() == "Boolean") {
+                if (p1.getValue(col).equals(p2.getValue(col))) {
+                    distance += 0;
+                } else {
+                    distance += 1;
+                }
+            }
+        }
+        return Math.sqrt(distance);
     }
 }

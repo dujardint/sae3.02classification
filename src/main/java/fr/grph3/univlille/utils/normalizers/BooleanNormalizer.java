@@ -3,7 +3,7 @@ package fr.grph3.univlille.utils.normalizers;
 public class BooleanNormalizer implements INormalizer {
 
     @Override
-    public double normalize(Object value) {
+    public double normalize(Object value) { //on peut ajouter le p1 et p2 ici ?
         //on ne peut pas normaliser un boolean
 
         if((boolean) value){

@@ -22,7 +22,7 @@ public interface IColumn {
      */
 
 
-	//double getNormalizedValue(Object value);
+	double getNormalizedValue(Object value);
 
     /**
      * "Denormalise" une valeur entre 0 et 1 en une "vraie" valeur pour
