@@ -9,7 +9,7 @@ public abstract class DoubleColumn implements IColumn {
 	
 	public Number max;
 	public Number min;
-	protected String name;
+	public String name;
 	
 	public DoubleColumn(String name) {
 		this.name = name;

@@ -1,4 +1,4 @@
-package fr.grph3.univlille.utils.normalizers;
+package main.java.fr.grph3.univlille.utils.normalizers;
 
 public class BooleanNormalizer implements INormalizer {
 

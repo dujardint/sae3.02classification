@@ -59,7 +59,7 @@ public class Main extends Application {
         series2.getData().add(new XYChart.Data(8.1, 287.4));
         
         Label label = new Label("Select Language:");
-        ChoiceBox<Iris> choiceBox = new ChoiceBox<Iris>(iris);
+        
         
         root.setPadding(new Insets(10));
 
