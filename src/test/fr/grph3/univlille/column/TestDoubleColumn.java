@@ -1,3 +1,4 @@
+package test.fr.grph3.univlille.column;
 
 
 import static org.junit.Assert.assertTrue;

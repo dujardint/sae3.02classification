@@ -1,4 +1,4 @@
-package fr.grph3.univlille;
+package test.java.fr.grph3.univlille;
 
 import org.junit.jupiter.api.Test;
 

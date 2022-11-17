@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.grph3.univlille.models.IDataSet;
 
-public abstract class DoubleColumn implements IColumn {
+public class DoubleColumn implements IColumn {
 	
 	public Number max;
 	public Number min;
