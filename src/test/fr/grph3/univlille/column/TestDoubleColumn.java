@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import main.java.fr.grph3.univlille.models.columns.DoubleColumn;
+import fr.grph3.univlille.models.columns.DoubleColumn;
 
 public class TestDoubleColumn {
 	
