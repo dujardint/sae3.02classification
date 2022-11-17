@@ -37,7 +37,26 @@ public class Titanic implements IPoint {
 	@CsvBindByName(column = "Cabin")
 	private String cabin;
 	@CsvBindByName(column = "Embarked")
-	private String embarked;
+	private char embarked;
+	
+	
+
+	public Titanic(double passengerId, double survived, double pclass, String name, String sex, double age,
+			double sibSp, double parch, String ticket, double fare, String cabin, char embarked) {
+		super();
+		this.passengerId = passengerId;
+		this.survived = survived;
+		this.pclass = pclass;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.sibSp = sibSp;
+		this.parch = parch;
+		this.ticket = ticket;
+		this.fare = fare;
+		this.cabin = cabin;
+		this.embarked = embarked;
+	}
 
 	public double getPassengerId() {
 		return passengerId;
@@ -83,7 +102,7 @@ public class Titanic implements IPoint {
 		return cabin;
 	}
 
-	public String getEmbarked() {
+	public char getEmbarked() {
 		return embarked;
 	}
 
@@ -131,14 +150,14 @@ public class Titanic implements IPoint {
 		this.cabin = cabin;
 	}
 
-	public void setEmbarked(String embarked) {
+	public void setEmbarked(char embarked) {
 		this.embarked = embarked;
 	}
 
 
 	@Override
 	public String toString() {
-		return "titanic [passengerId= " + passengerId + ", survived=" + survived + ", pclass=" + pclass + ", name="
+		return "titanic [passengerId=" + passengerId + ", survived=" + survived + ", pclass=" + pclass + ", name="
 				+ name + ", sex=" + sex + ", age=" + age + ", sibSp=" + sibSp + ", parch=" + parch + ", ticket="
 				+ ticket + ", fare=" + fare + ", cabin=" + cabin + ", embarked=" + embarked + "]";
 	}
@@ -147,6 +166,23 @@ public class Titanic implements IPoint {
 		return new CsvToBeanBuilder<Titanic>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
 				.withType(Titanic.class).build().parse();
 	}
+	
+	public Titanic(int passengerId, int survived, int placeClass, String name, String sex, int age, int sibSp, int parch, String ticket, double fare, String cabin, char embarked ) {
+		this.passengerId = passengerId;
+		this.survived = survived;
+		this.pclass = placeClass;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.sibSp = sibSp;
+		this.parch = parch;
+		this.ticket = ticket;
+		this.fare = fare;
+		this.cabin = cabin;
+		this.embarked = embarked;
+	}
+	
+	public Titanic(){}
 
 	@Override
 	public Object getValue(fr.grph3.univlille.models.columns.IColumn column) {

@@ -13,22 +13,15 @@ public class EuclidDistance<T extends IPoint> implements IDistance<T> {
         this.columns = columns;
     }
 
- 
+
 	@Override
 	public double distance(T p1, T p2, List<IColumn> columns) {
-		double somme = 0.0;
-		for(IColumn col : columns ) {
-	           if((Object)col.getClass().getSimpleName() == "Double"){
-	        	   somme += Math.abs((double) p1.getValue(col) - (double) p2.getValue(col));
-	           }
-	           if ((Object)col.getClass().getSimpleName() == "String" || (Object)col.getClass().getSimpleName() == "Boolean") {
-	               if (p1.getValue(col).equals(p2.getValue(col))) {
-	            	   somme += 0;
-	               } else {
-	            	   somme += 1;
-	               }
-	           }
-	        }
-	        return somme;
+		double somme = 0;
+		for(IColumn column : columns) {
+			somme += Math.pow(1.0*p1.getNormalizedValue(column)-p2.getNormalizedValue(column), 2);
+		}
+		return Math.sqrt(somme);
 	}
+
+
 }

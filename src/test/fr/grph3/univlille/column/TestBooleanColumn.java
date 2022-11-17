@@ -22,5 +22,20 @@ public class TestBooleanColumn {
 		assertEquals(false, col.getDenormalizedValue(0.0));
 		assertEquals(true, col.getDenormalizedValue(1.0));
 	}
+	
+	@Test
+	void test_get_name() {
+		assertEquals("Test", col.getName());
+	}
+	
+	@Test
+	void test_isnormalisable() {
+		assertEquals(true, col.isNormalizable());
+	}
+	
+	@Test
+	void test_dataset() {
+		assertEquals("", col.getDataset());
+	}
 
 }

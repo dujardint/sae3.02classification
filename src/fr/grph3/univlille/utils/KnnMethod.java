@@ -1,71 +1,71 @@
 package fr.grph3.univlille.utils;
 
-
-import java.io.IOException;
-import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.distances.IDistance;
-import main.java.fr.groupeh6.sae.distance.Distance;
+
 
 public class KnnMethod<T extends IPoint> {
 
-	private IDistance<T> distance;
-
-	private List<T> datas;
-	
 	private int k;
-	private Distance distance;
+	private IDistance distance;
 	
-	public KnnClassifier(int k, Distance distance) {
+	public KnnMethod(int k, IDistance distance) {
 		this.k = k;
 		this.distance = distance;
 	}
 	
-	public KnnClassifier(int k) {
+	public KnnMethod(int k) {
 		this(k, null);
 	}
-
-	public KnnMethod(String data, boolean isFile, IDistance<T> distance) throws IOException {
-		this.distance = distance;
+	
+	public List<IPoint> getNeighbours(IPoint point, List<IPoint> points, List<IColumn> columns){
+		points.remove(point);
+		List<IPoint> neighbours = new ArrayList<>();
+		for(IPoint p : points) neighbours.add(p);
+		if(distance != null) neighbours.sort((p1,p2)->Double.compare(distance.distance(p1, point, columns),distance.distance(p2, point, columns)));
+		else neighbours.sort((p1,p2)->Double.compare(p1.distanceTo(point),p2.distanceTo(point)));
+		
+		return neighbours.subList(0, k);
 	}
 
-	public KnnMethod(String url, IDistance<T> distance) throws IOException {
-		this(url, true, distance);
+	public void classifyPoint(IPoint point, IColumn columnClass, List<IPoint> points, List<IColumn> columns) {
+		points.remove(point);
+		List<IPoint> neighbours = getNeighbours(point, points, columns);
+		Map<Object, Integer> valueCount = new HashMap<>();
+		for(IPoint p: neighbours) {
+			Object value = p.getValue(columnClass);
+			if(valueCount.containsKey(value)) {
+				valueCount.put(value, valueCount.get(value)+1);
+			}else {
+				valueCount.put(value, 1);
+			}
+		}
+		Entry<Object, Integer> entry = valueCount.entrySet().stream().max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
+		point.setValue(columnClass, entry.getKey());
+		/*pointClass.put(neighbours.get(0).getValue(columnClass), 1);
+		for(int i = 1; i < neighbours.size(); i++) {
+			for(int j = 0; j < pointClass.size(); j++) {
+				if(neighbours.get(i).getValue(columnClass).equals(pointClass.keySet().toArray()[j])) {
+					pointClass.merge(pointClass.keySet().toArray()[j], 1, Integer::sum);
+				}else {
+					pointClass.put(points.get(i).getValue(columnClass),1);
+				}
+			}
+			
+		}
+		Entry<Object, Integer> entry = pointClass.entrySet().stream().max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
+		point.setValue(columnClass, entry.getKey());*/
 	}
 
-	private List<T> readerData(Reader reader) {
-		return null;
+	public void classifyAllPoint(IColumn columnClass, List<IPoint> points) {
+		// TODO Auto-generated method stub
 	}
-
-	public void displayData() {
-	}
-
-	public double getMin() {
-		return 0;
-	}
-
-	public double getMax() {
-		return 0;
-	}
-
-	public List<Double> compareAndSet(List<Double> l, T point, boolean greaterThan) {
-		return null;
-	}
-
-	public void computeAndSetAmps() {
-	}
-
-	public Map<Double, T> computeDist(T point) {
-		return  null;
-	}
-
-	public boolean kNN(int k, T point) {
-		return false;
-	}
-
-	public double createNewGen(String url, int k) throws IOException {
-		return 0;
-	}
+	
 }

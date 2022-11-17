@@ -1,19 +1,21 @@
 package test.java.fr.grph3.univlille;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import fr.grph3.univlille.models.columns.BooleanColumn;
 import fr.grph3.univlille.models.columns.DoubleColumn;
+import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.MistakeNormalizableValueException;
 import fr.grph3.univlille.models.columns.StringColumn;
 import fr.grph3.univlille.models.points.Iris;
 
 public class TestIrisPoint {
 	
-	Iris setosa = new Iris(5.1, 3.5, 1.4, .2, "Setosa");
+	Iris setosa = new Iris(5.1, 3.5, 1.4, 0.2, "Setosa");
 	Iris setosa1 = new Iris(10, 5, 1, 1.2, "Setosa");
 	Iris setosa2 = new Iris(3, 3, 0.4, 4.2, "Setosa");
 	Iris virginica = new Iris(6.3, 3.3, 6, 2.5, "Virginica");
@@ -35,6 +37,8 @@ public class TestIrisPoint {
 		assertEquals(10.0, setosa1.getValue(spL));
 		assertEquals(0.4, setosa2.getValue(ptL));
 		assertEquals(6.0, virginica.getValue(ptL));
+		IColumn fake = new BooleanColumn("fake");
+		assertEquals(null, setosa.getValue(fake));
 	}
 	
 	@Test
@@ -42,5 +46,13 @@ public class TestIrisPoint {
 		assertEquals(0.4555, setosa.getNormalizedValue(spL), 0.0001);
 		assertThrows(MistakeNormalizableValueException.class, () -> setosa.getNormalizedValue(var));
 	}
-
+	
+	@Test
+	void test_getter() {
+		assertEquals(1.4, setosa.getPetalLength());
+		assertEquals(0.2, setosa.getPetalWidth());
+		assertEquals(5.1, setosa.getSepalLength());
+		assertEquals(3.5, setosa.getSepalWidth());
+	}
+	
 }

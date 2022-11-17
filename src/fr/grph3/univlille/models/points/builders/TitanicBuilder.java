@@ -16,7 +16,7 @@ public class TitanicBuilder {
     private String sex;
     private String ticket;
     private String cabin;
-    private String embarked;
+    private char embarked;
 
     public TitanicBuilder withPassengerId(double passengerId) {
         this.passengerId = passengerId;
@@ -73,7 +73,7 @@ public class TitanicBuilder {
         return this;
     }
 
-    public TitanicBuilder withEmbarked(String embarked) {
+    public TitanicBuilder withEmbarked(char embarked) {
         this.embarked = embarked;
         return this;
     }

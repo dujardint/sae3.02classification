@@ -9,7 +9,7 @@ public class StringColumn implements IColumn {
     public StringColumn(String name) {
 		super();
 		this.name = name;
-	}
+	} 
 
 	@Override
     public double getNormalizedValue(Object value) throws MistakeNormalizableValueException {
