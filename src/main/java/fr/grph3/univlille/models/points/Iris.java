@@ -14,62 +14,82 @@ import java.util.List;
 
 public class Iris implements IPoint {
 
-	@CsvBindByName(column = "sepal.length")
-	public double sepalLength;
-	@CsvBindByName(column = "sepal.width")
-	public double sepalWidth;
-	@CsvBindByName(column = "petal.length")
-	public double petalLength;
-	@CsvBindByName(column = "petal.width")
-	public double petalWidth;
-	@CsvBindByName(column = "variety")
-	public String variety;
+    @CsvBindByName(column = "sepal.length")
+    public double sepalLength;
+    @CsvBindByName(column = "sepal.width")
+    public double sepalWidth;
+    @CsvBindByName(column = "petal.length")
+    public double petalLength;
+    @CsvBindByName(column = "petal.width")
+    public double petalWidth;
+    @CsvBindByName(column = "variety")
+    public String variety;
 
-	String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
+    //String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
 
-	public List<Iris> listIris;
+    //public List<Iris> listIris;
 
-	public double getSepalLength() {
-		return sepalLength;
-	}
+    public double getSepalLength() {
+        return sepalLength;
+    }
 
-	public void setSepalLength(double sepalLength) {
-		this.sepalLength = sepalLength;
-	}
+    public void setSepalLength(double sepalLength) {
+        this.sepalLength = sepalLength;
+    }
 
-	public double getSepalWidth() {
-		return sepalWidth;
-	}
+    public double getSepalWidth() {
+        return sepalWidth;
+    }
 
-	public void setSepalWidth(double sepalWidth) {
-		this.sepalWidth = sepalWidth;
-	}
+    public void setSepalWidth(double sepalWidth) {
+        this.sepalWidth = sepalWidth;
+    }
 
-	public double getPetalLength() {
-		return petalLength;
-	}
+    public double getPetalLength() {
+        return petalLength;
+    }
 
-	public void setPetalLength(double petalLength) {
-		this.petalLength = petalLength;
-	}
+    public void setPetalLength(double petalLength) {
+        this.petalLength = petalLength;
+    }
 
-	public double getPetalWidth() {
-		return petalWidth;
-	}
+    public double getPetalWidth() {
+        return petalWidth;
+    }
 
-	public void setPetalWidth(double petalWidth) {
-		this.petalWidth = petalWidth;
-	}
+    public void setPetalWidth(double petalWidth) {
+        this.petalWidth = petalWidth;
+    }
 
-	public String getVariety() {
-		return variety;
-	}
+    public String getVariety() {
+        return variety;
+    }
 
-	public void setVariety(String variety) {
-		this.variety = variety;
-	}
+    public void setVariety(String variety) {
+        this.variety = variety;
+    }
 
-	public List<Iris> getClosest(List<Iris> elements, int number) {
+    @Override
+    public double getValue(IColumn column) {
+        if ("sepalLength".equals(column.getName())) return sepalLength;
+        if ("sepalWith".equals(column.getName())) return sepalWidth;
+        if ("petalLength".equals(column.getName())) return petalLength;
+        if ("petalWith".equals(column.getName())) return petalWidth;
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Iris{" +
+                "sepalLength=" + sepalLength +
+                ", sepalWidth=" + sepalWidth +
+                ", petalLength=" + petalLength +
+                ", petalWidth=" + petalWidth +
+                ", variety='" + variety + '\'' +
+                '}';
+    }
+
+    /*public List<Iris> getClosest(List<Iris> elements, int number) {
 		return null;
 	}
 
@@ -87,7 +107,7 @@ public class Iris implements IPoint {
 	public String toString() {
 		return "fr.grph3.univlille.models.points.Iris [sepalLength=" + sepalLength + ", sepalWidth=" + sepalWidth + ", petalLength=" + petalLength
 				+ ", petalWidth=" + petalWidth + ", variety=" + variety + "]";
-	}
+	}µ
 
 	public void loadIris(String path) throws IllegalStateException, IOException {
 		listIris = new CsvToBeanBuilder<Iris>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
@@ -186,5 +206,5 @@ public class Iris implements IPoint {
 			colonneNonNormalise.add(value);
 		}
 		return colonneNonNormalise;
-	}
+	}*/
 }

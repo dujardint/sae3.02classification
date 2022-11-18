@@ -1,19 +1,10 @@
 package fr.grph3.univlille.models.points;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvToBeanBuilder;
 
 import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.points.builders.TitanicBuilder;
 
 public class Titanic implements IPoint {
-
-    private List<Titanic> datas;
 
     @CsvBindByName(column = "PassengerId")
     private double passengerId;
@@ -137,35 +128,30 @@ public class Titanic implements IPoint {
     }
 
     @Override
-    public Object getValue(IColumn column) {
-        return column.getDataset();
-    }
-
-    @Override
-    public double getNormalizedValue(IColumn xColumn) {
-        if (xColumn.isNormalizable()) {
-            return xColumn.getNormalizedValue(null);
-        }
-        return 0.0;
+    public double getValue(IColumn column) {
+        if ("Pclass".equals(column.getName())) return pclass;
+        if ("Age".equals(column.getName())) return age;
+        if ("SibSp".equals(column.getName())) return sibSp;
+        if ("Parch".equals(column.getName())) return parch;
+        if ("Fare".equals(column.getName())) return fare;
+        return 0;
     }
 
     @Override
     public String toString() {
-        return "titanic [passengerId= " + passengerId + ", survived=" + survived + ", pclass=" + pclass + ", name="
-                + name + ", sex=" + sex + ", age=" + age + ", sibSp=" + sibSp + ", parch=" + parch + ", ticket="
-                + ticket + ", fare=" + fare + ", cabin=" + cabin + ", embarked=" + embarked + "]";
+        return "Titanic{" +
+                "passengerId=" + passengerId +
+                ", survived=" + survived +
+                ", pclass=" + pclass +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", sibSp=" + sibSp +
+                ", parch=" + parch +
+                ", ticket='" + ticket + '\'' +
+                ", fare=" + fare +
+                ", cabin='" + cabin + '\'' +
+                ", embarked='" + embarked + '\'' +
+                '}';
     }
-
-
-    public List<Titanic> getClosest(List<Titanic> elements, int number) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
-    public static List<Titanic> loadTitanic(String path) throws IllegalStateException, IOException {
-		return new CsvToBeanBuilder<Titanic>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
-				.withType(Titanic.class).build().parse();
-	}
-    
-    
 }
