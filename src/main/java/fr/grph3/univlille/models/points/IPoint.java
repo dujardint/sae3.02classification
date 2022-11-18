@@ -16,7 +16,7 @@ public interface IPoint {
      * du code.
      */
 
-    <T> T getValue(IColumn column);
+    Object getValue(IColumn column);
 
     /**
      * Retourne la valeur de ce point normalisee pour la colonne en parametre.

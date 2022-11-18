@@ -1,75 +1,76 @@
 package fr.grph3.univlille.utils;
 
 import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.columns.NumberColumn;
+import fr.grph3.univlille.models.columns.StringColumn;
 import fr.grph3.univlille.models.points.Iris;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class IrisMVCModel extends MVCModel<Iris> {
 
-    private CSVLoader<Iris> loader;
-
-    private List<Iris> points;
+    private CSVModel<Iris> loader;
 
     public IrisMVCModel() {
-        this.loader = new CSVLoader<>();
-        this.points = new ArrayList<>();
+        this.loader = new CSVModel<>();
+    }
+
+    @Override
+    public void init() {
+        columns.add(new NumberColumn("sepalLength"));
+        columns.add(new NumberColumn("sepalWidth"));
+        columns.add(new NumberColumn("petalLength"));
+        columns.add(new NumberColumn("petalWidth"));
+        columns.add(new StringColumn("variety"));
     }
 
     @Override
     public String getTitle() {
-        return "Iris Data";
+        return loader.getTitle();
     }
 
     @Override
     public int getTotalPoints() {
-        return points.size();
+        return loader.getTotalPoints();
     }
 
     @Override
     public void setPoints(List<Iris> points) {
-        this.points = points;
+        loader.setPoints(points);
     }
 
     @Override
     public void addPoint(Iris point) {
-        this.points.add(point);
+        loader.addPoint(point);
     }
 
     @Override
     public void addPoints(List<Iris> points) {
-        this.points.addAll(points);
+        loader.addPoints(points);
     }
 
     @Override
-    public void loadFromFile(String path, Class<Iris> dataType) {
-
+    public void loadFromFile(String location, Class<Iris> dataType) {
+        loader.loadFromFile(location, dataType);
     }
 
     @Override
     public void loadFromString(String data) {
-
+        loader.loadFromString(data);
     }
 
     @Override
     public IColumn defaultXCol() {
-        return null;
+        return getColumnByName("sepalLength");
     }
 
     @Override
     public IColumn defaultYCol() {
-        return null;
+        return getColumnByName("sepalLength");
     }
 
     @Override
     public int nbColumns() {
-        return 5;
-    }
-
-    @Override
-    public Iterator<Iris> iterator() {
-        return points.iterator();
+        return columns.size();
     }
 }

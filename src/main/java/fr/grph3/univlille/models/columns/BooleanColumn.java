@@ -1,6 +1,7 @@
 package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.utils.normalizers.INormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,23 +12,27 @@ public class BooleanColumn implements IColumn {
 
     private List<Boolean> values;
 
-    public BooleanColumn(String name) {
+    private INormalizer<Boolean> normalizer;
+
+    public BooleanColumn(String name, INormalizer<Boolean> normalizer) {
+        this.name = name;
         this.values = new ArrayList<>();
+        this.normalizer = normalizer;
     }
 
     @Override
     public double getNormalizedValue(Object value) {
-        return 0;
+        return normalizer.normalize((Boolean) value);
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return null;
+        return normalizer.denormalize(value);
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

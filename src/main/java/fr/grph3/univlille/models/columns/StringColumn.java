@@ -9,7 +9,7 @@ public class StringColumn implements IColumn {
 
     private String name;
 
-    private List<String> values = new ArrayList<String>();
+    private List<String> values;
 
     public StringColumn(String name) {
         this.values = new ArrayList<>();
@@ -27,7 +27,7 @@ public class StringColumn implements IColumn {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override

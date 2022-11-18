@@ -8,26 +8,37 @@ public class Titanic implements IPoint {
 
     @CsvBindByName(column = "PassengerId")
     private double passengerId;
+
     @CsvBindByName(column = "Survived")
     private double survived;
+
     @CsvBindByName(column = "Pclass")
-    private double pclass;
+    private double pClass;
+
     @CsvBindByName(column = "Name")
     private String name;
+
     @CsvBindByName(column = "Sex")
     private String sex;
+
     @CsvBindByName(column = "Age")
     private double age;
+
     @CsvBindByName(column = "SibSp")
     private double sibSp;
+
     @CsvBindByName(column = "Parch")
     private double parch;
+
     @CsvBindByName(column = "Ticket")
     private String ticket;
+
     @CsvBindByName(column = "Fare")
     private double fare;
+
     @CsvBindByName(column = "Cabin")
     private String cabin;
+
     @CsvBindByName(column = "Embarked")
     private String embarked;
 
@@ -40,7 +51,7 @@ public class Titanic implements IPoint {
     }
 
     public double getPClass() {
-        return pclass;
+        return pClass;
     }
 
     public String getName() {
@@ -88,7 +99,7 @@ public class Titanic implements IPoint {
     }
 
     public void setPClass(double pClass) {
-        this.pclass = pClass;
+        this.pClass = pClass;
     }
 
     public void setName(String name) {
@@ -128,8 +139,8 @@ public class Titanic implements IPoint {
     }
 
     @Override
-    public double getValue(IColumn column) {
-        if ("Pclass".equals(column.getName())) return pclass;
+    public Object getValue(IColumn column) {
+        if ("Pclass".equals(column.getName())) return pClass;
         if ("Age".equals(column.getName())) return age;
         if ("SibSp".equals(column.getName())) return sibSp;
         if ("Parch".equals(column.getName())) return parch;
@@ -142,7 +153,7 @@ public class Titanic implements IPoint {
         return "Titanic{" +
                 "passengerId=" + passengerId +
                 ", survived=" + survived +
-                ", pclass=" + pclass +
+                ", pclass=" + pClass +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +

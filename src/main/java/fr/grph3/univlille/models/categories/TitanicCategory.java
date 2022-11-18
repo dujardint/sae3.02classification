@@ -12,8 +12,7 @@ public class TitanicCategory implements ICategory<Titanic> {
         return null;
     }
 
-    @Override
-    public int getNbLines() {
+    public int getTotalPoints() {
         return 0;
     }
 

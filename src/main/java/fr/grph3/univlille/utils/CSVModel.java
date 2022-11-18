@@ -3,56 +3,61 @@ package fr.grph3.univlille.utils;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.columns.NullColumn;
 import fr.grph3.univlille.models.points.IPoint;
-import fr.grph3.univlille.models.points.Iris;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DataLoader<T extends IPoint> extends MVCModel<T> {
+public class CSVModel<T extends IPoint> extends MVCModel<T> {
 
-    private List<T> lines;
+    private String title;
 
-    public DataLoader() {
-        this.lines = new ArrayList<>();
+    private List<T> points;
+
+    public CSVModel() {
+        this.points = new ArrayList<>();
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return title;
     }
 
     @Override
-    public int getNbLines() {
-        return lines.size();
+    public int getTotalPoints() {
+        return points.size();
     }
 
     @Override
-    public void setLines(List<T> lines) {
-        this.lines = lines;
+    public void setPoints(List<T> points) {
+        this.points = points;
     }
 
     @Override
-    public void addLine(T element) {
-        lines.add(element);
+    public void addPoint(T point) {
+        points.add(point);
     }
 
     @Override
-    public void addAllLine(List<T> elements) {
-        lines.addAll(elements);
+    public void addPoints(List<T> points) {
+        this.points.addAll(points);
     }
 
     @Override
-    public void loadFromFile(String path, Class<T> dataType) {
+    public void loadFromFile(String location, Class<T> dataType) {
+        Path path = Paths.get(location);
         try {
-            this.lines = new CsvToBeanBuilder<T>(Files.newBufferedReader(Paths.get(path))).withSeparator(',')
+            this.points = new CsvToBeanBuilder<T>(Files.newBufferedReader(path)).withSeparator(',')
                     .withType(dataType)
                     .build()
                     .parse();
+            this.title = String.valueOf(path.getFileName());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -65,12 +70,12 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
     @Override
     public IColumn defaultXCol() {
-        return null;
+        return new NullColumn();
     }
 
     @Override
     public IColumn defaultYCol() {
-        return null;
+        return new NullColumn();
     }
 
     @Override
@@ -80,6 +85,6 @@ public class DataLoader<T extends IPoint> extends MVCModel<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return lines.iterator();
+        return points.iterator();
     }
 }

@@ -1,5 +1,6 @@
 package main.java.fr.grph3.univlille.models.categories;
 
+import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.points.Iris;
 
 import java.util.Iterator;
@@ -13,22 +14,22 @@ public class IrisCategory implements ICategory<Iris> {
     }
 
     @Override
-    public int getNbLines() {
+    public int getTotalPoints() {
         return 0;
     }
 
     @Override
-    public void setLines(List<Iris> lines) {
+    public void setPoints(List<Iris> points) {
 
     }
 
     @Override
-    public void addLine(Iris element) {
+    public void addPoint(Iris point) {
 
     }
 
     @Override
-    public void addAllLine(List<Iris> element) {
+    public void addPoints(List<Iris> points) {
 
     }
 

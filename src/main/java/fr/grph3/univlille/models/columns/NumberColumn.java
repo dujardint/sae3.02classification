@@ -1,6 +1,7 @@
 package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.utils.normalizers.INormalizer;
 import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.ArrayList;
@@ -8,67 +9,59 @@ import java.util.List;
 
 public class NumberColumn implements IColumn {
 
-	private NumberNormalizer normalizer;
-	private List<Double> values;
+    private String name;
 
-	private String name;
+    private INormalizer<Number> normalizer;
+    private List<Double> values;
 
-	public NumberColumn(String name) {
-		this.values = new ArrayList<>();
-		this.name = name;
-		this.normalizer = new NumberNormalizer(this);
-	}
+    public NumberColumn(String name) {
+        this.name = name;
+        this.values = new ArrayList<>();
+        this.normalizer = new NumberNormalizer(this);
+    }
 
-	@Override
-	public double getNormalizedValue(Object value) {
-		//X-MIN / MAX-MIN
-		return normalizer.normalize(value);
-	}
+    @Override
+    public double getNormalizedValue(Object value) {
+        return normalizer.normalize((Number) value);
+    }
 
-	@Override
-	public Object getDenormalizedValue(double value) {
-		// X * (MAX - MIN) + MIN
-		return normalizer.denormalize(value);
-	}
+    @Override
+    public Object getDenormalizedValue(double value) {
+        return normalizer.denormalize(value);
+    }
 
-	@Override
-	public String getName() {
-		return this.name;
-	}
+    @Override
+    public String getName() {
+        return this.name;
+    }
 
-	@Override
-	public IDataSet<?> getDataset() {
-		return null;
-	}
+    @Override
+    public IDataSet<?> getDataset() {
+        return null;
+    }
 
-	@Override
-	public boolean isNormalizable() {
-		return true;
-	}
+    @Override
+    public boolean isNormalizable() {
+        return true;
+    }
 
-	public double getMin() {
-		double min = this.values.get(0);
-		for (Double value : this.values) {
-			if (min > value) {
-				min = value;
-			}
-		}
-		return min;
+    public double getMin() {
+        return values.stream()
+                .min(Double::compareTo)
+                .orElse(0.0);
+    }
 
-	}
+    public double getMax() {
+        return values.stream()
+                .max(Double::compareTo)
+                .orElse(0.0);
+    }
 
-	public double getMax() {
-		double max = this.values.get(0);
-		for (Double value : this.values) {
-			if (max < value) {
-				max = value;
-			}
-		}
-		return max;
-	}
-
-	@Override
-	public String toString() {
-		return ""+ values;
-	}
+    @Override
+    public String toString() {
+        return "NumberColumn{" +
+                "name='" + name + '\'' +
+                ", values=" + values +
+                '}';
+    }
 }
