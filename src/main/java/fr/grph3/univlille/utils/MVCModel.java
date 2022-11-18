@@ -23,6 +23,10 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
         this.categories = new ArrayList<>();
     }
 
+    public List<T> getPoints(){
+        return points;
+    }
+
     public abstract void init();
 
     /**
