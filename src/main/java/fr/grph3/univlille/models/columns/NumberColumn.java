@@ -19,6 +19,10 @@ public class NumberColumn implements IColumn {
         this.values = new ArrayList<>();
         this.normalizer = new NumberNormalizer(this);
     }
+    
+    public void addValues(Double value) {
+    	this.values.add(value);
+    }
 
     @Override
     public double getNormalizedValue(Object value) {

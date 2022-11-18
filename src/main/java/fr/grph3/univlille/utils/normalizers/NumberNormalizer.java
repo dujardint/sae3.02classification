@@ -12,11 +12,13 @@ public class NumberNormalizer implements INormalizer<Number> {
 
 	@Override
     public double normalize(Number value) {
-        return (value.doubleValue() - column.getMin()) / (column.getMax() - column.getMin());
+        return (double)Math.round((value.doubleValue() - column.getMin()) / (column.getMax() - column.getMin()) * 1000) /1000;
     }
 
     @Override
     public Number denormalize(double value) {
-        return value * (column.getMax() - column.getMin()) + column.getMin();
+        return (double) Math.round((value * (column.getMax() - column.getMin()) + column.getMin())*1000)/1000;
     }
+    
+    
 }

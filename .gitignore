@@ -10,3 +10,4 @@ gitignoreEhis
 /metadata
 .settings
 .project
+/.gradle/
