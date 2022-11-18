@@ -12,12 +12,6 @@ public interface INormalizer<T> {
     double normalize(T value);
 
     /**
-     *  Retourne la valeur en parametre normalisee en fonction de la valeur de référence
-     *  (entre 0 et 1). ex nom: John/Joan --> 0
-     */
-    double normalize(T value, T reference);
-
-    /**
      * Retourne la vraie valeur correspondante pour la colonne associee au normaliseur. ex age: 0.4 --> 32
      * De-normalise la valeur en parametre (qui est entre 0 et 1)
      */

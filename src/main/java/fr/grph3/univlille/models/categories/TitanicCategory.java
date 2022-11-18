@@ -1,4 +1,4 @@
-package main.java.fr.grph3.univlille.models.categories;
+package fr.grph3.univlille.models.categories;
 
 import fr.grph3.univlille.models.points.Titanic;
 
@@ -12,22 +12,23 @@ public class TitanicCategory implements ICategory<Titanic> {
         return null;
     }
 
+    @Override
     public int getTotalPoints() {
         return 0;
     }
 
     @Override
-    public void setLines(List<Titanic> lines) {
+    public void setPoints(List<Titanic> points) {
 
     }
 
     @Override
-    public void addLine(Titanic element) {
+    public void addPoint(Titanic point) {
 
     }
 
     @Override
-    public void addAllLine(List<Titanic> element) {
+    public void addPoints(List<Titanic> points) {
 
     }
 

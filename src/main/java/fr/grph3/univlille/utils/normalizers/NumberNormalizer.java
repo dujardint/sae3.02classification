@@ -16,11 +16,6 @@ public class NumberNormalizer implements INormalizer<Number> {
     }
 
     @Override
-    public double normalize(Number value, Number reference) {
-        return normalize(value);
-    }
-
-    @Override
     public Number denormalize(double value) {
         return value * (column.getMax() - column.getMin()) + column.getMin();
     }

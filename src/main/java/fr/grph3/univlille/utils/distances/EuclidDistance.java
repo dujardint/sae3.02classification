@@ -6,7 +6,6 @@ import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.StringColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
 import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.List;
@@ -28,18 +27,18 @@ public class EuclidDistance<T extends IPoint> implements IDistance<T> {
         double distance = 0.0;
         for(IColumn column : columns ) {
             if(column instanceof NumberColumn)  {
-                double value1 = numberNormalizer.normalize(p1.getValue(column));
-                double value2 = numberNormalizer.normalize(p2.getValue(column));
+                double value1 = numberNormalizer.normalize((Number) p1.getValue(column));
+                double value2 = numberNormalizer.normalize((Number) p2.getValue(column));
                 distance += Math.abs(value1 - value2);
             }
             if (column instanceof BooleanColumn) {
-                double value1 = booleanNormalizer.normalize(p1.getValue(column));
-                double value2 = booleanNormalizer.normalize(p2.getValue(column));
+                double value1 = booleanNormalizer.normalize((Boolean) p1.getValue(column));
+                double value2 = booleanNormalizer.normalize((Boolean) p2.getValue(column));
                 distance += Math.abs(value1 - value2);
             }
             if (column instanceof StringColumn) {
-                String value1 = p1.getValue(column);
-                String value2 = p2.getValue(column);
+                String value1 = (String) p1.getValue(column);
+                String value2 = (String) p2.getValue(column);
                 distance += value1.equals(value2) ? 0 : 1;
             }
         }
