@@ -21,6 +21,9 @@ public class IrisDataSet implements IDataSet<IPoint> {
 			new NumberColumn("petal.width"),
 			new StringColumn("variety")
 			);
+	
+	
+	
 
 	@Override
 	public Iterator<IPoint> iterator() {
@@ -31,13 +34,13 @@ public class IrisDataSet implements IDataSet<IPoint> {
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.NAME;
 	}
 
 	@Override
 	public int getNbLines() {
 		// TODO Auto-generated method stub
-		return 0;
+		return COLUMNS.size();
 	}
 
 	@Override
@@ -48,7 +51,7 @@ public class IrisDataSet implements IDataSet<IPoint> {
 
 	@Override
 	public void addLine(IPoint element) {
-		// TODO Auto-generated method stub
+		//
 		
 	}
 

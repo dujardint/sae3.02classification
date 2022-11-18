@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.groupeh6.sae.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.DoubleColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;

@@ -25,6 +25,10 @@ public class NumberColumn implements IColumn{
 
 	public NumberColumn(String name) {
 		this.values = new ArrayList<>();
+		this.name = name;
+		max = Double.MIN_VALUE;
+		min = Double.MAX_VALUE;
+		
 	}
 
 	public void normaliseColonne(){
