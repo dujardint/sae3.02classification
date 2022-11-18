@@ -10,26 +10,13 @@ public class NumberColumn implements IColumn {
 
 	private NumberNormalizer normalizer;
 	private List<Double> values;
-	private List<Double> columnNormalized;
 
 	private String name;
 
-	public NumberColumn(String name, List<Double> colonne) {
-		this.values = colonne;
-		this.name = name;
-		this.normalizer = new NumberNormalizer(this);
-		normaliseColonne();
-	}
-
 	public NumberColumn(String name) {
 		this.values = new ArrayList<>();
-	}
-
-	public void normaliseColonne(){
-		columnNormalized = new ArrayList<>();
-		for(int i = 0; i<this.values.size(); i++) {
-			columnNormalized.add(getNormalizedValue((this.values.get(i))));
-		}
+		this.name = name;
+		this.normalizer = new NumberNormalizer(this);
 	}
 
 	@Override
@@ -84,10 +71,4 @@ public class NumberColumn implements IColumn {
 	public String toString() {
 		return ""+ values;
 	}
-
-
-	public String toStringNormalised() {
-		return " " + columnNormalized;
-	}
-
 }
