@@ -3,6 +3,7 @@ package fr.grph3.univlille.utils.distances;
 import fr.grph3.univlille.models.columns.BooleanColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.NumberColumn;
+import fr.grph3.univlille.models.columns.StringColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
 import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
@@ -34,7 +35,12 @@ public class ManhattanDistance<T extends IPoint> implements IDistance<T> {
             if (column instanceof BooleanColumn) {
                 double value1 = booleanNormalizer.normalize(p1.getValue(column));
                 double value2 = booleanNormalizer.normalize(p2.getValue(column));
-                distance += value1 - value2;
+                distance += Math.pow(value1 - value2,2);
+            }
+            if (column instanceof StringColumn) {
+                String value1 = p1.getValue(column);
+                String value2 = p2.getValue(column);
+                distance += value1.equals(value2) ? 0 : 1;
             }
         }
         return Math.sqrt(distance);
