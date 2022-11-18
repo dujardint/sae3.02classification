@@ -25,23 +25,23 @@ public interface IDataSet<T extends IPoint> extends Iterable<T> {
      * Nombre de lignes (ou donnees ou points) dans le fr.grph3.univlille.models.DataSet
      */
 
-    int getNbLines();
+    int getTotalPoints();
 
     /**
      * stocke dans le fr.grph3.univlille.models.DataSet la collection de donnees passee en parametre
      */
 
-    void setLines(List<T> lines);
+    void setPoints(List<T> points);
 
     /**
      * Ajoute une donnee dans le fr.grph3.univlille.models.DataSet
      */
 
-    void addLine(T element);
+    void addPoint(T point);
 
     /**
      * Ajoute une collection de donnees dans le fr.grph3.univlille.models.DataSet
      */
 
-    void addAllLine(List<T> element);
+    void addPoints(List<T> points);
 }

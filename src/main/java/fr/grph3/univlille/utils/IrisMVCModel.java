@@ -9,10 +9,13 @@ import java.util.List;
 
 public class IrisMVCModel extends MVCModel<Iris> {
 
-    private List<Iris> lines;
+    private CSVLoader<Iris> loader;
+
+    private List<Iris> points;
 
     public IrisMVCModel() {
-        this.lines = new ArrayList<>();
+        this.loader = new CSVLoader<>();
+        this.points = new ArrayList<>();
     }
 
     @Override
@@ -21,23 +24,23 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
-    public int getNbLines() {
-        return lines.size();
+    public int getTotalPoints() {
+        return points.size();
     }
 
     @Override
-    public void setLines(List<Iris> lines) {
-        this.lines = lines;
+    public void setPoints(List<Iris> points) {
+        this.points = points;
     }
 
     @Override
-    public void addLine(Iris line) {
-        this.lines.add(line);
+    public void addPoint(Iris point) {
+        this.points.add(point);
     }
 
     @Override
-    public void addAllLine(List<Iris> lines) {
-        this.lines.addAll(lines);
+    public void addPoints(List<Iris> points) {
+        this.points.addAll(points);
     }
 
     @Override
@@ -67,6 +70,6 @@ public class IrisMVCModel extends MVCModel<Iris> {
 
     @Override
     public Iterator<Iris> iterator() {
-        return lines.iterator();
+        return points.iterator();
     }
 }

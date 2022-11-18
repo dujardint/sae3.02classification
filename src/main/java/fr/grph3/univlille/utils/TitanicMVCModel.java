@@ -14,22 +14,22 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
-    public int getNbLines() {
+    public int getTotalPoints() {
         return 0;
     }
 
     @Override
-    public void setLines(List<Titanic> lines) {
+    public void setPoints(List<Titanic> points) {
 
     }
 
     @Override
-    public void addLine(Titanic element) {
+    public void addPoint(Titanic point) {
 
     }
 
     @Override
-    public void addAllLine(List<Titanic> element) {
+    public void addPoints(List<Titanic> points) {
 
     }
 

@@ -5,15 +5,23 @@ import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.points.IPoint;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
+    private List<IPoint> points;
     private List<IColumn> columns;
 
     private List<ICategory<T>> categories;
+
+    public MVCModel() {
+        this.points = new ArrayList<>();
+        this.columns = new ArrayList<>();
+        this.categories = new ArrayList<>();
+    }
 
     /**
      * Charge les donnees du modele d'un fichier CSV.
