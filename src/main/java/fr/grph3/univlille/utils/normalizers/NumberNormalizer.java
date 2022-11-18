@@ -2,7 +2,7 @@ package fr.grph3.univlille.utils.normalizers;
 
 import fr.grph3.univlille.models.columns.NumberColumn;
 
-public class NumberNormalizer implements INormalizer {
+public class NumberNormalizer implements INormalizer<Number> {
 	
 	private NumberColumn column;
 
@@ -11,18 +11,12 @@ public class NumberNormalizer implements INormalizer {
 	}
 
 	@Override
-    public double normalize(Object value) {
-        if(value instanceof Double) {
-            return (((double) value) - column.getMin()) / (column.getMax() - column.getMin());
-        }
-        if(value instanceof Integer) {
-            return (((int) value) - column.getMin()) / (column.getMax() - column.getMin());
-        }
-        return 0;
+    public double normalize(Number value) {
+        return (value.doubleValue() - column.getMin()) / (column.getMax() - column.getMin());
     }
 
     @Override
-    public Object denormalize(double value) {
+    public Number denormalize(double value) {
         return value * (column.getMax() - column.getMin()) + column.getMin();
     }
 }
