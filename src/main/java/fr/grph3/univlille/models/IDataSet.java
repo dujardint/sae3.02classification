@@ -1,8 +1,8 @@
-package fr.grph3.univlille.models;
-
-import fr.grph3.univlille.models.points.IPoint;
+package main.java.fr.grph3.univlille.models;
 
 import java.util.List;
+
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 /**
  * Decrit un <i>DatSet</i>, c'est a dire un ensemble de points (ou lignes,

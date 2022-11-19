@@ -1,8 +1,8 @@
-package fr.grph3.univlille.models.points;
+package main.java.fr.grph3.univlille.models.points;
 
 import com.opencsv.bean.CsvBindByName;
 
-import fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
 
 public class Iris implements IPoint {
 
@@ -21,6 +21,19 @@ public class Iris implements IPoint {
 
     //public List<Iris> listIris;
 
+    public Iris(double sepalLength, double sepalWidth, double petalLength, double petalWidth, String variety) {
+		super();
+		this.sepalLength = sepalLength;
+		this.sepalWidth = sepalWidth;
+		this.petalLength = petalLength;
+		this.petalWidth = petalWidth;
+		this.variety = variety;
+	}
+
+	public Iris() {
+		// TODO Auto-generated constructor stub
+	}
+    
     public double getSepalLength() {
         return sepalLength;
     }
@@ -63,11 +76,14 @@ public class Iris implements IPoint {
 
     @Override
     public Object getValue(IColumn column) {
-        if ("sepalLength".equals(column.getName())) return sepalLength;
-        if ("sepalWith".equals(column.getName())) return sepalWidth;
-        if ("petalLength".equals(column.getName())) return petalLength;
-        if ("petalWith".equals(column.getName())) return petalWidth;
-        return 0;
+    	switch(column.getName()) {
+		case "sepal.length" : return sepalLength;
+		case "sepal.width" : return sepalWidth;
+		case "petal.length" : return petalLength;
+		case "petal.width" : return petalWidth;
+		case "variety" : return variety;
+		default : return null;
+		}
     }
 
     @Override

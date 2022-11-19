@@ -1,6 +1,6 @@
-package fr.grph3.univlille.models.columns;
+package main.java.fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.models.IDataSet;
 
 public class NullColumn implements IColumn {
 

@@ -1,6 +1,6 @@
-package fr.grph3.univlille.utils.normalizers;
+package main.java.fr.grph3.univlille.utils.normalizers;
 
-import fr.grph3.univlille.models.columns.NumberColumn;
+import main.java.fr.grph3.univlille.models.columns.NumberColumn;
 
 public class NumberNormalizer implements INormalizer<Number> {
 	

@@ -1,10 +1,10 @@
-package fr.grph3.univlille.utils;
+package main.java.fr.grph3.univlille.utils;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.columns.NullColumn;
-import fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.NullColumn;
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 import java.io.IOException;
 import java.nio.file.Files;

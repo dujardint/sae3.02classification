@@ -1,9 +1,9 @@
-package fr.grph3.univlille.models.categories;
-
-import fr.grph3.univlille.models.points.Titanic;
+package main.java.fr.grph3.univlille.models.categories;
 
 import java.util.Iterator;
 import java.util.List;
+
+import main.java.fr.grph3.univlille.models.points.Titanic;
 
 public class TitanicCategory implements ICategory<Titanic> {
 

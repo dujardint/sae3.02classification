@@ -1,12 +1,12 @@
-package fr.grph3.univlille.utils.distances;
+package main.java.fr.grph3.univlille.utils.distances;
 
-import fr.grph3.univlille.models.columns.BooleanColumn;
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.columns.NumberColumn;
-import fr.grph3.univlille.models.columns.StringColumn;
-import fr.grph3.univlille.models.points.IPoint;
-import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
-import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
+import main.java.fr.grph3.univlille.models.columns.BooleanColumn;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.NumberColumn;
+import main.java.fr.grph3.univlille.models.columns.StringColumn;
+import main.java.fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
+import main.java.fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.List;
 

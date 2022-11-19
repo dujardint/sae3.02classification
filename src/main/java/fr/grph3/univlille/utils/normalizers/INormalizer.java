@@ -1,4 +1,4 @@
-package fr.grph3.univlille.utils.normalizers;
+package main.java.fr.grph3.univlille.utils.normalizers;
 
 /**
  * Decrit un object (normalizer) qui peut transformer la valeur d'une colone en une valeur entre 0 et 1

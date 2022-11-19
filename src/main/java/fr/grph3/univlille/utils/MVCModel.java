@@ -1,10 +1,10 @@
-package fr.grph3.univlille.utils;
+package main.java.fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.categories.ICategory;
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.models.columns.NullColumn;
-import fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.models.categories.ICategory;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.NullColumn;
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
 import java.util.stream.Collectors;

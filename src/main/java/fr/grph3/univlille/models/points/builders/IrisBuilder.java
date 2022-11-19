@@ -1,6 +1,6 @@
-package fr.grph3.univlille.models.points.builders;
+package main.java.fr.grph3.univlille.models.points.builders;
 
-import fr.grph3.univlille.models.points.Iris;
+import main.java.fr.grph3.univlille.models.points.Iris;
 
 public class IrisBuilder {
 

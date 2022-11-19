@@ -1,6 +1,6 @@
-package fr.grph3.univlille.utils.distances;
+package main.java.fr.grph3.univlille.utils.distances;
 
-import fr.grph3.univlille.models.points.IPoint;
+import main.java.fr.grph3.univlille.models.points.IPoint;
 
 public interface IDistance<T extends IPoint> {
 

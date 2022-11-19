@@ -1,8 +1,8 @@
-package fr.grph3.univlille.models.points;
+package main.java.fr.grph3.univlille.models.points;
 
 import com.opencsv.bean.CsvBindByName;
 
-import fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
 
@@ -42,7 +42,26 @@ public class Titanic implements IPoint {
     @CsvBindByName(column = "Embarked")
     private String embarked;
 
-    public double getPassengerId() {
+   
+
+	public Titanic(double passengerId, double survived, double pClass, String name, String sex, double age,
+			double sibSp, double parch, String ticket, double fare, String cabin, String embarked) {
+		super();
+		this.passengerId = passengerId;
+		this.survived = survived;
+		this.pClass = pClass;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.sibSp = sibSp;
+		this.parch = parch;
+		this.ticket = ticket;
+		this.fare = fare;
+		this.cabin = cabin;
+		this.embarked = embarked;
+	}
+
+	public double getPassengerId() {
         return passengerId;
     }
 

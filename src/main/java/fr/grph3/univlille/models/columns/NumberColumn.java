@@ -1,8 +1,8 @@
-package fr.grph3.univlille.models.columns;
+package main.java.fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
-import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
+import main.java.fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.utils.normalizers.INormalizer;
+import main.java.fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.List;
 public class NumberColumn implements IColumn {
 
     private String name;
+ 
 
     private INormalizer<Number> normalizer;
     private List<Double> values;

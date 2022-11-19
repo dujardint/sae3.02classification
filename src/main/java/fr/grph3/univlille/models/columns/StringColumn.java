@@ -1,9 +1,9 @@
-package fr.grph3.univlille.models.columns;
-
-import fr.grph3.univlille.models.IDataSet;
+package main.java.fr.grph3.univlille.models.columns;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import main.java.fr.grph3.univlille.models.IDataSet;
 
 public class StringColumn implements IColumn {
 

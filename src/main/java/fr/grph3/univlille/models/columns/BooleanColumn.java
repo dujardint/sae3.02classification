@@ -1,7 +1,7 @@
-package fr.grph3.univlille.models.columns;
+package main.java.fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
+import main.java.fr.grph3.univlille.models.IDataSet;
+import main.java.fr.grph3.univlille.utils.normalizers.INormalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,10 @@ public class BooleanColumn implements IColumn {
     private List<Boolean> values;
 
     private INormalizer<Boolean> normalizer;
+    
+    public BooleanColumn(String name) {
+		this.name = name;
+	}
 
     public BooleanColumn(String name, INormalizer<Boolean> normalizer) {
         this.name = name;

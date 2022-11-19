@@ -1,8 +1,8 @@
-package fr.grph3.univlille.utils;
+package main.java.fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.columns.IColumn;
-import fr.grph3.univlille.models.columns.NumberColumn;
-import fr.grph3.univlille.models.points.Titanic;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
+import main.java.fr.grph3.univlille.models.columns.NumberColumn;
+import main.java.fr.grph3.univlille.models.points.Titanic;
 
 import java.util.List;
 

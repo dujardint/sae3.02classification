@@ -1,4 +1,4 @@
-package fr.grph3.univlille.normalizer;
+package test.java.fr.grph3.univlille.normalizer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.grph3.univlille.models.columns.NumberColumn;
-import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
+import main.java.fr.grph3.univlille.models.columns.NumberColumn;
+import main.java.fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 public class TestNumberNormalizer {
 	

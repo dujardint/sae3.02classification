@@ -1,7 +1,7 @@
 package main.java.fr.grph3.univlille.models.categories;
 
-import fr.grph3.univlille.models.categories.ICategory;
-import fr.grph3.univlille.models.points.Iris;
+import main.java.fr.grph3.univlille.models.categories.ICategory;
+import main.java.fr.grph3.univlille.models.points.Iris;
 
 import java.util.Iterator;
 import java.util.List;

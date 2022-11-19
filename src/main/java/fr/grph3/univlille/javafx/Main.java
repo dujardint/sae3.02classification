@@ -1,7 +1,6 @@
-package fr.grph3.univlille.javafx;
+package main.java.fr.grph3.univlille.javafx;
 
 
-import fr.grph3.univlille.models.points.Iris;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import main.java.fr.grph3.univlille.models.points.Iris;
  
  
 public class Main extends Application {
