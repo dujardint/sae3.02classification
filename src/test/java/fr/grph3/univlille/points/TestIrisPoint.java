@@ -1,5 +1,4 @@
-package test.java.fr.grph3.univlille.points;
-
+package fr.grph3.univlille.points;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;

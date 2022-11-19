@@ -61,6 +61,10 @@ public class Titanic implements IPoint {
 		this.embarked = embarked;
 	}
 
+	public Titanic() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public double getPassengerId() {
         return passengerId;
     }

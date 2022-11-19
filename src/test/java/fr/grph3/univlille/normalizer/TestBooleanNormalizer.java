@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-
-=======
 package fr.grph3.univlille.normalizer;
->>>>>>> beb493cf081372f1eed20af010086d0928a893c9
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-<<<<<<< HEAD
 import main.java.fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
-=======
-import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
->>>>>>> beb493cf081372f1eed20af010086d0928a893c9
 
 class TestBooleanNormalizer {
 
@@ -43,7 +36,4 @@ class TestBooleanNormalizer {
 	}
 
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> beb493cf081372f1eed20af010086d0928a893c9

@@ -1,4 +1,6 @@
-package test.java.fr.grph3.univlille.points;
+package fr.grph3.univlille.points;
+
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,12 +38,12 @@ public class TestTitanicPoint {
 
 	
 	@Test
-	void test_toString() {
+	public void test_toString() {
 		assertEquals("titanic [passengerId=3.0, survived=0.0, pclass=3.0, name=Braun, sex=male, age=22.0, sibSp=1.0, parch=0.0, ticket=4563221, fare=5.3, cabin=C54, embarked=S]",pers1.toString());
 	}
 	
 	@Test
-	void test_getValue() {
+	public void test_getValue() {
 		assertEquals(3,pers1.getValue(passId));
 		assertEquals(0,pers3.getValue(survived));
 		assertEquals(3,pers4.getValue(pClass));

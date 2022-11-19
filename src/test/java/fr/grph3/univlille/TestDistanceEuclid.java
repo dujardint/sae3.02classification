@@ -1,4 +1,6 @@
-package test.java.fr.grph3.univlille;
+package fr.grph3.univlille;
+
+
 
 public class TestDistanceEuclid {
 	

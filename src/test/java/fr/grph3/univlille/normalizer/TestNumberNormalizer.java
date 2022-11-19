@@ -1,4 +1,6 @@
-package test.java.fr.grph3.univlille.normalizer;
+package fr.grph3.univlille.normalizer;
+
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

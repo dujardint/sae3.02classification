@@ -1,4 +1,6 @@
-package test.java.fr.grph3.univlille.columns;
+package fr.grph3.univlille.columns;
+
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,29 +14,29 @@ BooleanColumn col = new BooleanColumn("Test");
 	
 
 	@Test
-	void test_get_normalized_value() {
+	public void test_get_normalized_value() {
 		assertEquals(1.0, col.getNormalizedValue(true));
 		assertEquals(0.0, col.getNormalizedValue(false));
 	}
 	
 	@Test
-	void test_get_denormalized_value() {
+	public void test_get_denormalized_value() {
 		assertEquals(false, col.getDenormalizedValue(0.0));
 		assertEquals(true, col.getDenormalizedValue(1.0));
 	}
 	
 	@Test
-	void test_get_name() {
+	public void test_get_name() {
 		assertEquals("Test", col.getName());
 	}
 	
 	@Test
-	void test_isnormalisable() {
+	public void test_isnormalisable() {
 		assertEquals(true, col.isNormalizable());
 	}
 	
 	@Test
-	void test_dataset() {
+	public void test_dataset() {
 		assertEquals("", col.getDataset());
 	}
 

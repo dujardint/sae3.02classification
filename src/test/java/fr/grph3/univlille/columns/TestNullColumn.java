@@ -1,4 +1,5 @@
-package test.java.fr.grph3.univlille.columns;
+package fr.grph3.univlille.columns;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,26 +13,26 @@ public class TestNullColumn {
 	
 
 	@Test
-	void test_get_normalized_value() {
+	public void test_get_normalized_value() {
 		assertEquals(0, col.getNormalizedValue(true));
 		assertEquals(0, col.getNormalizedValue(false));
 	}
 	
 	@Test
-	void test_get_denormalized_value() {
+	public void test_get_denormalized_value() {
 		assertEquals(null, col.getDenormalizedValue(0.0));
 		assertEquals(null, col.getDenormalizedValue(1.0));
 	}
 	
 	
 	@Test
-	void test_get_name() {
+	public void test_get_name() {
 		assertEquals("Null Column", col.getName());
 	}
 	
 
 	@Test
-	void test_isnormalisable() {
+	public void test_isnormalisable() {
 		assertEquals(false, col.isNormalizable());
 	}
 
