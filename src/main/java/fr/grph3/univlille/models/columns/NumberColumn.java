@@ -14,11 +14,16 @@ public class NumberColumn implements IColumn {
 
     private INormalizer<Number> normalizer;
     private List<Double> values;
+    
+    protected Number max;
+	protected Number min;
 
     public NumberColumn(String name) {
         this.name = name;
         this.values = new ArrayList<>();
         this.normalizer = new NumberNormalizer(this);
+        max = Double.MIN_VALUE;
+		min = Double.MAX_VALUE;
     }
     
     public void addValues(Double value) {
@@ -27,12 +32,13 @@ public class NumberColumn implements IColumn {
 
     @Override
     public double getNormalizedValue(Object value) {
-        return normalizer.normalize((Number) value);
+    	Number val = (Number)value;
+		return (val.doubleValue()-min.doubleValue())/(max.doubleValue()-min.doubleValue());
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return normalizer.denormalize(value);
+    	return value*(max.doubleValue()-min.doubleValue())+min.doubleValue();
     }
 
     @Override

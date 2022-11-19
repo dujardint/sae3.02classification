@@ -13,7 +13,7 @@ public class TestStringColumn {
 	
 	@Test
 	public void  test_get_name() {
-		assertEquals("test", col.getName());
+		assertEquals(null, col.getName());
 	}
 	
 	@Test
@@ -23,7 +23,7 @@ public class TestStringColumn {
 	
 	@Test
 	public void  test_get_denormaliezed_value() {
-		assertEquals(null, col.getNormalizedValue(0.0));
+		assertEquals(null, col.getDenormalizedValue(0.0));
 	}
 	
 	@Test

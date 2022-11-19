@@ -112,63 +112,23 @@ public class Titanic implements IPoint {
     public String getEmbarked() {
         return embarked;
     }
-
-    public void setPassengerId(double passengerId) {
-        this.passengerId = passengerId;
-    }
-
-    public void setSurvived(double survived) {
-        this.survived = survived;
-    }
-
-    public void setPClass(double pClass) {
-        this.pClass = pClass;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public void setAge(double age) {
-        this.age = age;
-    }
-
-    public void setSibSp(double sibSp) {
-        this.sibSp = sibSp;
-    }
-
-    public void setParch(double parch) {
-        this.parch = parch;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
-    public void setFare(double fare) {
-        this.fare = fare;
-    }
-
-    public void setCabin(String cabin) {
-        this.cabin = cabin;
-    }
-
-    public void setEmbarked(String embarked) {
-        this.embarked = embarked;
-    }
-
     @Override
     public Object getValue(IColumn column) {
-        if ("Pclass".equals(column.getName())) return pClass;
-        if ("Age".equals(column.getName())) return age;
-        if ("SibSp".equals(column.getName())) return sibSp;
-        if ("Parch".equals(column.getName())) return parch;
-        if ("Fare".equals(column.getName())) return fare;
-        return 0;
+    	switch(column.getName()) {
+		case "PassengerId" : return passengerId ;
+		case "Survived" : return survived ;
+		case "Pclass" : return pClass ;
+		case "Name" : return name;
+		case "Sex" : return sex ;
+		case "Age" : return age ;
+		case "SibSp" : return sibSp ;
+		case "Parch" : return parch;
+		case "Ticket" : return ticket ;
+		case "Fare" : return fare;
+		case "Cabin" : return cabin ;
+		case "Embarked" : return embarked ;
+		default : return null;
+	}
     }
 
     @Override
@@ -177,15 +137,15 @@ public class Titanic implements IPoint {
                 "passengerId=" + passengerId +
                 ", survived=" + survived +
                 ", pclass=" + pClass +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
+                ", name=" + name  +
+                ", sex=" + sex + 
                 ", age=" + age +
                 ", sibSp=" + sibSp +
                 ", parch=" + parch +
-                ", ticket='" + ticket + '\'' +
+                ", ticket=" + ticket  +
                 ", fare=" + fare +
-                ", cabin='" + cabin + '\'' +
-                ", embarked='" + embarked + '\'' +
+                ", cabin=" + cabin + 
+                ", embarked=" + embarked  +
                 '}';
     }
 }

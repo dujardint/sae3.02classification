@@ -35,9 +35,4 @@ BooleanColumn col = new BooleanColumn("Test");
 		assertEquals(true, col.isNormalizable());
 	}
 	
-	@Test
-	public void test_dataset() {
-		assertEquals("", col.getDataset());
-	}
-
 }

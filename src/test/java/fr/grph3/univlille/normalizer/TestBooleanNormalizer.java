@@ -8,31 +8,26 @@ import org.junit.jupiter.api.BeforeEach;
 
 import main.java.fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
 
-class TestBooleanNormalizer {
+public class TestBooleanNormalizer {
 
-	private BooleanNormalizer valueBooleanNorm;
+	public BooleanNormalizer valueBooleanNorm;
 	
 	@BeforeEach
-	void setUp() {
+	public void setUp() {
 		valueBooleanNorm = new BooleanNormalizer();
 	}
 	
 	@Test
-	void testNormalize() {
+	public void testNormalize() {
 		assertEquals(0, valueBooleanNorm.normalize(true));
 		assertEquals(1, valueBooleanNorm.normalize(false));
 		
-		assertNotEquals(1, valueBooleanNorm.normalize(true));
-		assertNotEquals(0, valueBooleanNorm.normalize(false));
 	}
 	
 	@Test
-	void testDeormalize() {
+	public void testDeormalize() {
 		assertEquals(0, valueBooleanNorm.normalize(true));
 		assertEquals(1, valueBooleanNorm.normalize(false));
-		
-		assertNotEquals(1, valueBooleanNorm.normalize(true));
-		assertNotEquals(0, valueBooleanNorm.normalize(false));
 	}
 
 }

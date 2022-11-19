@@ -85,22 +85,7 @@ public class TitanicBuilder {
         return this;
     }
 
-    public Titanic build() {
-        Titanic titanic = new Titanic();
-        titanic.setPassengerId(passengerId);
-        titanic.setSurvived(survived);
-        titanic.setPClass(pClass);
-        titanic.setSibSp(sibSp);
-        titanic.setAge(age);
-        titanic.setParch(parch);
-        titanic.setFare(fare);
-        titanic.setName(name);
-        titanic.setSex(sex);
-        titanic.setTicket(ticket);
-        titanic.setCabin(cabin);
-        titanic.setEmbarked(embarked);
-        return titanic;
-    }
+    
     
     
 }

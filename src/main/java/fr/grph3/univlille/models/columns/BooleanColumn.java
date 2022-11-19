@@ -26,12 +26,12 @@ public class BooleanColumn implements IColumn {
 
     @Override
     public double getNormalizedValue(Object value) {
-        return normalizer.normalize((Boolean) value);
+    	return value.equals(true) ? 1.0 : 0.0;
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return normalizer.denormalize(value);
+    	return value == 1.0 ? true : false;
     }
 
     @Override
