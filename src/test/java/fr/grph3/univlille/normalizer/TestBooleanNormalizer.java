@@ -26,7 +26,7 @@ class TestBooleanNormalizer {
 	}
 	
 	@Test
-	void testDeormalize() {
+	void testDenormalize() {
 		assertEquals(0, valueBooleanNorm.normalize(true));
 		assertEquals(1, valueBooleanNorm.normalize(false));
 		

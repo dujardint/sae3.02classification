@@ -3,7 +3,6 @@ package fr.grph3.univlille.utils;
 import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.models.columns.NullColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
@@ -13,21 +12,16 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
     protected List<T> points;
 
-    protected List<IColumn> columns;
-
     protected List<ICategory<T>> categories;
 
     public MVCModel() {
         this.points = new ArrayList<>();
-        this.columns = new ArrayList<>();
         this.categories = new ArrayList<>();
     }
 
     public List<T> getPoints(){
         return points;
     }
-
-    public abstract void init();
 
     /**
      * Charge les donnees du modele d'un fichier CSV.
@@ -59,16 +53,7 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
     public abstract IColumn defaultYCol();
 
-    public IColumn getColumnByName(String name) {
-        return columns.stream()
-                .filter(c -> name.equals(c.getName()))
-                .findAny()
-                .orElse(new NullColumn());
-    }
-
-    public List<IColumn> getColumns() {
-        return columns;
-    }
+    public abstract List<IColumn> getColumns();
 
     /**
      * Ajoute une Categorie (ou classe) de donnees au model.
@@ -102,7 +87,7 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
      */
 
     public List<IColumn> getNormalizableColumns() {
-        return columns.stream()
+        return getColumns().stream()
                 .filter(IColumn::isNormalizable)
                 .collect(Collectors.toList());
     }

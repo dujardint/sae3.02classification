@@ -21,6 +21,12 @@ public class BooleanColumn implements IColumn {
     }
 
     @Override
+    public boolean push(Object value) {
+        if (!(value instanceof Boolean)) return false;
+        return values.add((Boolean) value);
+    }
+
+    @Override
     public double getNormalizedValue(Object value) {
         return normalizer.normalize((Boolean) value);
     }

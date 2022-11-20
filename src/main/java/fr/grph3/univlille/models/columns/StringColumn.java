@@ -16,13 +16,19 @@ public class StringColumn implements IColumn {
     }
 
     @Override
+    public boolean push(Object value) {
+        if (!(value instanceof String)) return false;
+        return values.add((String) value);
+    }
+
+    @Override
     public double getNormalizedValue(Object value) {
-        return 0;
+        throw new UnsupportedOperationException("Cannot normalize a string value");
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return null;
+        throw new UnsupportedOperationException("Cannot denormalize a string value");
     }
 
     @Override

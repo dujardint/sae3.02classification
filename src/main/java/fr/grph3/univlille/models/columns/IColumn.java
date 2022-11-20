@@ -14,6 +14,8 @@ import fr.grph3.univlille.models.IDataSet;
  */
 public interface IColumn {
 
+    boolean push(Object value);
+
     /**
      * Recupere la valeur de cette colonne dans la donnee en parametre,
      * puis normalise cette valeur (entre 0 et 1) et la retourne normalisee.

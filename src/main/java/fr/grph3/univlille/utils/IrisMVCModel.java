@@ -9,19 +9,23 @@ import java.util.List;
 
 public class IrisMVCModel extends MVCModel<Iris> {
 
+    private static final int COLUMNS_COUNT = 5;
+
     private CSVModel<Iris> loader;
+
+    private NumberColumn sepalLengthColumn;
+    private NumberColumn sepalWidthColumn;
+    private NumberColumn petalLengthColumn;
+    private NumberColumn petallWidthColumn;
+    private StringColumn varietyColumn;
 
     public IrisMVCModel() {
         this.loader = new CSVModel<>();
-    }
-
-    @Override
-    public void init() {
-        columns.add(new NumberColumn("sepalLength"));
-        columns.add(new NumberColumn("sepalWidth"));
-        columns.add(new NumberColumn("petalLength"));
-        columns.add(new NumberColumn("petalWidth"));
-        columns.add(new StringColumn("variety"));
+        this.sepalLengthColumn = new NumberColumn("sepal.length");
+        this.sepalWidthColumn = new NumberColumn("sepal.width");
+        this.petalLengthColumn = new NumberColumn("petal.length");
+        this.petallWidthColumn = new NumberColumn("petal.width");
+        this.varietyColumn = new StringColumn("variety");
     }
 
     @Override
@@ -41,12 +45,17 @@ public class IrisMVCModel extends MVCModel<Iris> {
 
     @Override
     public void addPoint(Iris point) {
+        sepalLengthColumn.push(point.getPetalLength());
+        sepalWidthColumn.push(point.getSepalWidth());
+        petalLengthColumn.push(point.getPetalLength());
+        petallWidthColumn.push(point.getPetalWidth());
+        varietyColumn.push(point.getVariety());
         loader.addPoint(point);
     }
 
     @Override
     public void addPoints(List<Iris> points) {
-        loader.addPoints(points);
+        points.forEach(this::addPoint);
     }
 
     @Override
@@ -60,17 +69,22 @@ public class IrisMVCModel extends MVCModel<Iris> {
     }
 
     @Override
+    public List<IColumn> getColumns() {
+        return null;
+    }
+
+    @Override
     public IColumn defaultXCol() {
-        return getColumnByName("sepalLength");
+        return sepalLengthColumn;
     }
 
     @Override
     public IColumn defaultYCol() {
-        return getColumnByName("sepalLength");
+        return sepalWidthColumn;
     }
 
     @Override
     public int nbColumns() {
-        return columns.size();
+        return COLUMNS_COUNT;
     }
 }

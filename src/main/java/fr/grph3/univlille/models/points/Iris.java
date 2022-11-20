@@ -7,15 +7,15 @@ import fr.grph3.univlille.models.columns.IColumn;
 public class Iris implements IPoint {
 
     @CsvBindByName(column = "sepal.length")
-    public double sepalLength;
+    private double sepalLength;
     @CsvBindByName(column = "sepal.width")
-    public double sepalWidth;
+    private double sepalWidth;
     @CsvBindByName(column = "petal.length")
-    public double petalLength;
+    private double petalLength;
     @CsvBindByName(column = "petal.width")
-    public double petalWidth;
+    private double petalWidth;
     @CsvBindByName(column = "variety")
-    public String variety;
+    private String variety;
 
     //String[] nomDesColonnesIris = new String[] {"sepal.length", "sepal.width", "petal.length", "petal.width", "variety" };
 

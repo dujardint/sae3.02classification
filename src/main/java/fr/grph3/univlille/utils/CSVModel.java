@@ -25,9 +25,6 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     }
 
     @Override
-    public void init() { }
-
-    @Override
     public String getTitle() {
         return title;
     }
@@ -79,6 +76,11 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     @Override
     public IColumn defaultYCol() {
         return new NullColumn();
+    }
+
+    @Override
+    public List<IColumn> getColumns() {
+        return null;
     }
 
     @Override

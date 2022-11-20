@@ -5,6 +5,11 @@ import fr.grph3.univlille.models.IDataSet;
 public class NullColumn implements IColumn {
 
     @Override
+    public boolean push(Object value) {
+        return false;
+    }
+
+    @Override
     public double getNormalizedValue(Object value) {
         return 0;
     }

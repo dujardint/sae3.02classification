@@ -4,6 +4,7 @@ import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.points.Titanic;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class TitanicMVCModel extends MVCModel<Titanic> {
@@ -14,15 +15,6 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
 
     public TitanicMVCModel() {
         this.loader = new CSVModel<>();
-    }
-
-    @Override
-    public void init() {
-        columns.add(new NumberColumn("survived"));
-        columns.add(new NumberColumn("Pclass"));
-        columns.add(new NumberColumn("sibSp"));
-        columns.add(new NumberColumn("parch"));
-        columns.add(new NumberColumn("fare"));
     }
 
     @Override
@@ -61,17 +53,22 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
     }
 
     @Override
+    public List<IColumn> getColumns() {
+        return Arrays.asList();
+    }
+
+    @Override
     public IColumn defaultXCol() {
-        return getColumnByName("survived");
+        return null;
     }
 
     @Override
     public IColumn defaultYCol() {
-        return getColumnByName("Pclass");
+        return null;
     }
 
     @Override
     public int nbColumns() {
-        return columns.size();
+        return 0;
     }
 }

@@ -12,7 +12,7 @@ public class NumberColumn implements IColumn {
     private String name;
 
     private INormalizer<Number> normalizer;
-    private List<Double> values;
+    private List<Number> values;
 
     public NumberColumn(String name) {
         this.name = name;
@@ -22,6 +22,12 @@ public class NumberColumn implements IColumn {
     
     public void addValues(Double value) {
     	this.values.add(value);
+    }
+
+    @Override
+    public boolean push(Object value) {
+        if (!(value instanceof Number)) return false;
+        return values.add((Number) value);
     }
 
     @Override
@@ -51,12 +57,14 @@ public class NumberColumn implements IColumn {
 
     public double getMin() {
         return values.stream()
+                .map(Number::doubleValue)
                 .min(Double::compareTo)
                 .orElse(0.0);
     }
 
     public double getMax() {
         return values.stream()
+                .map(Number::doubleValue)
                 .max(Double::compareTo)
                 .orElse(0.0);
     }
