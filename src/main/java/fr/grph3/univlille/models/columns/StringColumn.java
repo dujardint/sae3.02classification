@@ -20,17 +20,6 @@ public class StringColumn implements IColumn {
         if (!(value instanceof String)) return false;
         return values.add((String) value);
     }
-
-    @Override
-    public double getNormalizedValue(Object value) {
-        throw new UnsupportedOperationException("Cannot normalize a string value");
-    }
-
-    @Override
-    public Object getDenormalizedValue(double value) {
-        throw new UnsupportedOperationException("Cannot denormalize a string value");
-    }
-
     @Override
     public String getName() {
         return name;

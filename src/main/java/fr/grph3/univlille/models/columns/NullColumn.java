@@ -10,16 +10,6 @@ public class NullColumn implements IColumn {
     }
 
     @Override
-    public double getNormalizedValue(Object value) {
-        return 0;
-    }
-
-    @Override
-    public Object getDenormalizedValue(double value) {
-        return null;
-    }
-
-    @Override
     public String getName() {
         return "Null Column";
     }

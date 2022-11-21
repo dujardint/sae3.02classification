@@ -7,7 +7,7 @@ import fr.grph3.univlille.utils.normalizers.INormalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooleanColumn implements IColumn {
+public class BooleanColumn implements INormalizableColumn<Boolean> {
 
     private String name;
 
@@ -35,6 +35,11 @@ public class BooleanColumn implements IColumn {
     @Override
     public Object getDenormalizedValue(double value) {
         return normalizer.denormalize(value);
+    }
+
+    @Override
+    public INormalizer<?> getNormalizer() {
+        return normalizer;
     }
 
     @Override

@@ -2,6 +2,7 @@ package fr.grph3.univlille.utils;
 
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.IColumn;
+import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.columns.NullColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
@@ -9,6 +10,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CSVModel<T extends IPoint> implements IDataSet<T> {
 
@@ -81,6 +83,13 @@ public class CSVModel<T extends IPoint> implements IDataSet<T> {
     public IColumn defaultYCol() {
         IColumn defY = columns.get(1);
         return defY == null ? new NullColumn() : defY;
+    }
+
+    public List<INormalizableColumn> getNormalizableColumns() {
+        return columns.stream()
+                .filter(IColumn::isNormalizable)
+                .map(column -> (INormalizableColumn) column)
+                .collect(Collectors.toList());
     }
 
     public List<IColumn> getColumns() {

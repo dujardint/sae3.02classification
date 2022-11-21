@@ -7,7 +7,7 @@ import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberColumn implements IColumn {
+public class NumberColumn implements INormalizableColumn<Number> {
 
     private String name;
 
@@ -38,6 +38,11 @@ public class NumberColumn implements IColumn {
     @Override
     public Object getDenormalizedValue(double value) {
         return normalizer.denormalize(value);
+    }
+
+    @Override
+    public INormalizer<?> getNormalizer() {
+        return normalizer;
     }
 
     @Override
