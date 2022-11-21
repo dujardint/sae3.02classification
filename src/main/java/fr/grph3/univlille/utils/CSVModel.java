@@ -42,6 +42,14 @@ public class CSVModel<T extends IPoint> implements IDataSet<T> {
         return points.size();
     }
 
+    public T getPoint(int index) {
+        return points.get(index);
+    }
+
+    public List<T> getPoints() {
+        return points;
+    }
+
     @Override
     public void setPoints(List<T> points) {
         this.points = points;
