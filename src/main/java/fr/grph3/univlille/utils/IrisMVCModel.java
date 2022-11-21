@@ -5,13 +5,12 @@ import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.columns.StringColumn;
 import fr.grph3.univlille.models.points.Iris;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class IrisMVCModel extends MVCModel<Iris> {
 
     private static final int COLUMNS_COUNT = 5;
-
-    private CSVModel<Iris> loader;
 
     private NumberColumn sepalLengthColumn;
     private NumberColumn sepalWidthColumn;
@@ -20,7 +19,6 @@ public class IrisMVCModel extends MVCModel<Iris> {
     private StringColumn varietyColumn;
 
     public IrisMVCModel() {
-        this.loader = new CSVModel<>();
         this.sepalLengthColumn = new NumberColumn("sepal.length");
         this.sepalWidthColumn = new NumberColumn("sepal.width");
         this.petalLengthColumn = new NumberColumn("petal.length");
@@ -30,17 +28,7 @@ public class IrisMVCModel extends MVCModel<Iris> {
 
     @Override
     public String getTitle() {
-        return loader.getTitle();
-    }
-
-    @Override
-    public int getTotalPoints() {
-        return loader.getTotalPoints();
-    }
-
-    @Override
-    public void setPoints(List<Iris> points) {
-        loader.setPoints(points);
+        return "Iris";
     }
 
     @Override
@@ -50,22 +38,17 @@ public class IrisMVCModel extends MVCModel<Iris> {
         petalLengthColumn.push(point.getPetalLength());
         petallWidthColumn.push(point.getPetalWidth());
         varietyColumn.push(point.getVariety());
-        loader.addPoint(point);
+        points.add(point);
     }
 
     @Override
-    public void addPoints(List<Iris> points) {
-        points.forEach(this::addPoint);
-    }
-
-    @Override
-    public void loadFromFile(String location, Class<Iris> dataType) {
-        loader.loadFromFile(location, dataType);
+    public void loadFromFile(String path) {
+        this.points = CSVUtil.loadCSVAsFile(Path.of(path), Iris.class);
     }
 
     @Override
     public void loadFromString(String data) {
-        loader.loadFromString(data);
+
     }
 
     @Override

@@ -4,52 +4,46 @@ import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.models.points.Titanic;
 
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
 public class TitanicMVCModel extends MVCModel<Titanic> {
 
-    private CSVModel<Titanic> loader;
+    private NumberColumn survivedColumn;
 
-    private List<Titanic> points;
+    private NumberColumn pClassColumn;
+
+    private NumberColumn ageColumn;
+
+    private NumberColumn sibSpColumn;
+
+    private NumberColumn parchColumn;
+
+    private NumberColumn fare;
 
     public TitanicMVCModel() {
-        this.loader = new CSVModel<>();
+
     }
 
     @Override
     public String getTitle() {
-        return loader.getTitle();
-    }
-
-    @Override
-    public int getTotalPoints() {
-        return loader.getTotalPoints();
-    }
-
-    @Override
-    public void setPoints(List<Titanic> points) {
-        loader.setPoints(points);
+        return "Titanic";
     }
 
     @Override
     public void addPoint(Titanic point) {
-        loader.addPoint(point);
+        super.addPoint(point);
     }
 
     @Override
-    public void addPoints(List<Titanic> points) {
-        loader.addPoints(points);
-    }
-
-    @Override
-    public void loadFromFile(String location, Class<Titanic> dataType) {
-        loader.loadFromFile(location, dataType);
+    public void loadFromFile(String path) {
+        CSVUtil.loadCSVAsFile(Path.of(path), Titanic.class);
     }
 
     @Override
     public void loadFromString(String data) {
-        loader.loadFromString(data);
+
     }
 
     @Override
@@ -59,16 +53,16 @@ public class TitanicMVCModel extends MVCModel<Titanic> {
 
     @Override
     public IColumn defaultXCol() {
-        return null;
+        return ageColumn;
     }
 
     @Override
     public IColumn defaultYCol() {
-        return null;
+        return survivedColumn;
     }
 
     @Override
     public int nbColumns() {
-        return 0;
+        return 6;
     }
 }

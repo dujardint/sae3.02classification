@@ -19,15 +19,35 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
         this.categories = new ArrayList<>();
     }
 
+    @Override
+    public int getTotalPoints() {
+        return points.size();
+    }
+
+    @Override
+    public void addPoint(T point) {
+        points.add(point);
+    }
+
+    @Override
+    public void addPoints(List<T> points) {
+        points.forEach(this::addPoint);
+    }
+
     public List<T> getPoints(){
         return points;
+    }
+
+    @Override
+    public void setPoints(List<T> points) {
+        this.points = points;
     }
 
     /**
      * Charge les donnees du modele d'un fichier CSV.
      */
 
-    public abstract void loadFromFile(String path, Class<T> dataType);
+    public abstract void loadFromFile(String path);
 
     /**
      * Charge les donnees du modele d'une String "CSV".
