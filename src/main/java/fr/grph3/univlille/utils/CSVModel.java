@@ -66,7 +66,7 @@ public class CSVModel<T extends IPoint> implements IDataSet<T> {
     }
 
     public void loadFromFile(String path) {
-        CSVUtil.loadCSVAsFile(Path.of(path), dataType);
+        this.points = CSVUtil.loadCSVAsFile(Path.of(path), dataType);
     }
 
     public void loadFromString(String data) {
