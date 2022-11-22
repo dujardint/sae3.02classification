@@ -16,7 +16,7 @@ public class TestIrisDistance {
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel(Iris.class, "Iris");
+        this.model = new CSVModel<>(Iris.class, "Iris");
         model.loadFromFile("src/main/resources/irisTest.csv");
         this.distance = new EuclidDistance<>(model.getNormalizableColumns());
     }

@@ -7,7 +7,7 @@ import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberColumn implements INormalizableColumn<Number> {
+public class NumberColumn implements INormalizableColumn {
 
     private String name;
 

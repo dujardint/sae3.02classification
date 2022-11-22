@@ -1,5 +1,7 @@
 package fr.grph3.univlille.models.columns;
 
+import fr.grph3.univlille.utils.normalizers.INormalizer;
+
 public interface INormalizableColumn extends IColumn {
 
     /**
@@ -18,4 +20,6 @@ public interface INormalizableColumn extends IColumn {
      */
 
     Object getDenormalizedValue(double value);
+
+    INormalizer<?> getNormalizer();
 }

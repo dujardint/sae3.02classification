@@ -7,7 +7,7 @@ import fr.grph3.univlille.utils.normalizers.INormalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooleanColumn implements INormalizableColumn<Boolean> {
+public class BooleanColumn implements INormalizableColumn {
 
     private String name;
 
