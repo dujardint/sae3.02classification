@@ -59,10 +59,10 @@ public class Iris implements IPoint {
 
     @Override
     public Object getValue(IColumn column) {
-        if ("sepalLength".equals(column.getName())) return sepalLength;
-        if ("sepalWith".equals(column.getName())) return sepalWidth;
-        if ("petalLength".equals(column.getName())) return petalLength;
-        if ("petalWith".equals(column.getName())) return petalWidth;
+        if ("sepal.length".equals(column.getName())) return sepalLength;
+        if ("sepal.width".equals(column.getName())) return sepalWidth;
+        if ("petal.length".equals(column.getName())) return petalLength;
+        if ("petal.width".equals(column.getName())) return petalWidth;
         return 0;
     }
 

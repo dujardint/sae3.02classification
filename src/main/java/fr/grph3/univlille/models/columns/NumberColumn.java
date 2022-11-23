@@ -20,7 +20,7 @@ public class NumberColumn implements INormalizableColumn {
         this.normalizer = new NumberNormalizer(this);
     }
     
-    public void addValues(Double value) {
+    public void addValues(Number value) {
     	this.values.add(value);
     }
 
@@ -47,7 +47,7 @@ public class NumberColumn implements INormalizableColumn {
 
     @Override
     public String getName() {
-        return this.name;
+        return name;
     }
 
     @Override

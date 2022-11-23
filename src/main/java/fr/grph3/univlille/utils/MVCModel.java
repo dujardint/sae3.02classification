@@ -3,6 +3,7 @@ package fr.grph3.univlille.utils;
 import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
@@ -106,9 +107,10 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
      * La normalisation doit retourner une valeur dans l’intervalle [0;1]
      */
 
-    public List<IColumn> getNormalizableColumns() {
+    public List<INormalizableColumn> getNormalizableColumns() {
         return getColumns().stream()
                 .filter(IColumn::isNormalizable)
+                .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
     }
 

@@ -1,6 +1,5 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.columns.NullColumn;
@@ -12,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CSVModel<T extends IPoint> implements IDataSet<T> {
+public class CSVModel<T extends IPoint> extends MVCModel<T> {
 
     private Class<T> dataType;
 
@@ -25,13 +24,8 @@ public class CSVModel<T extends IPoint> implements IDataSet<T> {
     public CSVModel(Class<T> dataType, String title) {
         this.dataType = dataType;
         this.title = title;
+        this.columns = new ArrayList<>();
         this.points = new ArrayList<>();
-        this.init();
-    }
-
-    private void init() {
-        ColumnFactory factory = new ColumnFactory();
-        this.columns = factory.generate(dataType);
     }
 
     @Override
@@ -67,35 +61,43 @@ public class CSVModel<T extends IPoint> implements IDataSet<T> {
         this.points.addAll(points);
     }
 
+    @Override
     public void loadFromFile(String path) {
+        ColumnFactory factory = new ColumnFactory();
         this.points = CSVUtil.loadCSVAsFile(Path.of(path), dataType);
+        this.columns = factory.generate(dataType, points);
     }
 
+    @Override
     public void loadFromString(String data) {
 
     }
 
+    @Override
     public IColumn defaultXCol() {
         IColumn defX = columns.get(0);
         return defX == null ? new NullColumn() : defX;
     }
 
+    @Override
     public IColumn defaultYCol() {
         IColumn defY = columns.get(1);
         return defY == null ? new NullColumn() : defY;
     }
 
+    @Override
     public List<INormalizableColumn> getNormalizableColumns() {
         return columns.stream()
                 .filter(IColumn::isNormalizable)
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
     }
-
+    @Override
     public List<IColumn> getColumns() {
         return columns;
     }
 
+    @Override
     public int nbColumns() {
         return columns.size();
     }
