@@ -13,14 +13,14 @@ public class TestBooleanColumn {
 
     @Test
     public void test_get_normalized_value() {
-        assertEquals(1.0, col.getNormalizedValue(true));
-        assertEquals(0.0, col.getNormalizedValue(false));
+        assertEquals(0.0, col.getNormalizedValue(true));
+        assertEquals(1.0, col.getNormalizedValue(false));
     }
 
     @Test
     public void test_get_denormalized_value() {
-        assertEquals(false, col.getDenormalizedValue(0.0));
-        assertEquals(true, col.getDenormalizedValue(1.0));
+        assertEquals(true, col.getDenormalizedValue(0.0));
+        assertEquals(false, col.getDenormalizedValue(1.0));
     }
 
     @Test
@@ -31,6 +31,21 @@ public class TestBooleanColumn {
     @Test
     public void test_isnormalisable() {
         assertTrue(col.isNormalizable());
+    }
+    
+    @Test
+    public void test_push() {
+    	assertEquals(true,col.push(true));
+    }
+    
+    @Test
+    public void test_get_dataset() {
+    	assertEquals(null,col.getDataset());
+    }
+    
+    @Test
+    public void test_get_normalizer() {
+    	assertEquals(0,col.getNormalizer());
     }
 
 }

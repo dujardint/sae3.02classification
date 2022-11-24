@@ -17,15 +17,18 @@ public class EuclidDistance<T extends IPoint> implements IDistance<T> {
         if (p1 == null || p2 == null) return 0;
         double distance = 0.0;
         for(INormalizableColumn column : columns ) {
+        	System.out.println(column.getName());
             if(column instanceof NumberColumn)  {
                 double value1 = column.getNormalizedValue(p1.getValue(column));
                 double value2 = column.getNormalizedValue(p2.getValue(column));
-                distance += Math.abs(value1 - value2);
+                distance += Math.pow(value1 - value2, 2);
+
             }
             if (column instanceof BooleanColumn) {
                 double value1 = column.getNormalizedValue(p1.getValue(column));
                 double value2 = column.getNormalizedValue(p2.getValue(column));
-                distance += Math.abs(value1 - value2);
+                distance += Math.pow(value1 - value2, 2);
+
             }
             if (column instanceof StringColumn) {
                 String value1 = (String) p1.getValue(column);
