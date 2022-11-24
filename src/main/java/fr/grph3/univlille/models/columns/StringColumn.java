@@ -12,6 +12,7 @@ public class StringColumn implements IColumn {
     private List<String> values;
 
     public StringColumn(String name) {
+        this.name = name;
         this.values = new ArrayList<>();
     }
 
@@ -33,5 +34,13 @@ public class StringColumn implements IColumn {
     @Override
     public boolean isNormalizable() {
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "StringColumn{" +
+                "name='" + name + '\'' +
+                ", values=" + values +
+                '}';
     }
 }
