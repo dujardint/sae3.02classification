@@ -1,17 +1,18 @@
 package fr.grph3.univlille;
 
-import fr.grph3.univlille.models.points.Iris;
-import fr.grph3.univlille.utils.CSVModel;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class Main extends Application {
 
     public static void main(String[] args) {
     	Application.launch(args);
     }
     
-    public void start(Stage stage) throws Exception{
-    	new Appli();
+    public void start(Stage stage) throws Exception {
+        Appli app = new Appli(stage);
+        stage.setScene(new Scene(app.loadView()));
+    	stage.show();
     }
 }

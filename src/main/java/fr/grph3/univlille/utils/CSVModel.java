@@ -92,6 +92,7 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
     }
+
     @Override
     public List<IColumn> getColumns() {
         return columns;
