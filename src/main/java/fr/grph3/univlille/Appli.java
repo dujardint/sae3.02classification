@@ -3,11 +3,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import fr.grph3.univlille.models.points.Iris;
+import fr.grph3.univlille.utils.CSVModel;
+import fr.grph3.univlille.utils.MVCModel;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -23,7 +27,7 @@ public class Appli extends AbstractView {
 	private Button bCategorisation;
 
 	@FXML
-	private ComboBox<?> csv;
+	private ComboBox<String> csv;
 
 	@FXML
 	private TextField knn;
@@ -38,13 +42,15 @@ public class Appli extends AbstractView {
 	private NumberAxis xAxis;
 
 	@FXML
-	private ComboBox<?> xColumn;
+	private ComboBox<String> xColumn;
 
 	@FXML
 	private NumberAxis yAxis;
 
 	@FXML
-	private ComboBox<?> yColumn;
+	private ComboBox<String> yColumn;
+	
+	private CSVModel<Iris> model;
 
 	public Appli(Stage stage) {
 		super(stage);

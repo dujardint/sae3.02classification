@@ -5,6 +5,14 @@ import com.opencsv.bean.CsvBindByName;
 import fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
+	
+	
+	public enum TitanicEmbarqued implements ICategoryType{
+		C, 
+		Q, 
+		S;
+	}
+	
 
     @CsvBindByName(column = "PassengerId")
     private Double passengerId;
