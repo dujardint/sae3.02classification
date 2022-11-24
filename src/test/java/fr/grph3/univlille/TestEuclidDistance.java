@@ -19,12 +19,13 @@ public class TestEuclidDistance {
         this.model = new CSVModel<>(Titanic.class, "Titanic");
         model.loadFromFile("src/main/resources/titanicTest.csv");
         this.distance = new EuclidDistance<>(model.getNormalizableColumns());
+        System.out.println(model.getColumns().toString());
     }
 
     @Test
     void testDistance(){
-        assertEquals(0.89, Math.round (distance.distance(model.getPoint(2), model.getPoint(3) ) *100.0)/100.0);
-        assertEquals(1.30, Math.round (distance.distance(model.getPoint(0), model.getPoint(2) ) *100.0)/100.0);
-        assertEquals(1.94,Math.round (distance.distance(model.getPoint(1), model.getPoint(3) ) *100.0)/100.0);
+        assertEquals(0.79, Math.round (distance.distance(model.getPoint(2), model.getPoint(3) ) *100.0)/100.0);
+        assertEquals(1.21, Math.round (distance.distance(model.getPoint(0), model.getPoint(2) ) *100.0)/100.0);
+        assertEquals(1.89,Math.round (distance.distance(model.getPoint(1), model.getPoint(3) ) *100.0)/100.0);
     }
 }
