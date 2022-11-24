@@ -63,6 +63,7 @@ public class Iris implements IPoint {
         if ("sepal.width".equals(column.getName())) return sepalWidth;
         if ("petal.length".equals(column.getName())) return petalLength;
         if ("petal.width".equals(column.getName())) return petalWidth;
+        if ("variety".equals(column.getName())) return variety;
         return 0;
     }
 
