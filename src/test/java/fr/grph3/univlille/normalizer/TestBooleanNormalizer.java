@@ -1,10 +1,9 @@
 package fr.grph3.univlille.normalizer;
 
-import static org.junit.Assert.assertNotEquals;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 import main.java.fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
 

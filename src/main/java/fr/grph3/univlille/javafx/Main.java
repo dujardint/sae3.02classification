@@ -1,6 +1,9 @@
 package main.java.fr.grph3.univlille.javafx;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -8,18 +11,22 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import main.java.fr.grph3.univlille.models.columns.IColumn;
 import main.java.fr.grph3.univlille.models.points.Iris;
+import main.java.fr.grph3.univlille.utils.IrisMVCModel;
  
  
 public class Main extends Application {
  
     @Override public void start(Stage stage) {
     	FlowPane root = new FlowPane();
+    	IrisMVCModel imvc = new IrisMVCModel();
         stage.setTitle("Classifiacation KNN");
-        final NumberAxis xAxis = new NumberAxis(0, 10, 1);
+        final NumberAxis xAxis = new NumberAxis(0, 10, 1); 
         final NumberAxis yAxis = new NumberAxis(-100, 500, 100);        
         final ScatterChart<Number,Number> sc = new
             ScatterChart<Number,Number>(xAxis,yAxis);
@@ -58,12 +65,19 @@ public class Main extends Application {
         series2.getData().add(new XYChart.Data(9.3, 29.9));
         series2.getData().add(new XYChart.Data(8.1, 287.4));
         
+    
+        
+        List<IColumn> columns = imvc.getColumns();
+        ComboBox<IColumn> cb = new ComboBox<>();
+        cb.getItems().addAll(columns);
+        
         
         root.setPadding(new Insets(10));
+        root.getChildren().addAll(cb,sc);
 
  
         sc.getData().addAll(series1, series2);
-        Scene scene  = new Scene(sc, 500, 400);
+        Scene scene  = new Scene(root, 550, 400);
         stage.setScene(scene);
         stage.show();
     }

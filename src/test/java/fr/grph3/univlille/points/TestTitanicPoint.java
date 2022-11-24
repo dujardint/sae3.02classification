@@ -53,7 +53,7 @@ public class TestTitanicPoint {
 		assertEquals(0.0,pers1.getValue(parch));
 		assertEquals("PP 43224",pers3.getValue(ticket));
 		assertEquals(16.7,pers5.getValue(fare));
-		//assertEquals("C54",pers1.getValue(cabin));
+		assertEquals("C54",pers1.getValue(cabin));
 		assertEquals('Q',pers2.getValue(embarked));
 	}
 
