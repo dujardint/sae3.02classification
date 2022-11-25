@@ -73,6 +73,12 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
 
     }
 
+    public List<IColumn> getColumnByName(String name) {
+        return columns.stream()
+                .filter(column -> name.equals(column.getName()))
+                .collect(Collectors.toList());
+    }
+
     @Override
     public IColumn defaultXCol() {
         IColumn defX = columns.get(0);
