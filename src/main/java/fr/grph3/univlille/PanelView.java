@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.DataType;
 import fr.grph3.univlille.models.points.IPoint;
@@ -71,25 +70,6 @@ public class PanelView extends AbstractView {
         update();
     }
 
-	/*public void update() {
-		XYChart.Series<Number, Number> x = new XYChart.Series<>();
-		XYChart.Series<Number, Number> y = new XYChart.Series<>();
-		XYChart.Series series1 = new XYChart.Series();
-		series1.setName("Equities");
-		series1.getData().add(new XYChart.Data(0.1, 0.9));
-
-		XYChart.Series series2 = new XYChart.Series();
-		series2.setName("Mutual funds");
-		series2.getData().add(new XYChart.Data(0.3, 0.6));
-
-
-		chart.getData().addAll(series1, series2);
-		xColumnPicker.getSelectionModel().select(model.defaultXCol().getName());
-		yColumnPicker.getSelectionModel().select(model.defaultYCol().getName());
-		xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns().stream().map(IColumn::getName).collect(Collectors.toList())));
-		yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns().stream().map(IColumn::getName).collect(Collectors.toList())));
-	}*/
-
     @FXML
     public void onOpen() {
         FileChooser fileChooser = new FileChooser();
@@ -109,6 +89,16 @@ public class PanelView extends AbstractView {
     }
 
     @FXML
+    public void onXCategorySelected() {
+        drawPoints(model.getPoints());
+    }
+
+    @FXML
+    public void onYCategorySelected() {
+        drawPoints(model.getPoints());
+    }
+
+    @FXML
     public void onAddPoint() {
         Stage adpStag = new Stage();
         AddPointView addPointView = new AddPointView(stage);
@@ -125,7 +115,7 @@ public class PanelView extends AbstractView {
     }
 
     private void drawPoints(List<? extends IPoint> points) {
-        chart.getData().addAll(generateSeries(points));
+        chart.getData().setAll(generateSeries(points));
     }
 
     private List<XYChart.Series<Number, Number>> generateSeries(List<? extends IPoint> points) {
