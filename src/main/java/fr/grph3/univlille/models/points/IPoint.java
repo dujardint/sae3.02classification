@@ -18,6 +18,10 @@ public interface IPoint {
 
     Object getValue(IColumn column);
 
+    String getCategory();
+
+    void setCategory(String category);
+
     /**
      * Retourne la valeur de ce point normalisee pour la colonne en parametre.
      *

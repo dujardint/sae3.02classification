@@ -60,11 +60,13 @@ public class Iris implements IPoint {
         this.petalWidth = petalWidth;
     }
 
-    public String getVariety() {
+    @Override
+    public String getCategory() {
         return variety;
     }
 
-    public void setVariety(String variety) {
+    @Override
+    public void setCategory(String variety) {
         this.variety = variety;
     }
 
