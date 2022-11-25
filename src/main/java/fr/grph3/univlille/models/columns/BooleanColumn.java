@@ -56,4 +56,9 @@ public class BooleanColumn implements INormalizableColumn {
     public boolean isNormalizable() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

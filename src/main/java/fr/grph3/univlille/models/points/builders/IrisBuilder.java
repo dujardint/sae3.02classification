@@ -41,7 +41,7 @@ public class IrisBuilder {
         iris.setSepalWidth(sepalWidth);
         iris.setPetalLength(petalLength);
         iris.setPetalWidth(petalWidth);
-        iris.setVariety(variety);
+        iris.setCategory(variety);
         return iris;
     }
 }

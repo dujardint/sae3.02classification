@@ -76,9 +76,6 @@ public class NumberColumn implements INormalizableColumn {
 
     @Override
     public String toString() {
-        return "NumberColumn{" +
-                "name='" + name + '\'' +
-                ", values=" + values +
-                '}';
+        return name;
     }
 }
