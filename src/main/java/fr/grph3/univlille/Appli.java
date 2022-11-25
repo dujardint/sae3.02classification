@@ -63,6 +63,6 @@ public class Appli extends AbstractView {
 
 	@Override
 	public Parent loadView() {
-		return loadView("fxml/maquette.fxml");
+		return loadView("src/main/resources/views/maquette.fxml");
 	}
 }
