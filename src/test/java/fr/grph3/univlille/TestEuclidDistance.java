@@ -1,10 +1,13 @@
 package fr.grph3.univlille;
 
+import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.Titanic;
 import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.distances.EuclidDistance;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,8 +21,7 @@ public class TestEuclidDistance {
     void setUp(){
         this.model = new CSVModel<>(Titanic.class, "Titanic");
         model.loadFromFile("src/main/resources/titanicTest.csv");
-        this.distance = new EuclidDistance<>(model.getNormalizableColumns());
-        System.out.println(model.getColumns().toString());
+        this.distance = new EuclidDistance<>(model.getColumns());
     }
 
     @Test

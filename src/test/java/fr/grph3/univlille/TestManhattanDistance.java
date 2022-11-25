@@ -18,7 +18,7 @@ public class TestManhattanDistance {
     void setUp(){
         this.model = new CSVModel<>(Titanic.class, "Titanic");
         model.loadFromFile("src/main/resources/titanicTest.csv");
-        this.distance = new ManhattanDistance<>(model.getNormalizableColumns());
+        this.distance = new ManhattanDistance<>(model.getColumns());
     }
 
     @Test

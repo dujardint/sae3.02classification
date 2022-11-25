@@ -1,8 +1,5 @@
 package fr.grph3.univlille;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +9,9 @@ import org.junit.jupiter.api.Test;
 import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.KnnMethod;
-import fr.grph3.univlille.utils.MVCModel;
-import fr.grph3.univlille.utils.distances.IDistance;
 import fr.grph3.univlille.utils.distances.ManhattanDistance;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestKnnMethod {
 
@@ -31,7 +28,7 @@ public class TestKnnMethod {
         this.model = new CSVModel<>(Iris.class, "Iris");
         this.knn = new KnnMethod<>();
         model.loadFromFile("src/main/resources/irisTest.csv");
-        this.distance = new ManhattanDistance<>(model.getNormalizableColumns());
+        this.distance = new ManhattanDistance<>(model.getColumns());
     }
     
     @Test
