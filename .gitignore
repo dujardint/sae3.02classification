@@ -251,3 +251,8 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,eclipse,gradle,maven,java
+*.iml
+
+.idea/
+
+*.lock
