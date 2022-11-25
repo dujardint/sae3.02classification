@@ -20,8 +20,8 @@ public class KnnMethod<T extends IPoint> {
 		for (T p : points) {
 			double calcDist = distance.distance(point, p);
 			if (neighbours.size() > k - 1) {
-				for (T p2 : neighbours.keySet()) {
-					if (neighbours.get(p2) < calcDist) {
+				for (T p2 : new ArrayList<>(neighbours.keySet())) {
+					if (neighbours.get(p2) > calcDist) {
 						neighbours.remove(p2);
 						neighbours.put(p, calcDist);
 					}
