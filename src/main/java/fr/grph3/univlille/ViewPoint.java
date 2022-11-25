@@ -19,7 +19,7 @@ public class ViewPoint extends AbstractView {
 
 	@Override
 	public Parent loadView() {
-		return loadView("fxml/maquette.fxml");
+		return loadView("views/AddPoint.fxml");
 	}
 }
 

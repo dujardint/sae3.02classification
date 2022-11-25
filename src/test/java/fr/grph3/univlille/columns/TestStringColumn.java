@@ -1,4 +1,4 @@
-package fr.grph3.unville.Column;
+package fr.grph3.univlille.columns;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

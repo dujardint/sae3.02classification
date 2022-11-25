@@ -21,7 +21,7 @@ public abstract class AbstractView implements Initializable {
 	public abstract Parent loadView();
 
 	protected Parent loadView(String path) {
-		FileInputStream fxmlStream = null;
+		FileInputStream fxmlStream;
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setController(this);

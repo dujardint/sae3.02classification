@@ -1,24 +1,24 @@
 package fr.grph3.univlille;
-import java.io.IOException;
+
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.utils.CSVModel;
-import fr.grph3.univlille.utils.MVCModel;
+import fr.grph3.univlille.utils.ResourceUtil;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class Appli extends AbstractView {
+public class Panel extends AbstractView {
 
 	@FXML
 	private Button adPoint;
@@ -36,33 +36,34 @@ public class Appli extends AbstractView {
 	private TextField robustesse;
 
 	@FXML
-	private ScatterChart<?, ?> sc;
+	private ScatterChart<Number, Number> chart;
 
 	@FXML
 	private NumberAxis xAxis;
 
 	@FXML
-	private ComboBox<String> xColumn;
-
-	@FXML
 	private NumberAxis yAxis;
 
 	@FXML
-	private ComboBox<String> yColumn;
+	private ComboBox<String> xColumnSelector;
+
+	@FXML
+	private ComboBox<String> yColumnSelector;
 	
 	private CSVModel<Iris> model;
 
-	public Appli(Stage stage) {
+	public Panel(Stage stage) {
 		super(stage);
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		this.model = new CSVModel<>(Iris.class, "Iris");
+		this.model.loadFromFile("src/main/resources/iris.csv");
 	}
 
 	@Override
 	public Parent loadView() {
-		return loadView("fxml/maquette.fxml");
+		return loadView("src/main/resources/views/Panel.fxml");
 	}
 }

@@ -62,16 +62,16 @@ public class NumberColumn implements INormalizableColumn {
 
     public double getMin() {
         return values.stream()
-                .map(Number::doubleValue)
-                .min(Double::compareTo)
-                .orElse(0.0);
+                .mapToDouble(v -> (double) v)
+                .min()
+                .orElse(0);
     }
 
     public double getMax() {
         return values.stream()
-                .map(Number::doubleValue)
-                .max(Double::compareTo)
-                .orElse(0.0);
+                .mapToDouble(v -> (double) v)
+                .max()
+                .orElse(0);
     }
 
     @Override
