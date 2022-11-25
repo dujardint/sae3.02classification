@@ -8,7 +8,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Panel app = new Panel(stage);
+        PanelView app = new PanelView(stage);
         stage.setScene(new Scene(app.loadView()));
         stage.show();
     }

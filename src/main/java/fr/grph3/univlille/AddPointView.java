@@ -6,9 +6,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewPoint extends AbstractView {
+public class AddPointView extends AbstractView {
 
-	public ViewPoint(Stage stage) {
+	public AddPointView(Stage stage) {
 		super(stage);
 	}
 
@@ -19,7 +19,7 @@ public class ViewPoint extends AbstractView {
 
 	@Override
 	public Parent loadView() {
-		return loadView("views/AddPoint.fxml");
+		return loadView("src/main/resources/views/AddPoint.fxml");
 	}
 }
 

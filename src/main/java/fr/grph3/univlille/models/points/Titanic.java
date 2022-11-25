@@ -5,8 +5,7 @@ import com.opencsv.bean.CsvBindByName;
 import fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
-	
-	
+
 	public enum TitanicEmbarqued implements ICategoryType{
 		C, 
 		Q, 
@@ -142,7 +141,13 @@ public class Titanic implements IPoint {
         this.cabin = cabin;
     }
 
-    public void setEmbarked(String embarked) {
+    @Override
+    public String getCategory() {
+        return embarked;
+    }
+
+    @Override
+    public void setCategory(String embarked) {
         this.embarked = embarked;
     }
 

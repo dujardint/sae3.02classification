@@ -80,15 +80,15 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     }
 
     @Override
-    public IColumn defaultXCol() {
+    public INormalizableColumn defaultXCol() {
         IColumn defX = columns.get(0);
-        return defX == null ? new NullColumn() : defX;
+        return (defX == null || !defX.isNormalizable()) ? new NullColumn() : (INormalizableColumn) defX;
     }
 
     @Override
-    public IColumn defaultYCol() {
+    public INormalizableColumn defaultYCol() {
         IColumn defY = columns.get(1);
-        return defY == null ? new NullColumn() : defY;
+        return (defY == null || !defY.isNormalizable()) ? new NullColumn() : (INormalizableColumn) defY;
     }
 
     @Override
