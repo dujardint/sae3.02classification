@@ -1,11 +1,8 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.distances.IDistance;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

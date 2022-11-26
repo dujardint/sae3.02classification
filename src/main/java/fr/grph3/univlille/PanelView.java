@@ -55,6 +55,8 @@ public class PanelView extends AbstractView {
     @FXML
     private ComboBox<INormalizableColumn> yColumnPicker;
 
+    private List<XYChart.Series<Number, Number>> series;
+
     private CSVModel<? extends IPoint> model;
 
     public PanelView(Stage stage) {
@@ -123,7 +125,7 @@ public class PanelView extends AbstractView {
         INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
         INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
 
-        List<XYChart.Series<Number, Number>> series = new ArrayList<>();
+        this.series = new ArrayList<>();
 
         Map<String, List<IPoint>> links = new HashMap<>();
         for (IPoint point : points) {
