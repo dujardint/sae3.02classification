@@ -11,6 +11,7 @@ import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.KnnMethod;
 import fr.grph3.univlille.utils.distances.ManhattanDistance;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestKnnMethod {
@@ -38,6 +39,16 @@ public class TestKnnMethod {
     	points.add(model.getPoint(2));
     	
     	assertTrue(knn.getNeighbours(model.getPoint(5), 3, distance, model).containsAll(points));
+
+    }
+    
+    @Test
+    void test_classifier() {
+    	points.add(model.getPoint(0)); //Setosa
+    	points.add(model.getPoint(1)); //Setosa
+    	points.add(model.getPoint(3)); //Versicolor
+    	
+    	assertEquals("Setosa", knn.classifier(points));
 
     }
 }

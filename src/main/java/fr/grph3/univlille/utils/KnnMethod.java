@@ -4,9 +4,11 @@ import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.distances.IDistance;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class KnnMethod<T extends IPoint> {
 
@@ -28,5 +30,24 @@ public class KnnMethod<T extends IPoint> {
 			}
 		}
 		return new ArrayList<>(neighbours.keySet());
+	}
+	
+	
+	public String classifier(List<T> liste) {
+		Map<String, Integer>  occurence = new HashMap<>();
+		for (T p : liste) { 
+			occurence.putIfAbsent(p.getCategory(), 0);
+			occurence.put(p.getCategory(), occurence.get(p.getCategory())+1);
+		}
+		Entry<String,Integer> maxEntry = null;
+
+		for(Entry<String,Integer> entry : occurence.entrySet()) {
+		    if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+		        maxEntry = entry;
+		    }
+		}
+             
+		return maxEntry.getKey();
+		
 	}
 }
