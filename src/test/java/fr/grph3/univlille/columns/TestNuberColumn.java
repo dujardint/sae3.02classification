@@ -26,7 +26,7 @@ public class TestNuberColumn {
 
 	@Test
 	public void  test_to_string() {
-		assertEquals("NumberColumn{name='test', values=[]}", nb.toString());
+		assertEquals("test", nb.toString());
 	}
 
 	@Test
