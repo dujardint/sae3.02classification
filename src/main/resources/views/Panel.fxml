@@ -84,7 +84,7 @@
                   <HBox alignment="CENTER" prefHeight="53.0" prefWidth="258.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="TOP" text="Robustesse   " />
-                        <TextField fx:id="robustesse" prefHeight="26.0" prefWidth="75.0" />
+                        <TextField fx:id="robustesse" editable="false" prefHeight="26.0" prefWidth="75.0" />
                      </children>
                   </HBox>
                </children>
