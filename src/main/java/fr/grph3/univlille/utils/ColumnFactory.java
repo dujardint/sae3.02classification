@@ -19,8 +19,13 @@ public class ColumnFactory {
                 .collect(Collectors.toList());
     }
 
+    public IColumn fill(IColumn column, IPoint point) {
+        column.push(point.getValue(column));
+        return column;
+    }
+
     public IColumn fill(IColumn column, List<? extends IPoint> points) {
-        points.forEach(point -> column.push(point.getValue(column)));
+        points.forEach(point -> fill(column, point));
         return column;
     }
 

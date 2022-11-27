@@ -17,8 +17,6 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
 
     public String title;
 
-    private List<IColumn> columns;
-
     public CSVModel(Class<T> dataType, String title) {
         this.dataType = dataType;
         this.title = title;
@@ -69,12 +67,6 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     @Override
     public void loadFromString(String data) {
 
-    }
-
-    public List<IColumn> getColumnByName(String name) {
-        return columns.stream()
-                .filter(column -> name.equals(column.getName()))
-                .collect(Collectors.toList());
     }
 
     @Override

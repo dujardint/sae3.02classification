@@ -13,6 +13,10 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
     protected List<T> points;
 
+    protected List<IColumn> columns;
+
+    private ColumnFactory columnFactory;
+
     protected List<ICategory<T>> categories;
 
     public MVCModel() {
@@ -35,7 +39,7 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
         points.forEach(this::addPoint);
     }
 
-    public List<T> getPoints(){
+    public List<T> getPoints() {
         return points;
     }
 
@@ -100,13 +104,15 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
     public abstract int nbColumns();
 
     public List<IPoint> getPointsFromColumns(Number val1, Number val2, INormalizableColumn col1, INormalizableColumn col2) {
-        List<IPoint> list = new ArrayList<>();
-        for (T p : points) {
-            if (val1.doubleValue() == col1.getNormalizedValue(p.getValue(col1)) && val2.doubleValue() == col2.getNormalizedValue(p.getValue(col2))) {
-                list.add(p);
-            }
-        }
-        return list;
+        return points.stream()
+                .filter(p -> val1.doubleValue() == col1.getNormalizedValue(p.getValue(col1)) && val2.doubleValue() == col2.getNormalizedValue(p.getValue(col2)))
+                .collect(Collectors.toList());
+    }
+
+    public List<IColumn> getColumnByName(String name) {
+        return columns.stream()
+                .filter(column -> name.equals(column.getName()))
+                .collect(Collectors.toList());
     }
 
     /**

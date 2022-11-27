@@ -163,7 +163,7 @@ public class PanelView extends AbstractView {
         while (xColumnIterator.hasNext() && yColumnIterator.hasNext()) {
             XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(xColumnIterator.next()), yColumn.getNormalizedValue(yColumnIterator.next()));
             data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue != null) newValue.setOnMouseEntered(e -> displayPointData(model.getPointsFromColumns(data.getYValue(), data.getYValue(), xColumn, yColumn)));
+                if (newValue != null) newValue.setOnMouseEntered(e -> displayPointData(model.getPointsFromColumns(data.getXValue(), data.getYValue(), xColumn, yColumn)));
             });
             s.getData().add(data);
         }
