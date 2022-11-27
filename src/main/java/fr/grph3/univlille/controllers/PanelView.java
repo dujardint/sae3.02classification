@@ -135,9 +135,24 @@ public class PanelView extends AbstractView {
     @FXML
     public void onAddPoint() {
         Stage adpStag = new Stage();
-        AddPointView addPointView = new AddPointView(adpStag, this);
-        adpStag.setScene(new Scene(addPointView.loadView()));
-        adpStag.show();
+        if(csvPicker.getSelectionModel().getSelectedItem().equals("ZZIris")) { //PAS ENCORE FONCTIONEL
+        	AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
+            adpStag.setScene(new Scene(addPointView.loadView()));
+            adpStag.show();
+        }
+        
+        else if(csvPicker.getSelectionModel().getSelectedItem().equals("ZZTitanic")) {
+        	AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
+            adpStag.setScene(new Scene(addPointView.loadView()));
+            adpStag.show();
+        }
+        
+        else {
+        	AddPointView addPointView = new AddPointView(adpStag, this);
+            adpStag.setScene(new Scene(addPointView.loadView()));
+            adpStag.show();
+        }
+        
     }
 
     public void update() {
