@@ -10,12 +10,12 @@ public class IrisBuilder {
     private double petalWidth;
     private String variety;
 
-    public IrisBuilder withSepalLength(double sepalLength, double sepalWidth, double petalLength, double pet) {
+    public IrisBuilder withSepalLength(double sepalLength) {
         this.sepalLength = sepalLength;
         return this;
     }
 
-    public IrisBuilder withSepalWidth(double sepalWidth, double sepalLength) {
+    public IrisBuilder withSepalWidth(double sepalWidth) {
         this.sepalWidth = sepalWidth;
         return this;
     }

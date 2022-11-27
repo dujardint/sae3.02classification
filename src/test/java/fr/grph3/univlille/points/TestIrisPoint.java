@@ -17,6 +17,10 @@ public class TestIrisPoint {
 	
 	private Iris iris = new IrisBuilder()
 	.withPetalLength(15.0)
+	.withPetalWidth(10)
+	.withSepalLength(0)
+	.withSepalWidth(0)
+	.withVariety(null)
 	.build();
 
 
@@ -30,5 +34,11 @@ public class TestIrisPoint {
 	public void getValue() {
 		assertEquals(15.0, iris.getValue(column));
 	}
-
+	
+	@Test 
+	public void test_toString() {
+		assertEquals("Iris{sepalLength=0.0, sepalWidth=0.0, petalLength=15.0, petalWidth=10.0, variety='null'}", iris.toString());
+	}
+	
+	
 }
