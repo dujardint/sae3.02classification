@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="394.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="PassengerId :" />
+                  <Spinner fx:id="passengerId" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Survived :" />
+                  <Spinner fx:id="survived" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Pclass :" />
+                  <Spinner fx:id="pClass" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Name :" />
+                  <TextField fx:id="name" prefHeight="26.0" prefWidth="91.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Sex :" />
+                  <TextField fx:id="sex" prefHeight="26.0" prefWidth="91.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Age :" />
+                  <Spinner fx:id="age" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="SibSp :" />
+                  <Spinner fx:id="sibSp" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Parch :" />
+                  <Spinner fx:id="parch" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Ticket :" />
+                  <TextField fx:id="ticket" prefHeight="26.0" prefWidth="91.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Fare :" />
+                  <Spinner fx:id="fare" prefHeight="26.0" prefWidth="93.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="88.0" text="Cabin :" />
+                  <TextField fx:id="cabin" prefHeight="26.0" prefWidth="91.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="74.0" prefWidth="394.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Annuler" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" text="Ajouter" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="394.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un passager du Titanic en remplissant ses caractéristiques : " textAlignment="CENTER" wrappingWidth="455.81384325027466">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

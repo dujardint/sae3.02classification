@@ -132,6 +132,12 @@ public class PanelView extends AbstractView {
         drawPoints();
     }
 
+    /*
+     * ACTUELLEMENT SA DEMANDE DE SAISIR UN POINT X ET Y ET CA L'AJOUTE 
+     * J'ai rajouté pour saisir un iris et un titanic en demandant ses caracteristiques mais j'ai mis en commentaire car c'est pas fini
+     * Un objet iris ou titanic est crée, il reste a avoir sa normallisation et a l'ajouter au graphique
+     */
+    
     @FXML
     public void onAddPoint() {
         Stage adpStag = new Stage();
