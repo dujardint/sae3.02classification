@@ -2,32 +2,34 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="601.0" text="Ajouter Point" BorderPane.alignment="CENTER" />
-   </top>
    <center>
       <VBox alignment="CENTER" prefHeight="322.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="601.0" text="Ajouter Point" />
             <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="65.0" text="Xpoint :" />
-                  <TextField prefHeight="26.0" prefWidth="135.0" />
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="65.0" text="Valeur X" />
+                  <Spinner fx:id="xPointSpinner" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="70.0" text="Ypoint :" />
-                  <TextField prefHeight="26.0" prefWidth="136.0" />
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="70.0" text="Valeur Y" />
+                  <Spinner fx:id="yPointSpinner" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Ajouter " />
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="394.0" spacing="32.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onClose" text="Fermer" />
+                  <Button mnemonicParsing="false" onAction="#onAddPoint" text="Ajouter " />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

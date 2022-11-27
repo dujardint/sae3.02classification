@@ -11,7 +11,6 @@ public class Titanic implements IPoint {
 		Q, 
 		S;
 	}
-	
 
     @CsvBindByName(column = "PassengerId")
     private Double passengerId;

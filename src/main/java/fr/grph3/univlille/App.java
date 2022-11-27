@@ -1,5 +1,6 @@
 package fr.grph3.univlille;
 
+import fr.grph3.univlille.controllers.PanelView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

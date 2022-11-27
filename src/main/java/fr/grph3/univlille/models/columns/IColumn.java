@@ -1,7 +1,9 @@
 package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
+
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.
@@ -27,6 +29,8 @@ public interface IColumn {
      */
 
     IDataSet<?> getDataset();
+
+    Iterator<Object> iterator();
 
     /**
      * Indique si cette colonne est normalisable (a un <i>normaliseur</i>).

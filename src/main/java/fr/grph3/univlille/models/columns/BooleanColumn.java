@@ -5,13 +5,14 @@ import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
 import fr.grph3.univlille.utils.normalizers.INormalizer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class BooleanColumn implements INormalizableColumn {
 
     private String name;
 
-    private List<Boolean> values;
+    private List<Object> values;
 
     private INormalizer<Boolean> normalizer;
 
@@ -50,6 +51,11 @@ public class BooleanColumn implements INormalizableColumn {
     @Override
     public IDataSet<?> getDataset() {
         return null;
+    }
+
+    @Override
+    public Iterator<Object> iterator() {
+        return values.iterator();
     }
 
     @Override

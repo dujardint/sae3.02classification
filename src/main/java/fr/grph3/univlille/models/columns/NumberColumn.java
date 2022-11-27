@@ -5,14 +5,16 @@ import fr.grph3.univlille.utils.normalizers.INormalizer;
 import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class NumberColumn implements INormalizableColumn {
 
     private String name;
 
+    private List<Object> values;
+
     private INormalizer<Number> normalizer;
-    private List<Number> values;
 
     public NumberColumn(String name) {
         this.name = name;
@@ -27,7 +29,7 @@ public class NumberColumn implements INormalizableColumn {
     @Override
     public boolean push(Object value) {
         if (!(value instanceof Number)) return false;
-        return values.add((Number) value);
+        return values.add(value);
     }
 
     @Override
@@ -56,20 +58,25 @@ public class NumberColumn implements INormalizableColumn {
     }
 
     @Override
+    public Iterator<Object> iterator() {
+        return values.iterator();
+    }
+
+    @Override
     public boolean isNormalizable() {
         return true;
     }
 
     public double getMin() {
         return values.stream()
-                .mapToDouble(Number::doubleValue)
+                .mapToDouble(v -> ((Number) v).doubleValue())
                 .min()
                 .orElse(0);
     }
 
     public double getMax() {
         return values.stream()
-                .mapToDouble(Number::doubleValue)
+                .mapToDouble(v -> ((Number) v).doubleValue())
                 .max()
                 .orElse(0);
     }
