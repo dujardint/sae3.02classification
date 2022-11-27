@@ -74,6 +74,7 @@ public class PanelView extends AbstractView {
 
     public PanelView(Stage stage) {
         super(stage);
+        stage.setTitle("Classificator");
         this.modelManager = new MVCModelManager();
     }
 
