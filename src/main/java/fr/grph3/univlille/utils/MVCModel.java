@@ -65,14 +65,14 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
      * l'affichage du nuage de points.
      */
 
-    public abstract IColumn defaultXCol();
+    public abstract INormalizableColumn defaultXCol();
 
     /**
      * Retourne la colonne a utiliser par defaut pour l'axe des Y lors de
      * l'affichage du nuage de points.
      */
 
-    public abstract IColumn defaultYCol();
+    public abstract INormalizableColumn defaultYCol();
 
     public abstract List<IColumn> getColumns();
 
@@ -98,6 +98,16 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
      */
 
     public abstract int nbColumns();
+
+    public List<IPoint> getPointsFromColumns(Number val1, Number val2, INormalizableColumn col1, INormalizableColumn col2) {
+        List<IPoint> list = new ArrayList<>();
+        for (T p : points) {
+            if (val1.doubleValue() == col1.getNormalizedValue(p.getValue(col1)) && val2.doubleValue() == col2.getNormalizedValue(p.getValue(col2))) {
+                list.add(p);
+            }
+        }
+        return list;
+    }
 
     /**
      * Retourne la collection de toutes les colonnes du fr.grph3.univlille.models.DataSet dont les
