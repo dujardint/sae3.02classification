@@ -5,6 +5,7 @@ import fr.grph3.univlille.controllers.PanelView;
 import fr.grph3.univlille.models.points.Titanic;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
@@ -49,6 +50,8 @@ public class AddPointTitanicView extends AbstractView {
 	@FXML
 	private TextField cabin;
 
+	@FXML
+	private Label confirmationAdd;
 
 	private PanelView panelView;
 
@@ -59,17 +62,17 @@ public class AddPointTitanicView extends AbstractView {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		passengerId.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
-		survived.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
-		pClass.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
+		passengerId.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1000.0, 0.0, 1.0));
+		survived.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 1.0));
+		pClass.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 3.0, 0.0, 3.0));
 
 
-		age.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
-		sibSp.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
-		parch.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
+		age.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(1.0, 100.0, 0.0, 1.0));
+		sibSp.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 10.0, 0.0, 1.0));
+		parch.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 10.0, 0.0, 1.0));
 
 
-		fare.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
+		fare.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1000.0, 0.0, 0.1));
 	}
 
 	@FXML
@@ -94,7 +97,13 @@ public class AddPointTitanicView extends AbstractView {
 		titanic.setFare(fare.getValue());
 		titanic.setCabin(cabin.getText());
 		
-		System.out.println(titanic);
+		
+		System.out.println("new : " + titanic.toString());
+		
+		confirmationAdd.setText("passagé ajouté !");
+		
+		//titanic est ajouté a la liste des points du modele et le modèle se redessine
+	panelView.getModel().addPoint(titanic);
 		
 		
 	}
