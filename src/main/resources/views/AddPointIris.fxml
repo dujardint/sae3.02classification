@@ -44,7 +44,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="74.0" prefWidth="394.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Annuler" textAlignment="CENTER">
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClose" text="Annuler" textAlignment="CENTER">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
