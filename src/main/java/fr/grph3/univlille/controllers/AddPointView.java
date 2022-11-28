@@ -26,7 +26,13 @@ public class AddPointView extends AbstractView {
 		this.panelView = panelView;
 	}
 
-    @Override
+	/**
+	 * Pour toutes les colonnes passés en parametre, ajouter sois un spinner sois un text field ou une checkbox en définissant
+	 * un id avec setId correspondant au nom de la colonne à une
+	 * VBox qui est à ajouter sur la vue et ajouté avec @FXML dans le controlleur
+	 */
+
+	@Override
     public void initialize(URL location, ResourceBundle resources) {
 		xPointSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
 		yPointSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 1.0, 0.0, 0.1));
@@ -36,6 +42,11 @@ public class AddPointView extends AbstractView {
 	public void onClose() {
 		stage.close();
 	}
+
+	/**
+	 * Utiliser le String du parser pour chaque enfant de la VBox en récupérant l'id qui s'obtient avec getParser du MVCModel et remplacer chaque
+	 * ${id_enfant} par la getValue de cet enfant
+	 */
 
 	@FXML
 	public void onAddPoint() {

@@ -11,17 +11,25 @@ import java.util.stream.Collectors;
 
 public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
 
+    protected String title;
+
     protected List<T> points;
 
     protected List<IColumn> columns;
-
-    private ColumnFactory columnFactory;
-
     protected List<ICategory<T>> categories;
 
-    public MVCModel() {
+    protected IPointParser<T> parser;
+
+    public MVCModel(String title, IPointParser<T> parser) {
+        this.title = title;
+        this.parser = parser;
         this.points = new ArrayList<>();
         this.categories = new ArrayList<>();
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
     }
 
     @Override
@@ -128,6 +136,10 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
                 .filter(IColumn::isNormalizable)
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
+    }
+
+    public IPointParser<T> getParser() {
+        return parser;
     }
 
     @Override
