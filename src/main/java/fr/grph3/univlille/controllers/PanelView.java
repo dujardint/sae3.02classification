@@ -93,6 +93,7 @@ public class PanelView extends AbstractView {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        knnSlider.valueProperty().addListener((obs, oldval, newVal) -> knnSlider.setValue(Math.round(newVal.doubleValue())));
         initDefaultData();
         csvPicker.getSelectionModel().select(modelManager.names().get(0));
         csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
@@ -165,6 +166,7 @@ public class PanelView extends AbstractView {
 
     @FXML
     public void onKnn() {
+        System.out.println(knnSlider.getValue());
         robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSlider.getValue())));
     }
 
