@@ -41,7 +41,7 @@ public class KnnMethod {
 				if(tmp.size() < divisor) {
 					tmp.add(p);
 				}
-			}removeElement(tmp,0,divisor);
+			}removeElement(data,0,divisor);
 			for(IPoint p : tmp) {
 				if(p.getCategory().equals(classifier(getNeighbours(p, k, distance, data)))) {
 					wellClassified++;
@@ -52,8 +52,8 @@ public class KnnMethod {
 	}
 	
 	public void removeElement(List<IPoint> liste, int nb, int nbFin) {
-		if (nbFin > 0) {
-			liste.subList(0, nbFin).clear();
+		if (nbFin > nb) {
+			liste.subList(nb, nbFin).clear();
 		}
 	}
 	

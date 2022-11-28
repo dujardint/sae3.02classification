@@ -3,6 +3,7 @@ package fr.grph3.univlille;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.grph3.univlille.models.points.IPoint;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,38 +20,38 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestKnnMethod {
 
 	
-	private CSVModel<Iris> model;
-	private KnnMethod<Iris> knn;
+	private CSVModel model;
+	private KnnMethod knn;
 	
-	List<Iris> points = new ArrayList<>();
-	List<Iris> allPoints;
-	List<Iris> points2 = new ArrayList<>();
+	List<IPoint> points = new ArrayList<>();
+	List<IPoint> allPoints;
+	List<IPoint> points2 = new ArrayList<>();
 
-    private ManhattanDistance<Iris> distance;
+    private ManhattanDistance distance;
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel<>(Iris.class, "Iris");
-        this.knn = new KnnMethod<>();
+        this.model = new CSVModel(Iris.class, "Iris");
+        this.knn = new KnnMethod();
         model.loadFromFile("src/main/resources/irisTest.csv");
-        this.distance = new ManhattanDistance<>(model.getColumns());
+        this.distance = new ManhattanDistance(model.getColumns());
         allPoints = model.getPoints();
     }
     
     @Test
     void test_getNeighbours() {
-    	points.add(model.getPoint(9));
-    	points.add(model.getPoint(10));
-    	points.add(model.getPoint(11));
+    	points.add((Iris) model.getPoint(9));
+    	points.add((Iris) model.getPoint(10));
+    	points.add((Iris) model.getPoint(11));
     	
     	assertTrue(knn.getNeighbours(model.getPoint(0), 3, distance, allPoints).containsAll(points));
     }
     
     @Test
     void test_classifier() {
-    	points.add(model.getPoint(0)); //Setosa
-    	points.add(model.getPoint(1)); //Setosa
-    	points.add(model.getPoint(3)); //Versicolor
+    	points.add((Iris) model.getPoint(0)); //Setosa
+    	points.add((Iris) model.getPoint(1)); //Setosa
+    	points.add((Iris) model.getPoint(3)); //Versicolor
     	
     	assertEquals("Setosa", knn.classifier(points));
 
