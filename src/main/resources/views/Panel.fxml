@@ -5,7 +5,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -29,11 +28,9 @@
       </ScatterChart>
    </center>
    <left>
-      <VBox blendMode="SRC_ATOP" cache="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="813.0" prefWidth="258.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" cache="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="258.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label" />
-            <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" />
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="248.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="248.0" spacing="30.0">
                <children>
                   <VBox prefHeight="40.0" prefWidth="92.0">
                      <children>
@@ -41,7 +38,6 @@
                         <ComboBox onAction="#onXCategorySelected" prefHeight="26.0" prefWidth="108.0" fx:id="xColumnPicker" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="43.0" prefWidth="56.0" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Label prefHeight="18.0" prefWidth="48.0" text="Axis Y" />
@@ -53,21 +49,10 @@
                   <Insets bottom="20.0" top="100.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="258.0">
-               <children>
-                  <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="115.0" text="Datas référence" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="258.0">
-               <children>
-                  <CheckBox mnemonicParsing="false" text="Datas normalizer" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="25.0">
                <children>
                   <Button fx:id="bCategorisation" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Classification" textAlignment="CENTER" />
-                  <Label text="      " />
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" prefHeight="26.0" prefWidth="126.0" text="Ajouter un point" />
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" prefHeight="26.0" prefWidth="106.0" text="Ajouter un point" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="258.0">
@@ -93,6 +78,12 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="71.0" text="KNN" />
                   <Slider prefHeight="14.0" prefWidth="124.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="258.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="61.0" text="Catégorie" />
+                  <ComboBox fx:id="getCategorie" onAction="#onCategorieSelected" prefHeight="26.0" prefWidth="109.0" />
                </children>
             </HBox>
          </children>

@@ -15,26 +15,8 @@ public class ColumnFactory {
         return Arrays.stream(dataType.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(CsvBindByName.class))
                 .map(field -> getColumnByType(field.getAnnotation(CsvBindByName.class).column(), field.getType()))
-                .map(column -> fill(column, points))
+       
                 .collect(Collectors.toList());
-    }
-
-    public IColumn fill(IColumn column, IPoint point) {
-        column.push(point.getValue(column));
-        return column;
-    }
-
-    public IColumn fill(IColumn column, List<? extends IPoint> points) {
-        points.forEach(point -> fill(column, point));
-        return column;
-    }
-
-    private Object getFieldValue(String name, List<Field> fields) {
-        return fields.stream()
-                .filter(field -> field.isAnnotationPresent(CsvBindByName.class))
-                .filter(field -> name.equals(field.getAnnotation(CsvBindByName.class).column()))
-                .findAny()
-                .orElse(null);
     }
 
     private IColumn getColumnByType(String name, Class<?> type) {
