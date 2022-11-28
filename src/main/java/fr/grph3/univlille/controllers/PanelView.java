@@ -252,8 +252,14 @@ public class PanelView extends AbstractView {
     public void addPoint(double xVal, double yVal) {
         series.getData().add(new XYChart.Data<>(xVal, yVal));
     }
+    
+    
 
-    private <T> void initDefaultValue(SingleSelectionModel<T> model, T value) {
+    public MVCModel getModel() {
+		return model;
+	}
+
+	private <T> void initDefaultValue(SingleSelectionModel<T> model, T value) {
         model.select(value);
     }
 

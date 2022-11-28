@@ -6,8 +6,10 @@ import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.models.points.builders.IrisBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -27,6 +29,9 @@ public class AddPointIrisView extends AbstractView {
 	@FXML
 	private Spinner<Double> petalLength;
 
+	
+	@FXML
+	private Label confirmationAdd;
 	
 
 	private PanelView panelView;
@@ -60,8 +65,7 @@ public class AddPointIrisView extends AbstractView {
 
 	@FXML
 	public void onAddPoint() {
-		//panelView.addPoint();
-			
+		
 			Iris iris = new Iris();
 			
 			iris.setSepalLength(sepalLength.getValue());
@@ -70,11 +74,14 @@ public class AddPointIrisView extends AbstractView {
 			iris.setPetalWidth(petalLength.getValue());
 			
 			//	sepalLength.getValue(), sepalWidth.getValue(), petalWidth.getValue(),petalLength.getValue());
-			System.out.println(iris.toString());
+			System.out.println("new : " + iris.toString());
 			
-			//on cree l'iris ici puis le but est de calculer ses coordonnées et de les renvoyer dans panelView.AddPoint(x,y)
+			confirmationAdd.setText("iris ajouté !");
 			
-			//panelView.getModel().addPoint(iris);
+			//confirmationAjout.setText("new : " + iris.toString());
+			
+			//l'iris est ajouté a la liste des points du modele et le modèle se redessine
+		panelView.getModel().addPoint(iris);
 			
 	}
 
