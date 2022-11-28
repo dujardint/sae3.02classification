@@ -6,7 +6,6 @@ import java.util.*;
 
 import fr.grph3.univlille.AbstractView;
 import fr.grph3.univlille.MVCModelManager;
-import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.DataType;
 import fr.grph3.univlille.models.points.IPoint;
@@ -188,7 +187,15 @@ public class PanelView extends AbstractView {
         if (!classifyCheckBox.isSelected()) {
             XYChart.Series<Number, Number> xy = new XYChart.Series<>();
             xy.setName(model.getTitle());
-            points.forEach(p -> xy.getData().add(new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)))));
+            for (IPoint p : points) {
+                XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
+                data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        Tooltip.install(data.getNode(), new Tooltip(p.toString()));
+                    }
+                });
+                xy.getData().add(data);
+            }
             chart.getData().setAll(xy);
             return;
         }
