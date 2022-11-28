@@ -5,15 +5,8 @@ import com.opencsv.bean.CsvBindByName;
 import fr.grph3.univlille.models.columns.IColumn;
 
 public class Iris implements IPoint {
-	
-	public enum irisVariety implements ICategoryType{
-		Setosa, 
-		Versicolor , 
-		Virginica;
 
-	}
-
-    public enum Variety implements ICategoryType {
+    public enum Variety {
         SETOSA, VERSICOLOR, VIRGINICA
     }
 

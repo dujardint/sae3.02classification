@@ -6,7 +6,7 @@ import fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
 
-	public enum TitanicEmbarqued implements ICategoryType{
+	public enum TitanicEmbarqued {
 		C, 
 		Q, 
 		S;

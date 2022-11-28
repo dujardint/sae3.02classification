@@ -69,10 +69,12 @@ public class PanelView extends AbstractView {
     private ComboBox<String> classifiedByComboBox;
 
     @FXML
-    private Slider knnSlider;
+    private Spinner<Integer> knnSpinner;
 
     @FXML
     private Label pointDisplay;
+
+    private double lastKnnValue;
 
     private XYChart.Series<Number, Number> series;
 
@@ -92,11 +94,11 @@ public class PanelView extends AbstractView {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        knnSlider.valueProperty().addListener((obs, oldval, newVal) -> knnSlider.setValue(Math.round(newVal.doubleValue())));
+        knnSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 3, 1));
         initDefaultData();
         csvPicker.getSelectionModel().select(modelManager.names().get(0));
         csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
-        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSlider.getValue())));
+        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
         update();
     }
 
@@ -182,8 +184,7 @@ public class PanelView extends AbstractView {
 
     @FXML
     public void onKnn() {
-        System.out.println(knnSlider.getValue());
-        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSlider.getValue())));
+        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
     }
 
     public void update() {
@@ -230,7 +231,13 @@ public class PanelView extends AbstractView {
             XYChart.Series<Number, Number> xy = new XYChart.Series<>();
             xy.setName(category);
             links.get(category).forEach(p -> {
-                xy.getData().add(new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn))));
+                XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
+                data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        Tooltip.install(data.getNode(), new Tooltip(p.toString()));
+                    }
+                });
+                xy.getData().add(data);
             });
             series.add(xy);
         });
