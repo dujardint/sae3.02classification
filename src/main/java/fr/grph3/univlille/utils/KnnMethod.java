@@ -30,25 +30,24 @@ public class KnnMethod<T extends IPoint> {
 		return new ArrayList<>(neighbours.keySet());
 	}
 
-	public double getRobustesse(IDistance<T> distance, MVCModel<T> model) {
-		List<T> points = model.getPoints();
-		List<T> pcalcul = new ArrayList<>();
-		int divisor = points.size() / 5;
+	public double getRobustesse(IDistance<T> distance, List<T> data,int k) {
+		List<T> tmp = new ArrayList<>();
+		int divisor = data.size() / 5;
 		double wellClassified = 0; 
 		double totalClassified = 0;
 		for(int i = 0;i < 5; i++) {
-			pcalcul.clear();
-			for (T p : points) {
-				if(pcalcul.size() < divisor) {
-					pcalcul.add(p);
+			tmp.clear();
+			for (T p : data) {
+				if(tmp.size() < divisor) {
+					tmp.add(p);
 				}
-			}removeElement(points,0,divisor);
-			for(T p : pcalcul) {
-				if(p.getCategory().equals(classifier(getNeighbours(p, divisor, distance, points)))) {
+			}removeElement(data,0,divisor);
+			for(T p : tmp) {
+				if(p.getCategory().equals(classifier(getNeighbours(p, k, distance, data)))) {
 					wellClassified++;
 				}totalClassified ++;
 			}
-			addElement(points, pcalcul);
+			addElement(data, tmp);
 		}return Math.round((wellClassified/totalClassified)*100.0*100.0)/100.0;
 	}
 	

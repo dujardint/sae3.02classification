@@ -58,7 +58,7 @@ public class TestKnnMethod {
     
     @Test
     void test_getRobustesse() {
-    	assertEquals(73.33, knn.getRobustesse(distance,model),0.001); // ici 11 bon sur les 15 donc 11/15 = 73,33
+    	assertEquals(73.33, knn.getRobustesse(distance,allPoints,5),0.001); // ici 11 bon sur les 15 donc 11/15 = 73,33
     }
     
 }
