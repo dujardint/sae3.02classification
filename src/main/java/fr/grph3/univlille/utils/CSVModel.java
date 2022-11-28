@@ -6,23 +6,20 @@ import fr.grph3.univlille.models.columns.NullColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CSVModel<T extends IPoint> extends MVCModel<T> {
+public class CSVModel extends MVCModel {
 
-    private Class<T> dataType;
+    private Class<? extends IPoint> dataType;
 
-    public String title;
+    private ColumnFactory factory;
 
-    public CSVModel(Class<T> dataType,  String title) {
+    public CSVModel(Class<? extends IPoint> dataType,  String title) {
         super(title);
         this.dataType = dataType;
-        this.title = title;
-        this.columns = new ArrayList<>();
-        this.points = new ArrayList<>();
+        this.factory = new ColumnFactory();
     }
 
     @Override
@@ -35,34 +32,37 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
         return points.size();
     }
 
-    public T getPoint(int index) {
+    public IPoint getPoint(int index) {
         return points.get(index);
     }
 
-    public List<T> getPoints() {
+    public List<IPoint> getPoints() {
         return points;
     }
 
     @Override
-    public void setPoints(List<T> points) {
+    public void setPoints(List<IPoint> points) {
         this.points = points;
     }
 
     @Override
-    public void addPoint(T point) {
+    public void addPoint(IPoint point) {
         this.points.add(point);
     }
 
     @Override
-    public void addPoints(List<T> points) {
+    public void addPoints(List<IPoint> points) {
         this.points.addAll(points);
     }
 
     @Override
     public void loadFromFile(String path) {
-        ColumnFactory factory = new ColumnFactory();
-        this.points = CSVUtil.loadCSVAsFile(Path.of(path), dataType);
-        this.columns = factory.generate(dataType, points);
+        this.points = CSVUtil.loadCSVAsFile(Path.of(path), (Class<IPoint>) dataType);
+        this.columns = factory.generate(dataType, this);
+        this.normalizableColumns = getColumns().stream()
+                .filter(IColumn::isNormalizable)
+                .map(column -> (INormalizableColumn) column)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -83,14 +83,6 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     }
 
     @Override
-    public List<INormalizableColumn> getNormalizableColumns() {
-        return columns.stream()
-                .filter(IColumn::isNormalizable)
-                .map(column -> (INormalizableColumn) column)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public List<IColumn> getColumns() {
         return columns;
     }
@@ -101,7 +93,7 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<IPoint> iterator() {
         return points.iterator();
     }
 }

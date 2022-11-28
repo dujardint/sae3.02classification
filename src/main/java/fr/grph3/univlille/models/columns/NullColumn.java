@@ -1,31 +1,9 @@
 package fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.models.IDataSet;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
+public class NullColumn extends INormalizableColumn {
 
-import java.util.Collections;
-import java.util.Iterator;
-
-public class NullColumn implements INormalizableColumn {
-
-    @Override
-    public boolean push(Object value) {
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return "Null Column";
-    }
-
-    @Override
-    public IDataSet<?> getDataset() {
-        return null;
-    }
-
-    @Override
-    public Iterator<Object> iterator() {
-        return Collections.emptyIterator();
+    public NullColumn() {
+        super("Null Column", null);
     }
 
     @Override
@@ -40,11 +18,6 @@ public class NullColumn implements INormalizableColumn {
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return null;
-    }
-
-    @Override
-    public INormalizer<?> getNormalizer() {
         return null;
     }
 }

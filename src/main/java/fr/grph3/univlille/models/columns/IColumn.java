@@ -2,9 +2,6 @@ package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
 
-import java.util.Iterator;
-import java.util.List;
-
 /**
  * Decrit une <i>colonne</i> d'un fr.grph3.univlille.models.DataSet.
  *
@@ -15,25 +12,37 @@ import java.util.List;
  * Seule les colonnes <i>normalisables</i> (qui ont un normaliseur) peuvent
  * etre utilisees comme axe dans le nuage de points.
  */
-public interface IColumn {
+public abstract class IColumn {
 
-    boolean push(Object value);
+    public IColumn(String name, IDataSet dataSet) {
+        this.name = name;
+        this.dataSet = dataSet;
+    }
+
+    protected String name;
+
+    protected IDataSet dataSet;
+
+
 
     /**
      * Retourne le nom de la colonne.
      */
-    String getName();
+
+    public String getName() {
+        return name;
+    }
 
     /**
      * Retourne le fr.grph3.univlille.models.DataSet auquel cette colonne appartient.
      */
 
-    IDataSet<?> getDataset();
-
-    Iterator<Object> iterator();
+    public IDataSet getDataset() {
+        return dataSet;
+    }
 
     /**
      * Indique si cette colonne est normalisable (a un <i>normaliseur</i>).
      */
-    boolean isNormalizable();
+    public abstract boolean isNormalizable();
 }

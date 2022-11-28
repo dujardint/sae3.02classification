@@ -10,6 +10,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         PanelView app = new PanelView(stage);
+        stage.setTitle("Classificator");
         stage.setScene(new Scene(app.loadView()));
         stage.show();
     }

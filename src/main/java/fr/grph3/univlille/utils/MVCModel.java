@@ -1,6 +1,5 @@
 package fr.grph3.univlille.utils;
 
-import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
@@ -9,19 +8,19 @@ import fr.grph3.univlille.models.points.IPoint;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
+public abstract class MVCModel implements IDataSet {
 
     protected String title;
 
-    protected List<T> points;
+    protected List<IPoint> points;
 
     protected List<IColumn> columns;
-    protected List<ICategory<T>> categories;
+
+    protected List<INormalizableColumn> normalizableColumns;
 
     public MVCModel(String title) {
         this.title = title;
         this.points = new ArrayList<>();
-        this.categories = new ArrayList<>();
     }
 
     @Override
@@ -35,21 +34,22 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
     }
 
     @Override
-    public void addPoint(T point) {
-        points.add(point);
-    }
-
-    @Override
-    public void addPoints(List<T> points) {
-        points.forEach(this::addPoint);
-    }
-
-    public List<T> getPoints() {
+    public List<IPoint> getPoints() {
         return points;
     }
 
     @Override
-    public void setPoints(List<T> points) {
+    public void addPoint(IPoint point) {
+        points.add(point);
+    }
+
+    @Override
+    public void addPoints(List<IPoint> points) {
+        points.forEach(this::addPoint);
+    }
+
+    @Override
+    public void setPoints(List<IPoint> points) {
         this.points = points;
     }
 
@@ -86,22 +86,6 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
     public abstract List<IColumn> getColumns();
 
     /**
-     * Ajoute une Categorie (ou classe) de donnees au model.
-     */
-
-    public void addCategory(ICategory<T> category) {
-        categories.add(category);
-    }
-
-    /**
-     * Retourne toutes les categories du modele.
-     */
-
-    public Collection<ICategory<T>> allCategories() {
-        return categories;
-    }
-
-    /**
      * Nombre de colonnes dans le modele (egale au nombre de colonnes du
      * fr.grph3.univlille.models.DataSet associe a ce modele)
      */
@@ -129,14 +113,11 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
      */
 
     public List<INormalizableColumn> getNormalizableColumns() {
-        return getColumns().stream()
-                .filter(IColumn::isNormalizable)
-                .map(column -> (INormalizableColumn) column)
-                .collect(Collectors.toList());
+        return normalizableColumns;
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<IPoint> iterator() {
         return points.iterator();
     }
 }

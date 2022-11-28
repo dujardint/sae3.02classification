@@ -13,10 +13,10 @@ import java.util.List;
  * Pour cette raison, il n'y a pas de getter pour l'ensemble des points
  * d'un fr.grph3.univlille.models.DataSet.
  */
-public interface IDataSet<T extends IPoint> extends Iterable<T> {
+public interface IDataSet extends Iterable<IPoint> {
 
     /**
-     * Le nom du fr.grph3.univlille.models.DataSet ex: fr.grph3.univlille.models.points.Titanic, fr.grph3.univlille.models.points.Iris, Pokemon, ...
+     * Le nom du fr.grph3.univlille.models.DataSet ex: fr.grph3.univlille.models.points.IPointitanic, fr.grph3.univlille.models.points.Iris, Pokemon, ...
      */
 
     String getTitle();
@@ -27,21 +27,23 @@ public interface IDataSet<T extends IPoint> extends Iterable<T> {
 
     int getTotalPoints();
 
+    List<IPoint> getPoints();
+
     /**
      * stocke dans le fr.grph3.univlille.models.DataSet la collection de donnees passee en parametre
      */
 
-    void setPoints(List<T> points);
+    void setPoints(List<IPoint> points);
 
     /**
      * Ajoute une donnee dans le fr.grph3.univlille.models.DataSet
      */
 
-    void addPoint(T point);
+    void addPoint(IPoint point);
 
     /**
      * Ajoute une collection de donnees dans le fr.grph3.univlille.models.DataSet
      */
 
-    void addPoints(List<T> points);
+    void addPoints(List<IPoint> points);
 }

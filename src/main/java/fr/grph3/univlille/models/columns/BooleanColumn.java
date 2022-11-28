@@ -2,35 +2,19 @@ package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.utils.normalizers.BooleanNormalizer;
-import fr.grph3.univlille.utils.normalizers.INormalizer;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+public class BooleanColumn extends INormalizableColumn {
 
-public class BooleanColumn implements INormalizableColumn {
+    private BooleanNormalizer normalizer;
 
-    private String name;
-
-    private List<Object> values;
-
-    private INormalizer<Boolean> normalizer;
-
-    public BooleanColumn(String name) {
-        this.name = name;
-        this.values = new ArrayList<>();
+    public BooleanColumn(String name, IDataSet dataSet) {
+        super(name, dataSet);
         this.normalizer = new BooleanNormalizer();
     }
 
     @Override
-    public boolean push(Object value) {
-        if (!(value instanceof Boolean)) return false;
-        return values.add((Boolean) value);
-    }
-
-    @Override
     public double getNormalizedValue(Object value) {
-        return normalizer.normalize((Boolean) value);
+        return normalizer.normalize(value);
     }
 
     @Override
@@ -39,23 +23,13 @@ public class BooleanColumn implements INormalizableColumn {
     }
 
     @Override
-    public INormalizer<?> getNormalizer() {
-        return normalizer;
-    }
-
-    @Override
     public String getName() {
         return name;
     }
 
     @Override
-    public IDataSet<?> getDataset() {
-        return null;
-    }
-
-    @Override
-    public Iterator<Object> iterator() {
-        return values.iterator();
+    public IDataSet getDataset() {
+        return dataSet;
     }
 
     @Override

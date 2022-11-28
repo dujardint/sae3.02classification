@@ -2,7 +2,7 @@ package fr.grph3.univlille.utils.distances;
 
 import fr.grph3.univlille.models.points.IPoint;
 
-public interface IDistance<T extends IPoint> {
+public interface IDistance {
 
-    double distance(T p1, T p2);
+    double distance(IPoint p1, IPoint p2);
 }

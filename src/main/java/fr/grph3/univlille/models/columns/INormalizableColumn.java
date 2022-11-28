@@ -1,8 +1,12 @@
 package fr.grph3.univlille.models.columns;
 
-import fr.grph3.univlille.utils.normalizers.INormalizer;
+import fr.grph3.univlille.models.IDataSet;
 
-public interface INormalizableColumn extends IColumn {
+public abstract class INormalizableColumn extends IColumn {
+
+    public INormalizableColumn(String name, IDataSet dataSet) {
+        super(name, dataSet);
+    }
 
     /**
      * Recupere la valeur de cette colonne dans la donnee en parametre,
@@ -10,7 +14,8 @@ public interface INormalizableColumn extends IColumn {
      * Si la colonne n'est pas normalisable, le comportement n'est pas
      * definit.
      */
-    double getNormalizedValue(Object value);
+
+    public abstract double getNormalizedValue(Object value);
 
     /**
      * "Denormalise" une valeur entre 0 et 1 en une "vraie" valeur pour
@@ -19,7 +24,24 @@ public interface INormalizableColumn extends IColumn {
      * definit.
      */
 
-    Object getDenormalizedValue(double value);
+    public abstract Object getDenormalizedValue(double value);
 
-    INormalizer<?> getNormalizer();
+    public double getMin() {
+        return dataSet.getPoints()
+                .stream()
+                .map(point -> ((Number) point.getValue(this)))
+                .mapToDouble(Number::doubleValue)
+                .min()
+                .orElse(0);
+
+    }
+
+    public double getMax() {
+        return dataSet.getPoints()
+                .stream()
+                .map(point -> ((Number) point.getValue(this)))
+                .mapToDouble(Number::doubleValue)
+                .max()
+                .orElse(0);
+    }
 }

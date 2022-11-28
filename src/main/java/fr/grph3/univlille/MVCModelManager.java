@@ -1,10 +1,10 @@
 package fr.grph3.univlille;
 
-import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.MVCModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Exalow on 26/11/2022 at 15:26
@@ -12,40 +12,47 @@ import java.util.List;
 
 public class MVCModelManager {
 
-    private List<MVCModel<? extends IPoint>> models;
+    private List<MVCModel> models;
 
-    private MVCModel<? extends IPoint> currentModel;
+    private MVCModel currentModel;
 
     public MVCModelManager() {
         this.models = new ArrayList<>();
     }
 
-    public void switchModel(String title) {
-        this.currentModel = findModelByTitle(title);
+    public MVCModel switchModel(String title) {
+        return this.currentModel = findModelByTitle(title);
     }
 
-    public boolean subscribe(String title, MVCModel<? extends IPoint> model, boolean replace) {
-        if (findModelByTitle(title) != null && !replace) return false;
+    public boolean subscribe(MVCModel model, String path, boolean replace) {
+        if (findModelByTitle(model.getTitle()) != null && !replace) return false;
+        model.loadFromFile(path);
         models.add(model);
         return true;
     }
 
-    private MVCModel<? extends IPoint> findModelByTitle(String title) {
+    public boolean subscribe(MVCModel model, String path) {
+        return subscribe(model, path, false);
+    }
+
+    private MVCModel findModelByTitle(String title) {
         return models.stream()
                 .filter(m -> title.equals(m.getTitle()))
                 .findFirst()
                 .orElse(null);
     }
 
-    public boolean subscribe(String title, MVCModel<? extends IPoint> model) {
-        return subscribe(title, model, false);
+    public List<String> names() {
+        return models.stream()
+                .map(MVCModel::getTitle)
+                .collect(Collectors.toList());
     }
 
-    public List<MVCModel<? extends IPoint>> getModels() {
-        return models;
-    }
-
-    public MVCModel<? extends IPoint> getCurrentModel() {
+    public MVCModel getCurrentModel() {
         return currentModel;
+    }
+
+    public List<MVCModel> getModels() {
+        return models;
     }
 }

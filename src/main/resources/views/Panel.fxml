@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -16,17 +17,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <ScatterChart fx:id="chart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="622.0" BorderPane.alignment="CENTER">
-        <xAxis>
-          <NumberAxis autoRanging="false" lowerBound="0" prefHeight="35.0" prefWidth="639.0" side="BOTTOM" tickUnit="0.1" upperBound="1.0" fx:id="xAxis" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis fx:id="yAxis" autoRanging="false" lowerBound="0" prefHeight="536.0" prefWidth="30.0" side="LEFT" tickUnit="0.1" upperBound="1" />
-        </yAxis>
-      </ScatterChart>
-   </center>
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox alignment="TOP_CENTER" blendMode="SRC_ATOP" cache="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="258.0" BorderPane.alignment="CENTER">
          <children>
@@ -51,7 +42,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="25.0">
                <children>
-                  <Button fx:id="bCategorisation" mnemonicParsing="false" prefHeight="26.0" prefWidth="95.0" text="Classification" textAlignment="CENTER" />
+                  <CheckBox fx:id="classifyCheckBox" mnemonicParsing="false" onAction="#onClassify" text="Classify" />
                   <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" prefHeight="26.0" prefWidth="106.0" text="Ajouter un point" />
                </children>
             </HBox>
@@ -69,7 +60,7 @@
                   <HBox alignment="CENTER" prefHeight="53.0" prefWidth="258.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="TOP" text="Robustesse   " />
-                        <TextField fx:id="robustesse" editable="false" prefHeight="26.0" prefWidth="75.0" />
+                        <TextField fx:id="robustness" editable="false" prefHeight="26.0" prefWidth="75.0" />
                      </children>
                   </HBox>
                </children>
@@ -77,13 +68,13 @@
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="71.0" text="KNN" />
-                  <Slider prefHeight="14.0" prefWidth="124.0" />
+                  <Slider fx:id="knnSlider" blockIncrement="1.0" max="10.0" min="3.0" onMouseDragged="#onKnn" prefHeight="14.0" prefWidth="124.0" showTickLabels="true" showTickMarks="true" value="3.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="258.0" spacing="15.0">
                <children>
                   <Label prefHeight="18.0" prefWidth="61.0" text="Catégorie" />
-                  <ComboBox fx:id="getCategorie" onAction="#onCategorieSelected" prefHeight="26.0" prefWidth="109.0" />
+                  <ComboBox fx:id="classifiedByComboBox" prefHeight="26.0" prefWidth="109.0" />
                </children>
             </HBox>
          </children>
@@ -117,4 +108,14 @@
    <bottom>
       <Label fx:id="pointDisplay" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="906.0" BorderPane.alignment="CENTER" />
    </bottom>
+   <center>
+      <ScatterChart fx:id="chart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="622.0" BorderPane.alignment="CENTER">
+        <xAxis>
+          <NumberAxis autoRanging="false" lowerBound="0" prefHeight="35.0" prefWidth="639.0" side="BOTTOM" tickUnit="0.1" upperBound="1.1" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" autoRanging="false" lowerBound="0" prefHeight="536.0" prefWidth="30.0" side="LEFT" tickUnit="0.1" upperBound="1.1" />
+        </yAxis>
+      </ScatterChart>
+   </center>
 </BorderPane>

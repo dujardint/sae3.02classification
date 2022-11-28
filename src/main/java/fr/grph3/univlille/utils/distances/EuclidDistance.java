@@ -5,7 +5,7 @@ import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.List;
 
-public class EuclidDistance<T extends IPoint> implements IDistance<T> {
+public class EuclidDistance implements IDistance {
 
     private final List<IColumn> columns;
 

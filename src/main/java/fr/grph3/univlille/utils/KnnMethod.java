@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class KnnMethod<T extends IPoint> {
+public class KnnMethod {
 
-	public List<T> getNeighbours(T point, int k, IDistance<T> distance, List<T> points) {
+	public List<IPoint> getNeighbours(IPoint point, double k, IDistance distance, List<IPoint> points) {
 		points.remove(point);
-		Map<T, Double>  neighbours = new HashMap<>();
-		for (T p : points) {
+		Map<IPoint, Double>  neighbours = new HashMap<>();
+		for (IPoint p : points) {
 			double calcDist = distance.distance(point, p);
 			if (neighbours.size() > k - 1) {
-				for (T p2 : new ArrayList<>(neighbours.keySet())) {
+				for (IPoint p2 : new ArrayList<>(neighbours.keySet())) {
 					if (neighbours.get(p2) > calcDist) {
 						neighbours.remove(p2);
 						neighbours.put(p, calcDist);
@@ -30,19 +30,19 @@ public class KnnMethod<T extends IPoint> {
 		return new ArrayList<>(neighbours.keySet());
 	}
 
-	public double getRobustesse(IDistance<T> distance, List<T> data,int k) {
-		List<T> tmp = new ArrayList<>();
+	public double getRobustesse(IDistance distance, List<IPoint> data, double k) {
+		List<IPoint> tmp = new ArrayList<>();
 		int divisor = data.size() / 5;
 		double wellClassified = 0; 
 		double totalClassified = 0;
 		for(int i = 0;i < 5; i++) {
 			tmp.clear();
-			for (T p : data) {
+			for (IPoint p : data) {
 				if(tmp.size() < divisor) {
 					tmp.add(p);
 				}
-			}removeElement(data,0,divisor);
-			for(T p : tmp) {
+			}removeElement(tmp,0,divisor);
+			for(IPoint p : tmp) {
 				if(p.getCategory().equals(classifier(getNeighbours(p, k, distance, data)))) {
 					wellClassified++;
 				}totalClassified ++;
@@ -51,21 +51,19 @@ public class KnnMethod<T extends IPoint> {
 		}return Math.round((wellClassified/totalClassified)*100.0*100.0)/100.0;
 	}
 	
-	public void removeElement(List<T> liste, int nb, int nbFin) {
-		for(int i = nbFin - 1; i >= 0; i--) {
-			liste.remove(i);
+	public void removeElement(List<IPoint> liste, int nb, int nbFin) {
+		if (nbFin > 0) {
+			liste.subList(0, nbFin).clear();
 		}
 	}
 	
-	public void addElement(List<T> listeToAdd, List<T> listeToPick) {
-		for(T p : listeToPick) {
-			listeToAdd.add(p);
-		}
+	public void addElement(List<IPoint> listeIPointoAdd, List<IPoint> listeIPointoPick) {
+		listeIPointoAdd.addAll(listeIPointoPick);
 	}
 	
-	public String classifier(List<T> liste) {
+	public String classifier(List<IPoint> liste) {
 		Map<String, Integer>  occurence = new HashMap<>();
-		for (T p : liste) { 
+		for (IPoint p : liste) { 
 			occurence.putIfAbsent(p.getCategory(), 0);
 			occurence.put(p.getCategory(), occurence.get(p.getCategory())+1);
 		}
