@@ -17,8 +17,8 @@ public class CSVModel<T extends IPoint> extends MVCModel<T> {
 
     public String title;
 
-    public CSVModel(Class<T> dataType,  String title, IPointParser<T> parser) {
-        super(title, parser);
+    public CSVModel(Class<T> dataType,  String title) {
+        super(title);
         this.dataType = dataType;
         this.title = title;
         this.columns = new ArrayList<>();

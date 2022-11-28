@@ -18,11 +18,8 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
     protected List<IColumn> columns;
     protected List<ICategory<T>> categories;
 
-    protected IPointParser<T> parser;
-
-    public MVCModel(String title, IPointParser<T> parser) {
+    public MVCModel(String title) {
         this.title = title;
-        this.parser = parser;
         this.points = new ArrayList<>();
         this.categories = new ArrayList<>();
     }
@@ -136,10 +133,6 @@ public abstract class MVCModel<T extends IPoint> implements IDataSet<T> {
                 .filter(IColumn::isNormalizable)
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
-    }
-
-    public IPointParser<T> getParser() {
-        return parser;
     }
 
     @Override
