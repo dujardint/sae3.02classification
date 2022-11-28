@@ -29,254 +29,265 @@ import javafx.stage.Stage;
 
 public class PanelView extends AbstractView {
 
-    @FXML
-    private BorderPane root;
+	@FXML
+	private BorderPane root;
 
-    @FXML
-    private Button adPoint;
+	@FXML
+	private Button adPoint;
 
-    @FXML
-    private Button bCategorisation;
+	@FXML
+	private Button bCategorisation;
 
-    @FXML
-    private ComboBox<String> csvPicker;
+	@FXML
+	private ComboBox<String> csvPicker;
 
-    @FXML
-    private TextField knn;
+	@FXML
+	private TextField knn;
 
-    @FXML
-    private TextField robustness;
+	@FXML
+	private TextField robustness;
 
-    @FXML
-    private ScatterChart<Number, Number> chart;
+	@FXML
+	private ScatterChart<Number, Number> chart;
 
-    @FXML
-    private NumberAxis xAxis;
+	@FXML
+	private NumberAxis xAxis;
 
-    @FXML
-    private NumberAxis yAxis;
+	@FXML
+	private NumberAxis yAxis;
 
-    @FXML
-    private ComboBox<INormalizableColumn> xColumnPicker;
+	@FXML
+	private ComboBox<INormalizableColumn> xColumnPicker;
 
-    @FXML
-    private ComboBox<INormalizableColumn> yColumnPicker;
+	@FXML
+	private ComboBox<INormalizableColumn> yColumnPicker;
 
-    @FXML
-    private CheckBox classifyCheckBox;
+	@FXML
+	private CheckBox classifyCheckBox;
 
-    @FXML
-    private ComboBox<String> classifiedByComboBox;
+	@FXML
+	private ComboBox<String> classifiedByComboBox;
 
-    @FXML
-    private Spinner<Integer> knnSpinner;
+	@FXML
+	private Spinner<Integer> knnSpinner;
 
-    @FXML
-    private Label pointDisplay;
+	@FXML
+	private Label pointDisplay;
 
-    private double lastKnnValue;
+	private double lastKnnValue;
 
-    private XYChart.Series<Number, Number> series;
+	private XYChart.Series<Number, Number> series;
 
-    private List<XYChart.Series<Number, Number>> allSeries;
+	private List<XYChart.Series<Number, Number>> allSeries;
 
-    private MVCModel model;
+	private MVCModel model;
 
-    private MVCModelManager modelManager;
+	private MVCModelManager modelManager;
 
-    private KnnMethod knnMethod;
+	private KnnMethod knnMethod;
 
-    public PanelView(Stage stage) {
-        super(stage);
-        this.modelManager = new MVCModelManager();
-        this.knnMethod = new KnnMethod();
-    }
+	public PanelView(Stage stage) {
+		super(stage);
+		this.modelManager = new MVCModelManager();
+		this.knnMethod = new KnnMethod();
+	}
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        knnSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 3, 1));
-        initDefaultData();
-        csvPicker.getSelectionModel().select(modelManager.names().get(0));
-        csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
-        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
-        update();
-    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		knnSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 3, 1));
+		initDefaultData();
+		csvPicker.getSelectionModel().select(modelManager.names().get(0));
+		csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
+		robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
+		update();
+	}
 
-    private void initDefaultData() {
-        CSVModel irisCSVModel = new CSVModel(Iris.class, "Default Iris");
-        CSVModel titanicCSVModel = new CSVModel(Titanic.class, "Default Titanic");
-        modelManager.subscribe(irisCSVModel, "src/main/resources/iris.csv");
-        modelManager.subscribe(titanicCSVModel, "src/main/resources/titanic.csv");
-        this.model = modelManager.switchModel("Default Iris");
-    }
+	private void initDefaultData() {
+		CSVModel irisCSVModel = new CSVModel(Iris.class, "Default Iris");
+		CSVModel titanicCSVModel = new CSVModel(Titanic.class, "Default Titanic");
+		modelManager.subscribe(irisCSVModel, "src/main/resources/iris.csv");
+		modelManager.subscribe(titanicCSVModel, "src/main/resources/titanic.csv");
+		this.model = modelManager.switchModel("Default Iris");
+	}
 
-    @FXML
-    public void onOpen() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select data csv");
-        File selectedCsv = fileChooser.showOpenDialog(stage);
-        DataType type = extractDataType(selectedCsv);
-        if (type == null) return;
-        model.loadFromFile(selectedCsv.getPath());
-        stage.setTitle(selectedCsv.getName());
-        update();
-        drawPoints();
-    }
+	@FXML
+	public void onOpen() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Select data csv");
+		File selectedCsv = fileChooser.showOpenDialog(stage);
+		DataType type = extractDataType(selectedCsv);
+		if (type == null) return;
+		model.loadFromFile(selectedCsv.getPath());
+		stage.setTitle(selectedCsv.getName());
+		update();
+		drawPoints();
+	}
 
-    @FXML
-    public void onClose() {
-        System.exit(0);
-    }
+	@FXML
+	public void onClose() {
+		System.exit(0);
+	}
 
-    @FXML
-    public void onDataTypeSelected() {
-        String title = csvPicker.getSelectionModel().getSelectedItem();
-        this.model = modelManager.switchModel(title);
-        xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
-        yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
-        initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
-        initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
-        drawPoints();
-    }
+	@FXML
+	public void onDataTypeSelected() {
+		String title = csvPicker.getSelectionModel().getSelectedItem();
+		this.model = modelManager.switchModel(title);
+		xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
+		yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
+		initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
+		initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
+		drawPoints();
+	}
 
-    @FXML
-    public void onXCategorySelected() {
-        drawPoints();
-    }
+	@FXML
+	public void onXCategorySelected() {
+		drawPoints();
+	}
 
-    @FXML
-    public void onYCategorySelected() {
-        drawPoints();
-    }
+	@FXML
+	public void onYCategorySelected() {
+		drawPoints();
+	}
 
-    /*
-     * ACTUELLEMENT SA DEMANDE DE SAISIR UN POINT X ET Y ET CA L'AJOUTE
-     * J'ai rajouté pour saisir un iris et un titanic en demandant ses caracteristiques mais j'ai mis en commentaire car c'est pas fini
-     * Un objet iris ou titanic est crée, il reste a avoir sa normallisation et a l'ajouter au graphique
-     */
+	/*
+	 * ACTUELLEMENT SA DEMANDE DE SAISIR UN POINT X ET Y ET CA L'AJOUTE
+	 * J'ai rajouté pour saisir un iris et un titanic en demandant ses caracteristiques mais j'ai mis en commentaire car c'est pas fini
+	 * Un objet iris ou titanic est crée, il reste a avoir sa normallisation et a l'ajouter au graphique
+	 */
 
-    @FXML
-    public void onAddPoint() {
-    	Stage adpStag = new Stage();
-        if(csvPicker.getSelectionModel().getSelectedItem().contains("Iris")) { //PAS ENCORE FONCTIONEL
-        	AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
-            adpStag.setScene(new Scene(addPointView.loadView()));
-            adpStag.show();
-        }
-        
-        else if(csvPicker.getSelectionModel().getSelectedItem().contains("Titanic")) {
-        	AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
-            adpStag.setScene(new Scene(addPointView.loadView()));
-            adpStag.show();
-        }
-        
-        else {
-        	AddPointView addPointView = new AddPointView(adpStag, this);
-            adpStag.setScene(new Scene(addPointView.loadView()));
-            adpStag.show();
-        }
-    }
+	@FXML
+	public void onAddPoint() {
+		Stage adpStag = new Stage();
+		if(csvPicker.getSelectionModel().getSelectedItem().contains("Iris")) { //PAS ENCORE FONCTIONEL
+			AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
 
-    @FXML
-    public void onClassify() {
-        drawPoints();
-    }
+		else if(csvPicker.getSelectionModel().getSelectedItem().contains("Titanic")) {
+			AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
 
-    @FXML
-    public void onKnn() {
-        robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
-    }
+		else {
+			AddPointView addPointView = new AddPointView(adpStag, this);
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
+	}
 
-    public void update() {
-        xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
-        yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
-        initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
-        initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
-        drawPoints();
-    }
+	@FXML
+	public void onClassify() {
+		drawPoints();
+	}
 
-    private void drawPoints() {
+	@FXML
+	public void onKnn() {
+		robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
+	}
 
-        List<IPoint> points = model.getPoints();
+	public void update() {
+		xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
+		yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
+		initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
+		initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
+		drawPoints();
+	}
 
-        INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
-        INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
+	private void drawPoints() {
 
-        if (!classifyCheckBox.isSelected()) {
-            XYChart.Series<Number, Number> xy = new XYChart.Series<>();
-            xy.setName(model.getTitle());
-            for (IPoint p : points) {
-                XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
-                data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        Tooltip.install(data.getNode(), new Tooltip(p.toString()));
-                    }
-                });
-                xy.getData().add(data);
-            }
-            chart.getData().setAll(xy);
-            return;
-        }
+		List<IPoint> points = model.getPoints();
 
-        List<XYChart.Series<Number, Number>> series = new ArrayList<>();
+		INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
+		INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
 
-        Map<String, List<IPoint>> links = new HashMap<>();
-        for (IPoint point : points) {
-            String category = point.getCategory();
-            if (!links.containsKey(category)) links.put(category, new ArrayList<>());
-            links.get(point.getCategory()).add(point);
-        }
-        List<String> categories = new ArrayList<>(links.keySet());
-        categories.forEach(category -> {
-            XYChart.Series<Number, Number> xy = new XYChart.Series<>();
-            xy.setName(category);
-            links.get(category).forEach(p -> {
-                XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
-                data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        Tooltip.install(data.getNode(), new Tooltip(p.toString()));
-                    }
-                });
-                xy.getData().add(data);
-            });
-            series.add(xy);
-        });
+		if (!classifyCheckBox.isSelected()) {
+			XYChart.Series<Number, Number> xy = new XYChart.Series<>();
+			xy.setName(model.getTitle());
+			for (IPoint p : points) {
+				XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
+				data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+					if (newValue != null) {
+						Tooltip.install(data.getNode(), new Tooltip(p.toString()));
+					}
+				});
+				xy.getData().add(data);
+			}
+			chart.getData().setAll(xy);
+			return;
+		}
 
-        chart.setData(FXCollections.observableList(series));
-    }
+		List<XYChart.Series<Number, Number>> series = new ArrayList<>();
 
-    private void displayPointData(List<IPoint> points) {
-        pointDisplay.setText(points.toString());
-    }
+		Map<String, List<IPoint>> links = new HashMap<>();
+		for (IPoint point : points) {
+			String category = point.getCategory();
+			if (!links.containsKey(category)) links.put(category, new ArrayList<>());
+			links.get(point.getCategory()).add(point);
+		}
+		List<String> categories = new ArrayList<>(links.keySet());
+		categories.forEach(category -> {
+			XYChart.Series<Number, Number> xy = new XYChart.Series<>();
+			xy.setName(category);
+			links.get(category).forEach(p -> {
+				XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
+				data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+					if (newValue != null) {
+						Tooltip.install(data.getNode(), new Tooltip(p.toString()));
+					}
+				});
+				xy.getData().add(data);
+			});
+			series.add(xy);
+		});
 
-    public void addPoint(double xVal, double yVal) {
-        series.getData().add(new XYChart.Data<>(xVal, yVal));
-    }
-    
-    
+		chart.setData(FXCollections.observableList(series));
+	}
 
-    public MVCModel getModel() {
+	private void displayPointData(List<IPoint> points) {
+		pointDisplay.setText(points.toString());
+	}
+
+	public void addPoint(double xVal, double yVal) {
+		series.getData().add(new XYChart.Data<>(xVal, yVal));
+	}
+
+
+
+	public MVCModel getModel() {
 		return model;
 	}
 
 	private <T> void initDefaultValue(SingleSelectionModel<T> model, T value) {
-        model.select(value);
-    }
+		model.select(value);
+	}
 
-    private DataType extractDataType(File file) {
-        String name = file.getName()
-                .split("\\.")[0]
-                .toUpperCase();
-        try {
-            return DataType.valueOf(name);
-        } catch (IllegalArgumentException e) {
-            //e.printStackTrace();
-        }
-        return null;
-    }
+	private DataType extractDataType(File file) {
+		String name = file.getName()
+				.split("\\.")[0]
+						.toUpperCase();
+		try {
+			return DataType.valueOf(name);
+		} catch (IllegalArgumentException e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
 
-    @Override
-    public Parent loadView() {
-        return loadView("src/main/resources/views/Panel.fxml");
-    }
+	@Override
+	public Parent loadView() {
+		return loadView("src/main/resources/views/Panel.fxml");
+	}
+
+
+
+	@FXML
+	public void onAbout() {
+		Stage adpStag = new Stage();
+		AboutView aboutView = new AboutView(adpStag); //la nouvelle vue
+		adpStag.setScene(new Scene(aboutView.loadView()));
+		adpStag.show();
+	}
+
 }
