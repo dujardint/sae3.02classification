@@ -6,6 +6,7 @@ import java.util.*;
 
 import fr.grph3.univlille.AbstractView;
 import fr.grph3.univlille.MVCModelManager;
+import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.DataType;
 import fr.grph3.univlille.models.points.IPoint;
@@ -66,7 +67,7 @@ public class PanelView extends AbstractView {
     private CheckBox classifyCheckBox;
 
     @FXML
-    private ComboBox<String> classifiedByComboBox;
+    private ComboBox<ICategory> classifiedByComboBox;
 
     @FXML
     private Spinner<Integer> knnSpinner;
@@ -136,6 +137,7 @@ public class PanelView extends AbstractView {
         yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
         initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
         initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
+        classifiedByComboBox.setItems(FXCollections.observableList(model.getCategories()));
         drawPoints();
     }
 

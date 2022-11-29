@@ -57,7 +57,7 @@ public class CSVModel extends MVCModel {
 
     @Override
     public void loadFromFile(String path) {
-        this.points = CSVUtil.loadCSVAsFile(Path.of(path), (Class<IPoint>) dataType);
+        this.setPoints(CSVUtil.loadCSVAsFile(Path.of(path), (Class<IPoint>) dataType));
         this.columns = factory.generate(dataType, this);
         this.normalizableColumns = getColumns().stream()
                 .filter(IColumn::isNormalizable)
