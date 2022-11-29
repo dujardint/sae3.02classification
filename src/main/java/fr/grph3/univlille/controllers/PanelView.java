@@ -283,6 +283,9 @@ public class PanelView extends AbstractView {
 	}
 
 
+	public int getKnnSpinnerValueInt() {
+		return knnSpinner.getValue();
+	}
 
 	@FXML
 	public void onAbout() {
