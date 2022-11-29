@@ -162,19 +162,18 @@ public class Titanic implements IPoint {
 
     @Override
     public String toString() {
-        return "Titanic{" +
+        return 
                 "passengerId=" + passengerId +
-                ", survived=" + survived +
-                ", pclass=" + pClass +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", age=" + age +
-                ", sibSp=" + sibSp +
-                ", parch=" + parch +
-                ", ticket='" + ticket + '\'' +
-                ", fare=" + fare +
-                ", cabin='" + cabin + '\'' +
-                ", embarked='" + embarked + '\'' +
-                '}';
+                "\nsurvived=" + survived +
+                "\npclass=" + pClass +
+                "\nname=" + name +
+                "\nsex=" + sex  +
+                "\nage=" + age +
+                "\nsibSp=" + sibSp +
+                "\nparch=" + parch +
+                "\nticket=" + ticket +
+                "\nfare=" + fare +
+                "\ncabin=" + cabin +
+                "\nembarked=" + embarked.toUpperCase();
     }
 }
