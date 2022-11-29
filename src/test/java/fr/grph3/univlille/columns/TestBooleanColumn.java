@@ -3,13 +3,15 @@ package fr.grph3.univlille.columns;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.BooleanColumn;
 import org.junit.jupiter.api.Test;
 
 
 public class TestBooleanColumn {
 
-    BooleanColumn col = new BooleanColumn("Test");
+	private IDataSet id;
+    private BooleanColumn col = new BooleanColumn("Test", id);
 
     @Test
     public void test_get_normalized_value() {
@@ -34,18 +36,13 @@ public class TestBooleanColumn {
     }
     
     @Test
-    public void test_push() {
-    	assertEquals(true,col.push(true));
-    }
-    
-    @Test
     public void test_get_dataset() {
     	assertEquals(null,col.getDataset());
     }
     
     @Test
     public void test_get_normalizer() {
-    	assertEquals(0,col.getNormalizer());
+    	assertEquals(null,col.getNormalizer());
     }
 
 }

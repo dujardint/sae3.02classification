@@ -41,4 +41,9 @@ public class BooleanColumn extends INormalizableColumn {
     public String toString() {
         return name;
     }
+
+	public Integer getNormalizer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

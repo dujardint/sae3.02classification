@@ -75,12 +75,11 @@ public class Iris implements IPoint {
 
     @Override
     public String toString() {
-        return "Iris{" +
-                "sepalLength=" + sepalLength +
-                ", sepalWidth=" + sepalWidth +
-                ", petalLength=" + petalLength +
-                ", petalWidth=" + petalWidth +
-                ", variety='" + variety + '\'' +
-                '}';
+        return 
+                "sepalLength = " + sepalLength + 
+                " \nsepalWidth  = " + sepalWidth +
+                " \npetalLength = " + petalLength +
+                " \npetalWidth  = " + petalWidth +
+                " \nVariety = " + variety.toUpperCase();
     }
 }

@@ -10,15 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestManhattanDistance {
 
-    private CSVModel<Titanic> model;
+    private CSVModel model;
 
-    private ManhattanDistance<Titanic> distance;
+    private ManhattanDistance distance;
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel<>(Titanic.class, "Titanic");
+        this.model = new CSVModel(Titanic.class, "Titanic");
         model.loadFromFile("src/main/resources/titanicTest.csv");
-        this.distance = new ManhattanDistance<>(model.getColumns());
+        this.distance = new ManhattanDistance(model.getColumns());
     }
 
     @Test

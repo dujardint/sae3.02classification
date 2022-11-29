@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="322.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cette application a été créee lors de la SAE 3.02 DEVELOPPEMENT APPLI : CLASSIFICATION " textAlignment="JUSTIFY" wrappingWidth="267" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Le but de ce projet était de développer un outil de chargement, classification, affichage, et consultation d'un ensemble de données csv." textAlignment="JUSTIFY" wrappingWidth="267" />
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="394.0" spacing="32.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onClose" text="Fermer" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

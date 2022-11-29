@@ -78,6 +78,10 @@ public class AddPointIrisView extends AbstractView {
 			
 			confirmationAdd.setText("iris ajouté !");
 			
+			
+			
+			//iris.setCategory();
+			
 			//confirmationAjout.setText("new : " + iris.toString());
 			
 			//l'iris est ajouté a la liste des points du modele et le modèle se redessine
