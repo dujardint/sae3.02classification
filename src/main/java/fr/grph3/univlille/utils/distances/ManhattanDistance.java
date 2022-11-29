@@ -28,6 +28,6 @@ public class ManhattanDistance implements IDistance {
                 distance += p1.getValue(column).equals(p2.getValue(column)) ? 0 : 1;
             }
         }
-        return Math.sqrt(distance);
+        return distance;
     }
 }
