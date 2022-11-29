@@ -63,6 +63,7 @@ public class CSVModel extends MVCModel {
                 .filter(IColumn::isNormalizable)
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
+        classify(points);
     }
 
     @Override

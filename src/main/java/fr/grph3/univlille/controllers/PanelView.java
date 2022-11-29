@@ -6,6 +6,7 @@ import java.util.*;
 
 import fr.grph3.univlille.AbstractView;
 import fr.grph3.univlille.MVCModelManager;
+import fr.grph3.univlille.models.categories.Category;
 import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.DataType;
@@ -16,11 +17,12 @@ import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.KnnMethod;
 import fr.grph3.univlille.utils.MVCModel;
 import fr.grph3.univlille.utils.distances.EuclidDistance;
+import fr.grph3.univlille.utils.distances.IDistance;
+import fr.grph3.univlille.utils.distances.ManhattanDistance;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -34,28 +36,13 @@ public class PanelView extends AbstractView {
 	private BorderPane root;
 
 	@FXML
-	private Button adPoint;
-
-	@FXML
-	private Button bCategorisation;
-
-	@FXML
 	private ComboBox<String> csvPicker;
-
-	@FXML
-	private TextField knn;
 
 	@FXML
 	private TextField robustness;
 
 	@FXML
 	private ScatterChart<Number, Number> chart;
-
-	@FXML
-	private NumberAxis xAxis;
-
-	@FXML
-	private NumberAxis yAxis;
 
 	@FXML
 	private ComboBox<INormalizableColumn> xColumnPicker;
@@ -70,14 +57,12 @@ public class PanelView extends AbstractView {
     private ComboBox<ICategory> classifiedByComboBox;
 
 	@FXML
-	private Spinner<Integer> knnSpinner;
+	private ComboBox<String> distancesComboBox;
 
 	@FXML
-	private Label pointDisplay;
+	private Spinner<Integer> knnSpinner;
 
 	private double lastKnnValue;
-
-	private XYChart.Series<Number, Number> series;
 
 	private List<XYChart.Series<Number, Number>> allSeries;
 
@@ -87,6 +72,8 @@ public class PanelView extends AbstractView {
 
 	private KnnMethod knnMethod;
 
+	private ICategory selectedCategory;
+
 	public PanelView(Stage stage) {
 		super(stage);
 		this.modelManager = new MVCModelManager();
@@ -95,12 +82,15 @@ public class PanelView extends AbstractView {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		this.selectedCategory = new Category("ALL");
 		knnSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 3, 1));
 		initDefaultData();
 		csvPicker.getSelectionModel().select(modelManager.names().get(0));
 		csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
-		robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
-		update();
+		distancesComboBox.setItems(FXCollections.observableList(Arrays.asList("Euclid", "Manhattan")));
+		initDefaultValue(distancesComboBox.getSelectionModel(), "Euclid");
+		onKnn();
+		onDataTypeSelected();
 	}
 
 	private void initDefaultData() {
@@ -120,8 +110,14 @@ public class PanelView extends AbstractView {
 		if (type == null) return;
 		model.loadFromFile(selectedCsv.getPath());
 		stage.setTitle(selectedCsv.getName());
-		update();
-		drawPoints();
+	}
+
+	@FXML
+	public void onAbout() {
+		Stage adpStag = new Stage();
+		AboutView aboutView = new AboutView(adpStag); //la nouvelle vue
+		adpStag.setScene(new Scene(aboutView.loadView()));
+		adpStag.show();
 	}
 
 	@FXML
@@ -137,125 +133,97 @@ public class PanelView extends AbstractView {
         yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
         initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
         initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
-        classifiedByComboBox.setItems(FXCollections.observableList(model.getCategories()));
-        drawPoints();
+		drawPointsCloud();
     }
 
 	@FXML
 	public void onXCategorySelected() {
-		drawPoints();
-	}
-
-	@FXML
-	public void onYCategorySelected() {
-		drawPoints();
-	}
-
-	/*
-	 * ACTUELLEMENT SA DEMANDE DE SAISIR UN POINT X ET Y ET CA L'AJOUTE
-	 * J'ai rajouté pour saisir un iris et un titanic en demandant ses caracteristiques mais j'ai mis en commentaire car c'est pas fini
-	 * Un objet iris ou titanic est crée, il reste a avoir sa normallisation et a l'ajouter au graphique
-	 */
-
-	@FXML
-	public void onAddPoint() {
-		Stage adpStag = new Stage();
-		if(csvPicker.getSelectionModel().getSelectedItem().contains("Iris")) { //PAS ENCORE FONCTIONEL
-			AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
-
-		else if(csvPicker.getSelectionModel().getSelectedItem().contains("Titanic")) {
-			AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
-
-		else {
-			AddPointView addPointView = new AddPointView(adpStag, this);
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
-	}
-
-	@FXML
-	public void onClassify() {
-		drawPoints();
-	}
-
-	@FXML
-	public void onKnn() {
-		robustness.setText(String.valueOf(knnMethod.getRobustesse(new EuclidDistance(model.getColumns()), model.getPoints(), knnSpinner.getValue())));
-	}
-
-	public void update() {
 		xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
 		yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
 		initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
 		initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
-		drawPoints();
+		classifiedByComboBox.setItems(FXCollections.observableList(model.getCategories()));
+		classifiedByComboBox.getItems().add(new Category("ALL"));
+		Collections.reverse(classifiedByComboBox.getItems());
+		drawPointsCloud();
 	}
 
-	private void drawPoints() {
+	@FXML
+	public void onYCategorySelected() {
+		drawPointsCloud();
+	}
 
-		List<IPoint> points = model.getPoints();
+	@FXML
+	public void onClassify() {
+		drawPointsCloud();
+	}
+
+	@FXML
+	public void onKnn() {
+		String selected = distancesComboBox.getSelectionModel()
+				.getSelectedItem();
+		IDistance distance = selected.equals("Euclid") ? new EuclidDistance(model.getColumns()) : new ManhattanDistance(model.getColumns());
+		robustness.setText(String.valueOf(knnMethod.getRobustesse(distance, model.getPoints(), knnSpinner.getValue())));
+	}
+
+	@FXML
+	public void onDistanceSelected() {
+		onKnn();
+	}
+
+	@FXML
+	public void onCategorySelected() {
+		this.selectedCategory = classifiedByComboBox.getSelectionModel()
+			.getSelectedItem();
+		drawPointsCloud();
+	}
+
+	public void drawPointsCloud() {
+		if (classifyCheckBox.isSelected()) {
+			drawClassifiedPointsCloud(model.getPoints());
+			return;
+		}
+		drawPointsCloud(model.getPoints(), new Category("ALL"));
+	}
+
+	public void drawPointsCloud(List<IPoint> points, ICategory category) {
+
+		clearCloud();
 
 		INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
 		INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
 
-		if (!classifyCheckBox.isSelected()) {
-			XYChart.Series<Number, Number> xy = new XYChart.Series<>();
-			xy.setName(model.getTitle());
-			for (IPoint p : points) {
-				XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
-				data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-					if (newValue != null) {
-						Tooltip.install(data.getNode(), new Tooltip(p.toString()));
-					}
-				});
-				xy.getData().add(data);
-			}
-			chart.setData(FXCollections.singletonObservableList(xy));
+		XYChart.Series<Number, Number> series = new XYChart.Series<>();
+		series.setName(category.getTitle());
+
+		for (IPoint point : points) {
+			double normalizedX = xColumn.getNormalizedValue(point.getValue(xColumn));
+			double normalizedY = yColumn.getNormalizedValue(point.getValue(yColumn));
+			XYChart.Data<Number, Number> data = new XYChart.Data<>(normalizedX, normalizedY);
+			data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+				if (newValue != null) Tooltip.install(data.getNode(), new Tooltip(point.toString()));
+			});
+			series.getData().add(data);
+		}
+
+		chart.getData().add(series);
+	}
+
+	public void drawClassifiedPointsCloud(List<IPoint> points) {
+
+		List<ICategory> categories = model.getCategories();
+
+		if (!"ALL".equals(selectedCategory.getTitle())) {
+			drawPointsCloud(selectedCategory.getPoints(), selectedCategory);
 			return;
 		}
 
-		List<XYChart.Series<Number, Number>> series = new ArrayList<>();
-
-		Map<String, List<IPoint>> links = new HashMap<>();
-		for (IPoint point : points) {
-			String category = point.getCategory();
-			if (!links.containsKey(category)) links.put(category, new ArrayList<>());
-			links.get(point.getCategory()).add(point);
-		}
-		List<String> categories = new ArrayList<>(links.keySet());
-		categories.forEach(category -> {
-			XYChart.Series<Number, Number> xy = new XYChart.Series<>();
-			xy.setName(category);
-			links.get(category).forEach(p -> {
-				XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
-				data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-					if (newValue != null) {
-						Tooltip.install(data.getNode(), new Tooltip(p.toString()));
-					}
-				});
-				xy.getData().add(data);
-			});
-			series.add(xy);
-		});
-
-		chart.setData(FXCollections.observableList(series));
+		categories.forEach(c -> drawPointsCloud(points, c));
 	}
 
-	private void displayPointData(List<IPoint> points) {
-		pointDisplay.setText(points.toString());
+	public void clearCloud() {
+		chart.getData().clear();
 	}
-
-	public void addPoint(double xVal, double yVal) {
-		series.getData().add(new XYChart.Data<>(xVal, yVal));
-	}
-
-
 
 	public MVCModel getModel() {
 		return model;
@@ -281,8 +249,6 @@ public class PanelView extends AbstractView {
 	public Parent loadView() {
 		return loadView("src/main/resources/views/Panel.fxml");
 	}
-
-
 	public int getKnnSpinnerValueInt() {
 		return knnSpinner.getValue();
 	}
@@ -291,8 +257,7 @@ public class PanelView extends AbstractView {
 	public void onAbout() {
 		Stage adpStag = new Stage();
 		AboutView aboutView = new AboutView(adpStag); //la nouvelle vue
-		adpStag.setScene(new Scene(aboutView.loadView()));
 		adpStag.show();
+		adpStag.setScene(new Scene(aboutView.loadView()));
 	}
-
 }

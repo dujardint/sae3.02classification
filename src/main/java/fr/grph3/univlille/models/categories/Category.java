@@ -2,6 +2,7 @@ package fr.grph3.univlille.models.categories;
 
 import fr.grph3.univlille.models.points.IPoint;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Category implements ICategory {
 
     public Category(String title) {
         this.title = title;
+        this.points = new ArrayList<>();
     }
 
     @Override

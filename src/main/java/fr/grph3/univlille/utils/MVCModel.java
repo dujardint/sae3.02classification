@@ -89,15 +89,18 @@ public abstract class MVCModel implements IDataSet {
 
     public abstract List<IColumn> getColumns();
 
-    private void classify(List<IPoint> points) {
+    protected void classify(List<IPoint> points) {
         points.forEach(this::classify);
     }
 
-    private void classify(IPoint point) {
+    protected void classify(IPoint point) {
         String category = point.getCategory();
         getCategoryByTitle(category)
-                .orElse(new Category(category))
-                .addPoint(point);
+                .orElseGet(() -> {
+                    ICategory newCategory = new Category(category);
+                    categories.add(newCategory);
+                    return newCategory;
+                }).addPoint(point);
     }
 
     /**
