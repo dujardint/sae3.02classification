@@ -6,11 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
+import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.StringColumn;
 
 public class TestStringColumn {
 	
-	StringColumn col = new StringColumn("Test");
+	private IDataSet id;
+	private StringColumn col = new StringColumn("Test", id);
 	
 	@Test
 	public void  test_get_name() {

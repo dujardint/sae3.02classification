@@ -7,18 +7,21 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.NumberColumn;
 import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 
 public class TestNumberNormalizer {
 	
+	IDataSet id;
 	private List<Double> values;
 	private NumberColumn column;
 	private NumberNormalizer number;
 	
 	@BeforeEach
 	void setUp() {
-		column=new NumberColumn("sepal.length");
+		
+		column=new NumberColumn("sepal.length", id);
 		number = new NumberNormalizer(column);
 		
 		column.addValues(5.1);

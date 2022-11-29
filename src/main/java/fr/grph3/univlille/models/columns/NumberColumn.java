@@ -42,4 +42,9 @@ public class NumberColumn extends INormalizableColumn {
     public String toString() {
         return name;
     }
+
+	public void addValues(double d) {
+		// TODO Auto-generated method stub
+		
+	}
 }

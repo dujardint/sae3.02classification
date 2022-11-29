@@ -13,17 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestEuclidDistance {
 
-    private CSVModel<Titanic> model;
+    private CSVModel model;
 
-    private EuclidDistance<Titanic> distance;
+    private EuclidDistance distance;
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel<>(Titanic.class, "Titanic");
-        model.loadFromFile("src/main/resources/titanicTest.csv");
-        this.distance = new EuclidDistance<>(model.getColumns());
+        this.model = new CSVModel(Titanic.class, "Titanic");
+        model.loadFromFile("src/main/resources/titanic.csv");
+        this.distance = new EuclidDistance(model.getColumns());
     }
-
+    
     @Test
     void testDistance(){
         assertEquals(0.79, Math.round (distance.distance(model.getPoint(2), model.getPoint(3) ) *100.0)/100.0);
