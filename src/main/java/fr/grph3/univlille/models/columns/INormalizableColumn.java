@@ -1,11 +1,18 @@
 package fr.grph3.univlille.models.columns;
 
 import fr.grph3.univlille.models.IDataSet;
+import fr.grph3.univlille.utils.normalizers.INormalizer;
 
 public abstract class INormalizableColumn extends IColumn {
 
+    private INormalizer normalizer;
+
     public INormalizableColumn(String name, IDataSet dataSet) {
         super(name, dataSet);
+    }
+
+    protected void initNormalizer(INormalizer normalizer) {
+        this.normalizer = normalizer;
     }
 
     /**
@@ -15,7 +22,9 @@ public abstract class INormalizableColumn extends IColumn {
      * definit.
      */
 
-    public abstract double getNormalizedValue(Object value);
+    public double getNormalizedValue(Object value) {
+        return normalizer.normalize(value);
+    }
 
     /**
      * "Denormalise" une valeur entre 0 et 1 en une "vraie" valeur pour
@@ -24,7 +33,9 @@ public abstract class INormalizableColumn extends IColumn {
      * definit.
      */
 
-    public abstract Object getDenormalizedValue(double value);
+    public Object getDenormalizedValue(double value) {
+        return normalizer.denormalize(value);
+    }
 
     public double getMin() {
         return dataSet.getPoints()

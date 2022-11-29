@@ -9,41 +9,11 @@ public class BooleanColumn extends INormalizableColumn {
 
     public BooleanColumn(String name, IDataSet dataSet) {
         super(name, dataSet);
-        this.normalizer = new BooleanNormalizer();
-    }
-
-    @Override
-    public double getNormalizedValue(Object value) {
-        return normalizer.normalize(value);
-    }
-
-    @Override
-    public Object getDenormalizedValue(double value) {
-        return normalizer.denormalize(value);
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public IDataSet getDataset() {
-        return dataSet;
+        initNormalizer(new BooleanNormalizer());
     }
 
     @Override
     public boolean isNormalizable() {
         return true;
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
-	public Integer getNormalizer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

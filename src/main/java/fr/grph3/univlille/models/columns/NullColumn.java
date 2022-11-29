@@ -7,17 +7,17 @@ public class NullColumn extends INormalizableColumn {
     }
 
     @Override
-    public boolean isNormalizable() {
-        return false;
-    }
-
-    @Override
     public double getNormalizedValue(Object value) {
         return 0;
     }
 
     @Override
     public Object getDenormalizedValue(double value) {
-        return null;
+        return 0;
+    }
+
+    @Override
+    public boolean isNormalizable() {
+        return false;
     }
 }

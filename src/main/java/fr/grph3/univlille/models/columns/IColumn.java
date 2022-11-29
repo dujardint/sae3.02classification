@@ -23,8 +23,6 @@ public abstract class IColumn {
 
     protected IDataSet dataSet;
 
-
-
     /**
      * Retourne le nom de la colonne.
      */
@@ -45,4 +43,9 @@ public abstract class IColumn {
      * Indique si cette colonne est normalisable (a un <i>normaliseur</i>).
      */
     public abstract boolean isNormalizable();
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

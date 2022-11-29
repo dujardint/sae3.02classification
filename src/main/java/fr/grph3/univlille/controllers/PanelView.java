@@ -199,21 +199,7 @@ public class PanelView extends AbstractView {
 
 	private void drawPoints() {
 
-        if (!classifyCheckBox.isSelected()) {
-            XYChart.Series<Number, Number> xy = new XYChart.Series<>();
-            xy.setName(model.getTitle());
-            for (IPoint p : points) {
-                XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
-                data.nodeProperty().addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        Tooltip.install(data.getNode(), new Tooltip(p.toString()));
-                    }
-                });
-                xy.getData().add(data);
-            }
-            chart.setData(FXCollections.singletonObservableList(xy));
-            return;
-        }
+		List<IPoint> points = model.getPoints();
 
 		INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
 		INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
@@ -230,7 +216,7 @@ public class PanelView extends AbstractView {
 				});
 				xy.getData().add(data);
 			}
-			chart.getData().setAll(xy);
+			chart.setData(FXCollections.singletonObservableList(xy));
 			return;
 		}
 
