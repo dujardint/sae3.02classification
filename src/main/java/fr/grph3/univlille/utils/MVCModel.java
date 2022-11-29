@@ -1,12 +1,13 @@
 package fr.grph3.univlille.utils;
 
+import fr.grph3.univlille.models.categories.Category;
+import fr.grph3.univlille.models.categories.ICategory;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public abstract class MVCModel implements IDataSet {
 
@@ -16,11 +17,14 @@ public abstract class MVCModel implements IDataSet {
 
     protected List<IColumn> columns;
 
+    protected List<ICategory> categories;
+
     protected List<INormalizableColumn> normalizableColumns;
 
     public MVCModel(String title) {
         this.title = title;
         this.points = new ArrayList<>();
+        this.categories = new ArrayList<>();
     }
 
     @Override
@@ -85,24 +89,23 @@ public abstract class MVCModel implements IDataSet {
 
     public abstract List<IColumn> getColumns();
 
+    private void classify(List<IPoint> points) {
+        points.forEach(this::classify);
+    }
+
+    private void classify(IPoint point) {
+        String category = point.getCategory();
+        getCategoryByTitle(category)
+                .orElse(new Category(category))
+                .addPoint(point);
+    }
+
     /**
      * Nombre de colonnes dans le modele (egale au nombre de colonnes du
      * fr.grph3.univlille.models.DataSet associe a ce modele)
      */
 
     public abstract int nbColumns();
-
-    public List<IPoint> getPointsFromColumns(Number val1, Number val2, INormalizableColumn col1, INormalizableColumn col2) {
-        return points.stream()
-                .filter(p -> val1.doubleValue() == col1.getNormalizedValue(p.getValue(col1)) && val2.doubleValue() == col2.getNormalizedValue(p.getValue(col2)))
-                .collect(Collectors.toList());
-    }
-
-    public List<IColumn> getColumnByName(String name) {
-        return columns.stream()
-                .filter(column -> name.equals(column.getName()))
-                .collect(Collectors.toList());
-    }
 
     /**
      * Retourne la collection de toutes les colonnes du fr.grph3.univlille.models.DataSet dont les
@@ -114,6 +117,16 @@ public abstract class MVCModel implements IDataSet {
 
     public List<INormalizableColumn> getNormalizableColumns() {
         return normalizableColumns;
+    }
+
+    public Optional<ICategory> getCategoryByTitle(String title) {
+        return categories.stream()
+                .filter(c -> title.equals(c.getTitle()))
+                .findFirst();
+    }
+
+    public List<ICategory> getCategories() {
+        return categories;
     }
 
     @Override
