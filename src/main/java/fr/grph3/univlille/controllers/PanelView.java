@@ -214,7 +214,7 @@ public class PanelView extends AbstractView {
                 });
                 xy.getData().add(data);
             }
-            chart.getData().setAll(xy);
+            chart.setData(FXCollections.singletonObservableList(xy));
             return;
         }
 
