@@ -48,7 +48,7 @@ public class TestMNVCModelManager {
 	 @Test
 	 public void test_subscribe_should_return_true() {
 		 assertTrue(manager.subscribe(model1, "src/main/resources/irisTest.csv", true));
-		 assertEquals(2,manager.getModels().size());
+		 assertEquals(3,manager.getModels().size());
 	 }
 	 
 	 @Test
