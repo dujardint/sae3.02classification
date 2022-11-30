@@ -215,9 +215,8 @@ public class PanelView extends AbstractView implements Observer {
         try {
             return DataType.valueOf(name);
         } catch (IllegalArgumentException e) {
-            //e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     @Override
