@@ -19,6 +19,7 @@ public class ColumnFactory {
     }
 
     private IColumn getColumnByType(String name, IDataSet dataSet, Class<?> type) {
+        // Fix
         String toString = type.toString();
         if (toString.equals("int") || toString.equals("double") || toString.equals("float")) return new NumberColumn(name, dataSet);
         if (toString.equals("boolean")) return new BooleanColumn(name, dataSet) ;
