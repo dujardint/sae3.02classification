@@ -9,7 +9,7 @@ import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
 
-public abstract class MVCModel implements IDataSet {
+public abstract class AbstractMVCModel implements IDataSet {
 
     protected String title;
 
@@ -21,7 +21,7 @@ public abstract class MVCModel implements IDataSet {
 
     protected List<INormalizableColumn> normalizableColumns;
 
-    public MVCModel(String title) {
+    public AbstractMVCModel(String title) {
         this.title = title;
         this.points = new ArrayList<>();
         this.categories = new ArrayList<>();
@@ -30,6 +30,10 @@ public abstract class MVCModel implements IDataSet {
     @Override
     public String getTitle() {
         return title;
+    }
+    
+    public List<ICategory> getCategory() {
+    	return categories;
     }
 
     @Override
