@@ -23,7 +23,7 @@ public class TestEuclidDistance {
     
     @Test
     void testDistance(){
-        assertEquals(1.02, Math.round (distance.distance(model.getPoint(2), model.getPoint(3) ) *100.0)/100.0);
+        assertEquals(0.53, Math.round (distance.distance(model.getPoint(0), model.getPoint(72) ) *100.0)/100.0);
         assertEquals(0.13, Math.round (distance.distance(model.getPoint(0), model.getPoint(2) ) *100.0)/100.0);
         assertEquals(1.12,Math.round (distance.distance(model.getPoint(1), model.getPoint(5) ) *100.0)/100.0);
         assertEquals(0.21,Math.round (distance.distance(model.getPoint(14), model.getPoint(814) ) *100.0)/100.0);
