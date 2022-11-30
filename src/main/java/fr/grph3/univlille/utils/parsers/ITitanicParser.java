@@ -1,16 +1,9 @@
 package fr.grph3.univlille.utils.parsers;
 
-import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.Titanic;
 import fr.grph3.univlille.models.points.builders.TitanicBuilder;
 
-import java.util.List;
-
-public class ITitanicParser extends IPointParser<Titanic> {
-
-    public ITitanicParser(List<INormalizableColumn> columns) {
-        super(columns);
-    }
+public class ITitanicParser extends IPointParser {
 
     @Override
     public Titanic parse(String line) {

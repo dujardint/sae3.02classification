@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox alignment="CENTER" prefHeight="322.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="inputsBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="32.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="13.0" prefWidth="601.0" text="Ajouter Point" />
-            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0">
+            <HBox>
                <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="65.0" text="Valeur X" />
-                  <Spinner fx:id="xPointSpinner" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="600.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="70.0" text="Valeur Y" />
-                  <Spinner fx:id="yPointSpinner" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="394.0" spacing="32.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#onClose" text="Fermer" />
-                  <Button mnemonicParsing="false" onAction="#onAddPoint" text="Ajouter " />
+                  <HBox prefHeight="10.0" prefWidth="230.0" style="-fx-border-radius: black;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="258.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="TOP" text="Robustesse   " />
+                              <TextField fx:id="robustness" editable="false" prefHeight="30.0" prefWidth="75.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="71.0" text="KNN" />
+                        <Spinner fx:id="knnSpinner" onMouseClicked="#onKnn" prefHeight="30.0" prefWidth="100.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="258.0" spacing="15.0">
+                     <children>
+                        <Label text="Distance" />
+                        <ComboBox fx:id="distancesComboBox" onAction="#onDistanceSelected" prefHeight="30.0" prefWidth="100.0" />
+                     </children>
+                  </HBox>
                </children>
             </HBox>
          </children>
       </VBox>
-   </center>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" spacing="32.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="32.0" text="Cancel" />
+            <Button layoutX="220.0" layoutY="19.0" mnemonicParsing="false" onAction="#onCreatePoint" prefHeight="32.0" text="Create Point" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

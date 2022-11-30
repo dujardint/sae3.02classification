@@ -15,9 +15,8 @@ import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.models.points.Titanic;
 import fr.grph3.univlille.utils.*;
 import fr.grph3.univlille.utils.Observer;
-import fr.grph3.univlille.utils.distances.EuclidDistance;
-import fr.grph3.univlille.utils.distances.IDistance;
-import fr.grph3.univlille.utils.distances.ManhattanDistance;
+import fr.grph3.univlille.utils.parsers.IIrisParser;
+import fr.grph3.univlille.utils.parsers.ITitanicParser;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -38,9 +37,6 @@ public class PanelView extends AbstractView implements Observer {
     private ComboBox<String> csvPicker;
 
     @FXML
-    private TextField robustness;
-
-    @FXML
     private ScatterChart<Number, Number> chart;
 
     @FXML
@@ -55,46 +51,30 @@ public class PanelView extends AbstractView implements Observer {
     @FXML
     private ComboBox<ICategory> classifiedByComboBox;
 
-    @FXML
-    private ComboBox<String> distancesComboBox;
-
-    @FXML
-    private Spinner<Integer> knnSpinner;
-
-    private double lastKnnValue;
-
     private List<XYChart.Series<Number, Number>> allSeries;
 
     private AbstractMVCModel model;
 
     private MVCModelManager modelManager;
 
-    private KnnMethod knnMethod;
-
     private ICategory selectedCategory;
 
     public PanelView(Stage stage) {
         super(stage);
-        this.modelManager = new MVCModelManager();
-        this.knnMethod = new KnnMethod();
-    }
+        this.modelManager = new MVCModelManager();}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.selectedCategory = new Category("ALL");
-        knnSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 3, 1));
         initDefaultData();
         csvPicker.getSelectionModel().select(modelManager.names().get(0));
         csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
-        distancesComboBox.setItems(FXCollections.observableList(Arrays.asList("Euclid", "Manhattan")));
-        initDefaultValue(distancesComboBox.getSelectionModel(), "Euclid");
-        onKnn();
         onDataTypeSelected();
     }
 
     private void initDefaultData() {
-        CSVModel irisCSVModel = new CSVModel(Iris.class, "Default Iris");
-        CSVModel titanicCSVModel = new CSVModel(Titanic.class, "Default Titanic");
+        CSVModel irisCSVModel = new CSVModel(Iris.class, "Default Iris", new IIrisParser());
+        CSVModel titanicCSVModel = new CSVModel(Titanic.class, "Default Titanic", new ITitanicParser());
         modelManager.subscribe(irisCSVModel, "src/main/resources/iris.csv");
         modelManager.subscribe(titanicCSVModel, "src/main/resources/titanic.csv");
         this.model = modelManager.switchModel("Default Iris");
@@ -126,29 +106,13 @@ public class PanelView extends AbstractView implements Observer {
     
     @FXML
 	public void onAddPoint() {
-		Stage adpStag = new Stage();
-		if(csvPicker.getSelectionModel().getSelectedItem().contains("Iris")) { //PAS ENCORE FONCTIONEL
-			AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
-
-		else if(csvPicker.getSelectionModel().getSelectedItem().contains("Titanic")) {
-			AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
-
-		else {
-			AddPointView addPointView = new AddPointView(adpStag, this);
-			adpStag.setScene(new Scene(addPointView.loadView()));
-			adpStag.show();
-		}
+        Stage addPointStage = new Stage();
+        addPointStage.initOwner(stage);
+        addPointStage.setResizable(false);
+        AddPointView addPointView = new AddPointView(addPointStage, model);
+        addPointStage.setScene(new Scene(addPointView.loadView()));
+        addPointStage.show();
 	}
-    
-    public int getKnnSpinnerValueInt() {
-    	return knnSpinner.getValue();
-    }
 
     @FXML
     public void onDataTypeSelected() {
@@ -179,19 +143,6 @@ public class PanelView extends AbstractView implements Observer {
     @FXML
     public void onClassify() {
         drawPointsCloud();
-    }
-
-    @FXML
-    public void onKnn() {
-        String selected = distancesComboBox.getSelectionModel()
-                .getSelectedItem();
-        IDistance distance = selected.equals("Euclid") ? new EuclidDistance(model.getColumns()) : new ManhattanDistance(model.getColumns());
-        robustness.setText(String.valueOf(knnMethod.getRobustesse(distance, model.getPoints(), knnSpinner.getValue())));
-    }
-
-    @FXML
-    public void onDistanceSelected() {
-        onKnn();
     }
 
     @FXML
@@ -249,10 +200,6 @@ public class PanelView extends AbstractView implements Observer {
 
     public void clearCloud() {
         chart.setData(FXCollections.observableArrayList()); // Pas .clear() pour reset les symboles
-    }
-
-    public AbstractMVCModel getModel() {
-        return model;
     }
 
     private <T> void initDefaultValue(SingleSelectionModel<T> model, T value) {

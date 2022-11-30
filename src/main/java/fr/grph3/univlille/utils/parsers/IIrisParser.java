@@ -1,16 +1,9 @@
 package fr.grph3.univlille.utils.parsers;
 
-import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.models.points.builders.IrisBuilder;
 
-import java.util.List;
-
-public class IIrisParser extends IPointParser<Iris> {
-
-    public IIrisParser(List<INormalizableColumn> columns) {
-        super(columns);
-    }
+public class IIrisParser extends IPointParser {
 
     @Override
     public Iris parse(String line) {

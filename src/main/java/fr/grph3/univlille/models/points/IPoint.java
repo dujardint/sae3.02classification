@@ -21,13 +21,4 @@ public interface IPoint {
     String getCategory();
 
     void setCategory(String category);
-
-    /**
-     * Retourne la valeur de ce point normalisee pour la colonne en parametre.
-     *
-     * La normalisation se fait avec le <i>normaliseur</i> de la colonne.
-     * Si la colonne n'est pas normalisable, le comportement n'est pas defini.
-     */
-
-    //double getNormalizedValue(IColumn xColumn);
 }

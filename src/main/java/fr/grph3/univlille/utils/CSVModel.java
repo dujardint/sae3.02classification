@@ -4,6 +4,7 @@ import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.columns.NullColumn;
 import fr.grph3.univlille.models.points.IPoint;
+import fr.grph3.univlille.utils.parsers.IPointParser;
 
 import java.nio.file.Path;
 import java.util.Iterator;
@@ -16,8 +17,8 @@ public class CSVModel extends AbstractMVCModel {
 
     private ColumnFactory factory;
 
-    public CSVModel(Class<? extends IPoint> dataType,  String title) {
-        super(title);
+    public CSVModel(Class<? extends IPoint> dataType, String title, IPointParser parser) {
+        super(title, parser);
         this.dataType = dataType;
         this.factory = new ColumnFactory();
     }

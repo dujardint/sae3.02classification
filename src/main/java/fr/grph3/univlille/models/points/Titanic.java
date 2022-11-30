@@ -168,6 +168,6 @@ public class Titanic implements IPoint {
                 "\nticket = " + ticket +
                 "\nfare = " + fare +
                 "\ncabin = " + cabin +
-                "\nembarked = " + embarked.toUpperCase();
+                "\nEmbarked = " + ((embarked == null) ? "" : embarked.toUpperCase());
     }
 }

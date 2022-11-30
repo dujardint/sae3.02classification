@@ -6,6 +6,7 @@ import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.IDataSet;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.IPoint;
+import fr.grph3.univlille.utils.parsers.IPointParser;
 
 import java.util.*;
 
@@ -21,8 +22,11 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
 
     protected List<INormalizableColumn> normalizableColumns;
 
-    public AbstractMVCModel(String title) {
+    private IPointParser parser;
+
+    public AbstractMVCModel(String title, IPointParser parser) {
         this.title = title;
+        this.parser = parser;
         this.points = new ArrayList<>();
         this.categories = new ArrayList<>();
     }
@@ -138,6 +142,10 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
 
     public List<ICategory> getCategories() {
         return categories;
+    }
+
+    public IPointParser getParser() {
+        return parser;
     }
 
     @Override

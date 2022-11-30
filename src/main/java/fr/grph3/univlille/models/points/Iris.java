@@ -76,6 +76,6 @@ public class Iris implements IPoint {
                 " \nsepalWidth  = " + sepalWidth +
                 " \npetalLength = " + petalLength +
                 " \npetalWidth  = " + petalWidth +
-                " \nVariety = " + variety.toUpperCase();
+                " \nVariety = " + ((variety == null) ? "" : variety.toUpperCase());
     }
 }
