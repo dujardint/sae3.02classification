@@ -176,7 +176,10 @@ public class PanelView extends AbstractView {
 
     public void drawPointsCloud() {
         clearCloud();
-        if (classifyCheckBox.isSelected()) {
+        if (!"ALL".equals(selectedCategory.getTitle())) {
+            drawPointsCloud(selectedCategory.getPoints(), selectedCategory);
+            return;
+        } else if (classifyCheckBox.isSelected()) {
             drawClassifiedPointsCloud();
             return;
         }
@@ -205,15 +208,7 @@ public class PanelView extends AbstractView {
     }
 
     public void drawClassifiedPointsCloud() {
-
-        List<ICategory> categories = model.getCategories();
-
-        if (!"ALL".equals(selectedCategory.getTitle())) {
-            drawPointsCloud(selectedCategory.getPoints(), selectedCategory);
-            return;
-        }
-
-        categories.forEach(c -> {
+        model.getCategories().forEach(c -> {
             if (!"ALL".equals(c.getTitle())) {
                 drawPointsCloud(c.getPoints(), c);
             }
