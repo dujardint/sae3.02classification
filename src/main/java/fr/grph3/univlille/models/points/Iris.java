@@ -11,13 +11,13 @@ public class Iris implements IPoint {
     }
 
     @CsvBindByName(column = "sepal.length")
-    private Double sepalLength;
+    private double sepalLength;
     @CsvBindByName(column = "sepal.width")
-    private Double sepalWidth;
+    private double sepalWidth;
     @CsvBindByName(column = "petal.length")
-    private Double petalLength;
+    private double petalLength;
     @CsvBindByName(column = "petal.width")
-    private Double petalWidth;
+    private double petalWidth;
     @CsvBindByName(column = "variety")
     private String variety;
 
