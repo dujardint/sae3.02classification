@@ -50,12 +50,14 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
     public void addPoint(IPoint point) {
         points.add(point);
         classifyAll(point);
+        notifyObservers();
     }
 
     @Override
     public void addPoints(List<IPoint> points) {
         this.points.addAll(points);
         classify(points);
+        notifyObservers();
     }
 
     @Override

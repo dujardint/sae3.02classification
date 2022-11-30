@@ -159,7 +159,9 @@ public class PanelView extends AbstractView implements Observer {
         initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
         initDefaultValue(yColumnPicker.getSelectionModel(), model.defaultYCol());
         classifiedByComboBox.setItems(FXCollections.observableList(model.getCategories()));
-        classifiedByComboBox.getItems().add(new Category("ALL"));
+        ICategory categoryAll = new Category("ALL");
+        classifiedByComboBox.getItems().add(categoryAll);
+        initDefaultValue(classifiedByComboBox.getSelectionModel(), categoryAll);
         Collections.reverse(classifiedByComboBox.getItems());
         drawPointsCloud();
     }
