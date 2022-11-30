@@ -6,18 +6,14 @@ import fr.grph3.univlille.models.columns.IColumn;
 
 public class Iris implements IPoint {
 
-    public enum Variety {
-        SETOSA, VERSICOLOR, VIRGINICA
-    }
-
     @CsvBindByName(column = "sepal.length")
-    private Double sepalLength;
+    private double sepalLength;
     @CsvBindByName(column = "sepal.width")
-    private Double sepalWidth;
+    private double sepalWidth;
     @CsvBindByName(column = "petal.length")
-    private Double petalLength;
+    private double petalLength;
     @CsvBindByName(column = "petal.width")
-    private Double petalWidth;
+    private double petalWidth;
     @CsvBindByName(column = "variety")
     private String variety;
 

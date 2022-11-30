@@ -19,8 +19,9 @@ public class ColumnFactory {
     }
 
     private IColumn getColumnByType(String name, IDataSet dataSet, Class<?> type) {
-        if (type == Integer.class || type == Double.class || type == Float.class) return new NumberColumn(name, dataSet);
-        if (type == Boolean.class) return new BooleanColumn(name, dataSet) ;
+        String toString = type.toString();
+        if (toString.equals("int") || toString.equals("double") || toString.equals("float")) return new NumberColumn(name, dataSet);
+        if (toString.equals("boolean")) return new BooleanColumn(name, dataSet) ;
         if (type == String.class) return new StringColumn(name, dataSet);
         return new NullColumn();
     }

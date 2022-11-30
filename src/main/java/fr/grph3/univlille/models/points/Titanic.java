@@ -6,20 +6,14 @@ import fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
 
-	public enum TitanicEmbarqued {
-		C, 
-		Q, 
-		S;
-	}
-
     @CsvBindByName(column = "PassengerId")
-    private Double passengerId;
+    private double passengerId;
 
     @CsvBindByName(column = "Survived")
-    private Double survived;
+    private double survived;
 
     @CsvBindByName(column = "Pclass")
-    private Double pClass;
+    private double pClass;
 
     @CsvBindByName(column = "Name")
     private String name;
@@ -28,19 +22,19 @@ public class Titanic implements IPoint {
     private String sex;
 
     @CsvBindByName(column = "Age")
-    private Double age;
+    private double age;
 
     @CsvBindByName(column = "SibSp")
-    private Double sibSp;
+    private double sibSp;
 
     @CsvBindByName(column = "Parch")
-    private Double parch;
+    private double parch;
 
     @CsvBindByName(column = "Ticket")
     private String ticket;
 
     @CsvBindByName(column = "Fare")
-    private Double fare;
+    private double fare;
 
     @CsvBindByName(column = "Cabin")
     private String cabin;
