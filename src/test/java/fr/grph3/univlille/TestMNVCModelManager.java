@@ -27,8 +27,8 @@ public class TestMNVCModelManager {
 	 @BeforeEach
 	 public void setUp() {
 		 this.manager = new MVCModelManager();
-		 this.model1 = new CSVModel(Iris.class, "Iris");
-		 this.model2 = new CSVModel(Titanic.class, "Titanic");
+		 this.model1 = new CSVModel(Iris.class, "Iris",null);
+		 this.model2 = new CSVModel(Titanic.class, "Titanic",null);
 		 manager.getModels().add(model1);
 		 manager.getModels().add(model2);
 		 

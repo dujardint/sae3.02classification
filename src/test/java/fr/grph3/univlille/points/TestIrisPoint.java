@@ -32,7 +32,7 @@ public class TestIrisPoint {
 
 	@BeforeEach
 	void setUp(){
-		this.model = new CSVModel(Iris.class, "Iris");
+		this.model = new CSVModel(Iris.class, "Iris",null);
 		model.loadFromFile("src/main/resources/iris.csv");
 	}
 
