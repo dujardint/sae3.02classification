@@ -9,7 +9,7 @@ import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
 
-public abstract class AbstractMVCModel implements IDataSet {
+public abstract class AbstractMVCModel extends Subject implements IDataSet {
 
     protected String title;
 
@@ -49,11 +49,13 @@ public abstract class AbstractMVCModel implements IDataSet {
     @Override
     public void addPoint(IPoint point) {
         points.add(point);
+        classifyAll(point);
     }
 
     @Override
     public void addPoints(List<IPoint> points) {
-        points.forEach(this::addPoint);
+        this.points.addAll(points);
+        classify(points);
     }
 
     @Override
@@ -94,10 +96,10 @@ public abstract class AbstractMVCModel implements IDataSet {
     public abstract List<IColumn> getColumns();
 
     protected void classify(List<IPoint> points) {
-        points.forEach(this::classify);
+        points.forEach(this::classifyAll);
     }
 
-    protected void classify(IPoint point) {
+    protected void classifyAll(IPoint point) {
         String category = point.getCategory();
         getCategoryByTitle(category)
                 .orElseGet(() -> {

@@ -13,9 +13,8 @@ import fr.grph3.univlille.models.points.DataType;
 import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.models.points.Titanic;
-import fr.grph3.univlille.utils.CSVModel;
-import fr.grph3.univlille.utils.KnnMethod;
-import fr.grph3.univlille.utils.AbstractMVCModel;
+import fr.grph3.univlille.utils.*;
+import fr.grph3.univlille.utils.Observer;
 import fr.grph3.univlille.utils.distances.EuclidDistance;
 import fr.grph3.univlille.utils.distances.IDistance;
 import fr.grph3.univlille.utils.distances.ManhattanDistance;
@@ -30,7 +29,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class PanelView extends AbstractView {
+public class PanelView extends AbstractView implements Observer {
 
     @FXML
     private BorderPane root;
@@ -268,6 +267,11 @@ public class PanelView extends AbstractView {
             //e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void update(Subject subject) {
+        drawPointsCloud();
     }
 
     @Override
