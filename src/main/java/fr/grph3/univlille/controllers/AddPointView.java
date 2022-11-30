@@ -5,6 +5,7 @@ import fr.grph3.univlille.models.columns.BooleanColumn;
 import fr.grph3.univlille.models.columns.IColumn;
 import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.columns.NumberColumn;
+import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.AbstractMVCModel;
 import fr.grph3.univlille.utils.KnnMethod;
 import fr.grph3.univlille.utils.distances.EuclidDistance;
@@ -25,7 +26,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddPointView extends AbstractView {
-
 
 	@FXML
 	private ComboBox<String> distancesComboBox;
@@ -104,13 +104,15 @@ public class AddPointView extends AbstractView {
 			String columnName = column.getName();
 			if (column instanceof NumberColumn) {
 				Spinner<Double> spinner = (Spinner<Double>) findInputById(columnName);
-				toParse = toParse.replace("${" + columnName + "}", String.valueOf(spinner.getValue()));
+				toParse = toParse.replace("${" + columnName + "}", String.valueOf(column.getDenormalizedValue(spinner.getValue())));
 			} else if (column instanceof BooleanColumn){
 				CheckBox checkBox = (CheckBox) findInputById(columnName);
 				toParse = toParse.replace("${" + columnName + "}", String.valueOf(checkBox.isSelected()));
 			}
 		}
-		model.addPoint(parser.parse(toParse));
+		IPoint newPoint = parser.parse(toParse);
+		newPoint.setCategory(knnMethod.classifier(model.getPoints()));
+		model.addPoint(newPoint);
 	}
 
 	private Node findInputById(String id) {

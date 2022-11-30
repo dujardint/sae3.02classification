@@ -46,6 +46,11 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
     }
 
     @Override
+    public IPoint getPoint(int index) {
+        return points.get(index);
+    }
+
+    @Override
     public List<IPoint> getPoints() {
         return points;
     }
@@ -76,16 +81,6 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
     public abstract void loadFromFile(String path);
 
     /**
-     * Charge les donnees du modele d'une String "CSV".
-     * Cette methode est surtout un utilitaire de test pour eviter d'avoir a
-     * creer des fichiers CSV pour tous les cas de test.
-     * Il suffit d'appeller cette methode avec une String contenant les lignes
-     * d'un "fichier CSV" que l'on veut tester.
-     */
-
-    public abstract void loadFromString(String data);
-
-    /**
      * Retourne la colonne a utiliser par defaut pour l'axe des X lors de
      * l'affichage du nuage de points.
      */
@@ -98,8 +93,6 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
      */
 
     public abstract INormalizableColumn defaultYCol();
-
-    public abstract List<IColumn> getColumns();
 
     protected void classify(List<IPoint> points) {
         points.forEach(this::classifyAll);
@@ -120,7 +113,13 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
      * fr.grph3.univlille.models.DataSet associe a ce modele)
      */
 
-    public abstract int nbColumns();
+    public int nbColumns() {
+        return columns.size();
+    }
+
+    public List<IColumn> getColumns() {
+        return columns;
+    }
 
     /**
      * Retourne la collection de toutes les colonnes du fr.grph3.univlille.models.DataSet dont les

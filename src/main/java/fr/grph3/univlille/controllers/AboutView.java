@@ -17,8 +17,7 @@ public class AboutView  extends AbstractView{
 	 * ELLE CONTIENT UNE ZONE DE TEXTE ET UN BOUTTON FERMER POUR FERMER LA FENETRE
 	 * LE TEXTE EST DEFINI DANS LE FICHIER About.fxml DANS LE DOSSIER SRC/MAIN/RESOURCES/VIEWS
 	 */
-	
-	
+
 	public AboutView(Stage stage) {
 		super(stage);
 		// TODO Auto-generated constructor stub
@@ -30,12 +29,10 @@ public class AboutView  extends AbstractView{
 		
 	}
 
-	
 	@FXML
 	public void onClose() {
 		stage.close();
 	}
-
 	
 	@Override
 	public Parent loadView() {

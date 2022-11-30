@@ -26,13 +26,13 @@
                   <VBox alignment="CENTER">
                      <children>
                         <Label prefHeight="18.0" prefWidth="46.0" text="Axis X" />
-                        <ComboBox onAction="#onXCategorySelected" prefHeight="30.0" prefWidth="100.0" fx:id="xColumnPicker" />
+                        <ComboBox onAction="#onXCategorySelected" prefHeight="30.0" prefWidth="150.0" fx:id="xColumnPicker" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER">
                      <children>
                         <Label prefHeight="18.0" prefWidth="48.0" text="Axis Y" />
-                        <ComboBox fx:id="yColumnPicker" onAction="#onYCategorySelected" prefHeight="30.0" prefWidth="100.0" />
+                        <ComboBox fx:id="yColumnPicker" onAction="#onYCategorySelected" prefHeight="30.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
@@ -46,13 +46,13 @@
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="258.0" spacing="32.0">
                <children>
                   <Label text="Data Type" />
-                  <ComboBox fx:id="csvPicker" onAction="#onDataTypeSelected" prefHeight="30.0" prefWidth="100.0" />
+                  <ComboBox fx:id="csvPicker" onAction="#onDataTypeSelected" prefHeight="30.0" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="258.0" spacing="15.0">
                <children>
                   <Label text="Category" />
-                  <ComboBox fx:id="classifiedByComboBox" onAction="#onCategorySelected" prefHeight="30.0" prefWidth="100.0" />
+                  <ComboBox fx:id="classifiedByComboBox" onAction="#onCategorySelected" prefHeight="30.0" prefWidth="150.0" />
                </children>
             </HBox>
          </children>

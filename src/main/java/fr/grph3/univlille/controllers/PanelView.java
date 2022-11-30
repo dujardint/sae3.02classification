@@ -74,7 +74,9 @@ public class PanelView extends AbstractView implements Observer {
 
     private void initDefaultData() {
         CSVModel irisCSVModel = new CSVModel(Iris.class, "Default Iris", new IIrisParser());
+        irisCSVModel.attach(this);
         CSVModel titanicCSVModel = new CSVModel(Titanic.class, "Default Titanic", new ITitanicParser());
+        titanicCSVModel.attach(this);
         modelManager.subscribe(irisCSVModel, "src/main/resources/iris.csv");
         modelManager.subscribe(titanicCSVModel, "src/main/resources/titanic.csv");
         this.model = modelManager.switchModel("Default Iris");
@@ -154,7 +156,7 @@ public class PanelView extends AbstractView implements Observer {
 
     public void drawPointsCloud() {
         clearCloud();
-        if (!"ALL".equals(selectedCategory.getTitle())) {
+        if (selectedCategory != null && !"ALL".equals(selectedCategory.getTitle())) {
             drawPointsCloud(selectedCategory.getPoints(), selectedCategory);
             return;
         } else if (classifyCheckBox.isSelected()) {
@@ -169,13 +171,10 @@ public class PanelView extends AbstractView implements Observer {
         INormalizableColumn xColumn = xColumnPicker.getSelectionModel().getSelectedItem();
         INormalizableColumn yColumn = yColumnPicker.getSelectionModel().getSelectedItem();
 
+        if (xColumn == null || yColumn == null) return;
+
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName(category.getTitle());
-
-        System.out.println(xColumn);
-        System.out.println(yColumn);
-        System.out.println(category.getTitle());
-        System.out.println(category.getPoints().toString());
 
         for (IPoint point : points) {
             double normalizedX = xColumn.getNormalizedValue(point.getValue(xColumn));

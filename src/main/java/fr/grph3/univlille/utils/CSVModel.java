@@ -7,8 +7,6 @@ import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.parsers.IPointParser;
 
 import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class CSVModel extends AbstractMVCModel {
@@ -24,39 +22,6 @@ public class CSVModel extends AbstractMVCModel {
     }
 
     @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public int getTotalPoints() {
-        return points.size();
-    }
-
-    public IPoint getPoint(int index) {
-        return points.get(index);
-    }
-
-    public List<IPoint> getPoints() {
-        return points;
-    }
-
-    @Override
-    public void setPoints(List<IPoint> points) {
-        this.points = points;
-    }
-
-    @Override
-    public void addPoint(IPoint point) {
-        this.points.add(point);
-    }
-
-    @Override
-    public void addPoints(List<IPoint> points) {
-        this.points.addAll(points);
-    }
-
-    @Override
     public void loadFromFile(String path) {
         this.setPoints(CSVUtil.loadCSVAsFile(Path.of(path), (Class<IPoint>) dataType));
         this.columns = factory.generate(dataType, this);
@@ -65,11 +30,6 @@ public class CSVModel extends AbstractMVCModel {
                 .map(column -> (INormalizableColumn) column)
                 .collect(Collectors.toList());
         classify(points);
-    }
-
-    @Override
-    public void loadFromString(String data) {
-
     }
 
     @Override
@@ -82,20 +42,5 @@ public class CSVModel extends AbstractMVCModel {
     public INormalizableColumn defaultYCol() {
         IColumn defY = columns.get(1);
         return (defY == null || !defY.isNormalizable()) ? new NullColumn() : (INormalizableColumn) defY;
-    }
-
-    @Override
-    public List<IColumn> getColumns() {
-        return columns;
-    }
-
-    @Override
-    public int nbColumns() {
-        return columns.size();
-    }
-
-    @Override
-    public Iterator<IPoint> iterator() {
-        return points.iterator();
     }
 }

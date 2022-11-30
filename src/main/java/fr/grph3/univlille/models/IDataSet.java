@@ -27,6 +27,8 @@ public interface IDataSet extends Iterable<IPoint> {
 
     int getTotalPoints();
 
+    IPoint getPoint(int index);
+
     List<IPoint> getPoints();
 
     /**

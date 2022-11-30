@@ -28,6 +28,11 @@ public class Category implements ICategory {
     }
 
     @Override
+    public IPoint getPoint(int index) {
+        return points.get(0);
+    }
+
+    @Override
     public List<IPoint> getPoints() {
         return points;
     }
