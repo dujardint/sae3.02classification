@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -16,31 +17,50 @@
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox spacing="8.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="602.0" prefWidth="258.0" spacing="8.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox spacing="16.0">
+            <VBox prefHeight="169.0" prefWidth="258.0" spacing="16.0">
                <VBox.margin>
                   <Insets bottom="20.0" top="100.0" />
                </VBox.margin>
                <children>
-                  <VBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="270.0" spacing="32.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="46.0" text="Axis X" />
-                        <ComboBox onAction="#onXCategorySelected" prefHeight="30.0" prefWidth="100.0" fx:id="xColumnPicker" />
+                        <Label text="Data Type" />
+                        <ComboBox fx:id="csvPicker" onAction="#onDataTypeSelected" prefHeight="30.0" prefWidth="100.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER">
+                  </HBox>
+                  <HBox prefHeight="94.0" prefWidth="258.0" spacing="30.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="48.0" text="Axis Y" />
-                        <ComboBox fx:id="yColumnPicker" onAction="#onYCategorySelected" prefHeight="30.0" prefWidth="100.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="48.0" text="Axis Y" />
+                              <ComboBox fx:id="yColumnPicker" onAction="#onYCategorySelected" prefHeight="30.0" prefWidth="100.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="46.0" text="Axis X" />
+                              <ComboBox onAction="#onXCategorySelected" prefHeight="30.0" prefWidth="100.0" fx:id="xColumnPicker" />
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="258.0" spacing="25.0">
+                     <children>
+                        <JFXToggleButton fx:id="classifyCheckBox" onAction="#onClassify" text="Classify" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" prefHeight="30.0" prefWidth="100.0" text="New Point" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="200.0" spacing="25.0">
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <CheckBox fx:id="classifyCheckBox" mnemonicParsing="false" onAction="#onClassify" text="Classify" />
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#onAddPoint" prefHeight="30.0" prefWidth="100.0" text="New Point" />
+                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="18.0" prefWidth="71.0" text="KNN" />
+                  <JFXSlider fx:id="knnSpinner" onDragDetected="#knnSpinner" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="258.0" spacing="32.0">
