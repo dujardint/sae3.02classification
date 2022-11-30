@@ -14,7 +14,6 @@ import fr.grph3.univlille.utils.normalizers.NumberNormalizer;
 public class TestNumberNormalizer {
 	
 	IDataSet id;
-	private List<Double> values;
 	private NumberColumn column;
 	private NumberNormalizer number;
 	
@@ -22,12 +21,7 @@ public class TestNumberNormalizer {
 	void setUp() {
 		
 		column=new NumberColumn("sepal.length", id);
-		number = new NumberNormalizer(column);
-		
-		column.addValues(5.1);
-		column.addValues(4.9);
-		column.addValues(4.7);		
-		column.addValues(4.6);
+		number = new NumberNormalizer(column);	
 	}
 	
 	

@@ -14,6 +14,7 @@ public class TestNullColumn {
 	
 
 	private IColumn column = new NullColumn();
+	private NullColumn nul = new NullColumn();
 	
 	private Iris iris = new IrisBuilder()
 			.withPetalLength(15.0)
@@ -32,7 +33,20 @@ public class TestNullColumn {
 	@Test
 	public void test_isnormalisable() {
 		assertEquals(false, column.isNormalizable());
+		
 	}
+	
+	@Test
+	public void test_normalized_value() {
+		assertEquals(0, nul.getNormalizedValue(iris));
+	}
+	
+	@Test
+	public void test_denormalized_value() {
+		assertEquals(0, nul.getDenormalizedValue(0.66));
+	}
+	
+	
 
 
 }

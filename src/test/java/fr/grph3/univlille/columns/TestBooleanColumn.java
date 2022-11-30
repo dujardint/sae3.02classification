@@ -40,9 +40,5 @@ public class TestBooleanColumn {
     	assertEquals(null,col.getDataset());
     }
     
-    @Test
-    public void test_get_normalizer() {
-    	assertEquals(null,col.getNormalizer());
-    }
 
 }

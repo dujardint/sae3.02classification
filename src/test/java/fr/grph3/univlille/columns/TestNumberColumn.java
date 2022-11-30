@@ -17,8 +17,6 @@ public class TestNumberColumn {
 
 	@BeforeEach
 	public void setup() {
-		nb.addValues(1.5);
-		nb.addValues(3.5);
 	}
 
 

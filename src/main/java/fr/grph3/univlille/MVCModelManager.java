@@ -35,7 +35,7 @@ public class MVCModelManager {
         return subscribe(model, path, false);
     }
 
-    private AbstractMVCModel findModelByTitle(String title) {
+    public AbstractMVCModel findModelByTitle(String title) {
         return models.stream()
                 .filter(m -> title.equals(m.getTitle()))
                 .findFirst()
