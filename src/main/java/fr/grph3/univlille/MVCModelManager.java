@@ -1,6 +1,6 @@
 package fr.grph3.univlille;
 
-import fr.grph3.univlille.utils.MVCModel;
+import fr.grph3.univlille.utils.AbstractMVCModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,30 +12,30 @@ import java.util.stream.Collectors;
 
 public class MVCModelManager {
 
-    private List<MVCModel> models;
+    private List<AbstractMVCModel> models;
 
-    private MVCModel currentModel;
+    private AbstractMVCModel currentModel;
 
     public MVCModelManager() {
         this.models = new ArrayList<>();
     }
 
-    public MVCModel switchModel(String title) {
+    public AbstractMVCModel switchModel(String title) {
         return this.currentModel = findModelByTitle(title);
     }
 
-    public boolean subscribe(MVCModel model, String path, boolean replace) {
+    public boolean subscribe(AbstractMVCModel model, String path, boolean replace) {
         if (findModelByTitle(model.getTitle()) != null && !replace) return false;
         model.loadFromFile(path);
         models.add(model);
         return true;
     }
 
-    public boolean subscribe(MVCModel model, String path) {
+    public boolean subscribe(AbstractMVCModel model, String path) {
         return subscribe(model, path, false);
     }
 
-    private MVCModel findModelByTitle(String title) {
+    private AbstractMVCModel findModelByTitle(String title) {
         return models.stream()
                 .filter(m -> title.equals(m.getTitle()))
                 .findFirst()
@@ -44,15 +44,15 @@ public class MVCModelManager {
 
     public List<String> names() {
         return models.stream()
-                .map(MVCModel::getTitle)
+                .map(AbstractMVCModel::getTitle)
                 .collect(Collectors.toList());
     }
 
-    public MVCModel getCurrentModel() {
+    public AbstractMVCModel getCurrentModel() {
         return currentModel;
     }
 
-    public List<MVCModel> getModels() {
+    public List<AbstractMVCModel> getModels() {
         return models;
     }
 }

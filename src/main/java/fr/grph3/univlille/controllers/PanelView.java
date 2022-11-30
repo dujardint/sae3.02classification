@@ -15,7 +15,7 @@ import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.models.points.Titanic;
 import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.KnnMethod;
-import fr.grph3.univlille.utils.MVCModel;
+import fr.grph3.univlille.utils.AbstractMVCModel;
 import fr.grph3.univlille.utils.distances.EuclidDistance;
 import fr.grph3.univlille.utils.distances.IDistance;
 import fr.grph3.univlille.utils.distances.ManhattanDistance;
@@ -66,7 +66,7 @@ public class PanelView extends AbstractView {
 
     private List<XYChart.Series<Number, Number>> allSeries;
 
-    private MVCModel model;
+    private AbstractMVCModel model;
 
     private MVCModelManager modelManager;
 
@@ -220,6 +220,11 @@ public class PanelView extends AbstractView {
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName(category.getTitle());
 
+        System.out.println(xColumn);
+        System.out.println(yColumn);
+        System.out.println(category.getTitle());
+        System.out.println(category.getPoints().toString());
+
         for (IPoint point : points) {
             double normalizedX = xColumn.getNormalizedValue(point.getValue(xColumn));
             double normalizedY = yColumn.getNormalizedValue(point.getValue(yColumn));
@@ -245,7 +250,7 @@ public class PanelView extends AbstractView {
         chart.setData(FXCollections.observableArrayList()); // Pas .clear() pour reset les symboles
     }
 
-    public MVCModel getModel() {
+    public AbstractMVCModel getModel() {
         return model;
     }
 

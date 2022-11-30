@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CSVModel extends MVCModel {
+public class CSVModel extends AbstractMVCModel {
 
     private Class<? extends IPoint> dataType;
 
