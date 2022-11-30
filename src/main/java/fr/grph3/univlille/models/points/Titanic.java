@@ -6,12 +6,6 @@ import fr.grph3.univlille.models.columns.IColumn;
 
 public class Titanic implements IPoint {
 
-	public enum TitanicEmbarqued {
-		C, 
-		Q, 
-		S;
-	}
-
     @CsvBindByName(column = "PassengerId")
     private double passengerId;
 

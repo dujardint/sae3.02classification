@@ -9,7 +9,7 @@ import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.*;
 
-public abstract class MVCModel implements IDataSet {
+public abstract class AbstractMVCModel extends Subject implements IDataSet {
 
     protected String title;
 
@@ -21,7 +21,7 @@ public abstract class MVCModel implements IDataSet {
 
     protected List<INormalizableColumn> normalizableColumns;
 
-    public MVCModel(String title) {
+    public AbstractMVCModel(String title) {
         this.title = title;
         this.points = new ArrayList<>();
         this.categories = new ArrayList<>();
@@ -30,6 +30,10 @@ public abstract class MVCModel implements IDataSet {
     @Override
     public String getTitle() {
         return title;
+    }
+    
+    public List<ICategory> getCategory() {
+    	return categories;
     }
 
     @Override
@@ -45,11 +49,13 @@ public abstract class MVCModel implements IDataSet {
     @Override
     public void addPoint(IPoint point) {
         points.add(point);
+        classifyAll(point);
     }
 
     @Override
     public void addPoints(List<IPoint> points) {
-        points.forEach(this::addPoint);
+        this.points.addAll(points);
+        classify(points);
     }
 
     @Override
@@ -89,15 +95,18 @@ public abstract class MVCModel implements IDataSet {
 
     public abstract List<IColumn> getColumns();
 
-    private void classify(List<IPoint> points) {
-        points.forEach(this::classify);
+    protected void classify(List<IPoint> points) {
+        points.forEach(this::classifyAll);
     }
 
-    private void classify(IPoint point) {
+    protected void classifyAll(IPoint point) {
         String category = point.getCategory();
         getCategoryByTitle(category)
-                .orElse(new Category(category))
-                .addPoint(point);
+                .orElseGet(() -> {
+                    ICategory newCategory = new Category(category);
+                    categories.add(newCategory);
+                    return newCategory;
+                }).addPoint(point);
     }
 
     /**

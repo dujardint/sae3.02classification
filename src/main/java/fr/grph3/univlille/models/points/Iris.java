@@ -6,10 +6,6 @@ import fr.grph3.univlille.models.columns.IColumn;
 
 public class Iris implements IPoint {
 
-    public enum Variety {
-        SETOSA, VERSICOLOR, VIRGINICA
-    }
-
     @CsvBindByName(column = "sepal.length")
     private double sepalLength;
     @CsvBindByName(column = "sepal.width")

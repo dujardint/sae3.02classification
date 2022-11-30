@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import fr.grph3.univlille.models.points.Iris;
 import fr.grph3.univlille.utils.CSVModel;
 import fr.grph3.univlille.utils.KnnMethod;
-import fr.grph3.univlille.utils.MVCModel;
-import fr.grph3.univlille.utils.distances.IDistance;
 import fr.grph3.univlille.utils.distances.ManhattanDistance;
 
 import static org.junit.Assert.assertEquals;

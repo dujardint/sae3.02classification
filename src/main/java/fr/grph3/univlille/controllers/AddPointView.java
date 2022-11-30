@@ -1,7 +1,6 @@
 package fr.grph3.univlille.controllers;
 
 import fr.grph3.univlille.AbstractView;
-import fr.grph3.univlille.controllers.PanelView;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Spinner;
@@ -50,7 +49,7 @@ public class AddPointView extends AbstractView {
 
 	@FXML
 	public void onAddPoint() {
-		panelView.addPoint(xPointSpinner.getValue(), yPointSpinner.getValue());
+
 	}
 
 	@Override

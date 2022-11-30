@@ -11,7 +11,7 @@ public abstract class Subject {
     }
 
     public void attach(Observer obs) {
-        if (!attached.contains( obs)) {
+        if (!attached.contains(obs)) {
             attached.add(obs);
         }
     }
@@ -22,10 +22,5 @@ public abstract class Subject {
 
     public void notifyObservers() {
         attached.forEach(o -> o.update(this));
-    }
-
-
-    public void notifyObservers(Object data) {
-        attached.forEach(o -> o.update(this, data));
     }
 }

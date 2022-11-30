@@ -3,6 +3,8 @@ package fr.grph3.univlille.controllers;
 import fr.grph3.univlille.AbstractView;
 import fr.grph3.univlille.controllers.PanelView;
 import fr.grph3.univlille.models.points.Titanic;
+import fr.grph3.univlille.utils.KnnMethod;
+import fr.grph3.univlille.utils.distances.ManhattanDistance;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -96,15 +98,18 @@ public class AddPointTitanicView extends AbstractView {
 		titanic.setTicket(ticket.getText());
 		titanic.setFare(fare.getValue());
 		titanic.setCabin(cabin.getText());
+		titanic.setCategory("");
 		
-		
-		System.out.println("new : " + titanic.toString());
-		
-		confirmationAdd.setText("passagé ajouté !");
-		
-		//titanic est ajouté a la liste des points du modele et le modèle se redessine
-	panelView.getModel().addPoint(titanic);
-		
+		KnnMethod knn = new KnnMethod();
+		ManhattanDistance distance = new ManhattanDistance(panelView.getModel().getColumns());
+
+		titanic.setCategory(
+				knn.classifier(
+						knn.getNeighbours(titanic, panelView.getKnnSpinnerValueInt(), distance, panelView.getModel().getPoints())
+						));
+
+		panelView.getModel().addPoint(titanic);
+		confirmationAdd.setText("passagé de catégorie " + titanic.getCategory() + " ajouté !");
 		
 	}
 
