@@ -124,6 +124,32 @@ public class PanelView extends AbstractView {
     public void onClose() {
         System.exit(0);
     }
+    
+    @FXML
+	public void onAddPoint() {
+		Stage adpStag = new Stage();
+		if(csvPicker.getSelectionModel().getSelectedItem().contains("Iris")) { //PAS ENCORE FONCTIONEL
+			AddPointIrisView addPointView = new AddPointIrisView(adpStag, this); //la nouvelle vue
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
+
+		else if(csvPicker.getSelectionModel().getSelectedItem().contains("Titanic")) {
+			AddPointTitanicView addPointView = new AddPointTitanicView(adpStag, this);
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
+
+		else {
+			AddPointView addPointView = new AddPointView(adpStag, this);
+			adpStag.setScene(new Scene(addPointView.loadView()));
+			adpStag.show();
+		}
+	}
+    
+    public int getKnnSpinnerValueInt() {
+    	return knnSpinner.getValue();
+    }
 
     @FXML
     public void onDataTypeSelected() {

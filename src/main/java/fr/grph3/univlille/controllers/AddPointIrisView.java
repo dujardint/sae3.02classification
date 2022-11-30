@@ -64,10 +64,10 @@ public class AddPointIrisView extends AbstractView {
 		KnnMethod knn = new KnnMethod();
 		ManhattanDistance distance = new ManhattanDistance(panelView.getModel().getColumns());
 
-		/*iris.setCategory(
+		iris.setCategory(
 				knn.classifier(
 						knn.getNeighbours(iris, panelView.getKnnSpinnerValueInt(), distance, panelView.getModel().getPoints())
-						));*/
+						));
 
 		panelView.getModel().addPoint(iris);
 		confirmationAdd.setText("iris de catégorie " + iris.getCategory() + " ajouté !");
