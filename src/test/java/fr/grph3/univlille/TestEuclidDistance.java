@@ -16,7 +16,7 @@ public class TestEuclidDistance {
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel(Titanic.class, "Titanic",null);
+        this.model = new CSVModel(Titanic.class, "Titanic");
         model.loadFromFile("src/main/resources/titanic.csv");
         this.distance = new EuclidDistance(model.getColumns());
     }

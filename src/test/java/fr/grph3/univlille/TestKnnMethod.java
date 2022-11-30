@@ -29,7 +29,7 @@ public class TestKnnMethod {
 
     @BeforeEach
     void setUp(){
-        this.model = new CSVModel(Iris.class, "Iris",null);
+        this.model = new CSVModel(Iris.class, "Iris");
         this.knn = new KnnMethod();
         model.loadFromFile("src/main/resources/irisTest.csv");
         this.distance = new ManhattanDistance(model.getColumns());

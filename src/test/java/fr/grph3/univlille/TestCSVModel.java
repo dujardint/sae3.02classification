@@ -21,8 +21,8 @@ public class TestCSVModel {
 	List<IPoint> pts = new ArrayList<>();
 
     @BeforeEach
-    void setUp() {
-        this.model = new CSVModel(Iris.class, "Iris", null);
+    void setUp(){
+        this.model = new CSVModel(Iris.class, "Iris");
         model.loadFromFile("src/main/resources/irisTest.csv");
     }
     
