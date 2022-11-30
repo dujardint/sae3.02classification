@@ -189,10 +189,37 @@ public class PanelView extends AbstractView implements Observer {
         robustness.setText(String.valueOf(knnMethod.getRobustesse(distance, model.getPoints(), knnSpinner.getValue())));
     }
 
+<<<<<<< Updated upstream
     @FXML
     public void onDistanceSelected() {
         onKnn();
     }
+=======
+		Map<String, List<IPoint>> links = new HashMap<>();
+		for (IPoint point : points) {
+			String category = point.getCategory();
+			if (!links.containsKey(category)) links.put(category, new ArrayList<>());
+			links.get(point.getCategory()).add(point);
+		}
+		List<String> categories = new ArrayList<>(links.keySet());
+		categories.forEach(category -> {
+			XYChart.Series<Number, Number> xy = new XYChart.Series<>();
+			xy.setName(category);
+			links.get(category).forEach(p -> {
+				XYChart.Data<Number, Number> data = new XYChart.Data<>(xColumn.getNormalizedValue(p.getValue(xColumn)), yColumn.getNormalizedValue(p.getValue(yColumn)));
+				data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+					if (newValue != null) {
+						Tooltip.install(data.getNode(), new Tooltip(p.toString()));
+					}
+				});
+				xy.getData().add(data);
+			});
+			series.add(xy);  
+		});
+
+		chart.setData(FXCollections.observableList(series));
+	}
+>>>>>>> Stashed changes
 
     @FXML
     public void onCategorySelected() {
