@@ -4,6 +4,7 @@ import fr.grph3.univlille.models.columns.INormalizableColumn;
 import fr.grph3.univlille.models.points.IPoint;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -23,16 +24,19 @@ public abstract class IPointParser {
     public abstract IPoint parse(String line);
 
     protected String parseArg(String token, String[] args) {
-        return args[tokenPosition(token)];
+        int pos = tokenPosition(token);
+        return pos == -1 ? "0.0" : args[pos];
     }
 
     protected int tokenPosition(String token) {
-        System.out.println(token);
-        String[] split = token.split(" ");
-        return IntStream.range(0, split.length)
-                .filter(i -> split[i].equals("${" + token + "}"))
-                .findFirst()
-                .orElse(0);
+        String[] split = format().split(" ");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i]);
+            if (split[i].equals("${" + token + "}")) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public String format() {

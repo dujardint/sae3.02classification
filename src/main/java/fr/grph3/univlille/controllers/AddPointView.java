@@ -110,6 +110,7 @@ public class AddPointView extends AbstractView {
 				toParse = toParse.replace("${" + columnName + "}", String.valueOf(checkBox.isSelected()));
 			}
 		}
+		model.addPoint(parser.parse(toParse));
 	}
 
 	private Node findInputById(String id) {
