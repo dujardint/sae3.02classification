@@ -151,4 +151,9 @@ public abstract class AbstractMVCModel extends Subject implements IDataSet {
     public Iterator<IPoint> iterator() {
         return points.iterator();
     }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }

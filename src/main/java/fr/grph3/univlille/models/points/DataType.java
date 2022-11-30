@@ -6,7 +6,8 @@ import fr.grph3.univlille.utils.parsers.ITitanicParser;
 
 public enum DataType {
 
-    IRIS(new CSVModel(Iris.class, "Iris", new IIrisParser())), TITANIC(new CSVModel(Titanic.class, "Titanic", new ITitanicParser()));
+    IRIS(new CSVModel(Iris.class, "Imported Iris", new IIrisParser())),
+    TITANIC(new CSVModel(Titanic.class, "Imported Titanic", new ITitanicParser()));
 
     private final CSVModel model;
 

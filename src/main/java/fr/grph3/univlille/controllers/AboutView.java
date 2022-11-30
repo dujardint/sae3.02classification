@@ -4,11 +4,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import fr.grph3.univlille.AbstractView;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-public class AboutView  extends AbstractView{
+public class AboutView  extends AbstractView {
 
 	/*
 	 * CETTE VUE PERMET D'AFFICHER LES INFOS DE L'APPLI
@@ -20,24 +19,15 @@ public class AboutView  extends AbstractView{
 
 	public AboutView(Stage stage) {
 		super(stage);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@FXML
-	public void onClose() {
-		stage.close();
 	}
 	
 	@Override
 	public Parent loadView() {
-		// TODO Auto-generated method stub
 		return loadView("src/main/resources/views/About.fxml");
 	}
-
 }

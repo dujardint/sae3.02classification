@@ -34,7 +34,7 @@ public class PanelView extends AbstractView implements Observer {
     private BorderPane root;
 
     @FXML
-    private ComboBox<String> csvPicker;
+    private ComboBox<AbstractMVCModel> csvPicker;
 
     @FXML
     private ScatterChart<Number, Number> chart;
@@ -67,8 +67,8 @@ public class PanelView extends AbstractView implements Observer {
     public void initialize(URL location, ResourceBundle resources) {
         this.selectedCategory = new Category("ALL");
         initDefaultData();
-        csvPicker.getSelectionModel().select(modelManager.names().get(0));
-        csvPicker.setItems(FXCollections.observableArrayList(modelManager.names()));
+        csvPicker.getSelectionModel().select(modelManager.getModels().get(0));
+        csvPicker.setItems(FXCollections.observableArrayList(modelManager.getModels()));
         onDataTypeSelected();
     }
 
@@ -85,12 +85,14 @@ public class PanelView extends AbstractView implements Observer {
     @FXML
     public void onOpen() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select data csv");
+        fileChooser.setTitle("Select CSV File to import");
         File selectedCsv = fileChooser.showOpenDialog(stage);
         DataType type = extractDataType(selectedCsv);
         if (type == null) return;
-        model.loadFromFile(selectedCsv.getPath());
-        stage.setTitle(selectedCsv.getName());
+        AbstractMVCModel loadedModel = type.getModel();
+        loadedModel.attach(this);
+        modelManager.subscribe(loadedModel, selectedCsv.getPath());
+        csvPicker.setItems(FXCollections.observableArrayList(modelManager.getModels()));
     }
 
     @FXML
@@ -107,7 +109,7 @@ public class PanelView extends AbstractView implements Observer {
     }
     
     @FXML
-	public void onAddPoint() {
+	public void onNewPoint() {
         Stage addPointStage = new Stage();
         addPointStage.initOwner(stage);
         addPointStage.setResizable(false);
@@ -118,8 +120,9 @@ public class PanelView extends AbstractView implements Observer {
 
     @FXML
     public void onDataTypeSelected() {
-        String title = csvPicker.getSelectionModel().getSelectedItem();
-        this.model = modelManager.switchModel(title);
+        AbstractMVCModel selected = csvPicker.getSelectionModel().getSelectedItem();
+        if (selected == null) return;
+        this.model = modelManager.switchModel(selected.getTitle());
         xColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
         yColumnPicker.setItems(FXCollections.observableList(model.getNormalizableColumns()));
         initDefaultValue(xColumnPicker.getSelectionModel(), model.defaultXCol());
