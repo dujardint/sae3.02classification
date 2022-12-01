@@ -68,6 +68,7 @@ public class AddPointView extends AbstractView {
 		for (IColumn column : model.getNormalizableColumns()) {
 			List<Node> children = inputsBox.getChildren();
 			if (column instanceof NumberColumn) {
+				inputsBox.getChildren().add(new Label(column.getName()));
 				Spinner<Double> spinner = new Spinner<>(0.0, 1.0, 0.0, 0.1);
 				spinner.setId(column.getName());
 				children.add(spinner);
