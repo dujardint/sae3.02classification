@@ -28,8 +28,9 @@ public abstract class AbstractView implements Initializable {
 			fxmlStream = new FileInputStream(path);
 			return loader.load(fxmlStream);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public Parent getNode() {
