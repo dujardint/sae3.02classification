@@ -45,6 +45,8 @@ public class AddPointView extends AbstractView {
 
 	private KnnMethod knnMethod;
 
+	private IDistance distance;
+
 	public AddPointView(Stage stage, AbstractMVCModel model) {
 		super(stage);
 		this.model = model;
@@ -81,7 +83,7 @@ public class AddPointView extends AbstractView {
 	public void onKnn() {
 		String selected = distancesComboBox.getSelectionModel()
 				.getSelectedItem();
-		IDistance distance = selected.equals("Euclid") ? new EuclidDistance(model.getColumns()) : new ManhattanDistance(model.getColumns());
+		this.distance = selected.equals("Euclid") ? new EuclidDistance(model.getColumns()) : new ManhattanDistance(model.getColumns());
 		robustness.setText(String.valueOf(knnMethod.getRobustesse(distance, model.getPoints(), knnSpinner.getValue())));
 	}
 
@@ -111,7 +113,8 @@ public class AddPointView extends AbstractView {
 			}
 		}
 		IPoint newPoint = parser.parse(toParse);
-		newPoint.setCategory(knnMethod.classifier(model.getPoints()));
+		newPoint.setCategory("");
+		newPoint.setCategory(knnMethod.classifier(knnMethod.getNeighbours(newPoint, knnSpinner.getValue(), distance, model.getPoints())));
 		model.addPoint(newPoint);
 	}
 

@@ -4,7 +4,6 @@ import fr.grph3.univlille.models.points.IPoint;
 import fr.grph3.univlille.utils.distances.IDistance;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,31 +51,6 @@ public class KnnMethod {
 			addElement(data, tmp);
 		}return Math.round((wellClassified/totalClassified)*100.0*100.0)/100.0;
 	}
-	
-	
-	/*public double getRobustesse(IDistance distance, List<IPoint> data, double k) {
-		int divisor = data.size() / 5;
-		double wellClassified = 0; 
-		double totalClassified = 0;
-		List<IPoint> tmp = new ArrayList<>();
-		for(int i = 0;i < 5; i++) {
-			tmp.clear();
-			for(int j = 0; j < data.size();j++) {
-				if(j < i*divisor || j > i*divisor + divisor) {
-					tmp.add(data.get(j));
-				}
-			}
-			for(int j = 0; j < data.size();j++) {
-				if(j >= i*divisor && j <= i*divisor + divisor) {
-					if(data.get(j).getCategory().equals(classifier(getNeighbours(data.get(j), k, distance, tmp)))) {
-						wellClassified++;
-					}totalClassified ++;
-				}
-			}
-			
-		}return Math.round((wellClassified/totalClassified)*100.0*100.0)/100.0;
-	}*/
-	
 	
 	public void removeElement(List<IPoint> liste, int nb, int nbFin) {
 		if (nbFin > nb) {
