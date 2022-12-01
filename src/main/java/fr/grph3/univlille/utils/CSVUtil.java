@@ -18,9 +18,8 @@ public class CSVUtil {
                     .build()
                     .parse();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return Collections.emptyList();
     }
 
     public static <T extends IPoint> List<T> loadCSVAsString(String raw) {

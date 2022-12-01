@@ -1,5 +1,6 @@
 package fr.grph3.univlille;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -20,14 +21,15 @@ public abstract class AbstractView implements Initializable {
 	public abstract Parent loadView();
 
 	protected Parent loadView(String path) {
+		FileInputStream fxmlStream;
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+			FXMLLoader loader = new FXMLLoader();
 			loader.setController(this);
-			return loader.load();
+			fxmlStream = new FileInputStream(path);
+			return loader.load(fxmlStream);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 	public Parent getNode() {
